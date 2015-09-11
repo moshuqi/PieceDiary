@@ -1,0 +1,17 @@
+//
+//  PDDateCellView.h
+//  PieceDiary
+//
+//  Created by moshuqi on 15/9/9.
+//  Copyright (c) 2015年 msq. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface PDDateCellView : UIView
+
+- (void)setDateLabelsWithDate:(NSDate *)date;
+- (void)setWeatherIconWithImage:(UIImage *)image;
+- (void)setMoodIconWithImage:(UIImage *)image;
+
+@end
