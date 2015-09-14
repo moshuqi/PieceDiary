@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class PDPieceDiaryView;
+
+@protocol PDPieceDiaryViewDelegate <NSObject>
+
+- (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface PDPieceDiaryView : UIView
+
+@property (nonatomic, assign) id<PDPieceDiaryViewDelegate> delegate;
 
 @end

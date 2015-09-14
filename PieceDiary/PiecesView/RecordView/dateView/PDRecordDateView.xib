@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PDRecordDateView">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="77"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fvW-05-6uB">
+                    <rect key="frame" x="80" y="16.5" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="aNJ-wv-yiD"/>
+                        <constraint firstAttribute="height" constant="44" id="bos-tn-uta"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6x-4L-How">
+                    <rect key="frame" x="0.0" y="0.0" width="326" height="77"/>
+                    <state key="normal" title="2015年9月14日">
+                        <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="k6x-4L-How" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0jV-l6-jq5"/>
+                <constraint firstAttribute="centerY" secondItem="fvW-05-6uB" secondAttribute="centerY" id="5LB-mJ-uOK"/>
+                <constraint firstItem="k6x-4L-How" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PUw-ma-Tki"/>
+                <constraint firstItem="fvW-05-6uB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="VcX-IX-jZe"/>
+                <constraint firstAttribute="bottom" secondItem="k6x-4L-How" secondAttribute="bottom" id="ZuW-PP-sct"/>
+                <constraint firstAttribute="trailing" secondItem="k6x-4L-How" secondAttribute="trailing" id="aQz-dS-Ww6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateButton" destination="k6x-4L-How" id="Ry6-ZX-lMP"/>
+                <outlet property="dateImageView" destination="fvW-05-6uB" id="2Be-JX-caz"/>
+            </connections>
+            <point key="canvasLocation" x="339" y="137.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="1.jpg" width="224" height="220"/>
+    </resources>
+</document>

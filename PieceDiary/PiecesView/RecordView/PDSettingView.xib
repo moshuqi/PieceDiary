@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PDSettingView">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="442"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Zb-R5f" userLabel="date">
+                    <rect key="frame" x="0.0" y="0.0" width="322" height="88"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="pnn-L0-GZl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAu-zB-x7t" userLabel="weather">
+                    <rect key="frame" x="0.0" y="88" width="322" height="155"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mve-tb-b2u" userLabel="mood">
+                    <rect key="frame" x="0.0" y="243" width="322" height="155"/>
+                    <color key="backgroundColor" red="1" green="0.77421898590000005" blue="0.97156474709999996" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-mA-PyM">
+                    <rect key="frame" x="0.0" y="398" width="322" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="6R9-zr-Nq8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="完成">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toucheDone:" destination="iN0-l3-epB" eventType="touchUpInside" id="GlO-65-b4k"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wCy-Zb-R5f" secondAttribute="trailing" id="0QT-vk-Al9"/>
+                <constraint firstItem="Pdn-mA-PyM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5as-9e-Za6"/>
+                <constraint firstItem="mve-tb-b2u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5mH-7J-zf9"/>
+                <constraint firstItem="bAu-zB-x7t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Nw-sK-gN7"/>
+                <constraint firstAttribute="bottom" secondItem="Pdn-mA-PyM" secondAttribute="bottom" id="Vzu-Ru-Kqm"/>
+                <constraint firstItem="wCy-Zb-R5f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XHR-sb-9rJ"/>
+                <constraint firstAttribute="trailing" secondItem="Pdn-mA-PyM" secondAttribute="trailing" id="am6-49-pHZ"/>
+                <constraint firstAttribute="trailing" secondItem="bAu-zB-x7t" secondAttribute="trailing" id="e4E-Du-w0S"/>
+                <constraint firstItem="Pdn-mA-PyM" firstAttribute="top" secondItem="mve-tb-b2u" secondAttribute="bottom" id="elJ-62-fRN"/>
+                <constraint firstItem="bAu-zB-x7t" firstAttribute="top" secondItem="wCy-Zb-R5f" secondAttribute="bottom" id="n5z-oH-EGs"/>
+                <constraint firstItem="bAu-zB-x7t" firstAttribute="height" secondItem="mve-tb-b2u" secondAttribute="height" id="olM-5i-b6N"/>
+                <constraint firstAttribute="trailing" secondItem="mve-tb-b2u" secondAttribute="trailing" id="rhE-Eg-gxq"/>
+                <constraint firstItem="wCy-Zb-R5f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tec-9b-NB7"/>
+                <constraint firstItem="mve-tb-b2u" firstAttribute="top" secondItem="bAu-zB-x7t" secondAttribute="bottom" id="xtq-yf-UeN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateView" destination="wCy-Zb-R5f" id="q8S-yA-AoQ"/>
+                <outlet property="doneButton" destination="Pdn-mA-PyM" id="VWf-1n-Xes"/>
+                <outlet property="moodView" destination="mve-tb-b2u" id="Khb-Tf-qR8"/>
+                <outlet property="weatherView" destination="bAu-zB-x7t" id="y9e-mq-vPN"/>
+            </connections>
+            <point key="canvasLocation" x="100" y="222"/>
+        </view>
+    </objects>
+</document>

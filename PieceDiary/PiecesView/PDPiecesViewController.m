@@ -9,10 +9,11 @@
 #import "PDPiecesViewController.h"
 #import "PDDateCellView.h"
 #import "PDPieceDiaryView.h"
+#import "PDRecordViewController.h"
 
 #define kOriginY    20
 
-@interface PDPiecesViewController ()
+@interface PDPiecesViewController ()<PDPieceDiaryViewDelegate>
 
 @property (nonatomic, retain) PDPieceDiaryView *pieceDiaryView;
 
@@ -30,6 +31,7 @@
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceDiaryView" owner:self options:nil];
     self.pieceDiaryView = [nibViews objectAtIndex:0];
     self.pieceDiaryView.frame = [self getPieceDiaryFrame];
+    self.pieceDiaryView.delegate = self;
     
     [self.view addSubview:self.pieceDiaryView];
     self.pieceDiaryView.backgroundColor = [UIColor grayColor];
@@ -55,6 +57,15 @@
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
+#pragma mark - PDPieceDiaryViewDelegate
+
+- (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PDRecordViewController *recordViewController = [[PDRecordViewController alloc] init];
+    
+    recordViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:recordViewController animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

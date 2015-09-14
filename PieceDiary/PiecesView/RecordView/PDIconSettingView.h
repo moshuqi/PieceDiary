@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define PDIconSettingNormalImageKey     @"PDIconSettingNormalImageKey"
+#define PDIconSettingSelectedImageKey     @"PDIconSettingSelectedImageKey"
+
 @interface PDIconSettingView : UIView
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -19,5 +22,8 @@
 @property (nonatomic, weak) IBOutlet UIButton *button6;
 @property (nonatomic, weak) IBOutlet UIButton *button7;
 @property (nonatomic, weak) IBOutlet UIButton *button8;
+
+- (void)setIconsWithDictArray:(NSArray *)dictArray;
+- (void)setSettingViewTitle:(NSString *)title;
 
 @end

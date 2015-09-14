@@ -29,7 +29,8 @@
     
     CGFloat d = self.icon1.frame.size.width;
     
-    self.icon1.layer.cornerRadius = d / 2;
+    self.icon1.layer.cornerRadius = d;
+    self.icon1.clipsToBounds = YES;
     self.icon2.layer.cornerRadius = d / 2;
     self.icon3.layer.cornerRadius = d / 2;
     self.icon4.layer.cornerRadius = d / 2;

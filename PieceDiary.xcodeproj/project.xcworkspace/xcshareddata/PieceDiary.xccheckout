@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F2997D7B-4E82-49DF-B1BB-CC17E7F6C4F6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PieceDiary</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B875D058F0E405CDC82274E3DE12403F7911E156</key>
+		<string>github.com:moshuqi/PieceDiary.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PieceDiary.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B875D058F0E405CDC82274E3DE12403F7911E156</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:moshuqi/PieceDiary.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B875D058F0E405CDC82274E3DE12403F7911E156</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B875D058F0E405CDC82274E3DE12403F7911E156</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PieceDiary</string>
+		</dict>
+	</array>
+</dict>
+</plist>

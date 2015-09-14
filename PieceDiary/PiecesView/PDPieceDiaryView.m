@@ -96,7 +96,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.delegate pieceDiaryView:self didSelectItemAtIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -137,6 +137,7 @@
         return cell;
     }
     
+    // 测试代码
     UIImage *image1 = [UIImage imageNamed:@"1.jpg"];
     UIImage *image2 = [UIImage imageNamed:@"1.jpg"];
     UIImage *image3 = [UIImage imageNamed:@"1.jpg"];
