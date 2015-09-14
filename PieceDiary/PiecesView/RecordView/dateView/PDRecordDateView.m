@@ -17,4 +17,9 @@
 
 @implementation PDRecordDateView
 
+- (IBAction)touchedDateButton:(id)sender
+{
+    [self.delegate enterSettingDateView];
+}
+
 @end

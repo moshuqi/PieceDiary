@@ -1,5 +1,5 @@
 //
-//  PDPiecesViewController.h
+//  PDPieceViewController.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDPiecesViewController : UIViewController
+@interface PDPieceViewController : UIViewController
 
 @end

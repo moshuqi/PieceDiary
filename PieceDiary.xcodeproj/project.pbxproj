@@ -21,7 +21,7 @@
 		654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7721BA07840002DF0C9 /* Images.xcassets */; };
 		654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7741BA07840002DF0C9 /* LaunchScreen.xib */; };
 		654CC7821BA07840002DF0C9 /* PieceDiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7811BA07840002DF0C9 /* PieceDiaryTests.m */; };
-		654CC7931BA07987002DF0C9 /* PDPiecesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7921BA07987002DF0C9 /* PDPiecesViewController.m */; };
+		654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7921BA07987002DF0C9 /* PDPieceViewController.m */; };
 		654CC7971BA08473002DF0C9 /* PDDateCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7961BA08473002DF0C9 /* PDDateCellView.m */; };
 		654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
@@ -35,6 +35,16 @@
 		659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDCF71BA6A6AD0000D561 /* PDRecordDateView.m */; };
 		659BDCFA1BA6A7A80000D561 /* PDRecordDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDCF91BA6A7A80000D561 /* PDRecordDateView.xib */; };
 		659BDCFC1BA6AAD50000D561 /* PDSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDCFB1BA6AAD50000D561 /* PDSettingView.xib */; };
+		659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD011BA6BACA0000D561 /* PDSettingDateView.m */; };
+		659BDD041BA6BAE20000D561 /* PDSettingDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD031BA6BAE20000D561 /* PDSettingDateView.xib */; };
+		659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */; };
+		659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD0A1BA6DC9D0000D561 /* PDPieceEditViewController.m */; };
+		659BDD0E1BA6DCF70000D561 /* PDPieceEditToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */; };
+		659BDD101BA6DD210000D561 /* PDPieceEditToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */; };
+		659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */; };
+		659BDD181BA70AC80000D561 /* BaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD171BA70AC80000D561 /* BaseAnimation.m */; };
+		659BDD1B1BA70BA40000D561 /* ScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD1A1BA70BA40000D561 /* ScaleAnimation.m */; };
+		659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +81,8 @@
 		654CC77B1BA07840002DF0C9 /* PieceDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PieceDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654CC7801BA07840002DF0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		654CC7811BA07840002DF0C9 /* PieceDiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieceDiaryTests.m; sourceTree = "<group>"; };
-		654CC7911BA07987002DF0C9 /* PDPiecesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPiecesViewController.h; sourceTree = "<group>"; };
-		654CC7921BA07987002DF0C9 /* PDPiecesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPiecesViewController.m; sourceTree = "<group>"; };
+		654CC7911BA07987002DF0C9 /* PDPieceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceViewController.h; sourceTree = "<group>"; };
+		654CC7921BA07987002DF0C9 /* PDPieceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceViewController.m; sourceTree = "<group>"; };
 		654CC7951BA08473002DF0C9 /* PDDateCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellView.h; sourceTree = "<group>"; };
 		654CC7961BA08473002DF0C9 /* PDDateCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellView.m; sourceTree = "<group>"; };
 		654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDDateCellView.xib; sourceTree = "<group>"; };
@@ -94,6 +104,22 @@
 		659BDCF71BA6A6AD0000D561 /* PDRecordDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordDateView.m; sourceTree = "<group>"; };
 		659BDCF91BA6A7A80000D561 /* PDRecordDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDRecordDateView.xib; sourceTree = "<group>"; };
 		659BDCFB1BA6AAD50000D561 /* PDSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingView.xib; sourceTree = "<group>"; };
+		659BDD001BA6BACA0000D561 /* PDSettingDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingDateView.h; sourceTree = "<group>"; };
+		659BDD011BA6BACA0000D561 /* PDSettingDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingDateView.m; sourceTree = "<group>"; };
+		659BDD031BA6BAE20000D561 /* PDSettingDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingDateView.xib; sourceTree = "<group>"; };
+		659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceDiaryEditView.h; sourceTree = "<group>"; };
+		659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceDiaryEditView.m; sourceTree = "<group>"; };
+		659BDD091BA6DC9D0000D561 /* PDPieceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceEditViewController.h; sourceTree = "<group>"; };
+		659BDD0A1BA6DC9D0000D561 /* PDPieceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceEditViewController.m; sourceTree = "<group>"; };
+		659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceEditToolbar.h; sourceTree = "<group>"; };
+		659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceEditToolbar.m; sourceTree = "<group>"; };
+		659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditToolbar.xib; sourceTree = "<group>"; };
+		659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceDiaryEditView.xib; sourceTree = "<group>"; };
+		659BDD161BA70AC80000D561 /* BaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAnimation.h; sourceTree = "<group>"; };
+		659BDD171BA70AC80000D561 /* BaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAnimation.m; sourceTree = "<group>"; };
+		659BDD191BA70BA40000D561 /* ScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleAnimation.h; sourceTree = "<group>"; };
+		659BDD1A1BA70BA40000D561 /* ScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleAnimation.m; sourceTree = "<group>"; };
+		659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,17 +184,19 @@
 		654CC7641BA07840002DF0C9 /* PieceDiary */ = {
 			isa = PBXGroup;
 			children = (
-				6547A96E1BA1E05C0090CAD0 /* UI */,
-				6547A95B1BA1A9950090CAD0 /* Main.storyboard */,
-				6547A9581BA1A98C0090CAD0 /* ViewController.h */,
-				6547A9591BA1A98C0090CAD0 /* ViewController.m */,
-				654CC7901BA07976002DF0C9 /* PiecesView */,
+				659BDD151BA70A520000D561 /* Animation */,
 				654CC7691BA07840002DF0C9 /* AppDelegate.h */,
-				654CC76A1BA07840002DF0C9 /* AppDelegate.m */,
-				654CC7721BA07840002DF0C9 /* Images.xcassets */,
-				654CC7741BA07840002DF0C9 /* LaunchScreen.xib */,
-				654CC7651BA07840002DF0C9 /* Supporting Files */,
 				659BDCEA1BA696250000D561 /* PDDefine.h */,
+				6547A9581BA1A98C0090CAD0 /* ViewController.h */,
+				654CC76A1BA07840002DF0C9 /* AppDelegate.m */,
+				6547A9591BA1A98C0090CAD0 /* ViewController.m */,
+				654CC7721BA07840002DF0C9 /* Images.xcassets */,
+				659BDD051BA6DC410000D561 /* EditView */,
+				654CC7741BA07840002DF0C9 /* LaunchScreen.xib */,
+				6547A95B1BA1A9950090CAD0 /* Main.storyboard */,
+				654CC7901BA07976002DF0C9 /* PieceView */,
+				654CC7651BA07840002DF0C9 /* Supporting Files */,
+				6547A96E1BA1E05C0090CAD0 /* UI */,
 			);
 			path = PieceDiary;
 			sourceTree = "<group>";
@@ -199,18 +227,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		654CC7901BA07976002DF0C9 /* PiecesView */ = {
+		654CC7901BA07976002DF0C9 /* PieceView */ = {
 			isa = PBXGroup;
 			children = (
 				658166911BA28C7C003E7FA5 /* RecordView */,
 				6547A9631BA1C20A0090CAD0 /* PieceCell */,
 				654CC7941BA0840C002DF0C9 /* DateCell */,
-				654CC7911BA07987002DF0C9 /* PDPiecesViewController.h */,
-				654CC7921BA07987002DF0C9 /* PDPiecesViewController.m */,
+				654CC7911BA07987002DF0C9 /* PDPieceViewController.h */,
+				654CC7921BA07987002DF0C9 /* PDPieceViewController.m */,
 				6547A95E1BA1A9EB0090CAD0 /* PDPieceDiaryView.h */,
 				6547A95F1BA1A9EB0090CAD0 /* PDPieceDiaryView.m */,
 				6547A9611BA1AA130090CAD0 /* PDPieceDiaryView.xib */,
 			);
+			name = PieceView;
 			path = PiecesView;
 			sourceTree = "<group>";
 		};
@@ -228,18 +257,18 @@
 		658166911BA28C7C003E7FA5 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
-				659BDCF51BA6A66C0000D561 /* dateView */,
-				659BDCF41BA6A6660000D561 /* iconView */,
 				658166921BA28CA0003E7FA5 /* PDSettingView.h */,
 				658166931BA28CA0003E7FA5 /* PDSettingView.m */,
 				659BDCEB1BA698090000D561 /* PDRecordViewController.h */,
 				659BDCEC1BA698090000D561 /* PDRecordViewController.m */,
 				659BDCFB1BA6AAD50000D561 /* PDSettingView.xib */,
+				659BDCF51BA6A66C0000D561 /* DateSetting */,
+				659BDCF41BA6A6660000D561 /* IconSetting */,
 			);
 			path = RecordView;
 			sourceTree = "<group>";
 		};
-		659BDCF41BA6A6660000D561 /* iconView */ = {
+		659BDCF41BA6A6660000D561 /* IconSetting */ = {
 			isa = PBXGroup;
 			children = (
 				658166951BA28D3B003E7FA5 /* PDIconSettingView.h */,
@@ -250,17 +279,49 @@
 				659BDCF11BA6A4C60000D561 /* PDRecordMood.h */,
 				659BDCF21BA6A4C60000D561 /* PDRecordMood.m */,
 			);
+			name = IconSetting;
 			path = iconView;
 			sourceTree = "<group>";
 		};
-		659BDCF51BA6A66C0000D561 /* dateView */ = {
+		659BDCF51BA6A66C0000D561 /* DateSetting */ = {
 			isa = PBXGroup;
 			children = (
 				659BDCF61BA6A6AD0000D561 /* PDRecordDateView.h */,
 				659BDCF71BA6A6AD0000D561 /* PDRecordDateView.m */,
 				659BDCF91BA6A7A80000D561 /* PDRecordDateView.xib */,
+				659BDD001BA6BACA0000D561 /* PDSettingDateView.h */,
+				659BDD011BA6BACA0000D561 /* PDSettingDateView.m */,
+				659BDD031BA6BAE20000D561 /* PDSettingDateView.xib */,
 			);
+			name = DateSetting;
 			path = dateView;
+			sourceTree = "<group>";
+		};
+		659BDD051BA6DC410000D561 /* EditView */ = {
+			isa = PBXGroup;
+			children = (
+				659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */,
+				659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */,
+				659BDD091BA6DC9D0000D561 /* PDPieceEditViewController.h */,
+				659BDD0A1BA6DC9D0000D561 /* PDPieceEditViewController.m */,
+				659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */,
+				659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */,
+				659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */,
+				659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */,
+				659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */,
+			);
+			path = EditView;
+			sourceTree = "<group>";
+		};
+		659BDD151BA70A520000D561 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				659BDD161BA70AC80000D561 /* BaseAnimation.h */,
+				659BDD171BA70AC80000D561 /* BaseAnimation.m */,
+				659BDD191BA70BA40000D561 /* ScaleAnimation.h */,
+				659BDD1A1BA70BA40000D561 /* ScaleAnimation.m */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,14 +409,18 @@
 				654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */,
 				6547A9621BA1AA130090CAD0 /* PDPieceDiaryView.xib in Resources */,
 				658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */,
+				659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */,
+				659BDD041BA6BAE20000D561 /* PDSettingDateView.xib in Resources */,
 				659BDCE91BA67E710000D561 /* mood.jpg in Resources */,
 				659BDCFA1BA6A7A80000D561 /* PDRecordDateView.xib in Resources */,
 				6547A9681BA1C2590090CAD0 /* PDPieceCell.xib in Resources */,
 				659BDCE71BA67E0E0000D561 /* weather.jpg in Resources */,
+				659BDD101BA6DD210000D561 /* PDPieceEditToolbar.xib in Resources */,
 				654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */,
 				6547A9701BA1E0690090CAD0 /* 1.jpg in Resources */,
 				654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */,
 				6547A95D1BA1A9950090CAD0 /* Main.storyboard in Resources */,
+				659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,17 +438,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659BDD0E1BA6DCF70000D561 /* PDPieceEditToolbar.m in Sources */,
 				654CC7971BA08473002DF0C9 /* PDDateCellView.m in Sources */,
 				659BDCED1BA698090000D561 /* PDRecordViewController.m in Sources */,
+				659BDD1B1BA70BA40000D561 /* ScaleAnimation.m in Sources */,
+				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
 				659BDCF31BA6A4C60000D561 /* PDRecordMood.m in Sources */,
-				654CC7931BA07987002DF0C9 /* PDPiecesViewController.m in Sources */,
+				659BDD181BA70AC80000D561 /* BaseAnimation.m in Sources */,
+				654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */,
+				659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */,
 				659BDCF01BA6A1C90000D561 /* PDRecordWeather.m in Sources */,
 				6547A9671BA1C2590090CAD0 /* PDPieceCell.m in Sources */,
 				6547A96B1BA1D7440090CAD0 /* PDIconsView.m in Sources */,
 				659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */,
 				658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */,
+				659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,

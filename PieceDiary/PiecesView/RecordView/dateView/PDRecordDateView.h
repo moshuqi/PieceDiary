@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PDRecordDateViewDelegate <NSObject>
+
+- (void)enterSettingDateView;
+
+@end
+
 @interface PDRecordDateView : UIView
+
+@property (nonatomic, assign) id<PDRecordDateViewDelegate> delegate;
 
 @end

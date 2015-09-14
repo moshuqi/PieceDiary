@@ -23,6 +23,9 @@
                         <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="touchedDateButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="TLs-pM-IQU"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

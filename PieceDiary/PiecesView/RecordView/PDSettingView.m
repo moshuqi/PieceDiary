@@ -10,10 +10,11 @@
 #import "PDRecordDateView.h"
 #import "PDRecordWeather.h"
 #import "PDRecordMood.h"
+#import "PDSettingDateView.h"
 
-@interface PDSettingView ()
+@interface PDSettingView () <PDRecordDateViewDelegate, PDSettingDateViewDelegate>
 
-@property (nonatomic, weak) IBOutlet PDRecordDateView *dateView;
+@property (nonatomic, weak) IBOutlet UIView *dateView;
 @property (nonatomic, weak) IBOutlet UIView *weatherView;
 @property (nonatomic, weak) IBOutlet UIView *moodView;
 @property (nonatomic, weak) IBOutlet UIButton *doneButton;
@@ -22,6 +23,8 @@
 @property (nonatomic, retain) PDRecordWeather *weather;
 @property (nonatomic, retain) PDRecordMood *mood;
 
+@property (nonatomic, retain) PDSettingDateView *settingDateView;
+
 @end
 
 @implementation PDSettingView
@@ -29,8 +32,11 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDRecordDateView" owner:self options:nil];
+
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDRecordDateView" owner:self.recordDateView options:nil];
     self.recordDateView = [nibViews firstObject];
+    self.recordDateView.delegate = self;
+    
     [self.dateView addSubview:self.recordDateView];
     self.recordDateView.frame = self.dateView.bounds;
     
@@ -46,6 +52,51 @@
 - (IBAction)toucheDone:(id)sender
 {
     [self.delegate settingDone:sender];
+}
+
+- (void)showSettingDateView
+{
+    // 日期设置界面弹出显示
+    CGRect fromRect = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    CGRect toRect = self.bounds;
+    
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDSettingDateView" owner:self options:nil];
+    self.settingDateView = [nibViews firstObject];
+    
+    self.settingDateView.delegate = self;
+    self.settingDateView.frame = fromRect;
+    [self addSubview:self.settingDateView];
+    
+    [UIView animateWithDuration:0.5 animations:^(){
+        self.settingDateView.frame = toRect;
+    } completion:nil];
+}
+
+- (void)hideSettingDateView
+{
+    // 日期设置界面滑出消失
+    CGRect toRect = CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    
+    [UIView animateWithDuration:0.5 animations:^(){
+        self.settingDateView.frame = toRect;
+    } completion:^(BOOL finished){
+        [self.settingDateView removeFromSuperview];
+        self.settingDateView = nil;
+    }];
+}
+
+#pragma mark - PDRecordDateViewDelegate
+
+- (void)enterSettingDateView
+{
+    [self showSettingDateView];
+}
+
+#pragma mark - PDSettingDateViewDelegate
+
+- (void)dateSettingCancel
+{
+    [self hideSettingDateView];
 }
 
 /*

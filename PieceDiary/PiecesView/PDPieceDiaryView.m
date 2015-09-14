@@ -23,6 +23,11 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
 @property (nonatomic, retain) PDDateCellView *dateCell;
 
+@property (nonatomic, weak) IBOutlet UIButton *toInfoBtn;
+@property (nonatomic, weak) IBOutlet UIButton *leftSlideBtn;
+@property (nonatomic, weak) IBOutlet UIButton *rightSlideBtn;
+@property (nonatomic, weak) IBOutlet UIButton *toolBtn;
+
 @end
 
 @implementation PDPieceDiaryView
@@ -36,7 +41,6 @@
 
 - (void)initPiecesCollectionView
 {
-//    [self.pieceCollectionView registerClass:[PDPieceCell class] forCellWithReuseIdentifier:PiecesCollectionIdentifier];
     [self.pieceCollectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PiecesCollectionIdentifier];  // xib自定义cell需要用这种方式注册
     
     [self addSubview:self.pieceCollectionView];

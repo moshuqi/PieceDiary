@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "PDPiecesViewController.h"
+#import "PDPieceViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    PDPiecesViewController *viewController = [[PDPiecesViewController alloc] init];
+    PDPieceViewController *viewController = [[PDPieceViewController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:viewController];
