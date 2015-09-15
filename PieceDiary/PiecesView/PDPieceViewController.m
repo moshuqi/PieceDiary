@@ -14,6 +14,7 @@
 #import "PDScaleAnimation.h"
 #import "PDSwipeDrivenInteractiveTransition.h"
 //#import "PDNormalDismissAnimation.h"
+#import "PDInfoViewController.h"
 
 #define kOriginY    20
 
@@ -77,6 +78,12 @@
     [self presentViewController:recordViewController animated:YES completion:nil];
 }
 
+- (void)showInfoView
+{
+    PDInfoViewController *infoViewController = [[PDInfoViewController alloc] init];
+    [self presentViewController:infoViewController animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -115,7 +122,9 @@
     self.currentItemFrame = [self.view convertRect:cell.frame fromView:pieceDiaryView.pieceCollectionView];
     self.selecteItemCell = cell;
     
-    [self enterPieceEditView];
+//    [self enterPieceEditView];
+    
+    [self showInfoView];
 }
 
 #pragma mark - ScaleAnimationDelegate

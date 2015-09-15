@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA501BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m */; };
 		6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA581BA7F3C80068DB9D /* PDNormalDismissAnimation.m */; };
+		6539FA5E1BA7FCE80068DB9D /* PDWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA5D1BA7FCE80068DB9D /* PDWeekdayView.m */; };
+		6539FA601BA7FE600068DB9D /* PDWeekdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA5F1BA7FE600068DB9D /* PDWeekdayView.xib */; };
+		6539FA6A1BA808810068DB9D /* PDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA691BA808810068DB9D /* PDInfoViewController.m */; };
+		6539FA6C1BA808950068DB9D /* PDInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA6B1BA808950068DB9D /* PDInfoView.xib */; };
+		6539FA6F1BA80CFC0068DB9D /* PDThisWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA6E1BA80CFC0068DB9D /* PDThisWeekView.m */; };
+		6539FA711BA80D0B0068DB9D /* PDThisWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA701BA80D0B0068DB9D /* PDThisWeekView.xib */; };
+		6539FA791BA835730068DB9D /* PDWeekButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA781BA835730068DB9D /* PDWeekButtonsView.m */; };
+		6539FA7B1BA835830068DB9D /* PDWeekButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA7A1BA835830068DB9D /* PDWeekButtonsView.xib */; };
+		6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA7D1BA8382A0068DB9D /* PDWeekLabelsView.m */; };
+		6539FA801BA838370068DB9D /* PDWeekLabelsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA7F1BA838370068DB9D /* PDWeekLabelsView.xib */; };
+		6539FA841BA84CB40068DB9D /* PDGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA831BA84CB40068DB9D /* PDGridView.m */; };
+		6539FA861BA84CC10068DB9D /* PDGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6539FA851BA84CC10068DB9D /* PDGridView.xib */; };
 		6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547A9591BA1A98C0090CAD0 /* ViewController.m */; };
 		6547A95D1BA1A9950090CAD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6547A95B1BA1A9950090CAD0 /* Main.storyboard */; };
 		6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547A95F1BA1A9EB0090CAD0 /* PDPieceDiaryView.m */; };
@@ -62,9 +74,26 @@
 /* Begin PBXFileReference section */
 		6539FA4F1BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSwipeDrivenInteractiveTransition.h; sourceTree = "<group>"; };
 		6539FA501BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSwipeDrivenInteractiveTransition.m; sourceTree = "<group>"; };
-		6539FA551BA7F0940068DB9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6539FA571BA7F3C80068DB9D /* PDNormalDismissAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNormalDismissAnimation.h; sourceTree = "<group>"; };
 		6539FA581BA7F3C80068DB9D /* PDNormalDismissAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDNormalDismissAnimation.m; sourceTree = "<group>"; };
+		6539FA5C1BA7FCE80068DB9D /* PDWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDWeekdayView.h; path = ../../PDWeekdayView.h; sourceTree = "<group>"; };
+		6539FA5D1BA7FCE80068DB9D /* PDWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDWeekdayView.m; path = ../../PDWeekdayView.m; sourceTree = "<group>"; };
+		6539FA5F1BA7FE600068DB9D /* PDWeekdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDWeekdayView.xib; path = ../../PDWeekdayView.xib; sourceTree = "<group>"; };
+		6539FA681BA808810068DB9D /* PDInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDInfoViewController.h; sourceTree = "<group>"; };
+		6539FA691BA808810068DB9D /* PDInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDInfoViewController.m; sourceTree = "<group>"; };
+		6539FA6B1BA808950068DB9D /* PDInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDInfoView.xib; sourceTree = "<group>"; };
+		6539FA6D1BA80CFC0068DB9D /* PDThisWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDThisWeekView.h; sourceTree = "<group>"; };
+		6539FA6E1BA80CFC0068DB9D /* PDThisWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDThisWeekView.m; sourceTree = "<group>"; };
+		6539FA701BA80D0B0068DB9D /* PDThisWeekView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDThisWeekView.xib; sourceTree = "<group>"; };
+		6539FA771BA835730068DB9D /* PDWeekButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDWeekButtonsView.h; path = ../PDWeekButtonsView.h; sourceTree = "<group>"; };
+		6539FA781BA835730068DB9D /* PDWeekButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDWeekButtonsView.m; path = ../PDWeekButtonsView.m; sourceTree = "<group>"; };
+		6539FA7A1BA835830068DB9D /* PDWeekButtonsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDWeekButtonsView.xib; path = ../PDWeekButtonsView.xib; sourceTree = "<group>"; };
+		6539FA7C1BA8382A0068DB9D /* PDWeekLabelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDWeekLabelsView.h; path = ../PDWeekLabelsView.h; sourceTree = "<group>"; };
+		6539FA7D1BA8382A0068DB9D /* PDWeekLabelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDWeekLabelsView.m; path = ../PDWeekLabelsView.m; sourceTree = "<group>"; };
+		6539FA7F1BA838370068DB9D /* PDWeekLabelsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDWeekLabelsView.xib; path = ../PDWeekLabelsView.xib; sourceTree = "<group>"; };
+		6539FA821BA84CB40068DB9D /* PDGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridView.h; sourceTree = "<group>"; };
+		6539FA831BA84CB40068DB9D /* PDGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridView.m; sourceTree = "<group>"; };
+		6539FA851BA84CC10068DB9D /* PDGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDGridView.xib; sourceTree = "<group>"; };
 		6547A9581BA1A98C0090CAD0 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6547A9591BA1A98C0090CAD0 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6547A95C1BA1A9950090CAD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +176,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6539FA5A1BA7FB6D0068DB9D /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				6539FA671BA8072A0068DB9D /* GridView */,
+				6539FA611BA7FEE30068DB9D /* ThisWeek */,
+				6539FA681BA808810068DB9D /* PDInfoViewController.h */,
+				6539FA691BA808810068DB9D /* PDInfoViewController.m */,
+				6539FA6B1BA808950068DB9D /* PDInfoView.xib */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
+		6539FA5B1BA7FC2B0068DB9D /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		6539FA611BA7FEE30068DB9D /* ThisWeek */ = {
+			isa = PBXGroup;
+			children = (
+				6539FA811BA83EB40068DB9D /* WeekdayView */,
+				6539FA6D1BA80CFC0068DB9D /* PDThisWeekView.h */,
+				6539FA6E1BA80CFC0068DB9D /* PDThisWeekView.m */,
+				6539FA701BA80D0B0068DB9D /* PDThisWeekView.xib */,
+			);
+			path = ThisWeek;
+			sourceTree = "<group>";
+		};
+		6539FA671BA8072A0068DB9D /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				6539FA821BA84CB40068DB9D /* PDGridView.h */,
+				6539FA831BA84CB40068DB9D /* PDGridView.m */,
+				6539FA851BA84CC10068DB9D /* PDGridView.xib */,
+			);
+			path = GridView;
+			sourceTree = "<group>";
+		};
+		6539FA811BA83EB40068DB9D /* WeekdayView */ = {
+			isa = PBXGroup;
+			children = (
+				6539FA5D1BA7FCE80068DB9D /* PDWeekdayView.m */,
+				6539FA5F1BA7FE600068DB9D /* PDWeekdayView.xib */,
+				6539FA5C1BA7FCE80068DB9D /* PDWeekdayView.h */,
+				6539FA771BA835730068DB9D /* PDWeekButtonsView.h */,
+				6539FA781BA835730068DB9D /* PDWeekButtonsView.m */,
+				6539FA7A1BA835830068DB9D /* PDWeekButtonsView.xib */,
+				6539FA7C1BA8382A0068DB9D /* PDWeekLabelsView.h */,
+				6539FA7D1BA8382A0068DB9D /* PDWeekLabelsView.m */,
+				6539FA7F1BA838370068DB9D /* PDWeekLabelsView.xib */,
+			);
+			path = WeekdayView;
+			sourceTree = "<group>";
+		};
 		6547A9631BA1C20A0090CAD0 /* PieceCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +258,6 @@
 		654CC7591BA07840002DF0C9 = {
 			isa = PBXGroup;
 			children = (
-				6539FA551BA7F0940068DB9D /* UIKit.framework */,
 				654CC7641BA07840002DF0C9 /* PieceDiary */,
 				654CC77E1BA07840002DF0C9 /* PieceDiaryTests */,
 				654CC7631BA07840002DF0C9 /* Products */,
@@ -192,6 +276,8 @@
 		654CC7641BA07840002DF0C9 /* PieceDiary */ = {
 			isa = PBXGroup;
 			children = (
+				6539FA5B1BA7FC2B0068DB9D /* Framework */,
+				6539FA5A1BA7FB6D0068DB9D /* InfoView */,
 				659BDD151BA70A520000D561 /* Animation */,
 				654CC7691BA07840002DF0C9 /* AppDelegate.h */,
 				654CC76A1BA07840002DF0C9 /* AppDelegate.m */,
@@ -420,6 +506,7 @@
 				6547A96D1BA1D7520090CAD0 /* PDIconsView.xib in Resources */,
 				654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */,
 				6547A9621BA1AA130090CAD0 /* PDPieceDiaryView.xib in Resources */,
+				6539FA7B1BA835830068DB9D /* PDWeekButtonsView.xib in Resources */,
 				658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */,
 				659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */,
 				659BDD041BA6BAE20000D561 /* PDSettingDateView.xib in Resources */,
@@ -427,12 +514,17 @@
 				659BDCFA1BA6A7A80000D561 /* PDRecordDateView.xib in Resources */,
 				6547A9681BA1C2590090CAD0 /* PDPieceCell.xib in Resources */,
 				659BDCE71BA67E0E0000D561 /* weather.jpg in Resources */,
+				6539FA861BA84CC10068DB9D /* PDGridView.xib in Resources */,
 				659BDD101BA6DD210000D561 /* PDPieceEditToolbar.xib in Resources */,
 				654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */,
 				6547A9701BA1E0690090CAD0 /* 1.jpg in Resources */,
 				654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */,
+				6539FA6C1BA808950068DB9D /* PDInfoView.xib in Resources */,
+				6539FA711BA80D0B0068DB9D /* PDThisWeekView.xib in Resources */,
+				6539FA601BA7FE600068DB9D /* PDWeekdayView.xib in Resources */,
 				6547A95D1BA1A9950090CAD0 /* Main.storyboard in Resources */,
 				659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */,
+				6539FA801BA838370068DB9D /* PDWeekLabelsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,10 +543,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				659BDD0E1BA6DCF70000D561 /* PDPieceEditToolbar.m in Sources */,
+				6539FA5E1BA7FCE80068DB9D /* PDWeekdayView.m in Sources */,
 				654CC7971BA08473002DF0C9 /* PDDateCellView.m in Sources */,
 				659BDCED1BA698090000D561 /* PDRecordViewController.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
+				6539FA791BA835730068DB9D /* PDWeekButtonsView.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
 				659BDCF31BA6A4C60000D561 /* PDRecordMood.m in Sources */,
@@ -462,12 +556,16 @@
 				654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */,
 				659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */,
 				659BDCF01BA6A1C90000D561 /* PDRecordWeather.m in Sources */,
+				6539FA6A1BA808810068DB9D /* PDInfoViewController.m in Sources */,
+				6539FA6F1BA80CFC0068DB9D /* PDThisWeekView.m in Sources */,
 				6547A9671BA1C2590090CAD0 /* PDPieceCell.m in Sources */,
 				6547A96B1BA1D7440090CAD0 /* PDIconsView.m in Sources */,
 				659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */,
 				658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */,
+				6539FA841BA84CB40068DB9D /* PDGridView.m in Sources */,
 				659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
+				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
