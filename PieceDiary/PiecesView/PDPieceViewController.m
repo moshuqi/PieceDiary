@@ -11,13 +11,21 @@
 #import "PDPieceDiaryView.h"
 #import "PDRecordViewController.h"
 #import "PDPieceEditViewController.h"
-#import "ScaleAnimation.h"
+#import "PDScaleAnimation.h"
+#import "PDSwipeDrivenInteractiveTransition.h"
+//#import "PDNormalDismissAnimation.h"
 
 #define kOriginY    20
 
-@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate>
+@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate, PDScaleAnimationDelegate>
 
 @property (nonatomic, retain) PDPieceDiaryView *pieceDiaryView;
+@property (nonatomic, assign) CGRect currentItemFrame;
+@property (nonatomic, retain) UICollectionViewCell *selecteItemCell;
+@property (nonatomic, retain) PDScaleAnimation *scaleAnimation;
+
+//@property (nonatomic, retain) PDSwipeDrivenInteractiveTransition *swipeDrivenInteractive;
+//@property (nonatomic, strong) PDNormalDismissAnimation *dismissAnimation;
 
 @end
 
@@ -37,6 +45,9 @@
     
     [self.view addSubview:self.pieceDiaryView];
     self.pieceDiaryView.backgroundColor = [UIColor grayColor];
+    
+    self.scaleAnimation = [PDScaleAnimation new];
+    self.scaleAnimation.delegate = self;
 }
 
 - (CGRect)getPieceDiaryFrame
@@ -49,7 +60,10 @@
 {
     // 进入编辑界面
     PDPieceEditViewController *pieceEditViewController = [[PDPieceEditViewController alloc] init];
-//    pieceEditViewController.transitioningDelegate = self;
+    pieceEditViewController.transitioningDelegate = self;
+    
+//    self.swipeDrivenInteractive = [PDSwipeDrivenInteractiveTransition new];
+//     [self.swipeDrivenInteractive wireToViewController:pieceEditViewController];
     
     [self presentViewController:pieceEditViewController animated:YES completion:nil];
 }
@@ -77,21 +91,38 @@
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
-    ScaleAnimation *scaleAnimation = [[ScaleAnimation alloc] init];
-    return scaleAnimation;
+    self.scaleAnimation.animationType = AnimationTypePresent;
+    return self.scaleAnimation;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    ScaleAnimation *scaleAnimation = [[ScaleAnimation alloc] init];
-    return scaleAnimation;
+    self.scaleAnimation.animationType = AnimationTypeDismiss;
+    return self.scaleAnimation;
 }
+
+
+//- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator
+//{
+//    return self.swipeDrivenInteractive.interacting ? self.swipeDrivenInteractive : nil;
+//}
 
 #pragma mark - PDPieceDiaryViewDelegate
 
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    UICollectionViewCell *cell = [pieceDiaryView.pieceCollectionView cellForItemAtIndexPath:indexPath];
+    self.currentItemFrame = [self.view convertRect:cell.frame fromView:pieceDiaryView.pieceCollectionView];
+    self.selecteItemCell = cell;
+    
     [self enterPieceEditView];
+}
+
+#pragma mark - ScaleAnimationDelegate
+
+- (CGRect)getCurrentItemRect
+{
+    return self.currentItemFrame;
 }
 
 /*

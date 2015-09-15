@@ -32,6 +32,14 @@
     return self;
 }
 
+- (IBAction)touchedReturnBtn:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(returnPieceView)])
+    {
+        [self.delegate returnPieceView];
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

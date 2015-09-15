@@ -16,13 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="303" height="297"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYS-7R-CKf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYS-7R-CKf">
                     <rect key="frame" x="80" y="0.0" width="143" height="96"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="96" id="vTZ-2o-4Uz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HIX-vF-jdo">
@@ -41,7 +41,6 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="HIX-vF-jdo" firstAttribute="top" secondItem="ZYS-7R-CKf" secondAttribute="bottom" id="8Ge-YR-MNz"/>
                 <constraint firstItem="ZYS-7R-CKf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Aeq-ga-dY7"/>

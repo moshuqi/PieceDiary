@@ -10,7 +10,7 @@
 #import "PDPieceEditToolbar.h"
 #import "PDPieceDiaryEditView.h"
 
-@interface PDPieceEditViewController ()
+@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
 @property (nonatomic, weak) IBOutlet PDPieceDiaryEditView *editView;
@@ -23,31 +23,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceEditToolbar" owner:self options:nil];
-//    self.toolbar = [nibViews firstObject];
-//    self.toolbar.frame = [self getToolbarFrameWithSuperviewSize:self.view.frame.size];
-//    [self.view addSubview:self.toolbar];
-    
+    self.view.backgroundColor = [UIColor yellowColor];
+    self.toolbar.delegate = self;
 }
 
-//- (CGRect)getToolbarFrameWithSuperviewSize:(CGSize)size
-//{
-//    CGFloat toolbarHeight = self.toolbar.frame.size.height;
-//    CGRect toolbarFrame = CGRectMake(0, size.height - toolbarHeight, size.width, toolbarHeight);
-//    
-//    return toolbarFrame;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-}
-
 
 /*
 #pragma mark - Navigation
@@ -58,5 +42,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - PDPieceEditToolbarDelegate
+
+- (void)returnPieceView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PDPieceEditToolbarDelegate <NSObject>
+
+@optional
+- (void)returnPieceView;
+
+@end
+
 @interface PDPieceEditToolbar : UIView
+
+@property (nonatomic, assign) id<PDPieceEditToolbarDelegate> delegate;
 
 @end

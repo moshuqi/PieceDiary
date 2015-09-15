@@ -20,7 +20,6 @@
 
 @interface PDPieceDiaryView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
 @property (nonatomic, retain) PDDateCellView *dateCell;
 
 @property (nonatomic, weak) IBOutlet UIButton *toInfoBtn;

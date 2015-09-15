@@ -19,5 +19,6 @@
 @interface PDPieceDiaryView : UIView
 
 @property (nonatomic, assign) id<PDPieceDiaryViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
 
 @end
