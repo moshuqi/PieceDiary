@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PDGridCell">
+            <rect key="frame" x="0.0" y="0.0" width="282" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="282" height="100"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日记" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNV-cn-Zny" userLabel="gridTitle">
+                        <rect key="frame" x="0.0" y="0.0" width="56" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="7gx-LY-v5R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-Jl-E6p" userLabel="quantity">
+                        <rect key="frame" x="226" y="0.0" width="56" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="uZ2-bT-dAQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NNV-cn-Zny" secondAttribute="bottom" id="Dgb-bN-3bf"/>
+                <constraint firstItem="NNV-cn-Zny" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TR9-HN-vbt"/>
+                <constraint firstAttribute="trailing" secondItem="PSJ-Jl-E6p" secondAttribute="trailing" id="Y5Z-h4-fWu"/>
+                <constraint firstAttribute="bottom" secondItem="PSJ-Jl-E6p" secondAttribute="bottom" id="jp5-j7-vpW"/>
+                <constraint firstItem="PSJ-Jl-E6p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kFD-eR-jDb"/>
+                <constraint firstItem="NNV-cn-Zny" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lNP-YB-c2i"/>
+            </constraints>
+            <size key="customSize" width="282" height="100"/>
+            <connections>
+                <outlet property="quantityLabel" destination="PSJ-Jl-E6p" id="b9k-dS-OGk"/>
+                <outlet property="titleLabel" destination="NNV-cn-Zny" id="0Un-i7-Oeg"/>
+            </connections>
+            <point key="canvasLocation" x="203" y="248"/>
+        </collectionViewCell>
+    </objects>
+</document>

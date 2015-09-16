@@ -59,6 +59,19 @@
 		659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD171BA70AC80000D561 /* PDBaseAnimation.m */; };
 		659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */; };
 		659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */; };
+		65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381F31BA9A23E00BE9E09 /* PDGridCell.m */; };
+		65D381F61BA9A23E00BE9E09 /* PDGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */; };
+		65D382041BA9A77000BE9E09 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381FA1BA9A77000BE9E09 /* FMDatabase.m */; };
+		65D382051BA9A77000BE9E09 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381FC1BA9A77000BE9E09 /* FMDatabaseAdditions.m */; };
+		65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381FE1BA9A77000BE9E09 /* FMDatabasePool.m */; };
+		65D382071BA9A77000BE9E09 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382001BA9A77000BE9E09 /* FMDatabaseQueue.m */; };
+		65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382031BA9A77000BE9E09 /* FMResultSet.m */; };
+		65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */; };
+		65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */; };
+		65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */; };
+		65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */; };
+		65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */; };
+		65D3821B1BA9A80700BE9E09 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +169,31 @@
 		659BDD191BA70BA40000D561 /* PDScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScaleAnimation.h; sourceTree = "<group>"; };
 		659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScaleAnimation.m; sourceTree = "<group>"; };
 		659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditView.xib; sourceTree = "<group>"; };
+		65D381F21BA9A23E00BE9E09 /* PDGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridCell.h; sourceTree = "<group>"; };
+		65D381F31BA9A23E00BE9E09 /* PDGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridCell.m; sourceTree = "<group>"; };
+		65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDGridCell.xib; sourceTree = "<group>"; };
+		65D381F91BA9A77000BE9E09 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		65D381FA1BA9A77000BE9E09 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		65D381FB1BA9A77000BE9E09 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		65D381FC1BA9A77000BE9E09 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		65D381FD1BA9A77000BE9E09 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		65D381FE1BA9A77000BE9E09 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		65D381FF1BA9A77000BE9E09 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		65D382001BA9A77000BE9E09 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		65D382011BA9A77000BE9E09 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		65D382021BA9A77000BE9E09 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		65D382031BA9A77000BE9E09 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		65D3820A1BA9A79900BE9E09 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		65D3820C1BA9A79900BE9E09 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		65D3820E1BA9A79900BE9E09 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		65D382101BA9A79900BE9E09 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		65D382171BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExampleDrawerVisualStateManager.h; sourceTree = "<group>"; };
+		65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
+		65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3821B1BA9A80700BE9E09 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +230,8 @@
 		6539FA5B1BA7FC2B0068DB9D /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				65D381F71BA9A76600BE9E09 /* DrawerController */,
+				65D381F81BA9A76600BE9E09 /* FMDB */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -209,6 +250,7 @@
 		6539FA671BA8072A0068DB9D /* GridView */ = {
 			isa = PBXGroup;
 			children = (
+				65D381F11BA99B4500BE9E09 /* GridCell */,
 				6539FA821BA84CB40068DB9D /* PDGridView.h */,
 				6539FA831BA84CB40068DB9D /* PDGridView.m */,
 				6539FA851BA84CC10068DB9D /* PDGridView.xib */,
@@ -258,6 +300,7 @@
 		654CC7591BA07840002DF0C9 = {
 			isa = PBXGroup;
 			children = (
+				65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */,
 				654CC7641BA07840002DF0C9 /* PieceDiary */,
 				654CC77E1BA07840002DF0C9 /* PieceDiaryTests */,
 				654CC7631BA07840002DF0C9 /* Products */,
@@ -422,6 +465,67 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		65D381F11BA99B4500BE9E09 /* GridCell */ = {
+			isa = PBXGroup;
+			children = (
+				65D381F21BA9A23E00BE9E09 /* PDGridCell.h */,
+				65D381F31BA9A23E00BE9E09 /* PDGridCell.m */,
+				65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */,
+			);
+			path = GridCell;
+			sourceTree = "<group>";
+		};
+		65D381F71BA9A76600BE9E09 /* DrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				65D382161BA9A7B800BE9E09 /* VisualStateManager */,
+				65D382091BA9A79900BE9E09 /* MMDrawerController */,
+			);
+			path = DrawerController;
+			sourceTree = "<group>";
+		};
+		65D381F81BA9A76600BE9E09 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				65D381F91BA9A77000BE9E09 /* FMDatabase.h */,
+				65D381FA1BA9A77000BE9E09 /* FMDatabase.m */,
+				65D381FB1BA9A77000BE9E09 /* FMDatabaseAdditions.h */,
+				65D381FC1BA9A77000BE9E09 /* FMDatabaseAdditions.m */,
+				65D381FD1BA9A77000BE9E09 /* FMDatabasePool.h */,
+				65D381FE1BA9A77000BE9E09 /* FMDatabasePool.m */,
+				65D381FF1BA9A77000BE9E09 /* FMDatabaseQueue.h */,
+				65D382001BA9A77000BE9E09 /* FMDatabaseQueue.m */,
+				65D382011BA9A77000BE9E09 /* FMDB.h */,
+				65D382021BA9A77000BE9E09 /* FMResultSet.h */,
+				65D382031BA9A77000BE9E09 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		65D382091BA9A79900BE9E09 /* MMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				65D3820A1BA9A79900BE9E09 /* MMDrawerBarButtonItem.h */,
+				65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */,
+				65D3820C1BA9A79900BE9E09 /* MMDrawerController.h */,
+				65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */,
+				65D3820E1BA9A79900BE9E09 /* MMDrawerVisualState.h */,
+				65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */,
+				65D382101BA9A79900BE9E09 /* UIViewController+MMDrawerController.h */,
+				65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */,
+			);
+			path = MMDrawerController;
+			sourceTree = "<group>";
+		};
+		65D382161BA9A7B800BE9E09 /* VisualStateManager */ = {
+			isa = PBXGroup;
+			children = (
+				65D382171BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.h */,
+				65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */,
+			);
+			path = VisualStateManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +623,7 @@
 				654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */,
 				6547A9701BA1E0690090CAD0 /* 1.jpg in Resources */,
 				654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */,
+				65D381F61BA9A23E00BE9E09 /* PDGridCell.xib in Resources */,
 				6539FA6C1BA808950068DB9D /* PDInfoView.xib in Resources */,
 				6539FA711BA80D0B0068DB9D /* PDThisWeekView.xib in Resources */,
 				6539FA601BA7FE600068DB9D /* PDWeekdayView.xib in Resources */,
@@ -545,14 +650,20 @@
 				659BDD0E1BA6DCF70000D561 /* PDPieceEditToolbar.m in Sources */,
 				6539FA5E1BA7FCE80068DB9D /* PDWeekdayView.m in Sources */,
 				654CC7971BA08473002DF0C9 /* PDDateCellView.m in Sources */,
+				65D382041BA9A77000BE9E09 /* FMDatabase.m in Sources */,
 				659BDCED1BA698090000D561 /* PDRecordViewController.m in Sources */,
+				65D382051BA9A77000BE9E09 /* FMDatabaseAdditions.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
+				65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */,
 				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
+				65D382071BA9A77000BE9E09 /* FMDatabaseQueue.m in Sources */,
 				6539FA791BA835730068DB9D /* PDWeekButtonsView.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
 				659BDCF31BA6A4C60000D561 /* PDRecordMood.m in Sources */,
+				65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */,
 				659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */,
+				65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */,
 				654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */,
 				659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */,
 				659BDCF01BA6A1C90000D561 /* PDRecordWeather.m in Sources */,
@@ -561,14 +672,19 @@
 				6547A9671BA1C2590090CAD0 /* PDPieceCell.m in Sources */,
 				6547A96B1BA1D7440090CAD0 /* PDIconsView.m in Sources */,
 				659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */,
+				65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */,
 				6539FA841BA84CB40068DB9D /* PDGridView.m in Sources */,
 				659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
+				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,
+				65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
+				65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */,
+				65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

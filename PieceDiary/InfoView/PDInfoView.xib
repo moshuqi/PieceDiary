@@ -15,20 +15,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzU-EI-QDH" customClass="PDThisWeekView">
-                    <rect key="frame" x="88" y="66" width="102" height="320"/>
+                    <rect key="frame" x="-191" y="66" width="660" height="320"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="660" id="SJq-VU-vzE"/>
                         <constraint firstAttribute="height" constant="320" id="k5p-13-GK0"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6W9-Mv-ArX" customClass="PDGridView">
+                    <rect key="frame" x="-191" y="386" width="660" height="120"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="BpP-aR-g00"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="NzU-EI-QDH" firstAttribute="leading" secondItem="6W9-Mv-ArX" secondAttribute="leading" id="R2n-25-1us"/>
+                <constraint firstItem="6W9-Mv-ArX" firstAttribute="top" secondItem="NzU-EI-QDH" secondAttribute="bottom" id="YGa-9h-lxm"/>
+                <constraint firstItem="NzU-EI-QDH" firstAttribute="width" secondItem="6W9-Mv-ArX" secondAttribute="width" id="mFr-M1-0gZ"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="66" id="oVl-uf-6x0"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="88" id="ufP-mJ-Y8s"/>
+                <constraint firstAttribute="centerX" secondItem="NzU-EI-QDH" secondAttribute="centerX" id="yIa-8n-gyS"/>
                 <constraint firstAttribute="trailing" secondItem="NzU-EI-QDH" secondAttribute="trailing" constant="88" id="zo8-nH-cUq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ufP-mJ-Y8s"/>
+                    <exclude reference="zo8-nH-cUq"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="53" y="111.5"/>
         </view>
     </objects>
