@@ -38,6 +38,8 @@
 		654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7921BA07987002DF0C9 /* PDPieceViewController.m */; };
 		654CC7971BA08473002DF0C9 /* PDDateCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7961BA08473002DF0C9 /* PDDateCellView.m */; };
 		654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */; };
+		654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */; };
+		654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80471BAB10FE00D2B016 /* PDDataManager.m */; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
 		658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166961BA28D3B003E7FA5 /* PDIconSettingView.m */; };
 		658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658166981BA28D52003E7FA5 /* PDIconSettingView.xib */; };
@@ -136,6 +138,10 @@
 		654CC7951BA08473002DF0C9 /* PDDateCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellView.h; sourceTree = "<group>"; };
 		654CC7961BA08473002DF0C9 /* PDDateCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellView.m; sourceTree = "<group>"; };
 		654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDDateCellView.xib; sourceTree = "<group>"; };
+		654D80431BAB0FEF00D2B016 /* PDPieceCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCellDataModel.h; sourceTree = "<group>"; };
+		654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellDataModel.m; sourceTree = "<group>"; };
+		654D80461BAB10FE00D2B016 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
+		654D80471BAB10FE00D2B016 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
 		658166921BA28CA0003E7FA5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
 		658166931BA28CA0003E7FA5 /* PDSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingView.m; sourceTree = "<group>"; };
 		658166951BA28D3B003E7FA5 /* PDIconSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDIconSettingView.h; path = ../PDIconSettingView.h; sourceTree = "<group>"; };
@@ -395,6 +401,15 @@
 			path = dateCell;
 			sourceTree = "<group>";
 		};
+		654D80421BAB0FC600D2B016 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				654D80431BAB0FEF00D2B016 /* PDPieceCellDataModel.h */,
+				654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		658166911BA28C7C003E7FA5 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,7 +487,10 @@
 		65C5DAEC1BAAD30B0039C54B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				654D80421BAB0FC600D2B016 /* DataModel */,
 				65C5DAED1BAAD31A0039C54B /* Database */,
+				654D80461BAB10FE00D2B016 /* PDDataManager.h */,
+				654D80471BAB10FE00D2B016 /* PDDataManager.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -685,6 +703,7 @@
 				65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */,
 				659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */,
 				65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */,
+				654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */,
 				654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */,
 				659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */,
 				659BDCF01BA6A1C90000D561 /* PDRecordWeather.m in Sources */,
@@ -701,6 +720,7 @@
 				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
 				65C5DAF01BAAD33D0039C54B /* PDDatabase.m in Sources */,
+				654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,
 				65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */,

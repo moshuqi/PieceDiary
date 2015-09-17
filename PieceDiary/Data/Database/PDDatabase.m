@@ -20,10 +20,12 @@
 #define DatabasePhotoTable                  @"PhotoTable"
 #define DatabaseQuestionTemplateTable       @"QuestionTemplateTable"
 #define DatabaseWeatherTable                @"WeatherTable"
+#define DatabaseDefaultQuestionTemplateTable @"DefaultQuestionTemplateTable"
 
 // 数据库属性
 #define DatabaseQuestionTableQuestionID     @"questionID"
 #define DatabaseQuestionTableQuestionContent    @"questionContent"
+#define DatabaseQuestionTemplateTableTemplateID @"templateID"
 
 @interface PDDatabase ()
 
@@ -85,6 +87,7 @@
     [self createQuestionTemplateTable];
     [self createWeatherTable];
     [self createDiaryTable];
+    [self createDefaultQuestionTemplateTable];
 }
 
 - (void)createQuestionTable
@@ -136,6 +139,13 @@
     [self examWithResult:res tableName:DatabaseDiaryTable];
 }
 
+- (void)createDefaultQuestionTemplateTable
+{
+    NSString *sql = @"CREATE TABLE \"DefaultQuestionTemplateTable\" (\"templateID\" INTEGER PRIMARY KEY NOT NULL UNIQUE REFERENCES \"QuestionTemplateTable\" (\"templateID\"))";
+    BOOL res = [self.database executeUpdate:sql];
+    [self examWithResult:res tableName:DatabaseDefaultQuestionTemplateTable];
+}
+
 #pragma mark - 数据库新创建之后的初始化
 
 - (void)initDatabaseData
@@ -143,6 +153,7 @@
     // 第一次创建数据库时需要初始化一些数据
     [self initQuestionTableData];
     [self initQuestionTemplateTableData];
+    [self initDefaultQuestionTemplateTableData];
 }
 
 - (void)initQuestionTableData
@@ -205,6 +216,27 @@
     
     return YES;
 }
+
+- (void)initDefaultQuestionTemplateTableData
+{
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@", DatabaseQuestionTemplateTableTemplateID, DatabaseQuestionTemplateTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        NSInteger templateID = (NSInteger)[queryRes intForColumn:DatabaseQuestionTemplateTableTemplateID];
+        NSArray *arguments = [NSArray arrayWithObject:[NSNumber numberWithInteger:templateID]];
+        
+        NSString *sql = [NSString stringWithFormat:@"insert into %@ (templateID) values (?);", DatabaseDefaultQuestionTemplateTable];
+        BOOL res = [self.database executeUpdate:sql withArgumentsInArray:arguments];
+        [self examInsertWithResult:res tableName:DatabaseDefaultQuestionTemplateTable];
+    }
+    else
+    {
+        PDLog(@"默认模板的初始化失败!");
+    }
+}
+
 
 #pragma mark - 数据库操作结果检验
 
