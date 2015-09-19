@@ -43,7 +43,7 @@
         return;
     }
     
-    self.dayLabel.text = [NSString stringWithFormat:@"%d", day];
+    self.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
 }
 
 - (void)setDateLabelWithYear:(NSInteger)year month:(NSInteger)month weekDay:(NSInteger)weekDay
@@ -56,7 +56,7 @@
     
     NSArray *weekDayArray = @[@"星期天", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
     NSString *weekDayStr = weekDayArray[weekDay - 1];
-    NSString *yearMonStr = [NSString stringWithFormat:@"%d年%d月", year, month];
+    NSString *yearMonStr = [NSString stringWithFormat:@"%ld年%ld月", year, month];
     
     NSString *text = [NSString stringWithFormat:@"%@\n%@", weekDayStr, yearMonStr];
     self.dateLabel.text = text;

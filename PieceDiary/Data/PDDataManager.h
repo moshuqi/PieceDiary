@@ -10,4 +10,8 @@
 
 @interface PDDataManager : NSObject
 
++ (instancetype)defaultManager;
+
+- (NSArray *)getPieceViewDatasWithDate:(NSDate *)date;
+
 @end

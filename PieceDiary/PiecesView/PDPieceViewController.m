@@ -15,7 +15,7 @@
 #import "PDSwipeDrivenInteractiveTransition.h"
 //#import "PDNormalDismissAnimation.h"
 #import "PDInfoViewController.h"
-#import "PDDatabase.h"
+#import "PDDataManager.h"
 
 #define kOriginY    20
 
@@ -51,8 +51,9 @@
     self.scaleAnimation = [PDScaleAnimation new];
     self.scaleAnimation.delegate = self;
     
-    PDDatabase *database = [PDDatabase new];
-    [database connect];
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    NSDate *date = [NSDate date];
+    [dataManager getPieceViewDatasWithDate:date];
 }
 
 - (CGRect)getPieceDiaryFrame

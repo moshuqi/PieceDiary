@@ -26,9 +26,9 @@
     self.titleLabel.text = text;
 }
 
-- (void)setQuantityWithNumber:(NSInteger *)number
+- (void)setQuantityWithNumber:(NSInteger)number
 {
-    self.titleLabel.text = [NSString stringWithFormat:@"%d", number];
+    self.titleLabel.text = [NSString stringWithFormat:@"%ld", number];
 }
 
 @end

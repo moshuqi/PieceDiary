@@ -61,7 +61,7 @@
 		659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD171BA70AC80000D561 /* PDBaseAnimation.m */; };
 		659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */; };
 		659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */; };
-		65C5DAF01BAAD33D0039C54B /* PDDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5DAEF1BAAD33D0039C54B /* PDDatabase.m */; };
+		65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5DAEF1BAAD33D0039C54B /* PDDatabaseHandle.m */; };
 		65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381F31BA9A23E00BE9E09 /* PDGridCell.m */; };
 		65D381F61BA9A23E00BE9E09 /* PDGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */; };
 		65D382041BA9A77000BE9E09 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381FA1BA9A77000BE9E09 /* FMDatabase.m */; };
@@ -176,8 +176,8 @@
 		659BDD191BA70BA40000D561 /* PDScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScaleAnimation.h; sourceTree = "<group>"; };
 		659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScaleAnimation.m; sourceTree = "<group>"; };
 		659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditView.xib; sourceTree = "<group>"; };
-		65C5DAEE1BAAD33D0039C54B /* PDDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabase.h; sourceTree = "<group>"; };
-		65C5DAEF1BAAD33D0039C54B /* PDDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabase.m; sourceTree = "<group>"; };
+		65C5DAEE1BAAD33D0039C54B /* PDDatabaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabaseHandle.h; sourceTree = "<group>"; };
+		65C5DAEF1BAAD33D0039C54B /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
 		65D381F21BA9A23E00BE9E09 /* PDGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridCell.h; sourceTree = "<group>"; };
 		65D381F31BA9A23E00BE9E09 /* PDGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridCell.m; sourceTree = "<group>"; };
 		65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDGridCell.xib; sourceTree = "<group>"; };
@@ -498,8 +498,8 @@
 		65C5DAED1BAAD31A0039C54B /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				65C5DAEE1BAAD33D0039C54B /* PDDatabase.h */,
-				65C5DAEF1BAAD33D0039C54B /* PDDatabase.m */,
+				65C5DAEE1BAAD33D0039C54B /* PDDatabaseHandle.h */,
+				65C5DAEF1BAAD33D0039C54B /* PDDatabaseHandle.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -719,7 +719,7 @@
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
 				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
-				65C5DAF01BAAD33D0039C54B /* PDDatabase.m in Sources */,
+				65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */,
 				654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,

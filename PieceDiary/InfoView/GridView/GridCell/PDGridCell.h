@@ -11,6 +11,6 @@
 @interface PDGridCell : UICollectionViewCell
 
 - (void)setCellTitleWithText:(NSString *)text;
-- (void)setQuantityWithNumber:(NSInteger *)number;
+- (void)setQuantityWithNumber:(NSInteger)number;
 
 @end

@@ -1,12 +1,12 @@
 //
-//  PDDatabase.m
+//  PDDatabaseHandle.m
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/17.
 //  Copyright (c) 2015年 msq. All rights reserved.
 //
 
-#import "PDDatabase.h"
+#import "PDDatabaseHandle.h"
 #import "FMDB.h"
 #import "PDDefine.h"
 
@@ -27,13 +27,15 @@
 #define DatabaseQuestionTableQuestionContent    @"questionContent"
 #define DatabaseQuestionTemplateTableTemplateID @"templateID"
 
-@interface PDDatabase ()
+#define DatabaseAnswerTableAnswerContent @"answerContent"
+
+@interface PDDatabaseHandle ()
 
 @property (nonatomic, retain) FMDatabase * database;
 
 @end
 
-@implementation PDDatabase
+@implementation PDDatabaseHandle
 
 - (void)connect
 {
@@ -250,6 +252,134 @@
 {
     NSString *msg = [NSString stringWithFormat:@"%@插入数据%@.", name, (res ? @"成功" : @"失败")];
     PDLog(@"%@", msg);
+}
+
+#pragma mark - 数据库查询操作
+
+- (NSInteger)getQuestionTemplateIDWithDate:(NSDate *)date
+{
+    // 通过日期获取模板
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    // 查询日期是否有对应的模板，若有，则说明该日期进行过编辑；否则使用对应模板，该日期为第一次进行编辑
+    NSInteger templateID;
+    if ([queryRes next])
+    {
+        templateID = (NSInteger)[queryRes intForColumn:DatabaseQuestionTemplateTableTemplateID];
+    }
+    else
+    {
+        templateID = [self getDefaultQuestionTemplateID];
+    }
+    
+    return  templateID;
+}
+
+- (NSInteger)getDefaultQuestionTemplateID
+{
+    // 获取默认模板
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@", DatabaseQuestionTemplateTableTemplateID, DatabaseDefaultQuestionTemplateTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger templateID = 0;
+    if ([queryRes next])
+    {
+        templateID = (NSInteger)[queryRes intForColumnIndex:0];
+    }
+    else
+    {
+        PDLog(@"默认模板ID获取有误！");
+    }
+    
+    return templateID;
+}
+
+- (NSArray *)getQuestionIDsWithTemplateID:(NSInteger)templateID
+{
+    // 根据模板ID获取对应所有问题的ID
+    
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@ where %@ = %ld", DatabaseQuestionTemplateTable, DatabaseQuestionTemplateTableTemplateID, templateID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        NSInteger question1 = [queryRes intForColumn:@"questionID1"];
+        NSInteger question2 = [queryRes intForColumn:@"questionID2"];
+        NSInteger question3 = [queryRes intForColumn:@"questionID3"];
+        NSInteger question4 = [queryRes intForColumn:@"questionID4"];
+        NSInteger question5 = [queryRes intForColumn:@"questionID5"];
+        NSInteger question6 = [queryRes intForColumn:@"questionID6"];
+        NSInteger question7 = [queryRes intForColumn:@"questionID7"];
+        NSInteger question8 = [queryRes intForColumn:@"questionID8"];
+        
+        NSArray *questionIDs = @[[NSNumber numberWithInteger:question1], [NSNumber numberWithInteger:question2], [NSNumber numberWithInteger:question3], [NSNumber numberWithInteger:question4], [NSNumber numberWithInteger:question5], [NSNumber numberWithInteger:question6], [NSNumber numberWithInteger:question7], [NSNumber numberWithInteger:question8]];
+        return questionIDs;
+    }
+    else
+    {
+        PDLog(@"没有获取到对应的模板数据");
+        return nil;
+    }
+}
+
+- (NSString *)getQuestionWithID:(NSInteger)questionID
+{
+    // 根据问题ID获取问题内容
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld", DatabaseQuestionTableQuestionContent, DatabaseQuestionTable, DatabaseQuestionTableQuestionID, questionID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSString *question = nil;
+    if ([queryRes next])
+    {
+        question = [queryRes stringForColumn:DatabaseQuestionTableQuestionContent];
+    }
+    
+    return question;
+}
+
+- (NSString *)getAnswerWithQuestionID:(NSInteger)questionID date:(NSDate *)date
+{
+    // 通过问题ID和日期获取对应的回答
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld and date = %@", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSString *answer = nil;
+    if ([queryRes next])
+    {
+        answer = [queryRes stringForColumn:DatabaseAnswerTableAnswerContent];
+    }
+    
+    return answer;
+}
+
+- (NSArray *)getPhotosWithQuestionID:(NSInteger)questionID date:(NSDate *)date
+{
+    // 通过问题ID和日期获取对应的图片
+    
+    return nil;
+}
+
+- (NSDate *)dateFromString:(NSString *)dateString
+{
+    // 将string转换成date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *destDate = [dateFormatter dateFromString:dateString];
+    return destDate;
+}
+
+- (NSString *)stringFromDate:(NSDate *)date
+{
+    // 将date转换成string
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *destString = [dateFormatter stringFromDate:date];
+    return destString;
 }
 
 @end
