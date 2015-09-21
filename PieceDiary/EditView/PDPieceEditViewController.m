@@ -9,10 +9,11 @@
 #import "PDPieceEditViewController.h"
 #import "PDPieceEditToolbar.h"
 #import "PDPieceDiaryEditView.h"
+#import "PDImagePickerController.h"
 
 #define ToolbarHeight 56
 
-@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate>
+@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
 @property (nonatomic, weak) IBOutlet PDPieceDiaryEditView *editView;
@@ -88,6 +89,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)showImagePicker
+{
+    PDImagePickerController *imagePickerController = [[PDImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    
+    imagePickerController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
 
 - (UIView *)inputAccessoryView
 {
@@ -100,6 +110,13 @@
     toolbar.frame = CGRectMake(0, 0, toolbarWidth, toolbarHeight);
     
     return toolbar;
+}
+
+#pragma mark - PDImagePickerControllerDelegate
+
+- (void)pickFinishedWithPhotos:(NSArray *)photos
+{
+    
 }
 
 @end

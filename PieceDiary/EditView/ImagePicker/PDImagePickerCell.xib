@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PDImagePickerCell">
+            <rect key="frame" x="0.0" y="0.0" width="164" height="129"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="164" height="129"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mood.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-ZR-r3r" userLabel="selectedImg">
+                        <rect key="frame" x="129" y="94" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="oUy-or-wPm"/>
+                            <constraint firstAttribute="width" constant="25" id="spA-HQ-SwB"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d4x-wk-sMz" userLabel="thumbnail">
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="129"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="d4x-wk-sMz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2Yg-Ce-nxp"/>
+                <constraint firstAttribute="trailing" secondItem="d4x-wk-sMz" secondAttribute="trailing" id="NFY-7Q-NT8"/>
+                <constraint firstAttribute="trailing" secondItem="7gU-ZR-r3r" secondAttribute="trailing" constant="10" id="XRx-7h-Kfo"/>
+                <constraint firstAttribute="bottom" secondItem="7gU-ZR-r3r" secondAttribute="bottom" constant="10" id="Y2B-So-hMj"/>
+                <constraint firstAttribute="bottom" secondItem="d4x-wk-sMz" secondAttribute="bottom" id="ju3-WD-pKl"/>
+                <constraint firstItem="d4x-wk-sMz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yNY-oc-qKw"/>
+            </constraints>
+            <size key="customSize" width="164" height="129"/>
+            <connections>
+                <outlet property="selectedMark" destination="7gU-ZR-r3r" id="k3B-Y8-Cta"/>
+                <outlet property="thumbnail" destination="d4x-wk-sMz" id="Urn-B9-IV8"/>
+            </connections>
+            <point key="canvasLocation" x="290" y="241.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="mood.jpg" width="1024" height="1024"/>
+    </resources>
+</document>

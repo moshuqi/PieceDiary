@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PieceDiary/EditView/PDPieceEditViewController.m"
-            timestampString = "464540002.352285"
+            timestampString = "464570423.283932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-inputAccessoryView"
             landmarkType = "5">
          </BreakpointContent>
@@ -131,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PDPieceEditViewController.m"
-            timestampString = "464540002.352285"
+            filePath = "PieceDiary/EditView/ImagePicker/PDImagePickerController.m"
+            timestampString = "464570464.828675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-keyboardWillShow:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-touchedDone:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -147,13 +147,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PDPieceDiaryEditView.m"
-            timestampString = "464539770.568788"
+            filePath = "PieceDiary/EditView/PDPieceEditViewController.m"
+            timestampString = "464570434.165365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-resetEditViewWithShowKeyboardFrame:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-pickFinishedWithPhotos:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

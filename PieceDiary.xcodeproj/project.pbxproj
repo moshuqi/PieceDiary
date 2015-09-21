@@ -40,6 +40,10 @@
 		654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */; };
 		654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */; };
 		654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80471BAB10FE00D2B016 /* PDDataManager.m */; };
+		6567CCA01BB0A31000BCE967 /* PDImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CC9E1BB0A31000BCE967 /* PDImagePickerController.m */; settings = {ASSET_TAGS = (); }; };
+		6567CCA11BB0A31000BCE967 /* PDImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */; settings = {ASSET_TAGS = (); }; };
+		6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */; settings = {ASSET_TAGS = (); }; };
+		6567CCA61BB0BB9D00BCE967 /* PDImagePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCA41BB0BB9D00BCE967 /* PDImagePickerCell.xib */; settings = {ASSET_TAGS = (); }; };
 		656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
 		658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166961BA28D3B003E7FA5 /* PDIconSettingView.m */; };
@@ -143,6 +147,12 @@
 		654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellDataModel.m; sourceTree = "<group>"; };
 		654D80461BAB10FE00D2B016 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		654D80471BAB10FE00D2B016 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
+		6567CC9D1BB0A31000BCE967 /* PDImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImagePickerController.h; sourceTree = "<group>"; };
+		6567CC9E1BB0A31000BCE967 /* PDImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImagePickerController.m; sourceTree = "<group>"; };
+		6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDImagePickerController.xib; sourceTree = "<group>"; };
+		6567CCA21BB0BB9D00BCE967 /* PDImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImagePickerCell.h; sourceTree = "<group>"; };
+		6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImagePickerCell.m; sourceTree = "<group>"; };
+		6567CCA41BB0BB9D00BCE967 /* PDImagePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDImagePickerCell.xib; sourceTree = "<group>"; };
 		656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellDataModel.h; sourceTree = "<group>"; };
 		656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellDataModel.m; sourceTree = "<group>"; };
 		658166921BA28CA0003E7FA5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
@@ -415,6 +425,19 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		6567CC9C1BB0A2A700BCE967 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				6567CC9D1BB0A31000BCE967 /* PDImagePickerController.h */,
+				6567CC9E1BB0A31000BCE967 /* PDImagePickerController.m */,
+				6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */,
+				6567CCA21BB0BB9D00BCE967 /* PDImagePickerCell.h */,
+				6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */,
+				6567CCA41BB0BB9D00BCE967 /* PDImagePickerCell.xib */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 		658166911BA28C7C003E7FA5 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +484,7 @@
 		659BDD051BA6DC410000D561 /* EditView */ = {
 			isa = PBXGroup;
 			children = (
+				6567CC9C1BB0A2A700BCE967 /* ImagePicker */,
 				659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */,
 				659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */,
 				659BDD091BA6DC9D0000D561 /* PDPieceEditViewController.h */,
@@ -650,6 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6567CCA11BB0A31000BCE967 /* PDImagePickerController.xib in Resources */,
 				659BDCFC1BA6AAD50000D561 /* PDSettingView.xib in Resources */,
 				6547A96D1BA1D7520090CAD0 /* PDIconsView.xib in Resources */,
 				654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */,
@@ -674,6 +699,7 @@
 				6547A95D1BA1A9950090CAD0 /* Main.storyboard in Resources */,
 				659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */,
 				6539FA801BA838370068DB9D /* PDWeekLabelsView.xib in Resources */,
+				6567CCA61BB0BB9D00BCE967 /* PDImagePickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +734,7 @@
 				65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */,
 				659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */,
 				65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */,
+				6567CCA01BB0A31000BCE967 /* PDImagePickerController.m in Sources */,
 				654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */,
 				654CC7931BA07987002DF0C9 /* PDPieceViewController.m in Sources */,
 				659BDD081BA6DC880000D561 /* PDPieceDiaryEditView.m in Sources */,
@@ -725,6 +752,7 @@
 				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
 				65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */,
+				6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */,
 				654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,

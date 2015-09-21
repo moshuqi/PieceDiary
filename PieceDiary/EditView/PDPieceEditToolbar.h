@@ -12,6 +12,7 @@
 
 @optional
 - (void)returnPieceView;
+- (void)showImagePicker;
 
 @end
 

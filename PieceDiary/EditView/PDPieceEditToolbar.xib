@@ -58,6 +58,9 @@
                         <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="touchedAddImageBtn:" destination="-1" eventType="touchUpInside" id="VPW-wO-8gZ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yc3-uH-DKf">
                     <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>

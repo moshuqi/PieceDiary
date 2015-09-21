@@ -266,8 +266,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 {
     if ([self isDateCellWithIndexPath:indexPath])
     {
-        PDDateCellDataModel *model = (PDDateCellDataModel *)[self getDataModelWithIndexPath:indexPath inDataArray:self.cellDataArray];
-        [self.delegate enterRecordViewWithDate:model.date];
+        [self.delegate enterRecordViewWithDate:[self getCurrentDate]];
     }
     else
     {
