@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDDateCellDataModel.h"
 
 @interface PDDateCellView : UIView
+
+- (void)setupWithDataModel:(PDDateCellDataModel *)dataModel;
 
 - (void)setDateLabelsWithDate:(NSDate *)date;
 - (void)setWeatherIconWithImage:(UIImage *)image;

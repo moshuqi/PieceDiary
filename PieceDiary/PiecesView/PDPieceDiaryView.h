@@ -13,6 +13,8 @@
 @protocol PDPieceDiaryViewDelegate <NSObject>
 
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)enterEditFromCell:(UICollectionViewCell *)cell;
+- (void)enterRecordViewWithDate:(NSDate *)date;
 
 @end
 
@@ -20,5 +22,8 @@
 
 @property (nonatomic, assign) id<PDPieceDiaryViewDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
+@property (nonatomic, retain) NSArray *cellDataArray;
+
+- (void)setCurrentDateWithDate:(NSDate *)date;
 
 @end

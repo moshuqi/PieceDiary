@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *contentLabel;
+@property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 
 @property (nonatomic, retain) PDIconsView *iconsView;
 
@@ -58,6 +59,51 @@
     CGFloat h = CGRectGetHeight(self.titleLabel.bounds) + CGRectGetHeight(self.iconsView.bounds);
     CGRect contentLabelFrame = CGRectMake(0, h, width, height - h);
     self.contentLabel.frame = contentLabelFrame;
+}
+
+- (void)setupWithDataModel:(PDPieceCellDataModel *)dataModel
+{
+    self.dataModel = dataModel;
+    
+    self.titleLabel.text = dataModel.question;
+    self.contentLabel.text = dataModel.answer;
+    
+    [self resetCellColor];
+}
+
+- (void)resetCellColor
+{
+    // 根据cell是否编辑过来设置label的颜色
+    if ([self hasEdit])
+    {
+        self.titleLabel.textColor = [UIColor blackColor];
+    }
+    else
+    {
+        self.titleLabel.textColor = [UIColor lightGrayColor];
+    }
+}
+
+- (BOOL)hasEdit
+{
+    // 判断cell是否有编辑过数据
+    if ((!self.dataModel.answer || [self.dataModel.answer length] == 0) &&
+        (!self.dataModel.photos || [self.dataModel.photos count] == 0))
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)setDateHidden:(BOOL)hidden
+{
+    if (![self.dateCellView superview])
+    {
+        [self.contentView addSubview:self.dateCellView];
+        [self.contentView bringSubviewToFront:self.dateCellView];
+    }
+    self.dateCellView.hidden = hidden;
 }
 
 @end

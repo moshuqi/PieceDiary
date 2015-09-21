@@ -39,21 +39,21 @@
     
     self.view.backgroundColor = [UIColor greenColor];
     
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    NSDate *date = [NSDate date];
+    NSArray *dataArray = [dataManager getPieceViewDatasWithDate:date];
     
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceDiaryView" owner:self options:nil];
     self.pieceDiaryView = [nibViews objectAtIndex:0];
     self.pieceDiaryView.frame = [self getPieceDiaryFrame];
     self.pieceDiaryView.delegate = self;
+    self.pieceDiaryView.cellDataArray = dataArray;
     
     [self.view addSubview:self.pieceDiaryView];
     self.pieceDiaryView.backgroundColor = [UIColor grayColor];
     
     self.scaleAnimation = [PDScaleAnimation new];
     self.scaleAnimation.delegate = self;
-    
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSDate *date = [NSDate date];
-    [dataManager getPieceViewDatasWithDate:date];
 }
 
 - (CGRect)getPieceDiaryFrame
@@ -123,13 +123,20 @@
 
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [pieceDiaryView.pieceCollectionView cellForItemAtIndexPath:indexPath];
-    self.currentItemFrame = [self.view convertRect:cell.frame fromView:pieceDiaryView.pieceCollectionView];
+    [self showInfoView];
+}
+
+- (void)enterEditFromCell:(UICollectionViewCell *)cell
+{
+    self.currentItemFrame = [self.view convertRect:cell.frame fromView:self.pieceDiaryView.pieceCollectionView];
     self.selecteItemCell = cell;
     
-//    [self enterPieceEditView];
-    
-    [self showInfoView];
+    [self enterPieceEditView];
+}
+
+- (void)enterRecordViewWithDate:(NSDate *)date
+{
+    [self showRecordView];
 }
 
 #pragma mark - ScaleAnimationDelegate

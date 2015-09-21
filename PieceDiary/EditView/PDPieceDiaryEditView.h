@@ -12,4 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 
+- (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame;
+- (void)resetEditViewByHideKeyboard;
+
 @end

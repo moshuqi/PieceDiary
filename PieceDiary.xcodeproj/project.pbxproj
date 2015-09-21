@@ -40,6 +40,7 @@
 		654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */; };
 		654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */; };
 		654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80471BAB10FE00D2B016 /* PDDataManager.m */; };
+		656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
 		658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166961BA28D3B003E7FA5 /* PDIconSettingView.m */; };
 		658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658166981BA28D52003E7FA5 /* PDIconSettingView.xib */; };
@@ -142,6 +143,8 @@
 		654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellDataModel.m; sourceTree = "<group>"; };
 		654D80461BAB10FE00D2B016 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		654D80471BAB10FE00D2B016 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
+		656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellDataModel.h; sourceTree = "<group>"; };
+		656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellDataModel.m; sourceTree = "<group>"; };
 		658166921BA28CA0003E7FA5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
 		658166931BA28CA0003E7FA5 /* PDSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingView.m; sourceTree = "<group>"; };
 		658166951BA28D3B003E7FA5 /* PDIconSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDIconSettingView.h; path = ../PDIconSettingView.h; sourceTree = "<group>"; };
@@ -286,6 +289,7 @@
 		6547A9631BA1C20A0090CAD0 /* PieceCell */ = {
 			isa = PBXGroup;
 			children = (
+				654CC7941BA0840C002DF0C9 /* DateCellView */,
 				6547A9641BA1C2590090CAD0 /* PDPieceCell.h */,
 				6547A9651BA1C2590090CAD0 /* PDPieceCell.m */,
 				6547A9661BA1C2590090CAD0 /* PDPieceCell.xib */,
@@ -328,14 +332,14 @@
 		654CC7641BA07840002DF0C9 /* PieceDiary */ = {
 			isa = PBXGroup;
 			children = (
-				65C5DAEC1BAAD30B0039C54B /* Data */,
-				6539FA5B1BA7FC2B0068DB9D /* Framework */,
-				6539FA5A1BA7FB6D0068DB9D /* InfoView */,
 				659BDD151BA70A520000D561 /* Animation */,
 				654CC7691BA07840002DF0C9 /* AppDelegate.h */,
 				654CC76A1BA07840002DF0C9 /* AppDelegate.m */,
+				65C5DAEC1BAAD30B0039C54B /* Data */,
 				659BDD051BA6DC410000D561 /* EditView */,
+				6539FA5B1BA7FC2B0068DB9D /* Framework */,
 				654CC7721BA07840002DF0C9 /* Images.xcassets */,
+				6539FA5A1BA7FB6D0068DB9D /* InfoView */,
 				654CC7741BA07840002DF0C9 /* LaunchScreen.xib */,
 				6547A95B1BA1A9950090CAD0 /* Main.storyboard */,
 				659BDCEA1BA696250000D561 /* PDDefine.h */,
@@ -379,7 +383,6 @@
 			children = (
 				658166911BA28C7C003E7FA5 /* RecordView */,
 				6547A9631BA1C20A0090CAD0 /* PieceCell */,
-				654CC7941BA0840C002DF0C9 /* DateCell */,
 				654CC7911BA07987002DF0C9 /* PDPieceViewController.h */,
 				654CC7921BA07987002DF0C9 /* PDPieceViewController.m */,
 				6547A95E1BA1A9EB0090CAD0 /* PDPieceDiaryView.h */,
@@ -390,15 +393,15 @@
 			path = PiecesView;
 			sourceTree = "<group>";
 		};
-		654CC7941BA0840C002DF0C9 /* DateCell */ = {
+		654CC7941BA0840C002DF0C9 /* DateCellView */ = {
 			isa = PBXGroup;
 			children = (
 				654CC7951BA08473002DF0C9 /* PDDateCellView.h */,
 				654CC7961BA08473002DF0C9 /* PDDateCellView.m */,
 				654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */,
 			);
-			name = DateCell;
-			path = dateCell;
+			name = DateCellView;
+			path = ../dateCell;
 			sourceTree = "<group>";
 		};
 		654D80421BAB0FC600D2B016 /* DataModel */ = {
@@ -406,6 +409,8 @@
 			children = (
 				654D80431BAB0FEF00D2B016 /* PDPieceCellDataModel.h */,
 				654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */,
+				656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */,
+				656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
 				65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */,
+				656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */,
 				65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,
 			);

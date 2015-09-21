@@ -10,6 +10,8 @@
 #import "PDPieceEditToolbar.h"
 #import "PDPieceDiaryEditView.h"
 
+#define ToolbarHeight 56
+
 @interface PDPieceEditViewController () <PDPieceEditToolbarDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
@@ -27,27 +29,77 @@
     self.toolbar.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self addKeyboardEevent];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.editView.textView becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self removeKeyboardEvent];
+}
+
+- (void)addKeyboardEevent
+{
+    // 监听键盘事件
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)removeKeyboardEvent
+{
+    // 移除键盘事件监听
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    [self.editView resetEditViewByHideKeyboard];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    CGRect keyboardFrame = [[userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    keyboardFrame = [self.editView convertRect:keyboardFrame fromView:self.view];
+    
+    [self.editView resetEditViewWithShowKeyboardFrame:keyboardFrame];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - PDPieceEditToolbarDelegate
 
 - (void)returnPieceView
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (UIView *)inputAccessoryView
+{
+    // 键盘上的工具栏
+    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceEditToolbar" owner:self.toolbar options:nil];
+    UIView *toolbar = [nibViews firstObject];
+    
+    CGFloat toolbarHeight = ToolbarHeight;
+    CGFloat toolbarWidth = CGRectGetWidth(self.view.frame);
+    toolbar.frame = CGRectMake(0, 0, toolbarWidth, toolbarHeight);
+    
+    return toolbar;
 }
 
 @end

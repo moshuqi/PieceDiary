@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PDPieceCellDataModel.h"
+#import "PDDateCellView.h"
 
 @interface PDPieceCell : UICollectionViewCell
 
 @property (nonatomic, retain) NSArray *icons;
+@property (nonatomic, retain) PDDateCellView *dateCellView;
+
+- (void)setupWithDataModel:(PDPieceCellDataModel *)dataModel;
+- (void)setDateHidden:(BOOL)hidden;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "PDDateCellView.h"
+#import "PDDefine.h"
 
 @interface PDDateCellView ()
 
@@ -14,6 +15,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;  // 显示日期，不包括“日”
 @property (nonatomic, weak) IBOutlet UIImageView *weatherIcon;    // 显示天气图标
 @property (nonatomic, weak) IBOutlet UIImageView *moodIcon;   //  显示心情图标
+
+@property (nonatomic, retain) PDDateCellDataModel *dataModel;
 
 @end
 
@@ -39,7 +42,7 @@
     
     if (day < 1 || day > 31)
     {
-        NSLog(@"日期超出合理范围.");
+        PDLog(@"日期超出合理范围.");
         return;
     }
     
@@ -50,7 +53,7 @@
 {
     if (weekDay < 1 || weekDay > 7)
     {
-        NSLog(@"星期超出合理范围.");
+        PDLog(@"星期超出合理范围.");
         return;
     }
     
@@ -70,6 +73,15 @@
 - (void)setMoodIconWithImage:(UIImage *)image
 {
     self.moodIcon.image = image;
+}
+
+- (void)setupWithDataModel:(PDDateCellDataModel *)dataModel
+{
+    self.dataModel = dataModel;
+    
+    [self setDateLabelsWithDate:dataModel.date];
+    self.weatherIcon.image = dataModel.weatherIcon;
+    self.moodIcon.image = dataModel.moodIcon;
 }
 
 /*
