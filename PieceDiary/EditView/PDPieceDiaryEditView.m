@@ -32,7 +32,30 @@
 
 - (void)awakeFromNib
 {
+    [self addGesture];
+}
+
+- (void)addGesture
+{
+    // 点击展示图片的手势
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+    tapGesture1.numberOfTapsRequired = 1;
+    [self.imageView addGestureRecognizer:tapGesture1];
     
+    // 点击问题标签进去编辑问题视图
+    UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTapped:)];
+    tapGesture2.numberOfTapsRequired = 1;
+    [self.titleLabel addGestureRecognizer:tapGesture2];
+}
+
+- (void)imageViewTapped:(UIGestureRecognizer *)gesture
+{
+    [self.delegate displayPhotos];
+}
+
+- (void)titleLabelTapped:(UIGestureRecognizer *)gesture
+{
+    [self.delegate showQuestionEditView];
 }
 
 - (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame

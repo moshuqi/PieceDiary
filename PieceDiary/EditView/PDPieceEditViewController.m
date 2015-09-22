@@ -10,10 +10,12 @@
 #import "PDPieceEditToolbar.h"
 #import "PDPieceDiaryEditView.h"
 #import "PDImagePickerController.h"
+#import "PDDisplayPhotoViewController.h"
+#import "PDQuestionEditViewController.h"
 
 #define ToolbarHeight 56
 
-@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate>
+@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate, PDPieceDiaryEditViewDelegate, PDDisplayPhotoViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
 @property (nonatomic, weak) IBOutlet PDPieceDiaryEditView *editView;
@@ -28,6 +30,7 @@
     
     self.view.backgroundColor = [UIColor yellowColor];
     self.toolbar.delegate = self;
+    self.editView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -118,5 +121,29 @@
 {
     
 }
+
+#pragma mark - PDDisplayPhotoViewControllerDelegate
+
+- (void)displayPhotos
+{
+    NSArray *photos = @[[UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"2.jpg"]];
+    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotos:photos];
+    displayPhotoViewController.delegate = self;
+    
+    [self presentViewController:displayPhotoViewController animated:YES completion:nil];
+}
+
+- (void)showQuestionEditView
+{
+    PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] init];
+    
+    questionEditViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    questionEditViewController.preferredContentSize = CGSizeMake(420, 220);
+    [self presentViewController:questionEditViewController animated:YES completion:nil];
+}
+
+#pragma mark - PDDisplayPhotoViewControllerDelegate
+
+
 
 @end

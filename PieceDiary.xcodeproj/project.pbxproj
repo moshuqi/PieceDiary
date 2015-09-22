@@ -44,6 +44,11 @@
 		6567CCA11BB0A31000BCE967 /* PDImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */; settings = {ASSET_TAGS = (); }; };
 		6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */; settings = {ASSET_TAGS = (); }; };
 		6567CCA61BB0BB9D00BCE967 /* PDImagePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCA41BB0BB9D00BCE967 /* PDImagePickerCell.xib */; settings = {ASSET_TAGS = (); }; };
+		6567CCAB1BB1031C00BCE967 /* PDDisplayPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCA91BB1031C00BCE967 /* PDDisplayPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6567CCAC1BB1031C00BCE967 /* PDDisplayPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCAA1BB1031C00BCE967 /* PDDisplayPhotoViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		6567CCAE1BB122F700BCE967 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCAD1BB122F700BCE967 /* 2.jpg */; settings = {ASSET_TAGS = (); }; };
+		6567CCB51BB1423100BCE967 /* PDQuestionEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCB31BB1423100BCE967 /* PDQuestionEditViewController.m */; settings = {ASSET_TAGS = (); }; };
+		6567CCB61BB1423100BCE967 /* PDQuestionEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCB41BB1423100BCE967 /* PDQuestionEditViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
 		658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166961BA28D3B003E7FA5 /* PDIconSettingView.m */; };
@@ -153,6 +158,13 @@
 		6567CCA21BB0BB9D00BCE967 /* PDImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImagePickerCell.h; sourceTree = "<group>"; };
 		6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImagePickerCell.m; sourceTree = "<group>"; };
 		6567CCA41BB0BB9D00BCE967 /* PDImagePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDImagePickerCell.xib; sourceTree = "<group>"; };
+		6567CCA81BB1031C00BCE967 /* PDDisplayPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDisplayPhotoViewController.h; sourceTree = "<group>"; };
+		6567CCA91BB1031C00BCE967 /* PDDisplayPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDisplayPhotoViewController.m; sourceTree = "<group>"; };
+		6567CCAA1BB1031C00BCE967 /* PDDisplayPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDDisplayPhotoViewController.xib; sourceTree = "<group>"; };
+		6567CCAD1BB122F700BCE967 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		6567CCB21BB1423100BCE967 /* PDQuestionEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionEditViewController.h; sourceTree = "<group>"; };
+		6567CCB31BB1423100BCE967 /* PDQuestionEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionEditViewController.m; sourceTree = "<group>"; };
+		6567CCB41BB1423100BCE967 /* PDQuestionEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionEditViewController.xib; sourceTree = "<group>"; };
 		656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellDataModel.h; sourceTree = "<group>"; };
 		656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellDataModel.m; sourceTree = "<group>"; };
 		658166921BA28CA0003E7FA5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
@@ -176,14 +188,14 @@
 		659BDD001BA6BACA0000D561 /* PDSettingDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingDateView.h; sourceTree = "<group>"; };
 		659BDD011BA6BACA0000D561 /* PDSettingDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingDateView.m; sourceTree = "<group>"; };
 		659BDD031BA6BAE20000D561 /* PDSettingDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingDateView.xib; sourceTree = "<group>"; };
-		659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceDiaryEditView.h; sourceTree = "<group>"; };
-		659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceDiaryEditView.m; sourceTree = "<group>"; };
+		659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDPieceDiaryEditView.h; path = ../PDPieceDiaryEditView.h; sourceTree = "<group>"; };
+		659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDPieceDiaryEditView.m; path = ../PDPieceDiaryEditView.m; sourceTree = "<group>"; };
 		659BDD091BA6DC9D0000D561 /* PDPieceEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceEditViewController.h; sourceTree = "<group>"; };
 		659BDD0A1BA6DC9D0000D561 /* PDPieceEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceEditViewController.m; sourceTree = "<group>"; };
-		659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceEditToolbar.h; sourceTree = "<group>"; };
-		659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceEditToolbar.m; sourceTree = "<group>"; };
-		659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditToolbar.xib; sourceTree = "<group>"; };
-		659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceDiaryEditView.xib; sourceTree = "<group>"; };
+		659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDPieceEditToolbar.h; path = ../PDPieceEditToolbar.h; sourceTree = "<group>"; };
+		659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDPieceEditToolbar.m; path = ../PDPieceEditToolbar.m; sourceTree = "<group>"; };
+		659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDPieceEditToolbar.xib; path = ../PDPieceEditToolbar.xib; sourceTree = "<group>"; };
+		659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PDPieceDiaryEditView.xib; path = ../PDPieceDiaryEditView.xib; sourceTree = "<group>"; };
 		659BDD161BA70AC80000D561 /* PDBaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDBaseAnimation.h; sourceTree = "<group>"; };
 		659BDD171BA70AC80000D561 /* PDBaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDBaseAnimation.m; sourceTree = "<group>"; };
 		659BDD191BA70BA40000D561 /* PDScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScaleAnimation.h; sourceTree = "<group>"; };
@@ -313,6 +325,7 @@
 		6547A96E1BA1E05C0090CAD0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6567CCAD1BB122F700BCE967 /* 2.jpg */,
 				659BDCE81BA67E710000D561 /* mood.jpg */,
 				6547A96F1BA1E0690090CAD0 /* 1.jpg */,
 				659BDCE61BA67E0E0000D561 /* weather.jpg */,
@@ -438,6 +451,46 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
+		6567CCA71BB101AC00BCE967 /* PhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				6567CCA81BB1031C00BCE967 /* PDDisplayPhotoViewController.h */,
+				6567CCA91BB1031C00BCE967 /* PDDisplayPhotoViewController.m */,
+				6567CCAA1BB1031C00BCE967 /* PDDisplayPhotoViewController.xib */,
+			);
+			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		6567CCAF1BB141F500BCE967 /* DiaryEditView */ = {
+			isa = PBXGroup;
+			children = (
+				659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */,
+				659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */,
+				659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */,
+			);
+			path = DiaryEditView;
+			sourceTree = "<group>";
+		};
+		6567CCB01BB141F500BCE967 /* QuestionEditView */ = {
+			isa = PBXGroup;
+			children = (
+				6567CCB21BB1423100BCE967 /* PDQuestionEditViewController.h */,
+				6567CCB31BB1423100BCE967 /* PDQuestionEditViewController.m */,
+				6567CCB41BB1423100BCE967 /* PDQuestionEditViewController.xib */,
+			);
+			path = QuestionEditView;
+			sourceTree = "<group>";
+		};
+		6567CCB11BB141F500BCE967 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */,
+				659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */,
+				659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 		658166911BA28C7C003E7FA5 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,15 +537,13 @@
 		659BDD051BA6DC410000D561 /* EditView */ = {
 			isa = PBXGroup;
 			children = (
+				6567CCAF1BB141F500BCE967 /* DiaryEditView */,
+				6567CCB01BB141F500BCE967 /* QuestionEditView */,
+				6567CCB11BB141F500BCE967 /* Toolbar */,
+				6567CCA71BB101AC00BCE967 /* PhotoView */,
 				6567CC9C1BB0A2A700BCE967 /* ImagePicker */,
-				659BDD061BA6DC880000D561 /* PDPieceDiaryEditView.h */,
-				659BDD071BA6DC880000D561 /* PDPieceDiaryEditView.m */,
 				659BDD091BA6DC9D0000D561 /* PDPieceEditViewController.h */,
 				659BDD0A1BA6DC9D0000D561 /* PDPieceEditViewController.m */,
-				659BDD0C1BA6DCF70000D561 /* PDPieceEditToolbar.h */,
-				659BDD0D1BA6DCF70000D561 /* PDPieceEditToolbar.m */,
-				659BDD0F1BA6DD210000D561 /* PDPieceEditToolbar.xib */,
-				659BDD111BA6E08D0000D561 /* PDPieceDiaryEditView.xib */,
 				659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */,
 			);
 			path = EditView;
@@ -676,6 +727,7 @@
 			files = (
 				6567CCA11BB0A31000BCE967 /* PDImagePickerController.xib in Resources */,
 				659BDCFC1BA6AAD50000D561 /* PDSettingView.xib in Resources */,
+				6567CCB61BB1423100BCE967 /* PDQuestionEditViewController.xib in Resources */,
 				6547A96D1BA1D7520090CAD0 /* PDIconsView.xib in Resources */,
 				654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */,
 				6547A9621BA1AA130090CAD0 /* PDPieceDiaryView.xib in Resources */,
@@ -686,6 +738,7 @@
 				659BDCE91BA67E710000D561 /* mood.jpg in Resources */,
 				659BDCFA1BA6A7A80000D561 /* PDRecordDateView.xib in Resources */,
 				6547A9681BA1C2590090CAD0 /* PDPieceCell.xib in Resources */,
+				6567CCAC1BB1031C00BCE967 /* PDDisplayPhotoViewController.xib in Resources */,
 				659BDCE71BA67E0E0000D561 /* weather.jpg in Resources */,
 				6539FA861BA84CC10068DB9D /* PDGridView.xib in Resources */,
 				659BDD101BA6DD210000D561 /* PDPieceEditToolbar.xib in Resources */,
@@ -700,6 +753,7 @@
 				659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */,
 				6539FA801BA838370068DB9D /* PDWeekLabelsView.xib in Resources */,
 				6567CCA61BB0BB9D00BCE967 /* PDImagePickerCell.xib in Resources */,
+				6567CCAE1BB122F700BCE967 /* 2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,9 +779,11 @@
 				65D382051BA9A77000BE9E09 /* FMDatabaseAdditions.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */,
+				6567CCAB1BB1031C00BCE967 /* PDDisplayPhotoViewController.m in Sources */,
 				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
 				65D382071BA9A77000BE9E09 /* FMDatabaseQueue.m in Sources */,
 				6539FA791BA835730068DB9D /* PDWeekButtonsView.m in Sources */,
+				6567CCB51BB1423100BCE967 /* PDQuestionEditViewController.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
 				659BDCF31BA6A4C60000D561 /* PDRecordMood.m in Sources */,

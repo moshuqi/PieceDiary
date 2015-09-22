@@ -32,8 +32,6 @@
     
     self.dataArray = [NSMutableArray array];
     [self setupData];
-    
-    NSLog(@"");
 }
 
 - (void)didReceiveMemoryWarning {

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDQuestionEditViewController">
+            <connections>
+                <outlet property="textView" destination="3kz-yn-wHb" id="i8H-9P-fvX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsa-Vu-8EB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUg-CT-TrA">
+                            <rect key="frame" x="319" y="0.0" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="FLv-VY-bLQ"/>
+                            </constraints>
+                            <state key="normal" title="完成"/>
+                            <connections>
+                                <action selector="questionEditDone:" destination="-1" eventType="touchUpInside" id="DHH-d7-QIN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjS-vg-F9T">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="a30-vh-Nl0"/>
+                            </constraints>
+                            <state key="normal" title="取消"/>
+                            <connections>
+                                <action selector="questionEditCancel:" destination="-1" eventType="touchUpInside" id="eqA-Yb-3iV"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑问题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okk-uW-aUC">
+                            <rect key="frame" x="143" y="0.0" width="88" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="6eE-UH-iTA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.91858033459595956" green="0.90627344646714747" blue="0.87098506624046412" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Okk-uW-aUC" firstAttribute="top" secondItem="Gsa-Vu-8EB" secondAttribute="top" id="4cp-Xf-FwR"/>
+                        <constraint firstItem="kjS-vg-F9T" firstAttribute="leading" secondItem="Gsa-Vu-8EB" secondAttribute="leading" id="7lS-RU-B0W"/>
+                        <constraint firstItem="Okk-uW-aUC" firstAttribute="centerX" secondItem="Gsa-Vu-8EB" secondAttribute="centerX" id="BRK-fT-M3L"/>
+                        <constraint firstItem="wUg-CT-TrA" firstAttribute="top" secondItem="Gsa-Vu-8EB" secondAttribute="top" id="PnE-SQ-TP8"/>
+                        <constraint firstAttribute="bottom" secondItem="Okk-uW-aUC" secondAttribute="bottom" id="UZQ-ip-wMu"/>
+                        <constraint firstAttribute="bottom" secondItem="kjS-vg-F9T" secondAttribute="bottom" id="ZKh-gL-ddy"/>
+                        <constraint firstAttribute="trailing" secondItem="wUg-CT-TrA" secondAttribute="trailing" id="amn-AJ-KcX"/>
+                        <constraint firstItem="kjS-vg-F9T" firstAttribute="top" secondItem="Gsa-Vu-8EB" secondAttribute="top" id="cvs-E1-UtY"/>
+                        <constraint firstAttribute="bottom" secondItem="wUg-CT-TrA" secondAttribute="bottom" id="mrJ-0K-zH5"/>
+                        <constraint firstAttribute="height" constant="56" id="nuv-MV-jhY"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3kz-yn-wHb">
+                    <rect key="frame" x="0.0" y="56" width="375" height="147"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Gsa-Vu-8EB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="547-ID-bnP"/>
+                <constraint firstItem="3kz-yn-wHb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I7x-yN-q0T"/>
+                <constraint firstAttribute="trailing" secondItem="Gsa-Vu-8EB" secondAttribute="trailing" id="MWb-hs-jAn"/>
+                <constraint firstItem="3kz-yn-wHb" firstAttribute="top" secondItem="Gsa-Vu-8EB" secondAttribute="bottom" id="T33-aZ-8Gv"/>
+                <constraint firstAttribute="trailing" secondItem="3kz-yn-wHb" secondAttribute="trailing" id="UOo-S0-srd"/>
+                <constraint firstItem="Gsa-Vu-8EB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZTt-ej-ygK"/>
+                <constraint firstAttribute="bottom" secondItem="3kz-yn-wHb" secondAttribute="bottom" id="uFv-KU-gik"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="126.5" y="2.5"/>
+        </view>
+    </objects>
+</document>
