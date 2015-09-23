@@ -13,7 +13,7 @@
 @protocol PDPieceDiaryViewDelegate <NSObject>
 
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)enterEditFromCell:(UICollectionViewCell *)cell;
+- (void)enterEditFromCell:(UICollectionViewCell *)cell dataArrayIndex:(NSInteger)index;
 - (void)enterRecordViewWithDate:(NSDate *)date;
 
 @end

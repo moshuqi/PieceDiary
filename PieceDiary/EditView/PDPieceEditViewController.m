@@ -12,13 +12,22 @@
 #import "PDImagePickerController.h"
 #import "PDDisplayPhotoViewController.h"
 #import "PDQuestionEditViewController.h"
+#import "PDPieceCellDataModel.h"
 
 #define ToolbarHeight 56
+
+typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
+    EditPieceCellChangeTypePrevious,    // 上一个
+    EditPieceCellChangeTypeNext         // 下一个
+};
 
 @interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate, PDPieceDiaryEditViewDelegate, PDDisplayPhotoViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
 @property (nonatomic, weak) IBOutlet PDPieceDiaryEditView *editView;
+
+@property (nonatomic, retain) NSArray *dataArray;   // 记录每一个cell的数据
+@property (nonatomic, assign) NSInteger currentIndex;  // 当前cell的索引
 
 @end
 
@@ -28,9 +37,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor yellowColor];
     self.toolbar.delegate = self;
     self.editView.delegate = self;
+    
+    [self setupEditView:self.editView withIndex:self.currentIndex];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -43,12 +53,45 @@
 {
     [super viewDidAppear:animated];
     [self.editView.textView becomeFirstResponder];
+    [self resetToolbarButtonsState];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self removeKeyboardEvent];
+}
+
+- (id)initWithDataArray:(NSArray *)dataArray currentIndex:(NSInteger)index
+{
+    self = [super init];
+    if (self)
+    {
+        self.dataArray = dataArray;
+        self.currentIndex = index;
+    }
+    
+    return self;
+}
+
+- (void)setupEditViewWithIndex:(NSInteger)index
+{
+    [self setupEditView:self.editView withIndex:index];
+}
+
+- (void)setupEditView:(PDPieceDiaryEditView *)editView withIndex:(NSInteger)index
+{
+    PDPieceCellDataModel *dataModel = self.dataArray[index];
+    [self setupEditView:editView withDataModel:dataModel];
+}
+
+- (void)setupEditView:(PDPieceDiaryEditView *)editView withDataModel:(PDPieceCellDataModel *)dataModel
+{
+    [editView setQuestionWithText:dataModel.question];
+    [editView setAnswerContentWithText:dataModel.answer];
+    
+    NSArray *photos = @[[UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"2.jpg"]];
+    [editView setPhotosWithArray:photos];
 }
 
 - (void)addKeyboardEevent
@@ -79,9 +122,111 @@
     [self.editView resetEditViewWithShowKeyboardFrame:keyboardFrame];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)resetToolbarButtonsState
+{
+    // 根据当前索引来设置左右切换cell的按钮状态
+    
+    [self.toolbar setLeftBtnEnabled:YES];
+    [self.toolbar setRightBtnEnabled:YES];
+    
+    if (self.currentIndex == 0)
+    {
+        // 第一个
+        [self.toolbar setLeftBtnEnabled:NO];
+    }
+    else if (self.currentIndex == [self.dataArray count] - 1)
+    {
+        // 最后一个
+        [self.toolbar setRightBtnEnabled:NO];
+    }
+}
+
+- (void)changeEditViewWithType:(EditPieceCellChangeType)type
+{
+    // 添加两个临时的视图来展示滑动动画
+    PDPieceDiaryEditView *slideInEditView = [self getSlideInEditViewWithType:type];
+    PDPieceDiaryEditView *slideOutEditView = [self getSlideOutEditViewWithType:type];
+    
+    [self.view insertSubview:slideOutEditView aboveSubview:self.editView];
+    [self.view addSubview:slideInEditView];
+    
+    [UIView animateWithDuration:0.5 animations:^(){
+        slideOutEditView.frame = [self getSlideOutEditViewToFrameWithChangeType:type];
+        slideInEditView.frame = self.editView.frame;
+    }completion:^(BOOL finished)
+     {
+         [slideOutEditView removeFromSuperview];
+         [slideInEditView removeFromSuperview];
+     }];
+    
+//    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(){
+//        slideOutEditView.frame = [self getSlideOutEditViewToFrameWithChangeType:type];
+//        slideInEditView.frame = self.editView.frame;
+//    } completion:^(BOOL finished)
+//     {
+//         [slideOutEditView removeFromSuperview];
+//         [slideInEditView removeFromSuperview];
+//     }];
+}
+
+- (PDPieceDiaryEditView *)getSlideInEditViewWithType:(EditPieceCellChangeType)type
+{
+    // 滑入的view
+    CGRect frame = (type == EditPieceCellChangeTypePrevious) ? [self getLeftEditViewFrame] : [self getRightEditViewFrame];
+    return [self createEditViewWithFrame:frame dataModel:self.dataArray[self.currentIndex]];
+}
+
+- (PDPieceDiaryEditView *)getSlideOutEditViewWithType:(EditPieceCellChangeType)type
+{
+    // 滑出的view
+    CGRect frame = self.editView.frame;
+    NSInteger oldIndex = (type == EditPieceCellChangeTypePrevious) ? self.currentIndex + 1 : self.currentIndex - 1;
+    return [self createEditViewWithFrame:frame dataModel:self.dataArray[oldIndex]];
+}
+
+- (PDPieceDiaryEditView *)createEditViewWithFrame:(CGRect)frame dataModel:(PDPieceCellDataModel *)dataModel
+{
+    PDPieceDiaryEditView *editView = [[PDPieceDiaryEditView alloc] initWithFrame:frame];
+    NSArray *nibArray = [[UINib nibWithNibName:@"PDPieceDiaryEditView" bundle:nil] instantiateWithOwner:editView options:nil];
+    
+    UIView *view = [nibArray firstObject];
+    view.frame = editView.bounds;
+    [editView addSubview:view];
+    
+    [self setupEditView:editView withDataModel:dataModel];
+    return editView;
+}
+
+- (CGRect)getSlideOutEditViewToFrameWithChangeType:(EditPieceCellChangeType)type
+{
+    CGRect frame = (type == EditPieceCellChangeTypePrevious) ? [self getRightEditViewFrame] : [self getLeftEditViewFrame];
+    return frame;
+}
+
+- (CGRect)getSlideInEditViewFrameWithChangeType:(EditPieceCellChangeType)type
+{
+    CGRect frame = (type == EditPieceCellChangeTypePrevious) ? [self getLeftEditViewFrame] : [self getRightEditViewFrame];
+    return frame;
+}
+
+- (CGRect)getLeftEditViewFrame
+{
+    CGRect frame = self.editView.frame;
+    CGFloat width = CGRectGetWidth(frame);
+    CGFloat height = CGRectGetHeight(frame);
+    
+    CGRect leftFrame = CGRectMake(-width, frame.origin.y, width, height);
+    return leftFrame;
+}
+
+- (CGRect)getRightEditViewFrame
+{
+    CGRect frame = self.editView.frame;
+    CGFloat width = CGRectGetWidth(frame);
+    CGFloat height = CGRectGetHeight(frame);
+    
+    CGRect rightFrame = CGRectMake(width, frame.origin.y, width, height);
+    return rightFrame;
 }
 
 
@@ -100,6 +245,23 @@
     imagePickerController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
+
+- (void)previousPieceCellEditView
+{
+    self.currentIndex -= 1;
+    [self resetToolbarButtonsState];
+    [self setupEditViewWithIndex:self.currentIndex];
+    [self changeEditViewWithType:EditPieceCellChangeTypePrevious];
+}
+
+- (void)nextPieceCellEditView
+{
+    self.currentIndex += 1;
+    [self resetToolbarButtonsState];
+    [self setupEditViewWithIndex:self.currentIndex];
+    [self changeEditViewWithType:EditPieceCellChangeTypeNext];
+}
+
 
 
 - (UIView *)inputAccessoryView

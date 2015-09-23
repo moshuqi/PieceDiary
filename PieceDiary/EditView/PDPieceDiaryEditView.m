@@ -13,6 +13,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
+@property (nonatomic, retain) UILabel *photoCountLabel;
+@property (nonatomic, retain) NSArray *photos;
+
 @end
 
 @implementation PDPieceDiaryEditView
@@ -33,6 +36,7 @@
 - (void)awakeFromNib
 {
     [self addGesture];
+    [self addPhotoCountLabelToImageView];
 }
 
 - (void)addGesture
@@ -46,6 +50,23 @@
     UITapGestureRecognizer *tapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleLabelTapped:)];
     tapGesture2.numberOfTapsRequired = 1;
     [self.titleLabel addGestureRecognizer:tapGesture2];
+}
+
+- (void)addPhotoCountLabelToImageView
+{
+    CGFloat w = 20;
+    CGFloat imageViewW = CGRectGetWidth(self.imageView.frame);
+    
+    CGRect frame = CGRectMake(imageViewW - w, imageViewW - w, w, w);
+    self.photoCountLabel = [[UILabel alloc] initWithFrame:frame];
+    
+    self.photoCountLabel.textColor = [UIColor whiteColor];
+    self.photoCountLabel.textAlignment = NSTextAlignmentCenter;
+    self.photoCountLabel.backgroundColor = [UIColor redColor];
+    self.photoCountLabel.layer.cornerRadius = w / 2;
+    self.photoCountLabel.clipsToBounds = YES;
+    
+    [self.imageView addSubview:self.photoCountLabel];
 }
 
 - (void)imageViewTapped:(UIGestureRecognizer *)gesture
@@ -85,6 +106,33 @@
     CGFloat distance = 20;  // 与底边的间距
     CGFloat originY = self.textView.frame.origin.y + textViewHeight - CGRectGetHeight(self.imageView.frame) - distance;
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, originY, self.imageView.frame.size.width, self.imageView.frame.size.height);
+}
+
+- (void)setQuestionWithText:(NSString *)text
+{
+    self.titleLabel.text = text;
+}
+
+- (void)setAnswerContentWithText:(NSString *)text
+{
+    self.textView.text = text;
+}
+
+- (void)setPhotosWithArray:(NSArray *)array
+{
+    self.photos = array;
+    NSInteger count = [self.photos count];
+    
+    if (count < 1)
+    {
+        self.imageView.hidden = YES;
+    }
+    else
+    {
+        self.imageView.hidden = NO;
+        self.imageView.image = [self.photos firstObject];
+        self.photoCountLabel.text = [NSString stringWithFormat:@"%ld", count];
+    }
 }
 
 /*

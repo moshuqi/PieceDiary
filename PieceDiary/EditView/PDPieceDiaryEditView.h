@@ -23,5 +23,8 @@
 
 - (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame;
 - (void)resetEditViewByHideKeyboard;
+- (void)setQuestionWithText:(NSString *)text;
+- (void)setAnswerContentWithText:(NSString *)text;
+- (void)setPhotosWithArray:(NSArray *)array;
 
 @end

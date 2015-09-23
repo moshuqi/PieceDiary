@@ -27,6 +27,12 @@
                                 <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedLeftBtn:" destination="-1" eventType="touchUpInside" id="7AP-7c-XJg"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="No1-uG-xQp">
                             <rect key="frame" x="80" y="0.0" width="80" height="56"/>
@@ -34,6 +40,12 @@
                                 <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="disabled">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchedRightBtn:" destination="-1" eventType="touchUpInside" id="h6O-7D-hRg"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

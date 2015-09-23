@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDDisplayPhotoViewController">
             <connections>
-                <outlet property="imageView" destination="qPN-tl-1v7" id="Ts2-8d-zPs"/>
+                <outlet property="imageView" destination="c1b-rF-MOh" id="QiJ-E6-dZA"/>
                 <outlet property="toolbarView" destination="VPe-ji-EgN" id="FyF-tI-XiD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -83,33 +83,21 @@
                         <constraint firstAttribute="height" constant="44" id="zsQ-yr-cxy"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qPN-tl-1v7">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1b-rF-MOh">
                     <rect key="frame" x="0.0" y="0.0" width="443" height="296"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="qPN-tl-1v7" secondAttribute="trailing" constant="91" id="0Yo-Vw-sYF"/>
-                <constraint firstItem="qPN-tl-1v7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0vT-ET-SDX"/>
-                <constraint firstItem="qPN-tl-1v7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="48H-XY-kx3"/>
                 <constraint firstAttribute="trailing" secondItem="VPe-ji-EgN" secondAttribute="trailing" id="4S3-Zk-uhF"/>
-                <constraint firstItem="qPN-tl-1v7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DJX-KR-HjQ"/>
-                <constraint firstItem="VPe-ji-EgN" firstAttribute="top" secondItem="qPN-tl-1v7" secondAttribute="bottom" constant="57" id="FcF-lk-L9e"/>
-                <constraint firstItem="VPe-ji-EgN" firstAttribute="top" secondItem="qPN-tl-1v7" secondAttribute="bottom" id="Jwz-Uz-1H2"/>
-                <constraint firstItem="qPN-tl-1v7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Rag-x4-9tT"/>
+                <constraint firstAttribute="trailing" secondItem="c1b-rF-MOh" secondAttribute="trailing" id="ArW-ei-Ra9"/>
                 <constraint firstAttribute="bottom" secondItem="VPe-ji-EgN" secondAttribute="bottom" id="Y5M-ou-0Tu"/>
-                <constraint firstAttribute="trailing" secondItem="qPN-tl-1v7" secondAttribute="trailing" id="lHj-nk-m0K"/>
+                <constraint firstItem="c1b-rF-MOh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dYU-63-OYn"/>
                 <constraint firstItem="VPe-ji-EgN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pPI-WR-Pg3"/>
+                <constraint firstItem="VPe-ji-EgN" firstAttribute="top" secondItem="c1b-rF-MOh" secondAttribute="bottom" id="sCY-qv-AUO"/>
+                <constraint firstItem="c1b-rF-MOh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="w9q-9D-pT9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="0Yo-Vw-sYF"/>
-                    <exclude reference="0vT-ET-SDX"/>
-                    <exclude reference="Rag-x4-9tT"/>
-                    <exclude reference="FcF-lk-L9e"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="284.5" y="72"/>
         </view>
     </objects>

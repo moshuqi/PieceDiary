@@ -85,6 +85,7 @@
 		65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */; };
 		65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */; };
 		65D3821B1BA9A80700BE9E09 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */; };
+		65F1848E1BB2FD8600C62294 /* PDPhotoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F1848D1BB2FD8600C62294 /* PDPhotoDataModel.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,8 @@
 		65D382171BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExampleDrawerVisualStateManager.h; sourceTree = "<group>"; };
 		65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		65F1848C1BB2FD8600C62294 /* PDPhotoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPhotoDataModel.h; sourceTree = "<group>"; };
+		65F1848D1BB2FD8600C62294 /* PDPhotoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoDataModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +437,8 @@
 				654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */,
 				656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */,
 				656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */,
+				65F1848C1BB2FD8600C62294 /* PDPhotoDataModel.h */,
+				65F1848D1BB2FD8600C62294 /* PDPhotoDataModel.m */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				65D382041BA9A77000BE9E09 /* FMDatabase.m in Sources */,
 				659BDCED1BA698090000D561 /* PDRecordViewController.m in Sources */,
 				65D382051BA9A77000BE9E09 /* FMDatabaseAdditions.m in Sources */,
+				65F1848E1BB2FD8600C62294 /* PDPhotoDataModel.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */,
 				6567CCAB1BB1031C00BCE967 /* PDDisplayPhotoViewController.m in Sources */,

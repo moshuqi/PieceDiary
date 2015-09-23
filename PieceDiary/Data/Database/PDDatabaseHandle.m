@@ -115,7 +115,7 @@
 
 - (void)createPhotoTable
 {
-    NSString *sql = @"CREATE TABLE \"PhotoTable\" (\"questionID\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"date\" DATE NOT NULL, \"photo\" BLOB NOT NULL, PRIMARY KEY (\"questionID\",\"date\"))";
+    NSString *sql = @"CREATE TABLE \"PhotoTable\" (\"questionID\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"date\" DATE NOT NULL, \"photo\" BLOB NOT NULL, \"photoID\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE)";
     BOOL res = [self.database executeUpdate:sql];
     [self examWithResult:res tableName:DatabasePhotoTable];
 }

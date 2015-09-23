@@ -41,6 +41,7 @@
                     </constraints>
                 </imageView>
             </subviews>
+            <color key="backgroundColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="HIX-vF-jdo" firstAttribute="top" secondItem="ZYS-7R-CKf" secondAttribute="bottom" id="8Ge-YR-MNz"/>
                 <constraint firstItem="ZYS-7R-CKf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Aeq-ga-dY7"/>

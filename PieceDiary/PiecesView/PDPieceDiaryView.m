@@ -109,6 +109,13 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         return nil;
     }
     
+    PDPieceCellDataModel *dataModel = dataArry[[self getDataModelActualIndexWithIndexPatn:indexPath]];
+    return dataModel;
+}
+
+- (NSInteger)getDataModelActualIndexWithIndexPatn:(NSIndexPath *)indexPath
+{
+    // 获得cell数据对应在数组中的索引，因为需要除去日期cell
     NSInteger row = indexPath.row;
     NSInteger index = -1;
     if ([self isLandscape])
@@ -129,8 +136,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         index = row - 1;
     }
     
-    PDPieceCellDataModel *dataModel = dataArry[index];
-    return dataModel;
+    return index;
 }
 
 - (void)setCurrentDateWithDate:(NSDate *)date
@@ -161,7 +167,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     [self insertSubview:self.slideOutCollectionView aboveSubview:self.pieceCollectionView];
     
     // 设置新的数据
-    NSDate *newDate = (direction == CollectionSlideDirectionLeft) ? [self getTomorrow:self.currentDate] : [self getYesterDay:self.currentDate];
+    NSDate *newDate = (direction == CollectionSlideDirectionLeft) ? [self getYesterDay:self.currentDate] : [self getTomorrow:self.currentDate];
     self.currentDate = newDate;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
@@ -184,7 +190,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 
 - (CGRect)getSlideOutCollectionViewToFrameWithDirection:(CollectionSlideDirection)direction
 {
-    CGRect frame = (direction == CollectionSlideDirectionLeft) ? [self getLeftCollectionViewFrame] : [self getRightCollectionViewFrame];
+    CGRect frame = (direction == CollectionSlideDirectionLeft) ? [self getRightCollectionViewFrame] : [self getLeftCollectionViewFrame];
     return frame;
 }
 
@@ -197,7 +203,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 - (UICollectionView *)getSlideInCollectionViewWithDirection:(CollectionSlideDirection)direcion
 {
     // 滑入的collectionView
-    CGRect frame = (direcion == CollectionSlideDirectionLeft) ? [self getRightCollectionViewFrame] : [self getLeftCollectionViewFrame];
+    CGRect frame = (direcion == CollectionSlideDirectionLeft) ? [self getLeftCollectionViewFrame] : [self getRightCollectionViewFrame];
     return [self createSlideCollectionViewWithFrame:frame];
 }
 
@@ -270,7 +276,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     }
     else
     {
-        [self.delegate enterEditFromCell:[collectionView cellForItemAtIndexPath:indexPath]];
+        [self.delegate enterEditFromCell:[collectionView cellForItemAtIndexPath:indexPath] dataArrayIndex:[self getDataModelActualIndexWithIndexPatn:indexPath]];
     }
 }
 

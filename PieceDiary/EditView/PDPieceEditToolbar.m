@@ -48,4 +48,32 @@
     }
 }
 
+- (IBAction)touchedLeftBtn:(id)sender
+{
+    // 前往上一个cell
+    if ([self.delegate respondsToSelector:@selector(previousPieceCellEditView)])
+    {
+        [self.delegate previousPieceCellEditView];
+    }
+}
+
+- (IBAction)touchedRightBtn:(id)sender
+{
+    // 前往下一个cell
+    if ([self.delegate respondsToSelector:@selector(nextPieceCellEditView)])
+    {
+        [self.delegate nextPieceCellEditView];
+    }
+}
+
+- (void)setLeftBtnEnabled:(BOOL)enabled
+{
+    self.leftBtn.enabled = enabled;
+}
+
+- (void)setRightBtnEnabled:(BOOL)enabled
+{
+    self.rightBtn.enabled = enabled;
+}
+
 @end

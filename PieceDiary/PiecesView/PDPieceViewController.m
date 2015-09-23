@@ -16,6 +16,7 @@
 //#import "PDNormalDismissAnimation.h"
 #import "PDInfoViewController.h"
 #import "PDDataManager.h"
+#import "PDPieceCell.h"
 
 #define kOriginY    20
 
@@ -62,10 +63,10 @@
     return frame;
 }
 
-- (void)enterPieceEditView
+- (void)enterPieceEditViewWithIndex:(NSInteger)index
 {
     // 进入编辑界面
-    PDPieceEditViewController *pieceEditViewController = [[PDPieceEditViewController alloc] init];
+    PDPieceEditViewController *pieceEditViewController = [[PDPieceEditViewController alloc] initWithDataArray:self.pieceDiaryView.cellDataArray currentIndex:index];
     pieceEditViewController.transitioningDelegate = self;
     
 //    self.swipeDrivenInteractive = [PDSwipeDrivenInteractiveTransition new];
@@ -126,12 +127,12 @@
     [self showInfoView];
 }
 
-- (void)enterEditFromCell:(UICollectionViewCell *)cell
+- (void)enterEditFromCell:(UICollectionViewCell *)cell dataArrayIndex:(NSInteger)index
 {
     self.currentItemFrame = [self.view convertRect:cell.frame fromView:self.pieceDiaryView.pieceCollectionView];
     self.selecteItemCell = cell;
     
-    [self enterPieceEditView];
+    [self enterPieceEditViewWithIndex:index];
 }
 
 - (void)enterRecordViewWithDate:(NSDate *)date

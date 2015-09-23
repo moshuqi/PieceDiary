@@ -10,4 +10,6 @@
 
 @interface PDPieceEditViewController : UIViewController
 
+- (id)initWithDataArray:(NSArray *)dataArray currentIndex:(NSInteger)index;
+
 @end

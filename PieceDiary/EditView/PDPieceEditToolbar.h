@@ -13,11 +13,16 @@
 @optional
 - (void)returnPieceView;
 - (void)showImagePicker;
+- (void)previousPieceCellEditView;
+- (void)nextPieceCellEditView;
 
 @end
 
 @interface PDPieceEditToolbar : UIView
 
 @property (nonatomic, assign) id<PDPieceEditToolbarDelegate> delegate;
+
+- (void)setLeftBtnEnabled:(BOOL)enabled;
+- (void)setRightBtnEnabled:(BOOL)enabled;
 
 @end
