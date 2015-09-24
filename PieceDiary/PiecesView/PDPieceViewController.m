@@ -57,6 +57,12 @@
     self.scaleAnimation.delegate = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.pieceDiaryView.pieceCollectionView reloadData];
+}
+
 - (CGRect)getPieceDiaryFrame
 {
     CGRect frame = CGRectMake(0, kOriginY, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - kOriginY);

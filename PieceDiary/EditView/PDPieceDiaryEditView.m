@@ -7,6 +7,7 @@
 //
 
 #import "PDPieceDiaryEditView.h"
+#import "PDPieceCellDataModel.h"
 
 @interface PDPieceDiaryEditView ()
 
@@ -15,6 +16,7 @@
 
 @property (nonatomic, retain) UILabel *photoCountLabel;
 @property (nonatomic, retain) NSArray *photos;
+@property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 
 @end
 
@@ -76,7 +78,7 @@
 
 - (void)titleLabelTapped:(UIGestureRecognizer *)gesture
 {
-    [self.delegate showQuestionEditView];
+    [self.delegate showQuestionEditViewWithDataModel:self.dataModel];
 }
 
 - (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame
@@ -108,16 +110,6 @@
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, originY, self.imageView.frame.size.width, self.imageView.frame.size.height);
 }
 
-- (void)setQuestionWithText:(NSString *)text
-{
-    self.titleLabel.text = text;
-}
-
-- (void)setAnswerContentWithText:(NSString *)text
-{
-    self.textView.text = text;
-}
-
 - (void)setPhotosWithArray:(NSArray *)array
 {
     self.photos = array;
@@ -135,12 +127,18 @@
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)setQuestionContentWithText:(NSString *)text
+{
+    self.titleLabel.text = text;
 }
-*/
+
+- (void)setEditViewWithDataModel:(PDPieceCellDataModel *)dataModel
+{
+    self.dataModel = dataModel;
+    self.titleLabel.text = dataModel.question;
+    self.textView.text = dataModel.answer;
+    self.photos = dataModel.photos;
+}
+
 
 @end

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class PDPieceCellDataModel;
+
 @protocol PDPieceDiaryEditViewDelegate <NSObject>
 
 @required
 - (void)displayPhotos;
-- (void)showQuestionEditView;
+- (void)showQuestionEditViewWithDataModel:(PDPieceCellDataModel *)dataModel;
 
 @end
 
@@ -23,8 +25,7 @@
 
 - (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame;
 - (void)resetEditViewByHideKeyboard;
-- (void)setQuestionWithText:(NSString *)text;
-- (void)setAnswerContentWithText:(NSString *)text;
-- (void)setPhotosWithArray:(NSArray *)array;
+- (void)setEditViewWithDataModel:(PDPieceCellDataModel *)dataModel;
+- (void)setQuestionContentWithText:(NSString *)text;
 
 @end

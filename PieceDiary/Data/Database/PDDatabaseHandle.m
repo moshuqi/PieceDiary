@@ -28,6 +28,7 @@
 #define DatabaseQuestionTemplateTableTemplateID @"templateID"
 
 #define DatabaseAnswerTableAnswerContent @"answerContent"
+#define DatabaseDate    @"date"
 
 @interface PDDatabaseHandle ()
 
@@ -254,6 +255,14 @@
     PDLog(@"%@", msg);
 }
 
+- (void)examExcuteWithResult:(BOOL)result
+{
+    if (!result)
+    {
+        PDLog(@"数据库操作失败");
+    }
+}
+
 #pragma mark - 数据库查询操作
 
 - (NSInteger)getQuestionTemplateIDWithDate:(NSDate *)date
@@ -343,7 +352,7 @@
 {
     // 通过问题ID和日期获取对应的回答
     
-    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld and date = %@", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld and date = \"%@\"", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     NSString *answer = nil;
@@ -361,6 +370,32 @@
     
     return nil;
 }
+
+#pragma mark - 数据库修改操作
+
+- (void)updateAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date
+{
+    // 通过问题ID和日期，将答案设为新的值
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where %@ = %ld and date = \"%@\"", DatabaseAnswerTable, DatabaseAnswerTableAnswerContent, text, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
+#pragma mark - 数据库插入操作
+
+- (void)insertAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date
+{
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:[NSNumber numberWithInteger:questionID]];
+    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:text];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@) values (?, ?, ?)", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, DatabaseDate, DatabaseAnswerTableAnswerContent];
+    BOOL result= [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
 
 - (NSDate *)dateFromString:(NSString *)dateString
 {

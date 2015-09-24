@@ -13,5 +13,7 @@
 + (instancetype)defaultManager;
 
 - (NSArray *)getPieceViewDatasWithDate:(NSDate *)date;
+- (void)setAnswerContentWithText:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
+- (void)setQuetionContentWithText:(NSString *)text questionID:(NSInteger)questionID;
 
 @end

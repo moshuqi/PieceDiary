@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class PDPieceCellDataModel;
+
+@protocol PDQuestionEditViewControllerDelegate <NSObject>
+
+- (void)setQuestionContentWithText:(NSString *)text;
+
+@end
+
 @interface PDQuestionEditViewController : UIViewController
+
+@property (nonatomic, retain) id<PDQuestionEditViewControllerDelegate> delegate;
+
+- (id)initWithDataModel:(PDPieceCellDataModel *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
 
 @end

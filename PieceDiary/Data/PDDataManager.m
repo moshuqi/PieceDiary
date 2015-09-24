@@ -85,7 +85,27 @@ static PDDataManager *_instance;
     return dataModels;
 }
 
+- (void)setAnswerContentWithText:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
+{
+    NSString *answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
+    if (answer)
+    {
+        // 已存在内容，则对数据库进行修改
+        [self.dbHandle updateAnswerContentWith:text questionID:questionID date:date];
+    }
+    else
+    {
+        // 第一次编辑，则对数据库进行插入操作
+        [self.dbHandle insertAnswerContentWith:text questionID:questionID date:date];
+    }
+}
 
+- (void)setQuetionContentWithText:(NSString *)text questionID:(NSInteger)questionID
+{
+    // 设置新的问题。数据库允许不同的问题ID对应相同的问题
+    // 设置新的问题时，数据库直接添加新的问题ID，生成新的模板ID,然后修改原来答案对应的问题ID，和原来日期所对应的模板ID
+    
+}
 
 
 @end

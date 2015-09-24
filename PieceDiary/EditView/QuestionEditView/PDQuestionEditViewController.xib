@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDQuestionEditViewController">
             <connections>
+                <outlet property="doneBtn" destination="wUg-CT-TrA" id="P5e-qv-NfA"/>
                 <outlet property="textView" destination="3kz-yn-wHb" id="i8H-9P-fvX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,6 +26,9 @@
                                 <constraint firstAttribute="width" constant="56" id="FLv-VY-bLQ"/>
                             </constraints>
                             <state key="normal" title="完成"/>
+                            <state key="selected">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="questionEditDone:" destination="-1" eventType="touchUpInside" id="DHH-d7-QIN"/>
                             </connections>

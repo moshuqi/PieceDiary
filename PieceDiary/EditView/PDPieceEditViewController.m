@@ -13,6 +13,7 @@
 #import "PDDisplayPhotoViewController.h"
 #import "PDQuestionEditViewController.h"
 #import "PDPieceCellDataModel.h"
+#import "PDDataManager.h"
 
 #define ToolbarHeight 56
 
@@ -21,7 +22,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     EditPieceCellChangeTypeNext         // 下一个
 };
 
-@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate, PDPieceDiaryEditViewDelegate, PDDisplayPhotoViewControllerDelegate>
+@interface PDPieceEditViewController () <PDPieceEditToolbarDelegate, PDImagePickerControllerDelegate, PDPieceDiaryEditViewDelegate, PDDisplayPhotoViewControllerDelegate, PDQuestionEditViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDPieceEditToolbar *toolbar;
 @property (nonatomic, weak) IBOutlet PDPieceDiaryEditView *editView;
@@ -86,12 +87,8 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 }
 
 - (void)setupEditView:(PDPieceDiaryEditView *)editView withDataModel:(PDPieceCellDataModel *)dataModel
-{
-    [editView setQuestionWithText:dataModel.question];
-    [editView setAnswerContentWithText:dataModel.answer];
-    
-    NSArray *photos = @[[UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"2.jpg"]];
-    [editView setPhotosWithArray:photos];
+{    
+    [editView setEditViewWithDataModel:dataModel];
 }
 
 - (void)addKeyboardEevent
@@ -234,6 +231,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)returnPieceView
 {
+    [self setCurrentEditViewAnswerContent];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -248,6 +246,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)previousPieceCellEditView
 {
+    [self setCurrentEditViewAnswerContent];
     self.currentIndex -= 1;
     [self resetToolbarButtonsState];
     [self setupEditViewWithIndex:self.currentIndex];
@@ -256,13 +255,33 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)nextPieceCellEditView
 {
+    [self setCurrentEditViewAnswerContent];
     self.currentIndex += 1;
     [self resetToolbarButtonsState];
     [self setupEditViewWithIndex:self.currentIndex];
     [self changeEditViewWithType:EditPieceCellChangeTypeNext];
 }
 
+- (void)setCurrentEditViewAnswerContent
+{
+    // 将当前页面编辑更改的内容保存到数据库
+    NSString *answer = self.editView.textView.text;
+    if (answer)
+    {
+        [self setAnswerWithContent:answer withIndex:self.currentIndex];
+    }
+}
 
+
+- (void)setAnswerWithContent:(NSString *)content withIndex:(NSInteger)index
+{
+    // 根据索引设置问题内容
+    PDPieceCellDataModel *dataModel = self.dataArray[index];
+    dataModel.answer = content;
+    
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    [dataManager setAnswerContentWithText:content questionID:dataModel.questionID date:dataModel.date];
+}
 
 - (UIView *)inputAccessoryView
 {
@@ -286,6 +305,10 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 #pragma mark - PDDisplayPhotoViewControllerDelegate
 
+
+
+#pragma mark - PDPieceDiaryEditView
+
 - (void)displayPhotos
 {
     NSArray *photos = @[[UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"2.jpg"]];
@@ -295,17 +318,21 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];
 }
 
-- (void)showQuestionEditView
+- (void)showQuestionEditViewWithDataModel:(PDPieceCellDataModel *)dataModel
 {
-    PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] init];
+    PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] initWithDataModel:dataModel delegate:self];
     
     questionEditViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     questionEditViewController.preferredContentSize = CGSizeMake(420, 220);
     [self presentViewController:questionEditViewController animated:YES completion:nil];
 }
 
-#pragma mark - PDDisplayPhotoViewControllerDelegate
 
+#pragma mark - PDQuestionEditViewControllerDelegate
 
+- (void)setQuestionContentWithText:(NSString *)text
+{
+    [self.editView setQuestionContentWithText:text];
+}
 
 @end
