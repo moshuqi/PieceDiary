@@ -14,6 +14,7 @@
 #import "PDQuestionEditViewController.h"
 #import "PDPieceCellDataModel.h"
 #import "PDDataManager.h"
+#import "PDPhotoDataModel.h"
 
 #define ToolbarHeight 56
 
@@ -240,6 +241,10 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     PDImagePickerController *imagePickerController = [[PDImagePickerController alloc] init];
     imagePickerController.delegate = self;
     
+    PDPieceCellDataModel *dataModel = self.dataArray[self.currentIndex];
+    imagePickerController.date = dataModel.date;
+    imagePickerController.questionID = dataModel.questionID;
+    
     imagePickerController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
@@ -298,9 +303,28 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 #pragma mark - PDImagePickerControllerDelegate
 
-- (void)pickFinishedWithPhotos:(NSArray *)photos
+- (void)imagePickerController:(PDImagePickerController *)imagePickerController pickFinishedWithPhotos:(NSArray *)photos
 {
+    NSDate *date = imagePickerController.date;
+    NSInteger questionID = imagePickerController.questionID;
     
+    NSMutableArray *photoDataModels = [NSMutableArray array];
+    for (NSInteger i = 0; i < [photos count]; i++)
+    {
+        PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
+        photoDataModel.date = date;
+        photoDataModel.questionID = questionID;
+        photoDataModel.image = photos[i];
+        
+        [photoDataModels addObject:photoDataModel];
+    }
+    
+    // 选中的图片插入到数据库
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    [dataManager insertPhotosWithPhotoDataModels:photoDataModels];
+    [self.editView setupImageViewWithPhotoDataModels:photoDataModels];
+    
+    [imagePickerController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - PDDisplayPhotoViewControllerDelegate
@@ -311,8 +335,14 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)displayPhotos
 {
-    NSArray *photos = @[[UIImage imageNamed:@"2.jpg"], [UIImage imageNamed:@"2.jpg"]];
-    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotos:photos];
+    PDPieceCellDataModel *cellDataModel = self.dataArray[self.currentIndex];
+    NSInteger questionID = cellDataModel.questionID;
+    NSDate *date = cellDataModel.date;
+    
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    NSArray *photoDataModels = [dataManager getPhotoDataModelsWithDate:date questionID:questionID];
+    
+    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotoDataModels:photoDataModels];
     displayPhotoViewController.delegate = self;
     
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];
@@ -335,4 +365,23 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     [self.editView setQuestionContentWithText:text];
 }
 
+- (void)questionEditViewController:(PDQuestionEditViewController *)editViewController editQuestionContentText:(NSString *)text inDate:(NSDate *)date
+{
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    [dataManager setQuetionContentWithNewContent:text oldContent:[editViewController getOldQuestionContent] inDate:date];
+    
+    [editViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    self.dataArray = [dataManager getPieceViewDatasWithDate:date];
+    [self.editView setQuestionContentWithText:text];
+}
+
 @end
+
+
+
+
+
+
+
+

@@ -88,7 +88,7 @@
 {
     // 判断cell是否有编辑过数据
     if ((!self.dataModel.answer || [self.dataModel.answer length] == 0) &&
-        (!self.dataModel.photos || [self.dataModel.photos count] == 0))
+        (!self.dataModel.photoDataModels || [self.dataModel.photoDataModels count] == 0))
     {
         return NO;
     }

@@ -12,7 +12,7 @@
 
 @property (nonatomic, retain) NSString *question;
 @property (nonatomic, retain) NSString *answer;
-@property (nonatomic, retain) NSArray *photos;
+@property (nonatomic, retain) NSArray *photoDataModels;
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, assign) NSInteger questionID;

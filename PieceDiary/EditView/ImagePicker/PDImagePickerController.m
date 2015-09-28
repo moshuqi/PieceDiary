@@ -117,8 +117,7 @@
             if (i + 1 == count)
             {
                 // 选中的图片已获取完毕
-                [self.delegate pickFinishedWithPhotos:photos];
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self.delegate imagePickerController:self pickFinishedWithPhotos:photos];
             }
         }failureBlock:^(NSError *error) {
             NSLog(@"error=%@",error);

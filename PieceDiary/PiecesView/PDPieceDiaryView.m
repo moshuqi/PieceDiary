@@ -144,6 +144,16 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     self.currentDate = date;
 }
 
+- (void)reloadAllCell
+{
+    // 刷新数据
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    NSArray *dataArray = [dataManager getPieceViewDatasWithDate:self.currentDate];
+    
+    self.cellDataArray = dataArray;
+    [self.pieceCollectionView reloadData];
+}
+
 - (IBAction)leftSlideTouched:(id)sender
 {
     [self collectionViewSlideToDirection:CollectionSlideDirectionLeft];

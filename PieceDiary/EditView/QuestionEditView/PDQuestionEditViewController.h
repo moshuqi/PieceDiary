@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class PDPieceCellDataModel;
+@class PDQuestionEditViewController;
 
 @protocol PDQuestionEditViewControllerDelegate <NSObject>
 
 - (void)setQuestionContentWithText:(NSString *)text;
+- (void)questionEditViewController:(PDQuestionEditViewController *)editViewController editQuestionContentText:(NSString *)text inDate:(NSDate *)date;
 
 @end
 
@@ -21,5 +23,6 @@
 @property (nonatomic, retain) id<PDQuestionEditViewControllerDelegate> delegate;
 
 - (id)initWithDataModel:(PDPieceCellDataModel *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
+- (NSString *)getOldQuestionContent;
 
 @end

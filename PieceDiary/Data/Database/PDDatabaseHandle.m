@@ -9,6 +9,7 @@
 #import "PDDatabaseHandle.h"
 #import "FMDB.h"
 #import "PDDefine.h"
+#import "PDPhotoDataModel.h"
 
 #define DatabaseName @"PDDatabase.sqlite"
 
@@ -29,6 +30,8 @@
 
 #define DatabaseAnswerTableAnswerContent @"answerContent"
 #define DatabaseDate    @"date"
+#define DatabasePhotoTablePhoto     @"photo"
+#define DatabasePhotoTablePhotoID     @"photoID"
 
 @interface PDDatabaseHandle ()
 
@@ -123,7 +126,7 @@
 
 - (void)createQuestionTemplateTable
 {
-    NSString *sql = @"CREATE TABLE \"QuestionTemplateTable\" (\"templateID\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, \"questionID1\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID2\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID3\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID4\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID5\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID6\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID7\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID8\" TEXT NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"))";
+    NSString *sql = @"CREATE TABLE \"QuestionTemplateTable\" (\"templateID\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, \"questionID1\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID2\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID3\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID4\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID5\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID6\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID7\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"), \"questionID8\" INTEGER NOT NULL REFERENCES \"QuestionTable\" (\"questionID\"))";
     BOOL res = [self.database executeUpdate:sql];
     [self examWithResult:res tableName:DatabaseQuestionTemplateTable];
 }
@@ -364,11 +367,158 @@
     return answer;
 }
 
-- (NSArray *)getPhotosWithQuestionID:(NSInteger)questionID date:(NSDate *)date
+- (NSInteger)getQuestionIDWithQuestionContent:(NSString *)content
 {
-    // 通过问题ID和日期获取对应的图片
+    // 通过问题内容来获取对应的问题ID
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = \"%@\"", DatabaseQuestionTableQuestionID, DatabaseQuestionTable, DatabaseQuestionTableQuestionContent, content];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
     
-    return nil;
+    NSInteger questionID = DataBaseQueryResultNotFound;
+    if ([queryRes next])
+    {
+        questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
+    }
+    
+    return questionID;
+}
+
+- (BOOL)hasQuestionContent:(NSString *)content
+{
+    // 数据库里是否已经存在这个问题
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %@", DatabaseQuestionTableQuestionID, DatabaseQuestionTable, DatabaseQuestionTableQuestionContent, content];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (NSString *)getTemplateQuestionIDNumberWithQuestionID:(NSInteger)questionID templateID:(NSInteger)templateID
+{
+    // 获取templateID所对应的模板，再根据questionID获取模板中对应的questionIDx
+    NSString *questionIDNumber = nil;
+    
+    NSArray *questionIDs = [self getTemplateQuestionIDsWithTemplateID:templateID];
+    for (NSInteger i = 0; i < [questionIDs count]; i++)
+    {
+        NSInteger ID = [questionIDs[i] integerValue];
+        if (ID == questionID)
+        {
+            questionIDNumber = [NSString stringWithFormat:@"%@%ld", DatabaseQuestionTableQuestionID, (i + 1)];
+            break;
+        }
+    }
+    
+    return questionIDNumber;
+}
+
+- (NSInteger)getTemplateQuestionIDIndexWithQuestionID:(NSInteger)questionID templateID:(NSInteger)templateID
+{
+    NSString *questionIDNumber = [self getTemplateQuestionIDNumberWithQuestionID:questionID templateID:templateID];
+    NSString *indexStr = [questionIDNumber substringFromIndex:[questionIDNumber length] - 1];
+    NSInteger index = [indexStr integerValue];
+    
+    return index - 1;
+}
+
+- (NSArray *)getTemplateQuestionIDsWithTemplateID:(NSInteger)templateID
+{
+    // 获取对应问题模板的所有问题ID
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@ where %@ = %ld", DatabaseQuestionTemplateTable, DatabaseQuestionTemplateTableTemplateID, templateID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *array = [NSMutableArray array];
+    if ([queryRes next])
+    {
+        NSInteger count = 8;
+        for (NSInteger i = 0; i < count; i++)
+        {
+            NSString *columnName = [NSString stringWithFormat:@"%@%ld", DatabaseQuestionTableQuestionID, (i + 1)];
+            NSInteger questionID = [queryRes intForColumn:columnName];
+            [array addObject:[NSNumber numberWithInteger:questionID]];
+        }
+    }
+    
+    return array;
+}
+
+- (NSInteger)getTemplateIDWithQuestionIDs:(NSArray *)questionIDs
+{
+    // 通过问题获得模板ID
+    NSString *str = @"";
+    for (NSInteger i = 0; i < [questionIDs count]; i++)
+    {
+        NSString *judgeStr = [NSString stringWithFormat:@"questionID%ld = %ld", (i + 1), [questionIDs[i] integerValue]];
+        str = [str stringByAppendingString:judgeStr];
+        
+        if (i != [questionIDs count] - 1)
+        {
+            str = [str stringByAppendingString:@" and "];
+        }
+    }
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@", DatabaseQuestionTemplateTableTemplateID, DatabaseQuestionTemplateTable, str];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger templateID = DataBaseQueryResultNotFound;
+    if ([queryRes next])
+    {
+        templateID = [queryRes intForColumn:DatabaseQuestionTemplateTableTemplateID];
+    }
+    
+    return templateID;
+}
+
+- (NSInteger)getTemplateIDWithDate:(NSDate *)date
+{
+    // 通过日期获取对应的模板ID
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger templateID = DataBaseQueryResultNotFound;
+    if ([queryRes next])
+    {
+        templateID = [queryRes intForColumn:DatabaseQuestionTemplateTableTemplateID];
+    }
+    
+    return templateID;
+}
+
+- (BOOL)diaryTableHasDate:(NSDate *)date
+{
+    // 通过日期获取模板
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID
+{
+    // 通过日期和问题ID获取图片数据，包含图片data和图片ID
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [self stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *photoDatas = [NSMutableArray array];
+    while ([queryRes next])
+    {
+        NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
+        NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
+        NSDictionary *dict = @{[NSString stringWithFormat:@"%ld", photoID] : data};
+        
+        [photoDatas addObject:dict];
+    }
+    
+    return photoDatas;
 }
 
 #pragma mark - 数据库修改操作
@@ -377,6 +527,22 @@
 {
     // 通过问题ID和日期，将答案设为新的值
     NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where %@ = %ld and date = \"%@\"", DatabaseAnswerTable, DatabaseAnswerTableAnswerContent, text, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)updateDiaryQuestionTemplateID:(NSInteger)templateID date:(NSDate *)date
+{
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\"", DatabaseDiaryTable, DatabaseQuestionTemplateTableTemplateID, templateID, [self stringFromDate:date]];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)updateAnswerQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date
+{
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, newID, [self stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -392,7 +558,56 @@
     [arguments addObject:text];
     
     NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@) values (?, ?, ?)", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, DatabaseDate, DatabaseAnswerTableAnswerContent];
-    BOOL result= [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
+- (void)insertQuestionContentWithText:(NSString *)text
+{
+    // 插入问题内容
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:text];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@) values (?)", DatabaseQuestionTable, DatabaseQuestionTableQuestionContent];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
+- (void)insertQuestionTemplateWithQuestionIDs:(NSArray *)questionIDs
+{
+    // 插入新的模板
+    NSMutableArray *arguments = [NSMutableArray array];
+    for (NSInteger i = 0; i < [questionIDs count]; i++)
+    {
+        [arguments addObject:questionIDs[i]];
+    }
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (questionID1, questionID2, questionID3, questionID4, questionID5, questionID6, questionID7, questionID8) values (?, ?, ?, ?, ?, ?, ?, ?);", DatabaseQuestionTemplateTable];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
+- (void)insertDiaryDate:(NSDate *)date questionTemplateID:(NSInteger)templateID
+{
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:[NSNumber numberWithInteger:templateID]];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@) values (?, ?)", DatabaseDiaryTable, DatabaseDate, DatabaseQuestionTemplateTableTemplateID];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
+- (void)insertPhotoData:(NSData *)photoData inDate:(NSDate *)date questionID:(NSInteger)questionID
+{
+    // 插入图片
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:[NSNumber numberWithInteger:questionID]];
+    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:photoData];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@) values (?, ?, ?)", DatabasePhotoTable, DatabaseQuestionTableQuestionID, DatabaseDate, DatabasePhotoTablePhoto];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
     [self examExcuteWithResult:result];
 }
 

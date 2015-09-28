@@ -27,5 +27,6 @@
 - (void)resetEditViewByHideKeyboard;
 - (void)setEditViewWithDataModel:(PDPieceCellDataModel *)dataModel;
 - (void)setQuestionContentWithText:(NSString *)text;
+- (void)setupImageViewWithPhotoDataModels:(NSArray *)array;
 
 @end

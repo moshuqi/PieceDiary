@@ -9,6 +9,8 @@
 #import "PDDataManager.h"
 #import "PDDatabaseHandle.h"
 #import "PDPieceCellDataModel.h"
+#import "PDPhotoDataModel.h"
+#import <UIKit/UIKit.h>
 
 @interface PDDataManager ()
 
@@ -76,8 +78,27 @@ static PDDataManager *_instance;
         cellDataModel.question = [self.dbHandle getQuestionWithID:questionID];
         cellDataModel.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
         
-        NSArray *photos = [self.dbHandle getPhotosWithQuestionID:questionID date:date];
-        cellDataModel.photos = photos;
+        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+        NSMutableArray *photoDataModels = [NSMutableArray array];
+        for (NSInteger i = 0; i < [photoDatas count]; i++)
+        {
+            PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
+            photoDataModel.questionID = questionID;
+            photoDataModel.date = date;
+            
+            NSDictionary *dict = photoDatas[i];
+            id key = [[dict allKeys] firstObject];
+            NSInteger photoID = [key integerValue];
+            photoDataModel.photoID = photoID;
+            
+            NSData *photoData = [dict valueForKey:key];
+            UIImage *image = [UIImage imageWithData:photoData];
+            photoDataModel.image = image;
+            
+            [photoDataModels addObject:photoDataModel];
+        }
+        
+        cellDataModel.photoDataModels = photoDataModels;
         
         [dataModels addObject:cellDataModel];
     }
@@ -100,12 +121,110 @@ static PDDataManager *_instance;
     }
 }
 
-- (void)setQuetionContentWithText:(NSString *)text questionID:(NSInteger)questionID
+- (void)setQuetionContentWithNewContent:(NSString *)newContent oldContent:(NSString *)oldContent inDate:(NSDate *)date;
 {
-    // 设置新的问题。数据库允许不同的问题ID对应相同的问题
-    // 设置新的问题时，数据库直接添加新的问题ID，生成新的模板ID,然后修改原来答案对应的问题ID，和原来日期所对应的模板ID
+    // 设置新的问题。数据库问题ID和问题内容都为唯一值
     
+    // 新问题的问题ID
+    NSInteger newQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:newContent];
+    if (newQuestionID == DataBaseQueryResultNotFound)
+    {
+        [self.dbHandle insertQuestionContentWithText:newContent];
+        newQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:newContent];
+    }
+    
+    // 旧值对应的索引
+    NSInteger templateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
+    NSInteger oldQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:oldContent];
+    NSInteger index = [self.dbHandle getTemplateQuestionIDIndexWithQuestionID:oldQuestionID templateID:templateID];
+    
+    // 插入新的模板
+    NSMutableArray *questionIDs = [NSMutableArray arrayWithArray:[self.dbHandle getQuestionIDsWithTemplateID:templateID]];
+    [questionIDs setObject:[NSNumber numberWithInteger:newQuestionID] atIndexedSubscript:index];
+    [self.dbHandle insertQuestionTemplateWithQuestionIDs:questionIDs];
+    
+    // 获取新模板的模板ID
+    NSInteger newTemplateID = [self.dbHandle getTemplateIDWithQuestionIDs:questionIDs];
+    if ([self.dbHandle diaryTableHasDate:date])
+    {
+        [self.dbHandle updateDiaryQuestionTemplateID:newTemplateID date:date];
+    }
+    else
+    {
+        [self.dbHandle insertDiaryDate:date questionTemplateID:newTemplateID];
+    }
+    
+    // 对应答案的问题ID更新
+    [self.dbHandle updateAnswerQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
 }
 
+- (BOOL)exsistQuestionContent:(NSString *)content
+{
+    return [self.dbHandle hasQuestionContent:content];
+}
+
+- (NSInteger)getQuestionIDWithQuestionContent:(NSString *)content
+{
+    return [self.dbHandle getQuestionIDWithQuestionContent:content];
+}
+
+- (BOOL)exsistQuestionID:(NSInteger)questionID inDate:(NSDate *)date
+{
+    NSInteger templateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
+    NSArray *questionIDs = [self.dbHandle getQuestionIDsWithTemplateID:templateID];
+    
+    for (NSInteger i = 0; i < [questionIDs count]; i++)
+    {
+        NSInteger quesID = [questionIDs[i] integerValue];
+        if (questionID == quesID)
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (void)insertPhotosWithPhotoDataModels:(NSArray *)photoDatas
+{
+    for (NSInteger i = 0; i < [photoDatas count]; i++)
+    {
+        PDPhotoDataModel *dataModel = photoDatas[i];
+        
+        UIImage *image = dataModel.image;
+        NSData *imageData = UIImagePNGRepresentation(image);
+        
+        NSDate *date = dataModel.date;
+        NSInteger questionID = dataModel.questionID;
+        
+        [self.dbHandle insertPhotoData:imageData inDate:date questionID:questionID];
+    }
+}
+
+- (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID
+{
+    NSArray *dicts = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+    
+    NSMutableArray *photoDataModels = [NSMutableArray array];
+    for (NSInteger i = 0; i < [dicts count]; i++)
+    {
+        NSDictionary *dict = dicts[i];
+        id key = [[dict allKeys] firstObject];
+        NSInteger photoID = [key integerValue];
+        
+        NSData *photoData = [dict valueForKey:key];
+        UIImage *image = [UIImage imageWithData:photoData];
+        
+        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
+        dataModel.image = image;
+        dataModel.date = date;
+        dataModel.questionID = questionID;
+        dataModel.photoID = photoID;
+        
+        [photoDataModels addObject:dataModel];
+    }
+    
+    return photoDataModels;
+}
 
 @end

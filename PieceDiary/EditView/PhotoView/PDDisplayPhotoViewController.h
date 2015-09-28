@@ -18,6 +18,6 @@
 
 @property (nonatomic, assign) id<PDDisplayPhotoViewControllerDelegate> delegate;
 
-- (id)initWithPhotos:(NSArray *)photos;
+- (id)initWithPhotoDataModels:(NSArray *)photoDataModels;
 
 @end

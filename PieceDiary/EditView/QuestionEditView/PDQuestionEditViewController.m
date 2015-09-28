@@ -8,6 +8,7 @@
 
 #import "PDQuestionEditViewController.h"
 #import "PDPieceCellDataModel.h"
+#import "PDDataManager.h"
 
 @interface PDQuestionEditViewController () <UITextViewDelegate>
 
@@ -65,18 +66,69 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSString *)getOldQuestionContent
+{
+    return self.oldQuestion;
+}
+
 - (void)questionEditFinished
 {
     // 问题编辑完成
     
-    NSString *question = self.textView.text;
-    if ([question compare:self.oldQuestion] == NSOrderedSame)
+    if (![self questionContentChanged])
     {
         // 编辑没有改变原来的值
+        [self dismissViewControllerAnimated:YES completion:nil];
         return;
     }
     
+    NSString *question = self.textView.text;
+    if ([self exsistSameQuestion:question])
+    {
+        [self showAlertTip];
+    }
+    else
+    {
+        [self.delegate questionEditViewController:self editQuestionContentText:question inDate:self.dataModel.date];
+    }
+}
+
+- (BOOL)exsistSameQuestion:(NSString *)question
+{
     // 判断当天是否已经存在相同的问题。同一天不允许存在相同的问题。
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    BOOL bQuestionContentExsist = [dataManager exsistQuestionContent:question];
+    
+    if (bQuestionContentExsist)
+    {
+        NSInteger questionID = [dataManager getQuestionIDWithQuestionContent:question];
+        BOOL bDuplicate = [dataManager exsistQuestionID:questionID inDate:self.dataModel.date];
+        
+        if (bDuplicate)
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+- (BOOL)questionContentChanged
+{
+    NSString *question = self.textView.text;
+    if ([question compare:self.oldQuestion] == NSOrderedSame)
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)showAlertTip
+{
+    // 提示在同一天里设置了相同的问题
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"回答abcd" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 #pragma mark - UITextViewDelegate

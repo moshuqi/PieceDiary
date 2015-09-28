@@ -49,6 +49,7 @@
     self.pieceDiaryView.frame = [self getPieceDiaryFrame];
     self.pieceDiaryView.delegate = self;
     self.pieceDiaryView.cellDataArray = dataArray;
+    [self.pieceDiaryView setCurrentDateWithDate:date];
     
     [self.view addSubview:self.pieceDiaryView];
     self.pieceDiaryView.backgroundColor = [UIColor grayColor];
@@ -60,7 +61,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.pieceDiaryView.pieceCollectionView reloadData];
+    
+    [self.pieceDiaryView reloadAllCell];
 }
 
 - (CGRect)getPieceDiaryFrame
