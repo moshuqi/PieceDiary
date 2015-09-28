@@ -325,16 +325,6 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         [cell setDateHidden:YES];
     }
     
-    // 测试代码
-//    UIImage *image1 = [UIImage imageNamed:@"1.jpg"];
-//    UIImage *image2 = [UIImage imageNamed:@"1.jpg"];
-//    UIImage *image3 = [UIImage imageNamed:@"1.jpg"];
-//    UIImage *image4 = [UIImage imageNamed:@"1.jpg"];
-//    UIImage *image5 = [UIImage imageNamed:@"1.jpg"];
-//    
-//    NSArray *images = @[image1, image2, image3, image4, image5];
-//    cell.icons = images;
-    
     cell.backgroundColor = [UIColor whiteColor];
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;

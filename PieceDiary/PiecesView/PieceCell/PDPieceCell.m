@@ -8,13 +8,12 @@
 
 #import "PDPieceCell.h"
 #import "PDIconsView.h"
-
-#define kIconsViewHeight    56
+#import "PDPhotoDataModel.h"
 
 @interface PDPieceCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *contentLabel;
+@property (nonatomic, weak) IBOutlet UITextView *content;
 @property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 
 @property (nonatomic, retain) PDIconsView *iconsView;
@@ -32,10 +31,19 @@
 {
     [super layoutSubviews];
     
+    [self resetIconsView];
+}
+
+- (void)resetIconsView
+{
     // 有图片时显示图片，重新调整布局
     if ([self.icons count] > 0)
     {
         [self showIconsView];
+    }
+    else
+    {
+        [self hideIconsView];
     }
 }
 
@@ -56,9 +64,27 @@
     
     [self.contentView addSubview:self.iconsView];
     
+    CGFloat contentOrginX = 20;
     CGFloat h = CGRectGetHeight(self.titleLabel.bounds) + CGRectGetHeight(self.iconsView.bounds);
-    CGRect contentLabelFrame = CGRectMake(0, h, width, height - h);
-    self.contentLabel.frame = contentLabelFrame;
+    CGRect contentFrame = CGRectMake(contentOrginX, h, width - 2 * contentOrginX, height - h);
+    
+    self.content.frame = contentFrame;
+    self.content.contentInset = UIEdgeInsetsMake(kIconsViewHeight, 0, 0, 0);
+}
+
+- (void)hideIconsView
+{
+    [self.iconsView removeFromSuperview];
+    
+    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat height = CGRectGetHeight(self.bounds);
+    
+    CGFloat contentOrginX = 20;
+    CGFloat h = CGRectGetHeight(self.titleLabel.bounds);
+    CGRect contentFrame = CGRectMake(contentOrginX, h, width - 2 * contentOrginX, height - h);
+    
+    self.content.frame = contentFrame;
+    self.content.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (void)setupWithDataModel:(PDPieceCellDataModel *)dataModel
@@ -66,8 +92,18 @@
     self.dataModel = dataModel;
     
     self.titleLabel.text = dataModel.question;
-    self.contentLabel.text = dataModel.answer;
+    self.content.text = dataModel.answer;
     
+    NSArray *photoDataModels = dataModel.photoDataModels;
+    NSMutableArray *photos = [NSMutableArray array];
+    for (NSInteger i = 0; i < [photoDataModels count]; i++)
+    {
+        PDPhotoDataModel *model = photoDataModels[i];
+        [photos addObject:model.image];
+    }
+    self.icons = photos;
+    
+//    [self resetIconsView];
     [self resetCellColor];
 }
 

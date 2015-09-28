@@ -19,30 +19,36 @@
                             <constraint firstAttribute="height" constant="44" id="9FD-vr-1ki"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFT-B9-YSs" userLabel="contentLabel">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-CV-KLA">
                         <rect key="frame" x="20" y="44" width="265" height="98"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="nFk-AB-EbB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4DF-ca-Nq3"/>
-                <constraint firstItem="YFT-B9-YSs" firstAttribute="top" secondItem="nFk-AB-EbB" secondAttribute="bottom" id="IIX-ZH-bVa"/>
+                <constraint firstAttribute="bottom" secondItem="c0h-CV-KLA" secondAttribute="bottom" id="FgN-D1-bvd"/>
+                <constraint firstItem="c0h-CV-KLA" firstAttribute="top" secondItem="nFk-AB-EbB" secondAttribute="bottom" id="KQC-o3-d90"/>
+                <constraint firstItem="nFk-AB-EbB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NaD-3i-Abp"/>
                 <constraint firstItem="nFk-AB-EbB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="OxP-Xo-NRz"/>
+                <constraint firstItem="c0h-CV-KLA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QR1-NO-0zR"/>
                 <constraint firstAttribute="trailing" secondItem="nFk-AB-EbB" secondAttribute="trailing" constant="20" id="j6f-yp-jjS"/>
-                <constraint firstAttribute="trailing" secondItem="YFT-B9-YSs" secondAttribute="trailing" constant="20" id="lQb-JP-YzR"/>
-                <constraint firstAttribute="bottom" secondItem="YFT-B9-YSs" secondAttribute="bottom" id="oqP-D1-TOQ"/>
-                <constraint firstItem="YFT-B9-YSs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="p9a-2W-yAY"/>
+                <constraint firstItem="c0h-CV-KLA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="nm3-14-bo5"/>
+                <constraint firstAttribute="trailing" secondItem="c0h-CV-KLA" secondAttribute="trailing" constant="20" id="q1M-Gg-2Nk"/>
             </constraints>
             <size key="customSize" width="305" height="142"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QR1-NO-0zR"/>
+                </mask>
+            </variation>
             <connections>
-                <outlet property="contentLabel" destination="YFT-B9-YSs" id="Dyg-2F-3ce"/>
+                <outlet property="content" destination="c0h-CV-KLA" id="9fm-lh-5OZ"/>
                 <outlet property="titleLabel" destination="nFk-AB-EbB" id="GYq-BS-Ttc"/>
             </connections>
             <point key="canvasLocation" x="219.5" y="293"/>

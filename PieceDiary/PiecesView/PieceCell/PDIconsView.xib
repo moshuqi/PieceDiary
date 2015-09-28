@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PDIconsView">
-            <rect key="frame" x="0.0" y="-1" width="286" height="38"/>
+            <rect key="frame" x="0.0" y="0.0" width="286" height="38"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-94-5pA" userLabel="Image View1">
-                    <rect key="frame" x="5" y="0.0" width="40" height="38"/>
-                    <color key="backgroundColor" red="1" green="0.44933962379999998" blue="0.31993062630000002" alpha="1" colorSpace="calibratedRGB"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-94-5pA" userLabel="Image View1">
+                    <rect key="frame" x="5" y="0.0" width="38" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="j3T-94-5pA" secondAttribute="height" multiplier="20:19" id="96I-QY-dN2"/>
+                        <constraint firstAttribute="width" secondItem="j3T-94-5pA" secondAttribute="height" multiplier="20:20" id="96I-QY-dN2"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="igB-Sz-8Tf" userLabel="Image View2">
-                    <rect key="frame" x="50" y="0.0" width="40" height="38"/>
-                    <color key="backgroundColor" red="0.6190724879056464" green="1" blue="0.3160933912404732" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="48" y="0.0" width="38" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="igB-Sz-8Tf" secondAttribute="height" multiplier="20:19" id="BWv-0c-OVF"/>
+                        <constraint firstAttribute="width" secondItem="igB-Sz-8Tf" secondAttribute="height" multiplier="20:20" id="BWv-0c-OVF"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iti-Aq-pBc" userLabel="Image View3">
-                    <rect key="frame" x="95" y="0.0" width="40" height="38"/>
+                    <rect key="frame" x="91" y="0.0" width="38" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="0Te-ZK-nJR"/>
-                        <constraint firstAttribute="width" secondItem="iti-Aq-pBc" secondAttribute="height" multiplier="20:19" id="EIW-Pe-nME"/>
+                        <constraint firstAttribute="width" secondItem="iti-Aq-pBc" secondAttribute="height" multiplier="20:20" id="EIW-Pe-nME"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -38,18 +37,18 @@
                     </variation>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="trk-mn-67I" userLabel="Image View4">
-                    <rect key="frame" x="140" y="0.0" width="40" height="38"/>
+                    <rect key="frame" x="134" y="0.0" width="38" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="trk-mn-67I" secondAttribute="height" multiplier="20:19" id="6Qe-EB-qVJ"/>
+                        <constraint firstAttribute="width" secondItem="trk-mn-67I" secondAttribute="height" multiplier="20:20" id="6Qe-EB-qVJ"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKv-Ut-S7r">
-                    <rect key="frame" x="185" y="0.0" width="36" height="38"/>
+                    <rect key="frame" x="177" y="0.0" width="36" height="38"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="36" id="vrF-UW-59Z"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>

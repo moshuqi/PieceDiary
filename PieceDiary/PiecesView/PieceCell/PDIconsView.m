@@ -26,14 +26,18 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    
-    CGFloat d = self.icon1.frame.size.width;
-    
-    self.icon1.layer.cornerRadius = d;
+    self.icon1.layer.cornerRadius = kIconsViewHeight / 2;
     self.icon1.clipsToBounds = YES;
-    self.icon2.layer.cornerRadius = d / 2;
-    self.icon3.layer.cornerRadius = d / 2;
-    self.icon4.layer.cornerRadius = d / 2;
+    
+    self.icon2.layer.cornerRadius = kIconsViewHeight / 2;
+    self.icon2.clipsToBounds = YES;
+
+    self.icon3.layer.cornerRadius = kIconsViewHeight / 2;
+    self.icon3.clipsToBounds = YES;
+
+    self.icon4.layer.cornerRadius = kIconsViewHeight / 2;
+    self.icon4.clipsToBounds = YES;
+
 }
 
 - (void)setIconsWithImages:(NSArray *)images

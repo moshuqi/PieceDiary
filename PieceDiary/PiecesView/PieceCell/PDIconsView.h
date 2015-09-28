@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define kIconsViewHeight    46
+
+
 @interface PDIconsView : UIView
 
 - (void)setIconsWithImages:(NSArray *)images;
