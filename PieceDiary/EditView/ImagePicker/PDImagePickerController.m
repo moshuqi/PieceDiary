@@ -91,7 +91,9 @@
 
 - (IBAction)touchedCancel:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^(){
+        [self.delegate imagePickerControllerCancel:self];
+    }];
 }
 
 - (IBAction)touchedDone:(id)sender
@@ -112,6 +114,14 @@
         [assetLibrary assetForURL:url resultBlock:^(ALAsset *asset)
         {
             UIImage *image = [UIImage imageWithCGImage:[asset.defaultRepresentation fullResolutionImage]];
+            
+            // iamge有时为空。暂时这样处理。
+            if (!image)
+            {
+                image = [UIImage imageNamed:@"mood.jpg"];
+                NSLog(@"image为空！");
+            }
+            
             [photos addObject:image];
             
             if (i + 1 == count)

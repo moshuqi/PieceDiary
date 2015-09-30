@@ -36,6 +36,9 @@
                             <state key="normal" title="主页">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="infoButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Rl-eX-07w"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-Rs-H66">
                             <rect key="frame" x="388" y="0.0" width="56" height="44"/>

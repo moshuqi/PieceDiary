@@ -8,6 +8,7 @@
 
 #import "PDGridView.h"
 #import "PDGridCell.h"
+#import "PDDataManager.h"
 
 #define PDGridCellIdentifier @"PDGridCellIdentifier"
 #define PDGridCellInteritemSpacing   0
@@ -54,7 +55,35 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    PDGridCell *cell = (PDGridCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    PDGridCellType type = cell.type;
     
+    [self showTableViewWithType:type];
+}
+
+- (void)showTableViewWithType:(PDGridCellType)type
+{
+    switch (type) {
+        case PDGridCellTypeDiary:
+            [self.delegate showDiaryTableView];
+            break;
+            
+        case PDGridCellTypeCrid:
+            [self.delegate showGridTableView];
+            break;
+            
+        case PDGridCellTypeQuestion:
+            [self.delegate showQuestionTableView];
+            break;
+            
+        case PDGridCellTypePhoto:
+            [self.delegate showPhotoTableView];
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -67,13 +96,78 @@
 - (PDGridCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     PDGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDGridCellIdentifier forIndexPath:indexPath];
+    static PDGridCellType typeArray[] = {PDGridCellTypeDiary, PDGridCellTypeCrid, PDGridCellTypeQuestion, PDGridCellTypePhoto};
+    [self setupGridCell:cell withType:typeArray[indexPath.row]];
     
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
     cell.backgroundColor = [UIColor whiteColor];
     
-    
     return cell;
+}
+
+- (void)setupGridCell:(PDGridCell *)cell withType:(PDGridCellType)type
+{
+    cell.type = type;
+    [cell setCellTitleWithText:[self getLabelContentWithType:type]];
+    [cell setQuantityWithNumber:[self getQuantityWithType:type]];
+}
+
+- (NSString *)getLabelContentWithType:(PDGridCellType)type
+{
+    NSString *content = @"";
+    switch (type) {
+        case PDGridCellTypeDiary:
+            content = @"日记";
+            break;
+            
+        case PDGridCellTypeCrid:
+            content = @"格子";
+            break;
+            
+        case PDGridCellTypeQuestion:
+            content = @"问题";
+            break;
+            
+        case PDGridCellTypePhoto:
+            content = @"照片";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return content;
+}
+
+- (NSInteger)getQuantityWithType:(PDGridCellType)type
+{
+    // 获取数量
+    NSInteger quantity = 0;
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    
+    switch (type) {
+        case PDGridCellTypeDiary:
+            quantity = [dataManager getDiaryQuantity];
+            break;
+            
+        case PDGridCellTypeCrid:
+            quantity = [dataManager getEditedGridQuantity];
+            break;
+            
+        case PDGridCellTypeQuestion:
+            quantity = [dataManager getQuestionQuantity];
+            break;
+            
+        case PDGridCellTypePhoto:
+            quantity = [dataManager getPhotoQuantity];
+            break;
+            
+        default:
+            break;
+    }
+    
+    return quantity;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

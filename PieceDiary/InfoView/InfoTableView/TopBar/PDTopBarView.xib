@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDTopBarView">
+            <connections>
+                <outlet property="returnBtn" destination="zmh-8j-E9a" id="knU-bp-N93"/>
+                <outlet property="titleLabel" destination="eMG-o6-gkv" id="EDi-1t-A3c"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmh-8j-E9a">
+                    <rect key="frame" x="0.0" y="20" width="56" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="tek-aJ-0Fn"/>
+                    </constraints>
+                    <state key="normal" title="返回">
+                        <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="touchedReturn:" destination="-1" eventType="touchUpInside" id="o24-tl-7sZ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-o6-gkv">
+                    <rect key="frame" x="182.5" y="20" width="66" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="3pm-xa-9IA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.91858033459999999" green="0.90627344649999997" blue="0.87098506620000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="zmh-8j-E9a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="5qG-Nf-jLB"/>
+                <constraint firstItem="eMG-o6-gkv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="LIW-Kn-cUP"/>
+                <constraint firstAttribute="bottom" secondItem="eMG-o6-gkv" secondAttribute="bottom" id="a6B-aj-dOV"/>
+                <constraint firstAttribute="bottom" secondItem="zmh-8j-E9a" secondAttribute="bottom" id="hNS-R9-rXX"/>
+                <constraint firstItem="eMG-o6-gkv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uQF-zH-Ggs"/>
+                <constraint firstItem="zmh-8j-E9a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wfz-Q0-QnM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="264.5" y="-81"/>
+        </view>
+    </objects>
+</document>

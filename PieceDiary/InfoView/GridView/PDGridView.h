@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PDGridViewDelegate <NSObject>
+
+- (void)showDiaryTableView;
+- (void)showGridTableView;
+- (void)showPhotoTableView;
+- (void)showQuestionTableView;
+
+@end
+
 @interface PDGridView : UIView
+
+@property (nonatomic, assign) id<PDGridViewDelegate> delegate;
 
 @end

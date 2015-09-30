@@ -322,9 +322,23 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     // 选中的图片插入到数据库
     PDDataManager *dataManager = [PDDataManager defaultManager];
     [dataManager insertPhotosWithPhotoDataModels:photoDataModels];
-    [self.editView setupImageViewWithPhotoDataModels:photoDataModels];
     
-    [imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    // 重新请求一次图片
+    NSArray *dataModelsArray = [dataManager getPhotoDataModelsWithDate:date questionID:questionID];
+    PDPieceCellDataModel *cellDataModel = self.dataArray[self.currentIndex];
+    cellDataModel.photoDataModels = dataModelsArray;
+    
+    [self.editView setupImageViewWithPhotoDataModels:dataModelsArray];
+    
+    [imagePickerController dismissViewControllerAnimated:YES completion:^(){
+        [self resetToolbarButtonsState];
+    }];
+}
+
+- (void)imagePickerControllerCancel:(PDImagePickerController *)imagePickerController
+{
+    // UIModalPresentationFormSheet的显示消失时不会调用viewWillAppear，所以通过加上回调来处理
+    [self resetToolbarButtonsState];
 }
 
 #pragma mark - PDDisplayPhotoViewControllerDelegate

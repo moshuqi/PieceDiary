@@ -164,6 +164,11 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     [self collectionViewSlideToDirection:CollectionSlideDirectionRight];
 }
 
+- (IBAction)infoButtonTouched:(id)sender
+{
+    [self.delegate enterInfoViewWithDate:self.currentDate];
+}
+
 - (void)collectionViewSlideToDirection:(CollectionSlideDirection)direction
 {
     // 添加两个临时的collectionView视图来展现滑动换页的效果

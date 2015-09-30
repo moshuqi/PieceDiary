@@ -15,6 +15,7 @@
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)enterEditFromCell:(UICollectionViewCell *)cell dataArrayIndex:(NSInteger)index;
 - (void)enterRecordViewWithDate:(NSDate *)date;
+- (void)enterInfoViewWithDate:(NSDate *)date;
 
 @end
 

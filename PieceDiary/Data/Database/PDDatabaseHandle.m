@@ -10,6 +10,7 @@
 #import "FMDB.h"
 #import "PDDefine.h"
 #import "PDPhotoDataModel.h"
+#import "PDGridInfoCellDataModel.h"
 
 #define DatabaseName @"PDDatabase.sqlite"
 
@@ -489,7 +490,7 @@
 
 - (BOOL)diaryTableHasDate:(NSDate *)date
 {
-    // 通过日期获取模板
+    // 判断date是否有编辑过日记
     NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
@@ -521,6 +522,173 @@
     return photoDatas;
 }
 
+- (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID
+{
+    // 通过日期和问题ID获取图片数据
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [self stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *models = [NSMutableArray array];
+    while ([queryRes next])
+    {
+        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
+        
+        NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
+        UIImage *image = [UIImage imageWithData:data];
+        dataModel.image = image;
+        
+        NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
+        dataModel.photoID = photoID;
+        
+        dataModel.questionID = questionID;
+        dataModel.date = date;
+        
+        [models addObject:dataModel];
+    }
+    
+    return models;
+}
+
+- (NSInteger)diaryQuantity
+{
+    // 日记的总数量
+    NSString *querySql = [NSString stringWithFormat:@"select count(*) from %@", DatabaseDiaryTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger quantity = 0;
+    if ([queryRes next])
+    {
+        quantity = [queryRes intForColumnIndex:0];
+    }
+    
+    return quantity;
+}
+
+- (NSInteger)editedGridQuantity
+{
+    // 编辑过的cell的总数量
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@", DatabaseDiaryTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    // 通过遍历存在的日记来计算
+    NSInteger quantity = 0;
+    while ([queryRes next])
+    {
+        NSString *date = [queryRes stringForColumn:DatabaseDate];
+        
+        NSString *queryQuestionQuantitySql = [NSString stringWithFormat:@"select count (*) from  (select questionID from %@ where date = \"%@\" union select questionID from %@ where date = \"%@\" )", DatabaseAnswerTable, date, DatabasePhotoTable, date];
+        FMResultSet * queryQuestionQuantityRes = [self.database executeQuery:queryQuestionQuantitySql];
+        
+        if ([queryQuestionQuantityRes next])
+        {
+            quantity += [queryQuestionQuantityRes intForColumnIndex:0];
+        }
+    }
+    
+    return quantity;
+}
+
+- (NSInteger)questionQuantity
+{
+    // 编辑过的问题的总数量
+    NSString *querySql = [NSString stringWithFormat:@"select count(*) from (select %@ from %@ union select %@ from %@)", DatabaseQuestionTableQuestionID, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, DatabasePhotoTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger quantity = 0;
+    if ([queryRes next])
+    {
+        quantity = [queryRes intForColumnIndex:0];
+    }
+    
+    return quantity;
+}
+
+- (NSInteger)photoQuantity
+{
+    // 图片的总数量
+    NSString *querySql = [NSString stringWithFormat:@"select count(*) from %@", DatabasePhotoTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger quantity = 0;
+    if ([queryRes next])
+    {
+        quantity = [queryRes intForColumnIndex:0];
+    }
+    
+    return quantity;
+}
+
+- (NSArray *)getAllDiaryDateForInfo
+{
+    // 获取所有日记date，降序排序
+    NSString *querySql = [NSString stringWithFormat:@"select date from %@ order by date DESC", DatabaseDiaryTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *dateArray = [NSMutableArray array];
+    while ([queryRes next])
+    {
+        NSString *dateStr = [queryRes stringForColumn:DatabaseDate];
+        NSDate *date = [self dateFromString:dateStr];
+        [dateArray addObject:date];
+    }
+    
+    return dateArray;
+}
+
+- (NSString *)getWeatherWithDate:(NSDate *)date
+{
+    // 获取天气
+    NSString *weather = nil;
+    
+    return weather;
+}
+
+- (NSString *)getMoodWithDate:(NSDate *)date
+{
+    // 获取心情
+    NSString *mood = nil;
+    
+    return mood;
+}
+
+- (NSArray *)getAllEditedCellData
+{
+    NSArray *allDiaryDate = [self getAllDiaryDateForInfo];
+    NSMutableArray *cellDataArray = [NSMutableArray array];
+    
+    for (NSDate *date in allDiaryDate)
+    {
+        NSString *dateStr = [self stringFromDate:date];
+        NSString *querySql = [NSString stringWithFormat:@"select questionID, date from %@ where date = \"%@\" union select questionID, date from %@ where date = \"%@\"", DatabaseAnswerTable, dateStr, DatabasePhotoTable, dateStr];
+        
+        FMResultSet * queryRes = [self.database executeQuery:querySql];
+        while ([queryRes next])
+        {
+            NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
+            NSString *questionContent = [self getQuestionWithID:questionID];
+            NSString *answerContent = [self getAnswerWithQuestionID:questionID date:date];
+            
+            PDGridInfoCellDataModel *cellDataModel = [PDGridInfoCellDataModel new];
+            cellDataModel.date = date;
+            cellDataModel.question = questionContent;
+            cellDataModel.answer = answerContent;
+            cellDataModel.images = [NSMutableArray array];
+            
+            NSArray *photoDatas = [self getPhotoDataModelsWithDate:date questionID:questionID];
+            for (NSInteger i = 0; i < [photoDatas count]; i++)
+            {
+                PDPhotoDataModel *photoDataModel = photoDatas[i];
+                [cellDataModel.images addObject:photoDataModel.image];
+            }
+            
+            [cellDataArray addObject:cellDataModel];
+        }
+    }
+    
+    return cellDataArray;
+}
+
 #pragma mark - 数据库修改操作
 
 - (void)updateAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date
@@ -542,7 +710,17 @@
 
 - (void)updateAnswerQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date
 {
+    // 更新问题对应的ID
     NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, newID, [self stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)updatePhotoQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date
+{
+    // 更新图片对应的ID
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabasePhotoTable, DatabaseQuestionTableQuestionID, newID, [self stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -611,6 +789,23 @@
     [self examExcuteWithResult:result];
 }
 
+#pragma mark - 数据库删除操作
+
+- (void)deletePhotoWithPhotoID:(NSInteger)photoID
+{
+    // 删除图片
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = %ld",DatabasePhotoTable, DatabasePhotoTablePhotoID, photoID];
+    BOOL result = [self.database executeUpdate:deleteSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)deleteAnswerContentWithQuestionID:(NSInteger)questionID date:(NSDate *)date
+{
+    // 删除回答内容
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = %ld and date = \"%@\"",DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    BOOL result = [self.database executeUpdate:deleteSql];
+    [self examExcuteWithResult:result];
+}
 
 - (NSDate *)dateFromString:(NSString *)dateString
 {

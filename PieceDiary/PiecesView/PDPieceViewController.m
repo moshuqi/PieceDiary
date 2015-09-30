@@ -132,7 +132,7 @@
 
 - (void)pieceDiaryView:(PDPieceDiaryView *)pieceDiaryView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self showInfoView];
+//    [self showInfoView];
 }
 
 - (void)enterEditFromCell:(UICollectionViewCell *)cell dataArrayIndex:(NSInteger)index
@@ -146,6 +146,11 @@
 - (void)enterRecordViewWithDate:(NSDate *)date
 {
     [self showRecordView];
+}
+
+- (void)enterInfoViewWithDate:(NSDate *)date
+{
+    [self showInfoView];
 }
 
 #pragma mark - ScaleAnimationDelegate

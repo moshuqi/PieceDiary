@@ -13,6 +13,7 @@
 @protocol PDImagePickerControllerDelegate <NSObject>
 
 - (void)imagePickerController:(PDImagePickerController *)imagePickerController pickFinishedWithPhotos:(NSArray *)photos;
+- (void)imagePickerControllerCancel:(PDImagePickerController *)imagePickerController;
 
 @end
 

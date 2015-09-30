@@ -4,22 +4,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/PiecesView/PDPieceViewController.m"
-            timestampString = "465107271.262109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-enterPieceEditViewWithIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -36,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PieceDiary/Data/Database/PDDatabaseHandle.m"
-            timestampString = "465124805.822631"
+            timestampString = "465314416.198541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "-connect"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PieceDiary/Data/PDDataManager.m"
-            timestampString = "465135171.446901"
+            timestampString = "465213907.312242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-setQuetionContentWithNewContent:oldContent:inDate:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PieceDiary/Data/Database/PDDatabaseHandle.m"
-            timestampString = "465124805.822631"
+            timestampString = "465314416.198541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "597"
-            endingLineNumber = "597"
+            startingLineNumber = "775"
+            endingLineNumber = "775"
             landmarkName = "-insertDiaryDate:questionTemplateID:"
             landmarkType = "5">
          </BreakpointContent>
@@ -83,125 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/QuestionEditView/PDQuestionEditViewController.m"
-            timestampString = "465106944.905063"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-initWithDataModel:delegate:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PDPieceEditViewController.m"
-            timestampString = "465118725.918298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
-            landmarkName = "-imagePickerController:pickFinishedWithPhotos:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PhotoView/PDDisplayPhotoViewController.m"
-            timestampString = "465133676.309855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-setupImageView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PieceDiary/Data/Database/PDDatabaseHandle.m"
-            timestampString = "465125074.194577"
+            timestampString = "465314416.198541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
-            landmarkName = "-insertPhotoData:inDate:questionID:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PhotoView/PDDisplayPhotoViewController.m"
-            timestampString = "465133676.309855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-resetImageViewFrameWithImage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PhotoView/PDDisplayPhotoViewController.m"
-            timestampString = "465133676.309855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-initWithPhotoDataModels:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PDPieceDiaryEditView.m"
-            timestampString = "465133777.840289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-setupImageViewWithPhotoDataModels:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/EditView/PDPieceDiaryEditView.m"
-            timestampString = "465133878.722632"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-setEditViewWithDataModel:"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
+            landmarkName = "-getPhotoDatasWithDate:questionID:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -212,28 +84,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PieceDiary/Data/PDDataManager.m"
-            timestampString = "465135171.446901"
+            timestampString = "465213055.348788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-getPhotoDataModelsWithDate:questionID:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/Data/PDDataManager.m"
-            timestampString = "465135218.839035"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-getPieceViewDatasWithDate:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-setAnswerContentWithText:questionID:date:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -243,13 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/PiecesView/PieceCell/PDPieceCell.m"
-            timestampString = "465149622.885562"
+            filePath = "PieceDiary/EditView/ImagePicker/PDImagePickerController.m"
+            timestampString = "465214076.678322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-hideIconsView"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-touchedDone:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -259,29 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/PiecesView/PieceCell/PDPieceCell.m"
-            timestampString = "465149622.885562"
+            filePath = "PieceDiary/InfoView/InfoTableView/Diary/PDDiaryInfoTableViewController.m"
+            timestampString = "465317699.657579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-setupWithDataModel:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PieceDiary/PiecesView/PieceCell/PDPieceCell.m"
-            timestampString = "465148464.404615"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-resetIconsView"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -291,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PieceDiary/PiecesView/PDPieceViewController.m"
-            timestampString = "465148573.532058"
+            filePath = "PieceDiary/InfoView/InfoTableView/Grid/PDGridInfoCell.m"
+            timestampString = "465320121.766318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-enterEditFromCell:dataArrayIndex:"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-awakeFromNib"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,8 +7,15 @@
 //
 
 #import "PDInfoViewController.h"
+#import "PDGridView.h"
+#import "PDDiaryInfoTableViewController.h"
+#import "PDGridInfoViewController.h"
+#import "PDPhotoInfoViewController.h"
+#import "PDQuestionInfoViewController.h"
 
-@interface PDInfoViewController ()
+@interface PDInfoViewController () <PDGridViewDelegate>
+
+@property (nonatomic, weak) IBOutlet PDGridView *gridView;
 
 @end
 
@@ -19,6 +26,8 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    self.gridView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,5 +44,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - PDGridViewDelegate
+
+- (void)showDiaryTableView
+{
+    PDDiaryInfoTableViewController *viewController = [PDDiaryInfoTableViewController new];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)showGridTableView
+{
+    PDGridInfoViewController *viewController = [PDGridInfoViewController new];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)showPhotoTableView
+{
+    PDPhotoInfoViewController *viewController = [PDPhotoInfoViewController new];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)showQuestionTableView
+{
+    PDQuestionInfoViewController *viewController = [PDQuestionInfoViewController new];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 
 @end

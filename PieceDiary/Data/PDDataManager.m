@@ -11,6 +11,7 @@
 #import "PDPieceCellDataModel.h"
 #import "PDPhotoDataModel.h"
 #import <UIKit/UIKit.h>
+#import "PDDefine.h"
 
 @interface PDDataManager ()
 
@@ -78,26 +79,33 @@ static PDDataManager *_instance;
         cellDataModel.question = [self.dbHandle getQuestionWithID:questionID];
         cellDataModel.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
         
-        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
-        NSMutableArray *photoDataModels = [NSMutableArray array];
-        for (NSInteger i = 0; i < [photoDatas count]; i++)
-        {
-            PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
-            photoDataModel.questionID = questionID;
-            photoDataModel.date = date;
-            
-            NSDictionary *dict = photoDatas[i];
-            id key = [[dict allKeys] firstObject];
-            NSInteger photoID = [key integerValue];
-            photoDataModel.photoID = photoID;
-            
-            NSData *photoData = [dict valueForKey:key];
-            UIImage *image = [UIImage imageWithData:photoData];
-            photoDataModel.image = image;
-            
-            [photoDataModels addObject:photoDataModel];
-        }
+//        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+//        NSMutableArray *photoDataModels = [NSMutableArray array];
+//        for (NSInteger i = 0; i < [photoDatas count]; i++)
+//        {
+//            PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
+//            photoDataModel.questionID = questionID;
+//            photoDataModel.date = date;
+//            
+//            NSDictionary *dict = photoDatas[i];
+//            id key = [[dict allKeys] firstObject];
+//            NSInteger photoID = [key integerValue];
+//            photoDataModel.photoID = photoID;
+//            
+//            NSData *photoData = [dict valueForKey:key];
+//            UIImage *image = [UIImage imageWithData:photoData];
+//            
+//            if (!image)
+//            {
+//                PDLog(@"image为nil");
+//            }
+//            
+//            photoDataModel.image = image;
+//            
+//            [photoDataModels addObject:photoDataModel];
+//        }
         
+        NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
         cellDataModel.photoDataModels = photoDataModels;
         
         [dataModels addObject:cellDataModel];
@@ -109,7 +117,18 @@ static PDDataManager *_instance;
 - (void)setAnswerContentWithText:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
 {
     NSString *answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
-    if (answer)
+    BOOL bExsist = (answer != nil); // 原来是否存在内容
+    if ([text length] < 1)
+    {
+        if (bExsist)
+        {
+            // text长度为0且原来存在内容，则此时做删除操作。
+            [self.dbHandle deleteAnswerContentWithQuestionID:questionID date:date];
+        }
+        return;
+    }
+    
+    if (bExsist)
     {
         // 已存在内容，则对数据库进行修改
         [self.dbHandle updateAnswerContentWith:text questionID:questionID date:date];
@@ -118,6 +137,13 @@ static PDDataManager *_instance;
     {
         // 第一次编辑，则对数据库进行插入操作
         [self.dbHandle insertAnswerContentWith:text questionID:questionID date:date];
+    }
+    
+    // 编辑过之后对应日期的日记要添加到数据库中
+    if (![self.dbHandle diaryTableHasDate:date])
+    {
+        NSInteger defaultTemplateID = [self.dbHandle getDefaultQuestionTemplateID];
+        [self.dbHandle insertDiaryDate:date questionTemplateID:defaultTemplateID];
     }
 }
 
@@ -156,6 +182,9 @@ static PDDataManager *_instance;
     
     // 对应答案的问题ID更新
     [self.dbHandle updateAnswerQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
+    
+    // 对应图片的问题ID更新
+    [self.dbHandle updatePhotoQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
 }
 
 - (BOOL)exsistQuestionContent:(NSString *)content
@@ -192,39 +221,77 @@ static PDDataManager *_instance;
         PDPhotoDataModel *dataModel = photoDatas[i];
         
         UIImage *image = dataModel.image;
-        NSData *imageData = UIImagePNGRepresentation(image);
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
         
         NSDate *date = dataModel.date;
         NSInteger questionID = dataModel.questionID;
         
         [self.dbHandle insertPhotoData:imageData inDate:date questionID:questionID];
     }
+    
+    // 编辑过之后对应日期的日记要添加到数据库中
+    PDPhotoDataModel *model = [photoDatas firstObject];
+    NSDate *date = model.date;
+    if (![self.dbHandle diaryTableHasDate:date])
+    {
+        NSInteger defaultTemplateID = [self.dbHandle getDefaultQuestionTemplateID];
+        [self.dbHandle insertDiaryDate:date questionTemplateID:defaultTemplateID];
+    }
 }
 
 - (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID
 {
-    NSArray *dicts = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
-    
-    NSMutableArray *photoDataModels = [NSMutableArray array];
-    for (NSInteger i = 0; i < [dicts count]; i++)
-    {
-        NSDictionary *dict = dicts[i];
-        id key = [[dict allKeys] firstObject];
-        NSInteger photoID = [key integerValue];
-        
-        NSData *photoData = [dict valueForKey:key];
-        UIImage *image = [UIImage imageWithData:photoData];
-        
-        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
-        dataModel.image = image;
-        dataModel.date = date;
-        dataModel.questionID = questionID;
-        dataModel.photoID = photoID;
-        
-        [photoDataModels addObject:dataModel];
-    }
-    
+    NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
     return photoDataModels;
+    
+//    NSArray *dicts = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+//    
+//    NSMutableArray *photoDataModels = [NSMutableArray array];
+//    for (NSInteger i = 0; i < [dicts count]; i++)
+//    {
+//        NSDictionary *dict = dicts[i];
+//        id key = [[dict allKeys] firstObject];
+//        NSInteger photoID = [key integerValue];
+//        
+//        NSData *photoData = [dict valueForKey:key];
+//        UIImage *image = [UIImage imageWithData:photoData];
+//        
+//        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
+//        dataModel.image = image;
+//        dataModel.date = date;
+//        dataModel.questionID = questionID;
+//        dataModel.photoID = photoID;
+//        
+//        [photoDataModels addObject:dataModel];
+//    }
+//    
+//    return photoDataModels;
 }
+
+- (void)deletePhotoWithPhotoID:(NSInteger)photoID
+{
+    [self.dbHandle deletePhotoWithPhotoID:photoID];
+}
+
+- (NSInteger)getDiaryQuantity
+{
+    return [self.dbHandle diaryQuantity];
+}
+
+- (NSInteger)getEditedGridQuantity
+{
+    return [self.dbHandle editedGridQuantity];
+}
+
+- (NSInteger)getQuestionQuantity
+{
+    return [self.dbHandle questionQuantity];
+}
+
+- (NSInteger)getPhotoQuantity
+{
+    return [self.dbHandle photoQuantity];
+}
+
 
 @end
