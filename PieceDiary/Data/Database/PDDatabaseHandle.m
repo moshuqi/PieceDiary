@@ -11,6 +11,9 @@
 #import "PDDefine.h"
 #import "PDPhotoDataModel.h"
 #import "PDGridInfoCellDataModel.h"
+#import "PDQuestionInfoCellDataModel.h"
+#import "PDGridInfoSectionDataModel.h"
+#import "NSDate+PDDate.h"
 
 #define DatabaseName @"PDDatabase.sqlite"
 
@@ -272,7 +275,7 @@
 - (NSInteger)getQuestionTemplateIDWithDate:(NSDate *)date
 {
     // 通过日期获取模板
-    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [PDDatabaseHandle stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     // 查询日期是否有对应的模板，若有，则说明该日期进行过编辑；否则使用对应模板，该日期为第一次进行编辑
@@ -356,7 +359,7 @@
 {
     // 通过问题ID和日期获取对应的回答
     
-    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld and date = \"%@\"", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %ld and date = \"%@\"", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [PDDatabaseHandle stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     NSString *answer = nil;
@@ -476,7 +479,7 @@
 - (NSInteger)getTemplateIDWithDate:(NSDate *)date
 {
     // 通过日期获取对应的模板ID
-    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [PDDatabaseHandle stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     NSInteger templateID = DataBaseQueryResultNotFound;
@@ -491,7 +494,7 @@
 - (BOOL)diaryTableHasDate:(NSDate *)date
 {
     // 判断date是否有编辑过日记
-    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [self stringFromDate:date]];
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where date = \"%@\"", DatabaseQuestionTemplateTableTemplateID, DatabaseDiaryTable, [PDDatabaseHandle stringFromDate:date]];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     if ([queryRes next])
@@ -506,7 +509,7 @@
 {
     // 通过日期和问题ID获取图片数据，包含图片data和图片ID
     
-    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [self stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
+    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     NSMutableArray *photoDatas = [NSMutableArray array];
@@ -526,7 +529,7 @@
 {
     // 通过日期和问题ID获取图片数据
     
-    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [self stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
+    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
     NSMutableArray *models = [NSMutableArray array];
@@ -619,7 +622,7 @@
     return quantity;
 }
 
-- (NSArray *)getAllDiaryDateForInfo
+- (NSArray *)getAllDiaryDate
 {
     // 获取所有日记date，降序排序
     NSString *querySql = [NSString stringWithFormat:@"select date from %@ order by date DESC", DatabaseDiaryTable];
@@ -629,7 +632,7 @@
     while ([queryRes next])
     {
         NSString *dateStr = [queryRes stringForColumn:DatabaseDate];
-        NSDate *date = [self dateFromString:dateStr];
+        NSDate *date = [PDDatabaseHandle dateFromString:dateStr];
         [dateArray addObject:date];
     }
     
@@ -654,12 +657,12 @@
 
 - (NSArray *)getAllEditedCellData
 {
-    NSArray *allDiaryDate = [self getAllDiaryDateForInfo];
+    NSArray *allDiaryDate = [self getAllDiaryDate];
     NSMutableArray *cellDataArray = [NSMutableArray array];
     
     for (NSDate *date in allDiaryDate)
     {
-        NSString *dateStr = [self stringFromDate:date];
+        NSString *dateStr = [PDDatabaseHandle stringFromDate:date];
         NSString *querySql = [NSString stringWithFormat:@"select questionID, date from %@ where date = \"%@\" union select questionID, date from %@ where date = \"%@\"", DatabaseAnswerTable, dateStr, DatabasePhotoTable, dateStr];
         
         FMResultSet * queryRes = [self.database executeQuery:querySql];
@@ -689,12 +692,125 @@
     return cellDataArray;
 }
 
+- (NSArray *)getAllPhotoData
+{
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@ order by date DESC", DatabasePhotoTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *photoDataArray = [NSMutableArray array];
+    while ([queryRes next])
+    {
+        NSString *dateStr = [queryRes stringForColumn:DatabaseDate];
+        NSDate *date = [PDDatabaseHandle dateFromString:dateStr];
+        
+        NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
+        UIImage *image = [UIImage imageWithData:data];
+        
+        PDPhotoDataModel *photoData = [PDPhotoDataModel new];
+        photoData.date = date;
+        photoData.image = image;
+        
+        [photoDataArray addObject:photoData];
+    }
+    
+    return photoDataArray;
+}
+
+- (NSArray *)getAllQuestionData
+{
+    // 编辑过的问题的总数量
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ union select %@ from %@", DatabaseQuestionTableQuestionID, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, DatabasePhotoTable];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSMutableArray *questionDataArray = [NSMutableArray array];
+    while ([queryRes next])
+    {
+        NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
+        NSString *questionContent = [self getQuestionWithID:questionID];
+        
+        PDQuestionInfoCellDataModel *questionCellDataModel = [PDQuestionInfoCellDataModel new];
+        questionCellDataModel.questionContent = questionContent;
+        questionCellDataModel.sectionDataArray = [NSMutableArray array];
+        questionCellDataModel.quatity = [self getQuantityOfQuestionWithID:questionID];
+        
+        PDGridInfoSectionDataModel *currentSectionModel = nil;
+        
+        NSString *query = [NSString stringWithFormat:@"select questionID, date from %@ where questionID = %ld union select questionID, date from %@ where questionID = %ld order by date DESC", DatabaseAnswerTable, questionID, DatabasePhotoTable, questionID];
+        
+        FMResultSet * res = [self.database executeQuery:query];
+        while ([res next])
+        {
+            NSString *dateStr = [res stringForColumn:DatabaseDate];
+            NSDate *date = [PDDatabaseHandle dateFromString:dateStr];
+            NSInteger year = [date yearValue];
+            NSInteger month = [date monthValue];
+            
+            if (!currentSectionModel)
+            {
+                currentSectionModel = [PDGridInfoSectionDataModel new];
+                currentSectionModel.year = year;
+                currentSectionModel.month = month;
+                currentSectionModel.cellDatas = [NSMutableArray array];
+            }
+            
+            if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+            {
+                // 不是同年同月，重新建立一个section，原先的section添加到数组中
+                [questionCellDataModel.sectionDataArray addObject:currentSectionModel];
+                
+                currentSectionModel = [PDGridInfoSectionDataModel new];
+                currentSectionModel.year = year;
+                currentSectionModel.month = month;
+                currentSectionModel.cellDatas = [NSMutableArray array];
+            }
+            
+            PDGridInfoCellDataModel *gridCellData = [PDGridInfoCellDataModel new];
+            gridCellData.date = date;
+            gridCellData.answer = [self getAnswerWithQuestionID:questionID date:date];
+            gridCellData.question = [self getQuestionWithID:questionID];
+            
+            NSArray *photoDataArray = [self getPhotoDataModelsWithDate:date questionID:questionID];
+            gridCellData.images = [NSMutableArray array];
+            for (NSInteger i = 0; i < [photoDataArray count]; i++)
+            {
+                PDPhotoDataModel *photoData = photoDataArray[i];
+                [gridCellData.images addObject:photoData.image];
+            }
+            
+            [currentSectionModel.cellDatas addObject:gridCellData];
+        }
+        
+        // 遍历之后的最后一次
+        [questionCellDataModel.sectionDataArray addObject:currentSectionModel];
+        
+        
+        [questionDataArray addObject:questionCellDataModel];
+    }
+    
+    return questionDataArray;
+}
+
+- (NSInteger)getQuantityOfQuestionWithID:(NSInteger)questionID
+{
+    // 对应问题编辑过的个数
+    NSString *querySql = [NSString stringWithFormat:@"select count (*) from (select %@ from %@ where questionID = %ld union all select %@ from %@ where questionID = %ld)", DatabaseQuestionTableQuestionID, DatabaseAnswerTable, questionID, DatabaseQuestionTableQuestionID, DatabasePhotoTable, questionID];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    NSInteger quantity = 0;
+    if ([queryRes next])
+    {
+        quantity = [queryRes intForColumnIndex:0];
+    }
+    
+    return quantity;
+}
+
 #pragma mark - 数据库修改操作
 
 - (void)updateAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date
 {
     // 通过问题ID和日期，将答案设为新的值
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where %@ = %ld and date = \"%@\"", DatabaseAnswerTable, DatabaseAnswerTableAnswerContent, text, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where %@ = %ld and date = \"%@\"", DatabaseAnswerTable, DatabaseAnswerTableAnswerContent, text, DatabaseQuestionTableQuestionID, questionID, [PDDatabaseHandle stringFromDate:date]];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -702,7 +818,7 @@
 
 - (void)updateDiaryQuestionTemplateID:(NSInteger)templateID date:(NSDate *)date
 {
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\"", DatabaseDiaryTable, DatabaseQuestionTemplateTableTemplateID, templateID, [self stringFromDate:date]];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\"", DatabaseDiaryTable, DatabaseQuestionTemplateTableTemplateID, templateID, [PDDatabaseHandle stringFromDate:date]];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -711,7 +827,7 @@
 - (void)updateAnswerQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date
 {
     // 更新问题对应的ID
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, newID, [self stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, newID, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -720,7 +836,7 @@
 - (void)updatePhotoQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date
 {
     // 更新图片对应的ID
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabasePhotoTable, DatabaseQuestionTableQuestionID, newID, [self stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %ld where date = \"%@\" and %@ = %ld", DatabasePhotoTable, DatabaseQuestionTableQuestionID, newID, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, oldID];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -732,7 +848,7 @@
 {
     NSMutableArray *arguments = [NSMutableArray array];
     [arguments addObject:[NSNumber numberWithInteger:questionID]];
-    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:[PDDatabaseHandle stringFromDate:date]];
     [arguments addObject:text];
     
     NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@) values (?, ?, ?)", DatabaseAnswerTable, DatabaseQuestionTableQuestionID, DatabaseDate, DatabaseAnswerTableAnswerContent];
@@ -768,7 +884,7 @@
 - (void)insertDiaryDate:(NSDate *)date questionTemplateID:(NSInteger)templateID
 {
     NSMutableArray *arguments = [NSMutableArray array];
-    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:[PDDatabaseHandle stringFromDate:date]];
     [arguments addObject:[NSNumber numberWithInteger:templateID]];
     
     NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@) values (?, ?)", DatabaseDiaryTable, DatabaseDate, DatabaseQuestionTemplateTableTemplateID];
@@ -781,7 +897,7 @@
     // 插入图片
     NSMutableArray *arguments = [NSMutableArray array];
     [arguments addObject:[NSNumber numberWithInteger:questionID]];
-    [arguments addObject:[self stringFromDate:date]];
+    [arguments addObject:[PDDatabaseHandle stringFromDate:date]];
     [arguments addObject:photoData];
     
     NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@, %@) values (?, ?, ?)", DatabasePhotoTable, DatabaseQuestionTableQuestionID, DatabaseDate, DatabasePhotoTablePhoto];
@@ -802,12 +918,12 @@
 - (void)deleteAnswerContentWithQuestionID:(NSInteger)questionID date:(NSDate *)date
 {
     // 删除回答内容
-    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = %ld and date = \"%@\"",DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [self stringFromDate:date]];
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = %ld and date = \"%@\"",DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [PDDatabaseHandle stringFromDate:date]];
     BOOL result = [self.database executeUpdate:deleteSql];
     [self examExcuteWithResult:result];
 }
 
-- (NSDate *)dateFromString:(NSString *)dateString
++ (NSDate *)dateFromString:(NSString *)dateString
 {
     // 将string转换成date
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -817,7 +933,7 @@
     return destDate;
 }
 
-- (NSString *)stringFromDate:(NSDate *)date
++ (NSString *)stringFromDate:(NSDate *)date
 {
     // 将date转换成string
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -826,5 +942,41 @@
     NSString *destString = [dateFormatter stringFromDate:date];
     return destString;
 }
+
+//+ (NSInteger)getYearValueWithDate:(NSDate *)date
+//{
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+//    
+//    NSInteger year = components.year;
+//    return year;
+//}
+//
+//+ (NSInteger)getMonthValueWithDate:(NSDate *)date
+//{
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+//    
+//    NSInteger month = components.month;
+//    return month;
+//}
+//
+//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date
+//{
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:date];
+//    
+//    NSInteger weekday = components.weekday;
+//    return weekday;
+//}
+//
+//+ (NSInteger)getDayValueWithDate:(NSDate *)date
+//{
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:date];
+//    
+//    NSInteger day = components.day;
+//    return day;
+//}
 
 @end

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDQuestionInfoViewController">
             <connections>
+                <outlet property="tableView" destination="Xrp-oW-vXi" id="Lj2-6U-sHY"/>
                 <outlet property="topBar" destination="3uX-ac-jkB" id="NY5-az-jM0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,6 +27,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xrp-oW-vXi">
                     <rect key="frame" x="0.0" y="64" width="277" height="231"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="auj-5F-DkB"/>
+                        <outlet property="delegate" destination="-1" id="2DX-ss-6nj"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

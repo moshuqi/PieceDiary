@@ -35,11 +35,13 @@
 - (NSInteger)questionQuantity;
 - (NSInteger)photoQuantity;
 
-- (NSArray *)getAllDiaryDateForInfo;
+- (NSArray *)getAllDiaryDate;
 - (NSString *)getWeatherWithDate:(NSDate *)date;
 - (NSString *)getMoodWithDate:(NSDate *)date;
 
 - (NSArray *)getAllEditedCellData;
+- (NSArray *)getAllPhotoData;
+- (NSArray *)getAllQuestionData;
 
 // 更新方法
 - (void)updateAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
@@ -57,5 +59,11 @@
 // 删除方法
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID;
 - (void)deleteAnswerContentWithQuestionID:(NSInteger)questionID date:(NSDate *)date;
+
+
+//+ (NSInteger)getYearValueWithDate:(NSDate *)date;
+//+ (NSInteger)getMonthValueWithDate:(NSDate *)date;
+//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date;
+//+ (NSInteger)getDayValueWithDate:(NSDate *)date;
 
 @end

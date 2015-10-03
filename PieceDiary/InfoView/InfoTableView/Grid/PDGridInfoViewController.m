@@ -10,11 +10,15 @@
 #import "PDTopBarView.h"
 #import "PDGridInfoCell.h"
 #import "PDGridInfoSectionDataModel.h"
-#import "PDInfoManager.h"
+#import "PDDataManager.h"
+#import "NSDate+PDDate.h"
+
+#define GridInfoReuseIdentifier @"GridInfoReuseIdentifier"
 
 @interface PDGridInfoViewController () <PDTopBarViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PDTopBarView *topBar;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *sectionDataArray;
 
 @end
@@ -31,8 +35,10 @@ const CGFloat GridTableHeightForRow = 88;
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"格子"];
     
-    PDInfoManager *infoManager = [PDInfoManager defaultManager];
-    self.sectionDataArray = [infoManager getGridInfoData];
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    self.sectionDataArray = [dataManager getGridInfoData];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"PDGridInfoCell" bundle:nil] forCellReuseIdentifier:GridInfoReuseIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,14 +110,18 @@ const CGFloat GridTableHeightForRow = 88;
 
 - (PDGridInfoCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDGridInfoCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"PDGridInfoCell" owner:self options:nil] lastObject];
+    PDGridInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:GridInfoReuseIdentifier];
+    if (!cell)
+    {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"PDGridInfoCell" owner:self options:nil] firstObject];
+    }
     
     PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[indexPath.section];
     PDGridInfoCellDataModel *cellData = sectionData.cellDatas[indexPath.row];
     
     NSDate *date = cellData.date;
-    NSInteger day = [PDInfoManager getDayValueWithDate:date];
-    NSInteger weekday = [PDInfoManager getWeekdayValueWithDate:date];
+    NSInteger day = [date dayValue];
+    NSInteger weekday = [date weekdayValue];
     
     UIImage *image = [cellData.images firstObject]; // 只显示第一张照片
     [cell setupWithDay:day weekday:weekday question:cellData.question answer:cellData.answer photo:image];

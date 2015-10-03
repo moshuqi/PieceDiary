@@ -8,15 +8,17 @@
 
 #import "PDDiaryInfoTableViewController.h"
 #import "PDTopBarView.h"
-#import "PDInfoManager.h"
 #import "PDDiaryInfoSectionDataModel.h"
 #import "PDDiaryInfoCell.h"
+#import "PDDataManager.h"
+#import "NSDate+PDDate.h"
 
 #define DiaryInfoTableIdentifier    @"DiaryInfoTableIdentifier"
 
 @interface PDDiaryInfoTableViewController () <PDTopBarViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PDTopBarView *topBar;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *sectionDataArray;
 
 @end
@@ -33,9 +35,10 @@ const CGFloat DiaryTableHeightForRow = 88;
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"日记"];
     
-    PDInfoManager *infoManager = [PDInfoManager defaultManager];
-    self.sectionDataArray = [infoManager getDiaryInfoData];
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    self.sectionDataArray = [dataManager getDiaryInfoData];
 
+    [self.tableView registerNib:[UINib nibWithNibName:@"PDDiaryInfoCell" bundle:nil] forCellReuseIdentifier:DiaryInfoTableIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,14 +110,18 @@ const CGFloat DiaryTableHeightForRow = 88;
 
 - (PDDiaryInfoCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDDiaryInfoCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"PDDiaryInfoCell" owner:self options:nil] lastObject];
+    PDDiaryInfoCell *cell = [self.tableView dequeueReusableCellWithIdentifier:DiaryInfoTableIdentifier];
+    if (!cell)
+    {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"PDDiaryInfoCell" owner:self options:nil] lastObject];
+    }
     
     PDDiaryInfoSectionDataModel *sectionData = self.sectionDataArray[indexPath.section];
     PDDiaryInfoCellDataModel *cellData = sectionData.cellDatas[indexPath.row];
     
     NSDate *date = cellData.date;
-    NSInteger day = [PDInfoManager getDayValueWithDate:date];
-    NSInteger weekday = [PDInfoManager getWeekdayValueWithDate:date];
+    NSInteger day = [date dayValue];
+    NSInteger weekday = [date weekdayValue];
     [cell setupWithDay:day weekday:weekday weatherImage:nil moodImage:nil];
     
     return cell;

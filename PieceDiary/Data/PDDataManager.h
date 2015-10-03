@@ -28,4 +28,14 @@
 - (NSInteger)getQuestionQuantity;
 - (NSInteger)getPhotoQuantity;
 
+- (NSArray *)getDiaryInfoData;
+- (NSArray *)getGridInfoData;
+- (NSArray *)getPhotoInfoData;
+- (NSArray *)getQuestionInfoData;
+
+//+ (NSInteger)getYearValueWithDate:(NSDate *)date;
+//+ (NSInteger)getMonthValueWithDate:(NSDate *)date;
+//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date;
+//+ (NSInteger)getDayValueWithDate:(NSDate *)date;
+
 @end

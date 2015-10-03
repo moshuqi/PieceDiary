@@ -12,6 +12,9 @@
 #import "PDPhotoDataModel.h"
 #import <UIKit/UIKit.h>
 #import "PDDefine.h"
+#import "PDDiaryInfoSectionDataModel.h"
+#import "PDGridInfoSectionDataModel.h"
+#import "NSDate+PDDate.h"
 
 @interface PDDataManager ()
 
@@ -293,5 +296,127 @@ static PDDataManager *_instance;
     return [self.dbHandle photoQuantity];
 }
 
+- (NSArray *)getDiaryInfoData
+{
+    NSMutableArray *diaryInfoData = [NSMutableArray array];
+    NSArray *dateArray = [self.dbHandle getAllDiaryDate];
+    
+    PDDiaryInfoSectionDataModel *currentSectionModel = nil;
+    for (NSInteger i = 0; i < [dateArray count]; i++)
+    {
+        NSDate *date = dateArray[i];
+        NSInteger year = [date yearValue];
+        NSInteger month  = [date monthValue];
+        
+        if (!currentSectionModel)
+        {
+            currentSectionModel = [PDDiaryInfoSectionDataModel new];
+            currentSectionModel.year = year;
+            currentSectionModel.month = month;
+            currentSectionModel.cellDatas = [NSMutableArray array];
+        }
+        
+        PDDiaryInfoCellDataModel *cellData = [PDDiaryInfoCellDataModel new];
+        cellData.date = date;
+        cellData.mood = [self.dbHandle getMoodWithDate:date];
+        cellData.weather = [self.dbHandle getWeatherWithDate:date];
+        
+        if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+        {
+            // 不是同年同月，重新建立一个section，原先的section添加到数组中
+            [diaryInfoData addObject:currentSectionModel];
+            
+            currentSectionModel = [PDDiaryInfoSectionDataModel new];
+            currentSectionModel.year = year;
+            currentSectionModel.month = month;
+            currentSectionModel.cellDatas = [NSMutableArray array];
+        }
+        
+        [currentSectionModel.cellDatas addObject:cellData];
+        
+        // 遍历完后将最后一个section添加到数组中
+        if (i == [dateArray count] - 1)
+        {
+            [diaryInfoData addObject:currentSectionModel];
+        }
+    }
+    
+    return diaryInfoData;
+}
+
+- (NSArray *)getGridInfoData
+{
+    NSArray *editedCellDataArray = [self.dbHandle getAllEditedCellData];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    
+    PDGridInfoSectionDataModel *currentSectionModel = nil;
+    for (NSInteger i = 0; i < [editedCellDataArray count]; i++)
+    {
+        PDGridInfoCellDataModel *cellDataModel = editedCellDataArray[i];
+        NSDate *date = cellDataModel.date;
+        
+        NSInteger year = [date yearValue];
+        NSInteger month  = [date monthValue];
+        
+        if (!currentSectionModel)
+        {
+            currentSectionModel = [PDGridInfoSectionDataModel new];
+            currentSectionModel.year = year;
+            currentSectionModel.month = month;
+            currentSectionModel.cellDatas = [NSMutableArray array];
+        }
+        
+        if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+        {
+            // 不是同年同月，重新建立一个section，原先的section添加到数组中
+            [dataArray addObject:currentSectionModel];
+            
+            currentSectionModel = [PDGridInfoSectionDataModel new];
+            currentSectionModel.year = year;
+            currentSectionModel.month = month;
+            currentSectionModel.cellDatas = [NSMutableArray array];
+        }
+        
+        [currentSectionModel.cellDatas addObject:cellDataModel];
+        
+        // 遍历完后将最后一个section添加到数组中
+        if (i == [editedCellDataArray count] - 1)
+        {
+            [dataArray addObject:currentSectionModel];
+        }
+    }
+    
+    return dataArray;
+}
+
+- (NSArray *)getPhotoInfoData
+{
+    return [self.dbHandle getAllPhotoData];
+}
+
+- (NSArray *)getQuestionInfoData
+{
+    return [self.dbHandle getAllQuestionData];
+}
+
+//+ (NSInteger)getYearValueWithDate:(NSDate *)date
+//{
+//    return [PDDatabaseHandle getYearValueWithDate:date];
+//}
+//
+//+ (NSInteger)getMonthValueWithDate:(NSDate *)date
+//{
+//    return [PDDatabaseHandle getMonthValueWithDate:date];
+//}
+//
+//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date
+//{
+//    return [PDDatabaseHandle getWeekdayValueWithDate:date];
+//}
+//
+//+ (NSInteger)getDayValueWithDate:(NSDate *)date
+//{
+//    return [PDDatabaseHandle getDayValueWithDate:date];
+//}
 
 @end

@@ -68,7 +68,10 @@
 - (void)showQuestionTableView
 {
     PDQuestionInfoViewController *viewController = [PDQuestionInfoViewController new];
-    [self presentViewController:viewController animated:YES completion:nil];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

@@ -54,6 +54,9 @@
 		6567CCB51BB1423100BCE967 /* PDQuestionEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCB31BB1423100BCE967 /* PDQuestionEditViewController.m */; settings = {ASSET_TAGS = (); }; };
 		6567CCB61BB1423100BCE967 /* PDQuestionEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CCB41BB1423100BCE967 /* PDQuestionEditViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
+		6576C1331BBCC39600E1D376 /* PDPhotoInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576C1311BBCC39600E1D376 /* PDPhotoInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		6576C1341BBCC39600E1D376 /* PDPhotoInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6576C1321BBCC39600E1D376 /* PDPhotoInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
+		6576C1371BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576C1361BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166931BA28CA0003E7FA5 /* PDSettingView.m */; };
 		658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658166961BA28D3B003E7FA5 /* PDIconSettingView.m */; };
 		658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658166981BA28D52003E7FA5 /* PDIconSettingView.xib */; };
@@ -63,7 +66,6 @@
 		658980B91BBB8C1F001A20EC /* PDPhotoInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658980B71BBB8C1F001A20EC /* PDPhotoInfoViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		658980BD1BBB8DF3001A20EC /* PDQuestionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658980BB1BBB8DF3001A20EC /* PDQuestionInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		658980BE1BBB8DF3001A20EC /* PDQuestionInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658980BC1BBB8DF3001A20EC /* PDQuestionInfoViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		658980C11BBBA5A8001A20EC /* PDInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 658980C01BBBA5A8001A20EC /* PDInfoManager.m */; settings = {ASSET_TAGS = (); }; };
 		658980C51BBBABF9001A20EC /* PDDiaryInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 658980C41BBBABF9001A20EC /* PDDiaryInfoCellDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658980C81BBBAD2F001A20EC /* PDDiaryInfoSectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 658980C71BBBAD2F001A20EC /* PDDiaryInfoSectionDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		658980CC1BBBDB60001A20EC /* PDDiaryInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 658980CA1BBBDB60001A20EC /* PDDiaryInfoCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -90,6 +92,13 @@
 		659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD171BA70AC80000D561 /* PDBaseAnimation.m */; };
 		659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */; };
 		659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */; };
+		65A4F3FD1BBF94F900A7A8BF /* NSDate+PDDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A4F3FC1BBF94F900A7A8BF /* NSDate+PDDate.m */; settings = {ASSET_TAGS = (); }; };
+		65A4F4011BBFA59200A7A8BF /* PDQuestionInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A4F3FF1BBFA59200A7A8BF /* PDQuestionInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		65A4F4021BBFA59200A7A8BF /* PDQuestionInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A4F4001BBFA59200A7A8BF /* PDQuestionInfoCell.xib */; settings = {ASSET_TAGS = (); }; };
+		65A4F4071BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A4F4051BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		65A4F4081BBFDF2D00A7A8BF /* PDQuestionDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A4F4061BBFDF2D00A7A8BF /* PDQuestionDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		65A4F40C1BBFE35200A7A8BF /* PDQuestionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A4F40A1BBFE35200A7A8BF /* PDQuestionDetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		65A4F40D1BBFE35200A7A8BF /* PDQuestionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A4F40B1BBFE35200A7A8BF /* PDQuestionDetailCell.xib */; settings = {ASSET_TAGS = (); }; };
 		65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C5DAEF1BAAD33D0039C54B /* PDDatabaseHandle.m */; };
 		65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381F31BA9A23E00BE9E09 /* PDGridCell.m */; };
 		65D381F61BA9A23E00BE9E09 /* PDGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D381F41BA9A23E00BE9E09 /* PDGridCell.xib */; };
@@ -193,6 +202,11 @@
 		6567CCB41BB1423100BCE967 /* PDQuestionEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionEditViewController.xib; sourceTree = "<group>"; };
 		656ECE971BAFC68E007EB25D /* PDDateCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellDataModel.h; sourceTree = "<group>"; };
 		656ECE981BAFC68E007EB25D /* PDDateCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellDataModel.m; sourceTree = "<group>"; };
+		6576C1301BBCC39600E1D376 /* PDPhotoInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPhotoInfoCell.h; sourceTree = "<group>"; };
+		6576C1311BBCC39600E1D376 /* PDPhotoInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoInfoCell.m; sourceTree = "<group>"; };
+		6576C1321BBCC39600E1D376 /* PDPhotoInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPhotoInfoCell.xib; sourceTree = "<group>"; };
+		6576C1351BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoCellDataModel.h; sourceTree = "<group>"; };
+		6576C1361BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoCellDataModel.m; sourceTree = "<group>"; };
 		658166921BA28CA0003E7FA5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
 		658166931BA28CA0003E7FA5 /* PDSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingView.m; sourceTree = "<group>"; };
 		658166951BA28D3B003E7FA5 /* PDIconSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDIconSettingView.h; path = ../PDIconSettingView.h; sourceTree = "<group>"; };
@@ -207,8 +221,6 @@
 		658980BA1BBB8DF3001A20EC /* PDQuestionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoViewController.h; sourceTree = "<group>"; };
 		658980BB1BBB8DF3001A20EC /* PDQuestionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoViewController.m; sourceTree = "<group>"; };
 		658980BC1BBB8DF3001A20EC /* PDQuestionInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionInfoViewController.xib; sourceTree = "<group>"; };
-		658980BF1BBBA5A8001A20EC /* PDInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDInfoManager.h; sourceTree = "<group>"; };
-		658980C01BBBA5A8001A20EC /* PDInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDInfoManager.m; sourceTree = "<group>"; };
 		658980C31BBBABF9001A20EC /* PDDiaryInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoCellDataModel.h; sourceTree = "<group>"; };
 		658980C41BBBABF9001A20EC /* PDDiaryInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDiaryInfoCellDataModel.m; sourceTree = "<group>"; };
 		658980C61BBBAD2F001A20EC /* PDDiaryInfoSectionDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoSectionDataModel.h; sourceTree = "<group>"; };
@@ -252,6 +264,17 @@
 		659BDD191BA70BA40000D561 /* PDScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDScaleAnimation.h; sourceTree = "<group>"; };
 		659BDD1A1BA70BA40000D561 /* PDScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDScaleAnimation.m; sourceTree = "<group>"; };
 		659BDD1E1BA720C70000D561 /* PDPieceEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceEditView.xib; sourceTree = "<group>"; };
+		65A4F3FB1BBF94F900A7A8BF /* NSDate+PDDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PDDate.h"; sourceTree = "<group>"; };
+		65A4F3FC1BBF94F900A7A8BF /* NSDate+PDDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PDDate.m"; sourceTree = "<group>"; };
+		65A4F3FE1BBFA59200A7A8BF /* PDQuestionInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoCell.h; sourceTree = "<group>"; };
+		65A4F3FF1BBFA59200A7A8BF /* PDQuestionInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoCell.m; sourceTree = "<group>"; };
+		65A4F4001BBFA59200A7A8BF /* PDQuestionInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionInfoCell.xib; sourceTree = "<group>"; };
+		65A4F4041BBFDF2D00A7A8BF /* PDQuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionDetailViewController.h; sourceTree = "<group>"; };
+		65A4F4051BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionDetailViewController.m; sourceTree = "<group>"; };
+		65A4F4061BBFDF2D00A7A8BF /* PDQuestionDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionDetailViewController.xib; sourceTree = "<group>"; };
+		65A4F4091BBFE35200A7A8BF /* PDQuestionDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionDetailCell.h; sourceTree = "<group>"; };
+		65A4F40A1BBFE35200A7A8BF /* PDQuestionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionDetailCell.m; sourceTree = "<group>"; };
+		65A4F40B1BBFE35200A7A8BF /* PDQuestionDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDQuestionDetailCell.xib; sourceTree = "<group>"; };
 		65C5DAEE1BAAD33D0039C54B /* PDDatabaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabaseHandle.h; sourceTree = "<group>"; };
 		65C5DAEF1BAAD33D0039C54B /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
 		65D381F21BA9A23E00BE9E09 /* PDGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridCell.h; sourceTree = "<group>"; };
@@ -346,6 +369,9 @@
 				658980B51BBB8C1F001A20EC /* PDPhotoInfoViewController.h */,
 				658980B61BBB8C1F001A20EC /* PDPhotoInfoViewController.m */,
 				658980B71BBB8C1F001A20EC /* PDPhotoInfoViewController.xib */,
+				6576C1301BBCC39600E1D376 /* PDPhotoInfoCell.h */,
+				6576C1311BBCC39600E1D376 /* PDPhotoInfoCell.m */,
+				6576C1321BBCC39600E1D376 /* PDPhotoInfoCell.xib */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -353,9 +379,13 @@
 		650E44AC1BBB7E5C0052C3F6 /* Question */ = {
 			isa = PBXGroup;
 			children = (
+				65A4F4031BBFDEBD00A7A8BF /* Detail */,
 				658980BA1BBB8DF3001A20EC /* PDQuestionInfoViewController.h */,
 				658980BB1BBB8DF3001A20EC /* PDQuestionInfoViewController.m */,
 				658980BC1BBB8DF3001A20EC /* PDQuestionInfoViewController.xib */,
+				65A4F3FE1BBFA59200A7A8BF /* PDQuestionInfoCell.h */,
+				65A4F3FF1BBFA59200A7A8BF /* PDQuestionInfoCell.m */,
+				65A4F4001BBFA59200A7A8BF /* PDQuestionInfoCell.xib */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -640,6 +670,8 @@
 				658980CF1BBBEA22001A20EC /* PDGridInfoCellDataModel.m */,
 				658980D11BBBEB3F001A20EC /* PDGridInfoSectionDataModel.h */,
 				658980D21BBBEB3F001A20EC /* PDGridInfoSectionDataModel.m */,
+				6576C1351BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.h */,
+				6576C1361BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m */,
 			);
 			path = InfoModel;
 			sourceTree = "<group>";
@@ -703,6 +735,19 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		65A4F4031BBFDEBD00A7A8BF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				65A4F4041BBFDF2D00A7A8BF /* PDQuestionDetailViewController.h */,
+				65A4F4051BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m */,
+				65A4F4061BBFDF2D00A7A8BF /* PDQuestionDetailViewController.xib */,
+				65A4F4091BBFE35200A7A8BF /* PDQuestionDetailCell.h */,
+				65A4F40A1BBFE35200A7A8BF /* PDQuestionDetailCell.m */,
+				65A4F40B1BBFE35200A7A8BF /* PDQuestionDetailCell.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		65C5DAEC1BAAD30B0039C54B /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,8 +756,8 @@
 				65C5DAED1BAAD31A0039C54B /* Database */,
 				654D80461BAB10FE00D2B016 /* PDDataManager.h */,
 				654D80471BAB10FE00D2B016 /* PDDataManager.m */,
-				658980BF1BBBA5A8001A20EC /* PDInfoManager.h */,
-				658980C01BBBA5A8001A20EC /* PDInfoManager.m */,
+				65A4F3FB1BBF94F900A7A8BF /* NSDate+PDDate.h */,
+				65A4F3FC1BBF94F900A7A8BF /* NSDate+PDDate.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -871,9 +916,11 @@
 				659BDCFC1BA6AAD50000D561 /* PDSettingView.xib in Resources */,
 				6567CCB61BB1423100BCE967 /* PDQuestionEditViewController.xib in Resources */,
 				6547A96D1BA1D7520090CAD0 /* PDIconsView.xib in Resources */,
+				65A4F4081BBFDF2D00A7A8BF /* PDQuestionDetailViewController.xib in Resources */,
 				654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */,
 				6547A9621BA1AA130090CAD0 /* PDPieceDiaryView.xib in Resources */,
 				650E44B71BBB7FDB0052C3F6 /* PDTopBarView.xib in Resources */,
+				65A4F40D1BBFE35200A7A8BF /* PDQuestionDetailCell.xib in Resources */,
 				6539FA7B1BA835830068DB9D /* PDWeekButtonsView.xib in Resources */,
 				658166991BA28D52003E7FA5 /* PDIconSettingView.xib in Resources */,
 				659BDD1F1BA720C70000D561 /* PDPieceEditView.xib in Resources */,
@@ -889,12 +936,14 @@
 				659BDD101BA6DD210000D561 /* PDPieceEditToolbar.xib in Resources */,
 				654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */,
 				6547A9701BA1E0690090CAD0 /* 1.jpg in Resources */,
+				6576C1341BBCC39600E1D376 /* PDPhotoInfoCell.xib in Resources */,
 				654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */,
 				65D381F61BA9A23E00BE9E09 /* PDGridCell.xib in Resources */,
 				6539FA6C1BA808950068DB9D /* PDInfoView.xib in Resources */,
 				6539FA711BA80D0B0068DB9D /* PDThisWeekView.xib in Resources */,
 				6539FA601BA7FE600068DB9D /* PDWeekdayView.xib in Resources */,
 				658980B91BBB8C1F001A20EC /* PDPhotoInfoViewController.xib in Resources */,
+				65A4F4021BBFA59200A7A8BF /* PDQuestionInfoCell.xib in Resources */,
 				6547A95D1BA1A9950090CAD0 /* Main.storyboard in Resources */,
 				658980D81BBC237A001A20EC /* PDGridInfoCell.xib in Resources */,
 				659BDD121BA6E08D0000D561 /* PDPieceDiaryEditView.xib in Resources */,
@@ -933,7 +982,6 @@
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */,
 				6567CCAB1BB1031C00BCE967 /* PDDisplayPhotoViewController.m in Sources */,
-				658980C11BBBA5A8001A20EC /* PDInfoManager.m in Sources */,
 				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
 				658980C51BBBABF9001A20EC /* PDDiaryInfoCellDataModel.m in Sources */,
 				65D382071BA9A77000BE9E09 /* FMDatabaseQueue.m in Sources */,
@@ -957,27 +1005,33 @@
 				658980BD1BBB8DF3001A20EC /* PDQuestionInfoViewController.m in Sources */,
 				6539FA6A1BA808810068DB9D /* PDInfoViewController.m in Sources */,
 				6539FA6F1BA80CFC0068DB9D /* PDThisWeekView.m in Sources */,
+				65A4F3FD1BBF94F900A7A8BF /* NSDate+PDDate.m in Sources */,
 				6547A9671BA1C2590090CAD0 /* PDPieceCell.m in Sources */,
 				6547A96B1BA1D7440090CAD0 /* PDIconsView.m in Sources */,
+				6576C1371BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m in Sources */,
 				659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */,
 				65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */,
 				6539FA841BA84CB40068DB9D /* PDGridView.m in Sources */,
 				659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */,
+				65A4F40C1BBFE35200A7A8BF /* PDQuestionDetailCell.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
 				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				6539FA7E1BA8382A0068DB9D /* PDWeekLabelsView.m in Sources */,
 				65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */,
 				6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */,
+				65A4F4071BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m in Sources */,
 				654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */,
 				658980D31BBBEB3F001A20EC /* PDGridInfoSectionDataModel.m in Sources */,
 				6547A9601BA1A9EB0090CAD0 /* PDPieceDiaryView.m in Sources */,
 				658166941BA28CA0003E7FA5 /* PDSettingView.m in Sources */,
+				65A4F4011BBFA59200A7A8BF /* PDQuestionInfoCell.m in Sources */,
 				658980D71BBC237A001A20EC /* PDGridInfoCell.m in Sources */,
 				65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
 				65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */,
 				656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */,
+				6576C1331BBCC39600E1D376 /* PDPhotoInfoCell.m in Sources */,
 				65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,
 			);
