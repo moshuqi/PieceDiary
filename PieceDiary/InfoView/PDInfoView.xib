@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDInfoViewController">
             <connections>
                 <outlet property="gridView" destination="6W9-Mv-ArX" id="8on-yR-oYt"/>
+                <outlet property="thisWeekView" destination="NzU-EI-QDH" id="oX3-5a-Iu9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nuh-Qg-1zK"/>
             </connections>
         </placeholder>

@@ -50,6 +50,12 @@
     
 }
 
+- (NSArray *)getWeekdayButtons
+{
+    NSArray *btnArray = @[self.SunBtn, self.MonBtn, self.TuesBtn, self.WedBtn, self.ThurBtn, self.FriBtn, self.SatBtn];
+    return btnArray;
+}
+
 - (IBAction)buttonTouched:(id)sender
 {
     NSLog(@"weekbuttons touched!");

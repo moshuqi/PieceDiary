@@ -7,6 +7,13 @@
 //
 
 #import "PDThisWeekView.h"
+#import "PDWeekDayView.h"
+
+@interface PDThisWeekView ()
+
+@property (nonatomic, weak) IBOutlet PDWeekdayView *weekdayView;
+
+@end
 
 @implementation PDThisWeekView
 
@@ -23,6 +30,11 @@
     }
     
     return self;
+}
+
+- (void)setupThisWeekWithDate:(NSDate *)date
+{
+    [self.weekdayView setupWeekdayButtonsWithDate:date];
 }
 
 /*

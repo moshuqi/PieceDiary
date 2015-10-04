@@ -15,4 +15,8 @@
 - (NSInteger)dayValue;
 - (NSInteger)weekdayValue;
 
+- (NSDate *)beforeDays:(NSInteger)days;
+- (NSDate *)afterDays:(NSInteger)days;
+- (NSDate *)getSundayInThisWeek;
+
 @end

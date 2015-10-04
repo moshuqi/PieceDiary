@@ -10,4 +10,6 @@
 
 @interface PDInfoViewController : UIViewController
 
+- (id)initWithDate:(NSDate *)date;
+
 @end

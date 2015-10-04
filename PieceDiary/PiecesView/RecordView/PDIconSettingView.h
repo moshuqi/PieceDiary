@@ -25,5 +25,6 @@
 
 - (void)setIconsWithDictArray:(NSArray *)dictArray;
 - (void)setSettingViewTitle:(NSString *)title;
+- (NSArray *)getRecordButtons;
 
 @end

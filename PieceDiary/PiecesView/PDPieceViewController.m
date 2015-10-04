@@ -86,7 +86,7 @@
 - (void)showRecordView
 {
     // 显示心情天气记录视图
-    PDRecordViewController *recordViewController = [[PDRecordViewController alloc] init];
+    PDRecordViewController *recordViewController = [[PDRecordViewController alloc] initWithDate:[self.pieceDiaryView getCurrentDate]];
     
     recordViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:recordViewController animated:YES completion:nil];
@@ -94,7 +94,7 @@
 
 - (void)showInfoView
 {
-    PDInfoViewController *infoViewController = [[PDInfoViewController alloc] init];
+    PDInfoViewController *infoViewController = [[PDInfoViewController alloc] initWithDate:[self.pieceDiaryView getCurrentDate]];
     [self presentViewController:infoViewController animated:YES completion:nil];
 }
 

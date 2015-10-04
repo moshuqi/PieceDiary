@@ -10,4 +10,6 @@
 
 @interface PDRecordViewController : ViewController
 
+- (id)initWithDate:(NSDate *)date;
+
 @end

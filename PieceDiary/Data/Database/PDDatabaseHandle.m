@@ -37,6 +37,9 @@
 #define DatabasePhotoTablePhoto     @"photo"
 #define DatabasePhotoTablePhotoID     @"photoID"
 
+#define DatabaseMoodTableMood       @"mood"
+#define DatabaseWeatherTableWeather @"weather"
+
 @interface PDDatabaseHandle ()
 
 @property (nonatomic, retain) FMDatabase * database;
@@ -644,6 +647,14 @@
     // 获取天气
     NSString *weather = nil;
     
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@ where date = \"%@\"", DatabaseWeatherTable, [PDDatabaseHandle stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        weather = [queryRes stringForColumn:DatabaseWeatherTableWeather];
+    }
+    
     return weather;
 }
 
@@ -652,7 +663,29 @@
     // 获取心情
     NSString *mood = nil;
     
+    NSString *querySql = [NSString stringWithFormat:@"select * from %@ where date = \"%@\"", DatabaseMoodTable, [PDDatabaseHandle stringFromDate:date]];
+    FMResultSet * queryRes = [self.database executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        mood = [queryRes stringForColumn:DatabaseMoodTableMood];
+    }
+    
     return mood;
+}
+
+- (BOOL)weatherExsistInDate:(NSDate *)date
+{
+    // 判断是否存在天气记录
+    NSString *weather = [self getWeatherWithDate:date];
+    return (weather != nil);
+}
+
+- (BOOL)moodExsistInDate:(NSDate *)date
+{
+    // 判断是否存在心情记录
+    NSString *mood = [self getMoodWithDate:date];
+    return (mood != nil);
 }
 
 - (NSArray *)getAllEditedCellData
@@ -842,6 +875,24 @@
     [self examExcuteWithResult:result];
 }
 
+- (void)updateWeatherWithDate:(NSDate *)date weather:(NSString *)weather
+{
+    // 修改对应日期的天气
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %@ where date = \"%@\"", DatabaseWeatherTable, DatabaseWeatherTableWeather, weather, [PDDatabaseHandle stringFromDate:date]];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)updateMoodWithDate:(NSDate *)date mood:(NSString *)mood
+{
+    // 修改对应日期的心情
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %@ where date = \"%@\"", DatabaseMoodTable, DatabaseMoodTableMood, mood, [PDDatabaseHandle stringFromDate:date]];
+    
+    BOOL result = [self.database executeUpdate:updateSql];
+    [self examExcuteWithResult:result];
+}
+
 #pragma mark - 数据库插入操作
 
 - (void)insertAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date
@@ -905,6 +956,30 @@
     [self examExcuteWithResult:result];
 }
 
+- (void)insertWeather:(NSString *)weather inDate:(NSDate *)date
+{
+    // 插入天气
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:[PDDatabaseHandle stringFromDate:date]];
+    [arguments addObject:weather];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@) values (?, ?)", DatabaseWeatherTable, DatabaseDate, DatabaseWeatherTableWeather];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
+- (void)insertMood:(NSString *)mood inDate:(NSDate *)date
+{
+    // 插入心情
+    NSMutableArray *arguments = [NSMutableArray array];
+    [arguments addObject:[PDDatabaseHandle stringFromDate:date]];
+    [arguments addObject:mood];
+    
+    NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@) values (?, ?)", DatabaseMoodTable, DatabaseDate, DatabaseMoodTableMood];
+    BOOL result = [self.database executeUpdate:insertSql withArgumentsInArray:arguments];
+    [self examExcuteWithResult:result];
+}
+
 #pragma mark - 数据库删除操作
 
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID
@@ -919,6 +994,22 @@
 {
     // 删除回答内容
     NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = %ld and date = \"%@\"",DatabaseAnswerTable, DatabaseQuestionTableQuestionID, questionID, [PDDatabaseHandle stringFromDate:date]];
+    BOOL result = [self.database executeUpdate:deleteSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)deleteWeatherWithDate:(NSDate *)date
+{
+    // 删除天气
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where date = \"%@\"",DatabaseWeatherTable, [PDDatabaseHandle stringFromDate:date]];
+    BOOL result = [self.database executeUpdate:deleteSql];
+    [self examExcuteWithResult:result];
+}
+
+- (void)deleteMoodWithDate:(NSDate *)date
+{
+    // 删除心情
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where date = \"%@\"",DatabaseMoodTable, [PDDatabaseHandle stringFromDate:date]];
     BOOL result = [self.database executeUpdate:deleteSql];
     [self examExcuteWithResult:result];
 }

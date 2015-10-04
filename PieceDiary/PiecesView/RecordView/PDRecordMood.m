@@ -8,21 +8,21 @@
 
 #import "PDRecordMood.h"
 
+#define MoodRecordHappyString           @"高兴"
+#define MoodRecordNeutralString         @"平淡"
+#define MoodRecordVeryHappyString       @"非常高兴"
+#define MoodRecordCoolString            @"酷"
+#define MoodRecordUnhappyString         @"不高兴"
+#define MoodRecordWonderingString       @"疑惑"
+#define MoodRecordSadString             @"悲伤"
+#define MoodRecordAngryString           @"生气"
+
+
 @implementation PDRecordMood
 
-- (id)init
+- (NSString *)getNibName
 {
-    self = [super init];
-    if (self)
-    {
-        NSArray *homeViewXib = [[NSBundle mainBundle] loadNibNamed:@"PDIconSettingView" owner:self options:nil];
-        self.iconView = [homeViewXib firstObject];
-        
-        NSArray *iconArray = [self getIconDictArray];
-        [self.iconView setIconsWithDictArray:iconArray];
-    }
-    
-    return self;
+    return @"PDIconSettingView";
 }
 
 - (NSArray *)getIconDictArray
@@ -67,6 +67,113 @@
     
     return dictArray;
 }
+
+- (void)cancelRecord
+{
+    
+}
+
+- (NSString *)getTitleTextWithButtonTag:(NSInteger)tag
+{
+    NSString *title = [PDRecordMood getMoodStringWithRecordType:(MoodRecord)tag];
+    return title;
+}
+
+- (NSString *)getNoSettingTip
+{
+    return @"今天心情如何？";
+}
+
+- (NSInteger)getTagWithString:(NSString *)string
+{
+    MoodRecord mood = [PDRecordMood getMoodRecordWithString:string];
+    return mood;
+}
+
++ (NSString *)getMoodStringWithRecordType:(MoodRecord)mood
+{
+    NSString *str = nil;
+    switch (mood)
+    {
+        case MoodRecordHappy:
+            str = MoodRecordHappyString;
+            break;
+            
+        case MoodRecordNeutral:
+            str = MoodRecordNeutralString;
+            break;
+            
+        case MoodRecordVeryHappy:
+            str = MoodRecordVeryHappyString;
+            break;
+            
+        case MoodRecordCool:
+            str = MoodRecordCoolString;
+            break;
+            
+        case MoodRecordUnhappy:
+            str = MoodRecordUnhappyString;
+            break;
+            
+        case MoodRecordWondering:
+            str = MoodRecordWonderingString;
+            break;
+            
+        case MoodRecordSad:
+            str = MoodRecordSadString;
+            break;
+            
+        case MoodRecordAngry:
+            str = MoodRecordAngryString;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return str;
+}
+
+
++ (MoodRecord)getMoodRecordWithString:(NSString *)string
+{
+    MoodRecord mood = MoodRecordHappy;
+    if ([string compare:MoodRecordHappyString] == NSOrderedSame)
+    {
+        mood = MoodRecordHappy;
+    }
+    else if ([string compare:MoodRecordNeutralString] == NSOrderedSame)
+    {
+        mood = MoodRecordNeutral;
+    }
+    else if ([string compare:MoodRecordVeryHappyString] == NSOrderedSame)
+    {
+        mood = MoodRecordVeryHappy;
+    }
+    else if ([string compare:MoodRecordCoolString] == NSOrderedSame)
+    {
+        mood = MoodRecordCool;
+    }
+    else if ([string compare:MoodRecordUnhappyString] == NSOrderedSame)
+    {
+        mood = MoodRecordUnhappy;
+    }
+    else if ([string compare:MoodRecordWonderingString] == NSOrderedSame)
+    {
+        mood = MoodRecordWondering;
+    }
+    else if ([string compare:MoodRecordSadString] == NSOrderedSame)
+    {
+        mood = MoodRecordSad;
+    }
+    else if ([string compare:MoodRecordAngryString] == NSOrderedSame)
+    {
+        mood = MoodRecordAngry;
+    }
+    
+    return mood;
+}
+
 
 
 @end

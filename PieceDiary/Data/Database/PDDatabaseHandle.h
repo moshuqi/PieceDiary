@@ -38,6 +38,8 @@
 - (NSArray *)getAllDiaryDate;
 - (NSString *)getWeatherWithDate:(NSDate *)date;
 - (NSString *)getMoodWithDate:(NSDate *)date;
+- (BOOL)weatherExsistInDate:(NSDate *)date;
+- (BOOL)moodExsistInDate:(NSDate *)date;
 
 - (NSArray *)getAllEditedCellData;
 - (NSArray *)getAllPhotoData;
@@ -48,6 +50,8 @@
 - (void)updateDiaryQuestionTemplateID:(NSInteger)templateID date:(NSDate *)date;
 - (void)updateAnswerQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date;
 - (void)updatePhotoQuestionIDWithOldID:(NSInteger)oldID newID:(NSInteger)newID date:(NSDate *)date;
+- (void)updateWeatherWithDate:(NSDate *)date weather:(NSString *)weather;
+- (void)updateMoodWithDate:(NSDate *)date mood:(NSString *)mood;
 
 // 插入方法
 - (void)insertAnswerContentWith:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
@@ -55,15 +59,13 @@
 - (void)insertQuestionTemplateWithQuestionIDs:(NSArray *)questionIDs;
 - (void)insertDiaryDate:(NSDate *)date questionTemplateID:(NSInteger)templateID;
 - (void)insertPhotoData:(NSData *)photoData inDate:(NSDate *)date questionID:(NSInteger)questionID;
+- (void)insertWeather:(NSString *)weather inDate:(NSDate *)date;
+- (void)insertMood:(NSString *)mood inDate:(NSDate *)date;
 
 // 删除方法
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID;
 - (void)deleteAnswerContentWithQuestionID:(NSInteger)questionID date:(NSDate *)date;
-
-
-//+ (NSInteger)getYearValueWithDate:(NSDate *)date;
-//+ (NSInteger)getMonthValueWithDate:(NSDate *)date;
-//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date;
-//+ (NSInteger)getDayValueWithDate:(NSDate *)date;
+- (void)deleteWeatherWithDate:(NSDate *)date;
+- (void)deleteMoodWithDate:(NSDate *)date;
 
 @end

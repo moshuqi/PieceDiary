@@ -19,4 +19,8 @@
 
 @property (nonatomic, assign)  id<PDSettingViewDelegate> delegate;
 
+- (void)setupSettingViewWithDate:(NSDate *)date;
+- (NSString *)getWeatherSettingString;
+- (NSString *)getMoodSettingString;
+
 @end

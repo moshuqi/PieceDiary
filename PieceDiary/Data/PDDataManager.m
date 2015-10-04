@@ -399,24 +399,56 @@ static PDDataManager *_instance;
     return [self.dbHandle getAllQuestionData];
 }
 
-//+ (NSInteger)getYearValueWithDate:(NSDate *)date
-//{
-//    return [PDDatabaseHandle getYearValueWithDate:date];
-//}
-//
-//+ (NSInteger)getMonthValueWithDate:(NSDate *)date
-//{
-//    return [PDDatabaseHandle getMonthValueWithDate:date];
-//}
-//
-//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date
-//{
-//    return [PDDatabaseHandle getWeekdayValueWithDate:date];
-//}
-//
-//+ (NSInteger)getDayValueWithDate:(NSDate *)date
-//{
-//    return [PDDatabaseHandle getDayValueWithDate:date];
-//}
+- (NSString *)getWeahterStringWithDate:(NSDate *)date
+{
+    return [self.dbHandle getWeatherWithDate:date];
+}
+
+- (NSString *)getMoodStringWithDate:(NSDate *)date
+{
+    return [self.dbHandle getMoodWithDate:date];
+}
+
+- (void)setupWeatherWithDate:(NSDate *)date weather:(NSString *)weather
+{
+    if (!weather || ([weather length] < 1))
+    {
+        // weather为nil或长度为0，做数据库的删除操作。
+        [self.dbHandle deleteWeatherWithDate:date];
+    }
+    else
+    {
+        // weather不为空，判断对应日期是否已存在数据库中，若存在则做更新操作，否则进行插入操作
+        if ([self.dbHandle weatherExsistInDate:date])
+        {
+            [self.dbHandle updateWeatherWithDate:date weather:weather];
+        }
+        else
+        {
+            [self.dbHandle insertWeather:weather inDate:date];
+        }
+    }
+}
+
+- (void)setupMoodWithDate:(NSDate *)date mood:(NSString *)mood
+{
+    if (!mood || ([mood length] < 1))
+    {
+        // mood为nil或长度为0，做数据库的删除操作。
+        [self.dbHandle deleteMoodWithDate:date];
+    }
+    else
+    {
+        // mood不为空，判断对应日期是否已存在数据库中，若存在则做更新操作，否则进行插入操作
+        if ([self.dbHandle moodExsistInDate:date])
+        {
+            [self.dbHandle updateMoodWithDate:date mood:mood];
+        }
+        else
+        {
+            [self.dbHandle insertMood:mood inDate:date];
+        }
+    }
+}
 
 @end

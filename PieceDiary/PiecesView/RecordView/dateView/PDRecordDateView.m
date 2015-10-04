@@ -7,6 +7,7 @@
 //
 
 #import "PDRecordDateView.h"
+#import "NSDate+PDDate.h"
 
 @interface PDRecordDateView ()
 
@@ -20,6 +21,17 @@
 - (IBAction)touchedDateButton:(id)sender
 {
     [self.delegate enterSettingDateView];
+}
+
+- (void)setDateStringWithDate:(NSDate *)date
+{
+    NSInteger year = [date yearValue];
+    NSInteger month = [date monthValue];
+    NSInteger day = [date dayValue];
+    
+    NSString *dateStr = [NSString stringWithFormat:@"%ld年%ld月%ld日", year, month, day];
+    [self.dateButton setTitle:dateStr forState:UIControlStateNormal];
+    [self.dateButton setTitle:dateStr forState:UIControlStateHighlighted];
 }
 
 @end

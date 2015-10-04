@@ -7,9 +7,12 @@
 //
 
 #import "PDWeekdayView.h"
+#import "PDWeekButtonsView.h"
+#import "NSDate+PDDate.h"
 
 @interface PDWeekdayView ()
 
+@property (nonatomic, weak) IBOutlet PDWeekButtonsView *weekButtonsView;
 
 @end
 
@@ -28,6 +31,29 @@
     }
     
     return self;
+}
+
+- (void)setupWeekdayButtonsWithDate:(NSDate *)date
+{
+    NSDate *Sun = [date getSundayInThisWeek];
+    NSArray *weekdayButtons = [self.weekButtonsView getWeekdayButtons];
+    
+    for (NSInteger i = 0; i < [weekdayButtons count]; i++)
+    {
+        NSDate *d = [Sun afterDays:i];
+        UIButton *button = weekdayButtons[i];
+        
+        NSString *text = [NSString stringWithFormat:@"%ld", [d dayValue]];
+        [button setTitle:text forState:UIControlStateNormal];
+        [button setTitle:text forState:UIControlStateHighlighted];
+        
+        if ([d dayValue] == [date dayValue])
+        {
+            // 当前日期显示不一样的颜色
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        }
+    }
 }
 
 /*

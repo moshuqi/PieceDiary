@@ -10,4 +10,6 @@
 
 @interface PDThisWeekView : UIView
 
+- (void)setupThisWeekWithDate:(NSDate *)date;
+
 @end

@@ -27,5 +27,6 @@
 
 - (void)setCurrentDateWithDate:(NSDate *)date;
 - (void)reloadAllCell;
+- (NSDate *)getCurrentDate;
 
 @end

@@ -7,10 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDIconSettingView.h"
+#import "PDRecordSetting.h"
 
-@interface PDRecordMood : NSObject
+typedef NS_ENUM(NSInteger, MoodRecord){
+    MoodRecordHappy = 1,    // 高兴
+    MoodRecordNeutral,      // 平淡
+    MoodRecordVeryHappy,    // 非常高兴
+    MoodRecordCool,         // 酷
+    MoodRecordUnhappy,      // 不高兴
+    MoodRecordWondering,    // 疑惑
+    MoodRecordSad,          // 悲伤
+    MoodRecordAngry         // 生气
+};
 
-@property (nonatomic, retain) PDIconSettingView *iconView;
+@interface PDRecordMood : PDRecordSetting
+
++ (NSString *)getMoodStringWithRecordType:(MoodRecord)mood;
++ (MoodRecord)getMoodRecordWithString:(NSString *)string;
 
 @end

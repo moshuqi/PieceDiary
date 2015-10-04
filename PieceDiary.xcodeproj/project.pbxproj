@@ -44,6 +44,7 @@
 		654CC7991BA0848A002DF0C9 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7981BA0848A002DF0C9 /* PDDateCellView.xib */; };
 		654D80451BAB0FEF00D2B016 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */; };
 		654D80481BAB10FE00D2B016 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 654D80471BAB10FE00D2B016 /* PDDataManager.m */; };
+		65672A4E1BC0C2A300A69F79 /* PDRecordSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 65672A4D1BC0C2A300A69F79 /* PDRecordSetting.m */; settings = {ASSET_TAGS = (); }; };
 		6567CCA01BB0A31000BCE967 /* PDImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CC9E1BB0A31000BCE967 /* PDImagePickerController.m */; settings = {ASSET_TAGS = (); }; };
 		6567CCA11BB0A31000BCE967 /* PDImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */; settings = {ASSET_TAGS = (); }; };
 		6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6567CCA31BB0BB9D00BCE967 /* PDImagePickerCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -187,6 +188,8 @@
 		654D80441BAB0FEF00D2B016 /* PDPieceCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellDataModel.m; sourceTree = "<group>"; };
 		654D80461BAB10FE00D2B016 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		654D80471BAB10FE00D2B016 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
+		65672A4C1BC0C2A300A69F79 /* PDRecordSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordSetting.h; sourceTree = "<group>"; };
+		65672A4D1BC0C2A300A69F79 /* PDRecordSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordSetting.m; sourceTree = "<group>"; };
 		6567CC9D1BB0A31000BCE967 /* PDImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDImagePickerController.h; sourceTree = "<group>"; };
 		6567CC9E1BB0A31000BCE967 /* PDImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDImagePickerController.m; sourceTree = "<group>"; };
 		6567CC9F1BB0A31000BCE967 /* PDImagePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDImagePickerController.xib; sourceTree = "<group>"; };
@@ -686,6 +689,8 @@
 				659BDCEF1BA6A1C90000D561 /* PDRecordWeather.m */,
 				659BDCF11BA6A4C60000D561 /* PDRecordMood.h */,
 				659BDCF21BA6A4C60000D561 /* PDRecordMood.m */,
+				65672A4C1BC0C2A300A69F79 /* PDRecordSetting.h */,
+				65672A4D1BC0C2A300A69F79 /* PDRecordSetting.m */,
 			);
 			name = IconSetting;
 			path = iconView;
@@ -1028,6 +1033,7 @@
 				65A4F4011BBFA59200A7A8BF /* PDQuestionInfoCell.m in Sources */,
 				658980D71BBC237A001A20EC /* PDGridInfoCell.m in Sources */,
 				65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */,
+				65672A4E1BC0C2A300A69F79 /* PDRecordSetting.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
 				65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */,
 				656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */,

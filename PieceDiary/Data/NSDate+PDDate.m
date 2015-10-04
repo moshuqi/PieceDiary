@@ -46,4 +46,33 @@
     return weekday;
 }
 
+- (NSDate *)beforeDays:(NSInteger)days
+{
+    // 前几天
+    return [self intervalDays:-days];
+}
+
+- (NSDate *)afterDays:(NSInteger)days
+{
+    // 后几天
+    return [self intervalDays:days];
+}
+
+- (NSDate *)intervalDays:(NSInteger)days
+{
+    NSDate *newDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:([self timeIntervalSinceReferenceDate] + (24 * 3600 * days))];
+    return newDate;
+}
+
+- (NSDate *)getSundayInThisWeek
+{
+    // 获取本周的周日，第一天。
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:self];
+    components.weekday = 1;
+    
+    NSDate *newDate = [calendar dateFromComponents:components];
+    return newDate;
+}
+
 @end

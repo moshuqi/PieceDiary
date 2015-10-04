@@ -10,4 +10,6 @@
 
 @interface PDWeekdayView : UIView
 
+- (void)setupWeekdayButtonsWithDate:(NSDate *)date;
+
 @end

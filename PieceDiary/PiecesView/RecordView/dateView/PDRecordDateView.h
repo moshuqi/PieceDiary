@@ -18,4 +18,6 @@
 
 @property (nonatomic, assign) id<PDRecordDateViewDelegate> delegate;
 
+- (void)setDateStringWithDate:(NSDate *)date;
+
 @end

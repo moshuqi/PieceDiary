@@ -7,10 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDIconSettingView.h"
+#import "PDRecordSetting.h"
 
-@interface PDRecordWeather : NSObject
+typedef NS_ENUM(NSInteger, WeatherRecord){
+    WeatherRecordSun = 1,   // 晴
+    WeatherRecordCloud,     // 阴
+    WeatherRecordWind,      // 风
+    WeatherRecordDrizzle,   // 小雨
+    WeatherRecordRain,      // 大雨
+    WeatherRecordLightning, // 闪电
+    WeatherRecordSnow,      // 雪
+    WeatherRecordFog        // 雾
+};
 
-@property (nonatomic, retain) PDIconSettingView *iconView;
+
+@interface PDRecordWeather : PDRecordSetting
+
++ (NSString *)getWeatherStrWithRecordType:(WeatherRecord)weather;
++ (WeatherRecord)getWeatherRecordWithString:(NSString *)string;
 
 @end

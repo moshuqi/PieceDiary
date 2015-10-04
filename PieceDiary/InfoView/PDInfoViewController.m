@@ -12,10 +12,13 @@
 #import "PDGridInfoViewController.h"
 #import "PDPhotoInfoViewController.h"
 #import "PDQuestionInfoViewController.h"
+#import "PDThisWeekView.h"
 
-@interface PDInfoViewController () <PDGridViewDelegate>
+@interface PDInfoViewController () <PDGridViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDGridView *gridView;
+@property (nonatomic, weak) IBOutlet PDThisWeekView *thisWeekView;
+@property (nonatomic, retain) NSDate *date;
 
 @end
 
@@ -28,6 +31,20 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     self.gridView.delegate = self;
+    
+    [self addGesture];
+    [self.thisWeekView setupThisWeekWithDate:self.date];
+}
+
+- (id)initWithDate:(NSDate *)date
+{
+    self = [super init];
+    if (self)
+    {
+        self.date = date;
+    }
+    
+    return self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,15 +52,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)addGesture
+{
+    // 视图加上手势，点击时返回之前的视图控制器
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackgroundView:)];
+    gesture.numberOfTapsRequired = 1;
+    gesture.delegate = self;
+    
+    [self.view addGestureRecognizer:gesture];
 }
-*/
+
+
+
+- (void)tapBackgroundView:(UITapGestureRecognizer *)gesture
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    CGPoint point = [gestureRecognizer locationInView:self.view];
+    if (!CGRectContainsPoint(self.gridView.frame, point) &&
+        !CGRectContainsPoint(self.thisWeekView.frame, point)) {
+        return YES;
+    }
+    
+    return NO;
+}
 
 #pragma mark - PDGridViewDelegate
 

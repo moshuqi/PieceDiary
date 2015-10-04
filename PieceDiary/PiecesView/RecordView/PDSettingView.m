@@ -11,6 +11,7 @@
 #import "PDRecordWeather.h"
 #import "PDRecordMood.h"
 #import "PDSettingDateView.h"
+#import "PDDataManager.h"
 
 @interface PDSettingView () <PDRecordDateViewDelegate, PDSettingDateViewDelegate>
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) PDRecordMood *mood;
 
 @property (nonatomic, retain) PDSettingDateView *settingDateView;
+//@property (nonatomic, retain) NSDate *date;
 
 @end
 
@@ -49,9 +51,31 @@
     [self.moodView addSubview:self.mood.iconView];
 }
 
+- (void)setupSettingViewWithDate:(NSDate *)date
+{
+    [self.recordDateView setDateStringWithDate:date];
+    
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    NSString *weather = [dataManager getWeahterStringWithDate:date];
+    NSString *mood = [dataManager getMoodStringWithDate:date];
+    
+    [self.weather setSelectedWithString:weather];
+    [self.mood setSelectedWithString:mood];
+}
+
 - (IBAction)toucheDone:(id)sender
 {
     [self.delegate settingDone:sender];
+}
+
+- (NSString *)getWeatherSettingString
+{
+    return [self.weather getSettingString];
+}
+
+- (NSString *)getMoodSettingString
+{
+    return [self.mood getSettingString];
 }
 
 - (void)showSettingDateView

@@ -33,9 +33,10 @@
 - (NSArray *)getPhotoInfoData;
 - (NSArray *)getQuestionInfoData;
 
-//+ (NSInteger)getYearValueWithDate:(NSDate *)date;
-//+ (NSInteger)getMonthValueWithDate:(NSDate *)date;
-//+ (NSInteger)getWeekdayValueWithDate:(NSDate *)date;
-//+ (NSInteger)getDayValueWithDate:(NSDate *)date;
+- (NSString *)getWeahterStringWithDate:(NSDate *)date;
+- (NSString *)getMoodStringWithDate:(NSDate *)date;
+
+- (void)setupWeatherWithDate:(NSDate *)date weather:(NSString *)weather;
+- (void)setupMoodWithDate:(NSDate *)date mood:(NSString *)mood;
 
 @end

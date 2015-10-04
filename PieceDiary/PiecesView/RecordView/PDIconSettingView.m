@@ -15,6 +15,12 @@
     // Initialization code
 }
 
+- (NSArray *)getRecordButtons
+{
+    NSArray *btnArray = @[self.button1, self.button2, self.button3, self.button4, self.button5, self.button6, self.button7, self.button8];
+    return btnArray;
+}
+
 - (void)setIconsWithDictArray:(NSArray *)dictArray
 {
     NSInteger numberOfBtns = 8;
@@ -47,6 +53,7 @@
 {
     self.titleLabel.text = title;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -10,4 +10,6 @@
 
 @interface PDWeekButtonsView : UIView
 
+- (NSArray *)getWeekdayButtons;
+
 @end
