@@ -15,5 +15,7 @@
 #define DMLog(...) do { } while (0)
 #endif
 
+#define MainColor [UIColor colorWithRed:204 / 255.0 green:204 / 255.0 blue:255 / 255.0 alpha:1.0]
+
 
 #endif

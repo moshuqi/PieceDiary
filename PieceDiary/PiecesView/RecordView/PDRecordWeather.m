@@ -25,53 +25,64 @@
     return @"PDIconSettingView";
 }
 
-- (NSArray *)getIconDictArray
-{
-    // 获取选中和正常状态时的图标
-    NSMutableArray *dictArray = [NSMutableArray array];
-    
-    UIImage *normalImage = [UIImage imageNamed:@"weather.jpg"];
-    UIImage *selectedImage = [UIImage imageNamed:@"1.jpg"];
-    
-    NSDictionary *dic1 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic1];
-    
-    NSDictionary *dic2 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic2];
-    
-    NSDictionary *dic3 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic3];
-    
-    NSDictionary *dic4 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic4];
-    
-    NSDictionary *dic5 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic5];
-    
-    NSDictionary *dic6 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic6];
-    
-    NSDictionary *dic7 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic7];
-    
-    NSDictionary *dic8 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic8];
-    
-    return dictArray;
-}
 
 - (void)cancelRecord
 {
     
 }
+
+
+- (NSString *)getImageNameWithTag:(NSInteger)tag
+{
+    return [PDRecordWeather weatherImageNameWithTag:tag];
+}
+
++ (NSString *)weatherImageNameWithTag:(NSInteger)tag
+{
+    NSString *imageName = nil;
+    WeatherRecord weather = (WeatherRecord)tag;
+    
+    switch (weather)
+    {
+        case WeatherRecordSun:
+            imageName = @"sun";
+            break;
+            
+        case WeatherRecordCloud:
+            imageName = @"cloud";
+            break;
+            
+        case WeatherRecordWind:
+            imageName = @"wind";
+            break;
+            
+        case WeatherRecordDrizzle:
+            imageName = @"drizzle";
+            break;
+            
+        case WeatherRecordRain:
+            imageName = @"rain";
+            break;
+            
+        case WeatherRecordLightning:
+            imageName = @"lightning";
+            break;
+            
+        case WeatherRecordSnow:
+            imageName = @"snow";
+            break;
+            
+        case WeatherRecordFog:
+            imageName = @"fog";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return imageName;
+}
+
 
 - (NSString *)getTitleTextWithButtonTag:(NSInteger)tag
 {

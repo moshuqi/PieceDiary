@@ -24,5 +24,6 @@ typedef NS_ENUM(NSInteger, MoodRecord){
 
 + (NSString *)getMoodStringWithRecordType:(MoodRecord)mood;
 + (MoodRecord)getMoodRecordWithString:(NSString *)string;
++ (NSString *)moodImageNameWithTag:(NSInteger)tag;
 
 @end

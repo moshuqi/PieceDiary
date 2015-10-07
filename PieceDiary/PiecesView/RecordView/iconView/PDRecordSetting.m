@@ -134,6 +134,41 @@
 
 - (NSArray *)getIconDictArray
 {
+    NSMutableArray *dictArray = [NSMutableArray array];
+    
+    // 枚举值都从1开始，一共有8个
+    for (NSInteger tag = 1; tag <= 8; tag++)
+    {
+        UIImage *normalImage = [self getNormalImageWithTag:tag];
+        UIImage *selectedImage = [self getSelectedImageWithTag:tag];
+        NSDictionary *dic = @{PDIconSettingNormalImageKey : normalImage,
+                               PDIconSettingSelectedImageKey : selectedImage};
+        [dictArray addObject:dic];
+    }
+    
+    return dictArray;
+}
+
+- (UIImage *)getNormalImageWithTag:(NSInteger)tag
+{
+    NSString *imageName = [self getImageNameWithTag:tag];
+    imageName = [imageName stringByAppendingString:@".png"];
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    return image;
+}
+
+- (UIImage *)getSelectedImageWithTag:(NSInteger)tag
+{
+    NSString *imageName = [self getImageNameWithTag:tag];
+    imageName = [imageName stringByAppendingString:@"Selected.png"];
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    return image;
+}
+
+- (NSString *)getImageNameWithTag:(NSInteger)tag
+{
     // 子类重载
     return nil;
 }

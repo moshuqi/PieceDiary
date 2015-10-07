@@ -46,6 +46,10 @@
         [btn setImage:normalImage forState:UIControlStateNormal];
         [btn setImage:selectedImage forState:UIControlStateHighlighted];
         [btn setImage:selectedImage forState:UIControlStateSelected];
+        
+        CGFloat v = 20;
+        CGFloat h = 40;
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(v,h,v,h)];
     }
 }
 

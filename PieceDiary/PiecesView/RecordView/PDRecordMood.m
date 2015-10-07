@@ -25,52 +25,69 @@
     return @"PDIconSettingView";
 }
 
-- (NSArray *)getIconDictArray
-{
-    // 获取选中和正常状态时的图标
-    NSMutableArray *dictArray = [NSMutableArray array];
-    
-    UIImage *normalImage = [UIImage imageNamed:@"mood.jpg"];
-    UIImage *selectedImage = [UIImage imageNamed:@"1.jpg"];
-    
-    NSDictionary *dic1 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic1];
-    
-    NSDictionary *dic2 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic2];
-    
-    NSDictionary *dic3 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic3];
-    
-    NSDictionary *dic4 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic4];
-    
-    NSDictionary *dic5 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic5];
-    
-    NSDictionary *dic6 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic6];
-    
-    NSDictionary *dic7 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic7];
-    
-    NSDictionary *dic8 = @{PDIconSettingNormalImageKey : normalImage,
-                           PDIconSettingSelectedImageKey : selectedImage};
-    [dictArray addObject:dic8];
-    
-    return dictArray;
-}
 
 - (void)cancelRecord
 {
     
+}
+
++ (UIImage *)getDefaultMoodImage
+{
+    UIImage *image;
+    
+    
+    return image;
+}
+
+- (NSString *)getImageNameWithTag:(NSInteger)tag
+{
+    return [PDRecordMood moodImageNameWithTag:tag];
+}
+
++ (NSString *)moodImageNameWithTag:(NSInteger)tag
+{
+    NSString *imageName = nil;
+    MoodRecord mood = (MoodRecord)tag;
+    
+    switch (mood)
+    {
+        case MoodRecordHappy:
+            imageName = @"happy";
+            break;
+            
+        case MoodRecordNeutral:
+            imageName = @"neutral";
+            break;
+            
+        case MoodRecordVeryHappy:
+            imageName = @"veryHappy";
+            break;
+            
+        case MoodRecordCool:
+            imageName = @"cool";
+            break;
+            
+        case MoodRecordUnhappy:
+            imageName = @"unhappy";
+            break;
+            
+        case MoodRecordWondering:
+            imageName = @"wondering";
+            break;
+            
+        case MoodRecordSad:
+            imageName = @"sad";
+            break;
+            
+        case MoodRecordAngry:
+            imageName = @"angry";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return imageName;
 }
 
 - (NSString *)getTitleTextWithButtonTag:(NSInteger)tag

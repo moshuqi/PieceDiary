@@ -25,5 +25,6 @@ typedef NS_ENUM(NSInteger, WeatherRecord){
 
 + (NSString *)getWeatherStrWithRecordType:(WeatherRecord)weather;
 + (WeatherRecord)getWeatherRecordWithString:(NSString *)string;
++ (NSString *)weatherImageNameWithTag:(NSInteger)tag;
 
 @end
