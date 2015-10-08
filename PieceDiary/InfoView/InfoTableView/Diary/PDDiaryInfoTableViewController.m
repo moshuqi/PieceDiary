@@ -127,7 +127,12 @@ const CGFloat DiaryTableHeightForRow = 88;
     NSDate *date = cellData.date;
     NSInteger day = [date dayValue];
     NSInteger weekday = [date weekdayValue];
-    [cell setupWithDay:day weekday:weekday weatherImage:nil moodImage:nil];
+    
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
+    UIImage *moodImage = [dataManager getMoodImageWithDate:date];
+    
+    [cell setupWithDay:day weekday:weekday weatherImage:weatherImage moodImage:moodImage];
     
     return cell;
 }
