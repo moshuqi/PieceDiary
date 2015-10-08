@@ -28,44 +28,41 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tR8-Yv-CvI" userLabel="toolbar">
                     <rect key="frame" x="0.0" y="277" width="444" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIL-GB-OnR">
-                            <rect key="frame" x="0.0" y="0.0" width="56" height="44"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIL-GB-OnR">
+                            <rect key="frame" x="0.0" y="0.0" width="66" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="56" id="f4o-Pv-p2A"/>
+                                <constraint firstAttribute="width" constant="66" id="f4o-Pv-p2A"/>
                             </constraints>
-                            <state key="normal" title="主页">
+                            <inset key="imageEdgeInsets" minX="18" minY="10" maxX="20" maxY="10"/>
+                            <state key="normal" image="info.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="highlighted" image="infoHighlight.png"/>
                             <connections>
                                 <action selector="infoButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="1Rl-eX-07w"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-Rs-H66">
-                            <rect key="frame" x="388" y="0.0" width="56" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="56" id="RKh-Gw-9kz"/>
-                            </constraints>
-                            <state key="normal" title="工具">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMO-Xm-7tw">
                             <rect key="frame" x="142.5" y="0.0" width="160" height="44"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dek-kC-IGP">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dek-kC-IGP">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
-                                    <state key="normal" title="&lt;">
+                                    <inset key="imageEdgeInsets" minX="35" minY="8" maxX="30" maxY="8"/>
+                                    <state key="normal" image="PDLeftArrow.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <state key="highlighted" image="PDLeftArrowHighlight.png"/>
                                     <connections>
                                         <action selector="leftSlideTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="iyK-6c-LaL"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuf-GG-kkb">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuf-GG-kkb">
                                     <rect key="frame" x="80" y="0.0" width="80" height="44"/>
-                                    <state key="normal" title="&gt;">
+                                    <inset key="contentEdgeInsets" minX="30" minY="8" maxX="35" maxY="8"/>
+                                    <state key="normal" image="PDRightArrow.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <state key="highlighted" image="PDRightArrowHighlight.png"/>
                                     <connections>
                                         <action selector="rightSlideTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="ea7-HI-RyS"/>
                                     </connections>
@@ -84,6 +81,20 @@
                                 <constraint firstAttribute="width" constant="160" id="yf5-Ds-nTB"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-Rs-H66">
+                            <rect key="frame" x="378" y="0.0" width="66" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="66" id="RKh-Gw-9kz"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="20" minY="10" maxX="18" maxY="10"/>
+                            <state key="normal" image="tool.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="toolHighlight.png"/>
+                            <connections>
+                                <action selector="toolButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="YRl-dl-uFk"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -121,4 +132,14 @@
             <point key="canvasLocation" x="266" y="45.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="PDLeftArrow.png" width="96" height="96"/>
+        <image name="PDLeftArrowHighlight.png" width="96" height="96"/>
+        <image name="PDRightArrow.png" width="96" height="96"/>
+        <image name="PDRightArrowHighlight.png" width="96" height="96"/>
+        <image name="info.png" width="96" height="96"/>
+        <image name="infoHighlight.png" width="96" height="96"/>
+        <image name="tool.png" width="96" height="96"/>
+        <image name="toolHighlight.png" width="96" height="96"/>
+    </resources>
 </document>

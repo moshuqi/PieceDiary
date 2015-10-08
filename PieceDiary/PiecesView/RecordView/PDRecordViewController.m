@@ -54,7 +54,7 @@
     [dataManager setupMoodWithDate:self.date mood:mood];
     [dataManager setupWeatherWithDate:self.date weather:weather];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate recordViewControllerDismiss:self];
 }
 
 @end

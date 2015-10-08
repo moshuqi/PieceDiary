@@ -2,12 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDWeekdayView">
             <connections>
-                <outlet property="weekButtonsView" destination="v5m-vC-mlH" id="b8V-AU-iCd"/>
+                <outlet property="collectionView" destination="U84-oQ-IQE" id="qRG-Yg-6DF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,27 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="406" height="97"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATM-Az-Cou" customClass="PDWeekLabelsView">
-                    <rect key="frame" x="0.0" y="0.0" width="406" height="40"/>
-                    <color key="backgroundColor" red="0.23896204130000001" green="1" blue="0.44327133880000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Xct-H3-wjQ"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5m-vC-mlH" customClass="PDWeekButtonsView">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="U84-oQ-IQE">
                     <rect key="frame" x="0.0" y="0.0" width="406" height="97"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vab-au-0fV">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="64Q-PU-vkI"/>
+                        <outlet property="delegate" destination="-1" id="VWu-z3-Rp7"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="v5m-vC-mlH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Bg-I6-zYR"/>
-                <constraint firstItem="ATM-Az-Cou" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="99P-iA-KKz"/>
-                <constraint firstItem="ATM-Az-Cou" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="D8O-An-2Ik"/>
-                <constraint firstItem="v5m-vC-mlH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="O8b-JI-fyd"/>
-                <constraint firstAttribute="trailing" secondItem="ATM-Az-Cou" secondAttribute="trailing" id="VUu-jg-Tn7"/>
-                <constraint firstAttribute="bottom" secondItem="v5m-vC-mlH" secondAttribute="bottom" id="mBM-p6-EHD"/>
-                <constraint firstAttribute="trailing" secondItem="v5m-vC-mlH" secondAttribute="trailing" id="maJ-f3-420"/>
+                <constraint firstAttribute="trailing" secondItem="U84-oQ-IQE" secondAttribute="trailing" id="1pO-gK-eJu"/>
+                <constraint firstItem="U84-oQ-IQE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="74W-s9-sqU"/>
+                <constraint firstItem="U84-oQ-IQE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o6P-PP-EZQ"/>
+                <constraint firstAttribute="bottom" secondItem="U84-oQ-IQE" secondAttribute="bottom" id="yid-8m-2ba"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="29" y="55.5"/>

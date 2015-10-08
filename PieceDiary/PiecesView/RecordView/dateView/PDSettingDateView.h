@@ -19,4 +19,6 @@
 
 @property (nonatomic, assign) id<PDSettingDateViewDelegate> delegate;
 
+- (void)setupWithDate:(NSDate *)date;
+
 @end

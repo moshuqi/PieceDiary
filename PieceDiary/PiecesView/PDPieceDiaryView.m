@@ -17,7 +17,7 @@
 #define kDateCellHeight     156
 #define kToolBarHeight      44
 
-#define kMinimumInteritemSpacing    0
+#define kMinimumInteritemSpacing    1
 #define kMinimumLineSpacing  1
 
 typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
@@ -53,6 +53,10 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 - (void)initPiecesCollectionView
 {
     [self.pieceCollectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PiecesCollectionIdentifier];  // xib自定义cell需要用这种方式注册
+    self.pieceCollectionView.backgroundColor = BackgroudGrayColor;
+    self.pieceCollectionView.layer.borderWidth = 1;
+    self.pieceCollectionView.layer.borderColor = BackgroudGrayColor.CGColor;
+
     
     [self addSubview:self.pieceCollectionView];
 }
@@ -169,6 +173,12 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     [self.delegate enterInfoViewWithDate:self.currentDate];
 }
 
+- (IBAction)toolButtonTouched:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"这个按钮的功能暂时没加上：）~" delegate:nil cancelButtonTitle:@"(⊙o⊙)哦!" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
 - (void)collectionViewSlideToDirection:(CollectionSlideDirection)direction
 {
     // 添加两个临时的collectionView视图来展现滑动换页的效果
@@ -229,6 +239,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:[self getCollectionViewFlowLayout]];
     collectionView.delegate = self;
     collectionView.dataSource = self;
+    collectionView.backgroundColor = BackgroudGrayColor;
     
     [collectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PiecesCollectionIdentifier];
     
@@ -331,8 +342,6 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     }
     
     cell.backgroundColor = [UIColor whiteColor];
-    cell.layer.borderWidth = 1;
-    cell.layer.borderColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
     
     return cell;
 }
@@ -341,7 +350,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 {
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDDateCellView" owner:self options:nil];
     PDDateCellView *dateCellView = [nibViews objectAtIndex:0];
-    [dateCellView setDateLabelsWithDate:date];
+    [dateCellView setupDateCellWithDate:date];
     
     return dateCellView;
 }
@@ -372,7 +381,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     
     if ([self isLandscape])
     {
-        size = CGSizeMake(width / 3, (height - kToolBarHeight) / 3);
+        size = CGSizeMake((width - kMinimumInteritemSpacing * 2) / 3, ((height - kMinimumLineSpacing * 2) - kToolBarHeight) / 3);
     }
     else
     {
@@ -382,7 +391,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         }
         else
         {
-            size = CGSizeMake(width / 2, (height - kToolBarHeight - kDateCellHeight) / 4);
+            size = CGSizeMake((width - kMinimumInteritemSpacing) / 2, (height - kToolBarHeight - kDateCellHeight - kMinimumLineSpacing * 4) / 4);
         }
     }
     

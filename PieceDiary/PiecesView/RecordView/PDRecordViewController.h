@@ -8,7 +8,17 @@
 
 #import "ViewController.h"
 
+@class PDRecordViewController;
+
+@protocol PDRecordViewControllerDelegate <NSObject>
+
+- (void)recordViewControllerDismiss:(PDRecordViewController *)recordViewController;
+
+@end
+
 @interface PDRecordViewController : ViewController
+
+@property (nonatomic, assign) id<PDRecordViewControllerDelegate> delegate;
 
 - (id)initWithDate:(NSDate *)date;
 

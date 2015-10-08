@@ -7,6 +7,7 @@
 //
 
 #import "PDDiaryInfoCell.h"
+#import "PDDefine.h"
 
 @interface PDDiaryInfoCell ()
 
@@ -21,6 +22,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.dayLabel.textColor = TitleTextBlackColor;
+    self.weekdayLabel.textColor = TitleTextGrayColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

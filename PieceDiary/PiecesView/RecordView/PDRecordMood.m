@@ -191,6 +191,26 @@
     return mood;
 }
 
++ (UIImage *)getMoodImageWithMoodString:(NSString *)moodString
+{
+    MoodRecord mood = [PDRecordMood getMoodRecordWithString:moodString];
+    NSString *imageName = [PDRecordMood moodImageNameWithTag:mood];
+    NSString *extStr = [NSString stringWithFormat:@"%@.png", RecordIconSelected];
+    imageName = [imageName stringByAppendingString:extStr];
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    return image;
+}
+
++ (UIImage *)getMoodDefaultImage
+{
+    NSString *imageName = [PDRecordMood moodImageNameWithTag:MoodRecordHappy];
+    imageName = [imageName stringByAppendingString:@".png"];
+    UIImage *image = [UIImage imageNamed:imageName];
+    
+    return image;
+}
+
 
 
 @end

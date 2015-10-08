@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDInfoViewController">
             <connections>
+                <outlet property="colorView" destination="REx-U2-M1b" id="K4J-Bd-Tdl"/>
                 <outlet property="gridView" destination="6W9-Mv-ArX" id="8on-yR-oYt"/>
                 <outlet property="thisWeekView" destination="NzU-EI-QDH" id="oX3-5a-Iu9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nuh-Qg-1zK"/>
@@ -14,29 +15,39 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="278" height="445"/>
+            <rect key="frame" x="0.0" y="0.0" width="302" height="753"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NzU-EI-QDH" customClass="PDThisWeekView">
-                    <rect key="frame" x="-191" y="66" width="660" height="320"/>
+                    <rect key="frame" x="-179" y="66" width="660" height="260"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="660" id="SJq-VU-vzE"/>
-                        <constraint firstAttribute="height" constant="320" id="k5p-13-GK0"/>
+                        <constraint firstAttribute="height" constant="260" id="k5p-13-GK0"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6W9-Mv-ArX" customClass="PDGridView">
-                    <rect key="frame" x="-191" y="386" width="660" height="120"/>
+                    <rect key="frame" x="-179" y="326" width="660" height="200"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="BpP-aR-g00"/>
+                        <constraint firstAttribute="height" constant="200" id="BpP-aR-g00"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REx-U2-M1b">
+                    <rect key="frame" x="-179" y="526" width="660" height="66"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="66" id="KWe-NH-xur"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="REx-U2-M1b" firstAttribute="width" secondItem="6W9-Mv-ArX" secondAttribute="width" id="JoZ-xQ-WCb"/>
+                <constraint firstItem="REx-U2-M1b" firstAttribute="leading" secondItem="6W9-Mv-ArX" secondAttribute="leading" id="LTK-Nc-eJY"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="leading" secondItem="6W9-Mv-ArX" secondAttribute="leading" id="R2n-25-1us"/>
                 <constraint firstItem="6W9-Mv-ArX" firstAttribute="top" secondItem="NzU-EI-QDH" secondAttribute="bottom" id="YGa-9h-lxm"/>
+                <constraint firstItem="REx-U2-M1b" firstAttribute="top" secondItem="6W9-Mv-ArX" secondAttribute="bottom" id="eCU-ay-ve5"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="width" secondItem="6W9-Mv-ArX" secondAttribute="width" id="mFr-M1-0gZ"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="66" id="oVl-uf-6x0"/>
                 <constraint firstItem="NzU-EI-QDH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="88" id="ufP-mJ-Y8s"/>
@@ -50,7 +61,7 @@
                     <exclude reference="zo8-nH-cUq"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="53" y="111.5"/>
+            <point key="canvasLocation" x="65" y="265.5"/>
         </view>
     </objects>
 </document>

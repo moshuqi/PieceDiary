@@ -9,10 +9,11 @@
 #import "PDGridView.h"
 #import "PDGridCell.h"
 #import "PDDataManager.h"
+#import "PDDefine.h"
 
 #define PDGridCellIdentifier @"PDGridCellIdentifier"
-#define PDGridCellInteritemSpacing   0
-#define PDGridCellLineSpacing   0
+#define PDGridCellInteritemSpacing   1
+#define PDGridCellLineSpacing   1
 
 @interface PDGridView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -49,6 +50,10 @@
     flowLayout.minimumLineSpacing = PDGridCellLineSpacing;
     
     self.gridCollection.collectionViewLayout = flowLayout;
+    self.gridCollection.backgroundColor = BackgroudGrayColor;
+    
+//    self.gridCollection.layer.borderWidth = 1;
+//    self.gridCollection.layer.borderColor = BackgroudGrayColor.CGColor;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -98,11 +103,7 @@
     PDGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDGridCellIdentifier forIndexPath:indexPath];
     static PDGridCellType typeArray[] = {PDGridCellTypeDiary, PDGridCellTypeCrid, PDGridCellTypeQuestion, PDGridCellTypePhoto};
     [self setupGridCell:cell withType:typeArray[indexPath.row]];
-    
-    cell.layer.borderWidth = 1;
-    cell.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
-    cell.backgroundColor = [UIColor whiteColor];
-    
+
     return cell;
 }
 
@@ -174,8 +175,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat width = CGRectGetWidth(collectionView.bounds) / 2;
-    CGFloat height = CGRectGetHeight(collectionView.bounds) / 2;
+    CGFloat width = (CGRectGetWidth(collectionView.bounds) - PDGridCellInteritemSpacing)/ 2;
+    CGFloat height = (CGRectGetHeight(collectionView.bounds) - PDGridCellLineSpacing) / 2;
     
     CGSize size = CGSizeMake(width, height);
     return size;

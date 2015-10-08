@@ -12,6 +12,7 @@
 #import "PDDiaryInfoCell.h"
 #import "PDDataManager.h"
 #import "NSDate+PDDate.h"
+#import "PDDefine.h"
 
 #define DiaryInfoTableIdentifier    @"DiaryInfoTableIdentifier"
 
@@ -39,6 +40,8 @@ const CGFloat DiaryTableHeightForRow = 88;
     self.sectionDataArray = [dataManager getDiaryInfoData];
 
     [self.tableView registerNib:[UINib nibWithNibName:@"PDDiaryInfoCell" bundle:nil] forCellReuseIdentifier:DiaryInfoTableIdentifier];
+    
+    self.tableView.backgroundColor = BackgroudGrayColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +84,8 @@ const CGFloat DiaryTableHeightForRow = 88;
     // 显示年月的标签
     CGFloat labelWidth = 120;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, DiaryTableHeaderHeight)];
-    label.backgroundColor = [UIColor yellowColor];
+    label.backgroundColor = MainBlueColor;
+    label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     
     PDDiaryInfoSectionDataModel *sectionData = self.sectionDataArray[section];
@@ -90,6 +94,7 @@ const CGFloat DiaryTableHeightForRow = 88;
     label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
     
     UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = BackgroudGrayColor;
     [headerView addSubview:label];
     
     return headerView;

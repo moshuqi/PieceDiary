@@ -32,6 +32,34 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [self setupButtonsState];
+}
+
+- (void)setupButtonsState
+{
+//    // 左边箭头
+//    UIImage *leftArrowImage = [UIImage imageNamed:@"leftArrow.png"];
+//    [self.leftBtn setImage:leftArrowImage forState:UIControlStateNormal];
+//    
+//    UIImage *leftArrowHighlightImage = [UIImage imageNamed:@"leftArrowHighlight.png"];
+//    [self.leftBtn setImage:leftArrowHighlightImage forState:UIControlStateHighlighted];
+//    [self.leftBtn setImage:leftArrowHighlightImage forState:UIControlStateDisabled];
+//    
+//    self.leftBtn.imageEdgeInsets = UIEdgeInsetsMake(20, 25, 20, 25);
+//    
+//    // 右边箭头
+//    UIImage *rightArrowImage = [UIImage imageNamed:@"rightArrow.png"];
+//    [self.rightBtn setImage:rightArrowImage forState:UIControlStateNormal];
+//    
+//    UIImage *rightArrowHighlightImage = [UIImage imageNamed:@"rightArrowHighlight.png"];
+//    [self.rightBtn setImage:rightArrowHighlightImage forState:UIControlStateHighlighted];
+//    [self.rightBtn setImage:rightArrowHighlightImage forState:UIControlStateDisabled];
+//    
+//    [self.rightBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
 - (IBAction)touchedReturnBtn:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(returnPieceView)])

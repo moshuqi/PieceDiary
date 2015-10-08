@@ -185,5 +185,25 @@
     return weather;
 }
 
++ (UIImage *)getWeatherImageWithWeatherString:(NSString *)weatherString
+{
+    WeatherRecord weather = [PDRecordWeather getWeatherRecordWithString:weatherString];
+    NSString *imageName = [PDRecordWeather weatherImageNameWithTag:weather];
+    NSString *extStr = [NSString stringWithFormat:@"%@.png", RecordIconSelected];
+    imageName = [imageName stringByAppendingString:extStr];
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    return image;
+}
+
++ (UIImage *)getMoodDefaultImage
+{
+    NSString *imageName = [PDRecordWeather weatherImageNameWithTag:WeatherRecordSun];
+    imageName = [imageName stringByAppendingString:@".png"];
+    UIImage *image = [UIImage imageNamed:imageName];
+    
+    return image;
+}
+
 
 @end

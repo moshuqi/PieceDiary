@@ -8,10 +8,13 @@
 
 #import "PDThisWeekView.h"
 #import "PDWeekDayView.h"
+#import "PDDefine.h"
 
 @interface PDThisWeekView ()
 
 @property (nonatomic, weak) IBOutlet PDWeekdayView *weekdayView;
+@property (nonatomic, weak) IBOutlet UILabel *thisWeekLabel;
+@property (nonatomic, weak) IBOutlet UIView *lineView;
 
 @end
 
@@ -30,6 +33,12 @@
     }
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    self.thisWeekLabel.textColor = TitleTextBlackColor;
+    self.lineView.backgroundColor = BackgroudGrayColor;
 }
 
 - (void)setupThisWeekWithDate:(NSDate *)date

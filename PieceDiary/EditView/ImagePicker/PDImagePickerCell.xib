@@ -13,9 +13,8 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="164" height="129"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mood.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-ZR-r3r" userLabel="selectedImg">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoChecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-ZR-r3r" userLabel="selectedImg">
                         <rect key="frame" x="129" y="94" width="25" height="25"/>
-                        <color key="backgroundColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="oUy-or-wPm"/>
                             <constraint firstAttribute="width" constant="25" id="spA-HQ-SwB"/>
@@ -44,6 +43,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="mood.jpg" width="1024" height="1024"/>
+        <image name="photoChecked.png" width="96" height="96"/>
     </resources>
 </document>

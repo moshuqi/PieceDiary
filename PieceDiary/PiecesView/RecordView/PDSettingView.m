@@ -12,6 +12,7 @@
 #import "PDRecordMood.h"
 #import "PDSettingDateView.h"
 #import "PDDataManager.h"
+#import "PDDefine.h"
 
 @interface PDSettingView () <PDRecordDateViewDelegate, PDSettingDateViewDelegate>
 
@@ -25,7 +26,7 @@
 @property (nonatomic, retain) PDRecordMood *mood;
 
 @property (nonatomic, retain) PDSettingDateView *settingDateView;
-//@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSDate *date;
 
 @end
 
@@ -49,10 +50,14 @@
     self.mood = [[PDRecordMood alloc] init];
     self.mood.iconView.frame = self.moodView.bounds;
     [self.moodView addSubview:self.mood.iconView];
+    
+    [self.doneButton setTitleColor:TitleTextBlackColor forState:UIControlStateNormal];
+    self.doneButton.backgroundColor = BackgroudGrayColor;
 }
 
 - (void)setupSettingViewWithDate:(NSDate *)date
 {
+    self.date = date;
     [self.recordDateView setDateStringWithDate:date];
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
@@ -88,6 +93,7 @@
     self.settingDateView = [nibViews firstObject];
     
     self.settingDateView.delegate = self;
+    [self.settingDateView setupWithDate:self.date];
     self.settingDateView.frame = fromRect;
     [self addSubview:self.settingDateView];
     

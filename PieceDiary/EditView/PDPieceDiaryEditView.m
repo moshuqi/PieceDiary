@@ -9,6 +9,7 @@
 #import "PDPieceDiaryEditView.h"
 #import "PDPieceCellDataModel.h"
 #import "PDPhotoDataModel.h"
+#import "PDDefine.h"
 
 @interface PDPieceDiaryEditView ()
 
@@ -40,6 +41,9 @@
 {
     [self addGesture];
     [self addPhotoCountLabelToImageView];
+    
+    self.titleLabel.textColor = TitleTextBlackColor;
+    self.textView.textColor = ContentTextColor;
 }
 
 - (void)addGesture
@@ -65,7 +69,7 @@
     
     self.photoCountLabel.textColor = [UIColor whiteColor];
     self.photoCountLabel.textAlignment = NSTextAlignmentCenter;
-    self.photoCountLabel.backgroundColor = [UIColor redColor];
+    self.photoCountLabel.backgroundColor = MainBlueColor;
     self.photoCountLabel.layer.cornerRadius = w / 2;
     self.photoCountLabel.clipsToBounds = YES;
     

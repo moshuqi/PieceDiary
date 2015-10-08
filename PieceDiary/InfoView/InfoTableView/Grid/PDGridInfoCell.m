@@ -7,6 +7,7 @@
 //
 
 #import "PDGridInfoCell.h"
+#import "PDDefine.h"
 
 @interface PDGridInfoCell ()
 
@@ -24,11 +25,15 @@
     // Initialization code
     
     // 临时处理。
-    CGFloat photoW = 88 - 20 * 2;
+    CGFloat photoW = 100 - 20 * 2;
     self.photo.clipsToBounds = YES;
     self.photo.layer.cornerRadius = photoW / 2;
     self.photo.layer.borderWidth = 1;
     self.photo.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    self.dayLabel.textColor = TitleTextBlackColor;
+    self.weekdayLabel.textColor = TitleTextGrayColor;
+    self.questionLabel.textColor = TitleTextBlackColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -50,12 +55,12 @@
     if (answer && [answer length] > 0)
     {
         self.answerLabel.text = answer;
-        self.answerLabel.textColor = [UIColor blackColor];
+        self.answerLabel.textColor = ContentTextColor;
     }
     else
     {
         self.answerLabel.text = @"无内容";
-        self.answerLabel.textColor = [UIColor lightGrayColor];
+        self.answerLabel.textColor = TitleTextGrayColor;
     }
     
     if (photo)

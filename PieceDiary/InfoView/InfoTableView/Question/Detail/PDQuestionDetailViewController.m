@@ -11,6 +11,7 @@
 #import "PDQuestionDetailCell.h"
 #import "PDGridInfoSectionDataModel.h"
 #import "NSDate+PDDate.h"
+#import "PDDefine.h"
 
 #define QuestionDetailReuseIdentifier @"QuestionDetailReuseIdentifier"
 
@@ -21,8 +22,11 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @property (nonatomic, retain) NSArray *sectionDataArray;
+@property (nonatomic, retain) NSString *titleText;
 
 @end
+
+const CGFloat QuestionDetailTableHeaderHeight = 30;
 
 @implementation PDQuestionDetailViewController
 
@@ -32,8 +36,10 @@
     
     self.view.backgroundColor = [UIColor yellowColor];
     self.topBar.delegate = self;
+    [self.topBar setTitleWithText:self.titleText];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PDQuestionDetailCell" bundle:nil] forCellReuseIdentifier:QuestionDetailReuseIdentifier];
+    self.tableView.backgroundColor = BackgroudGrayColor;
 }
 
 - (id)initWithDataArray:(NSArray *)array titleText:(NSString *)title
@@ -42,7 +48,7 @@
     if (self)
     {
         self.sectionDataArray = array;
-        [self.topBar setTitleWithText:title];
+        self.titleText = title;
     }
     
     return self;
@@ -72,9 +78,35 @@
     return 88;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return QuestionDetailTableHeaderHeight;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // 显示年月的标签
+    CGFloat labelWidth = 120;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, QuestionDetailTableHeaderHeight)];
+    label.backgroundColor = MainBlueColor;
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[section];
+    NSInteger year = sectionData.year;
+    NSInteger month = sectionData.month;
+    label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
+    
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = BackgroudGrayColor;
+    [headerView addSubview:label];
+    
+    return headerView;
 }
 
 #pragma mark - UITableViewDataSource

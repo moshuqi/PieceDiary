@@ -25,7 +25,7 @@
         
         // 临时视图，放大动画完成之后移除
         UIView *animatedView = [[UIView alloc] initWithFrame:fromRect];
-        animatedView.backgroundColor = [UIColor blackColor];
+        animatedView.backgroundColor = [UIColor whiteColor];
         
         CGFloat originY = 20;
         toViewController.view.frame = CGRectMake(0, originY, CGRectGetWidth(containerView.frame), CGRectGetHeight(containerView.frame) - originY);
@@ -55,7 +55,7 @@
         
         // 临时视图，缩小动画完成后移除
         UIView *animatedView = [[UIView alloc] initWithFrame:fromViewController.view.frame];
-        animatedView.backgroundColor = [UIColor blackColor];
+        animatedView.backgroundColor = [UIColor whiteColor];
         [containerView insertSubview:animatedView aboveSubview:fromViewController.view];
         fromViewController.view.hidden = YES;
         

@@ -878,7 +878,7 @@
 - (void)updateWeatherWithDate:(NSDate *)date weather:(NSString *)weather
 {
     // 修改对应日期的天气
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %@ where date = \"%@\"", DatabaseWeatherTable, DatabaseWeatherTableWeather, weather, [PDDatabaseHandle stringFromDate:date]];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where date = \"%@\"", DatabaseWeatherTable, DatabaseWeatherTableWeather, weather, [PDDatabaseHandle stringFromDate:date]];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];
@@ -887,7 +887,7 @@
 - (void)updateMoodWithDate:(NSDate *)date mood:(NSString *)mood
 {
     // 修改对应日期的心情
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = %@ where date = \"%@\"", DatabaseMoodTable, DatabaseMoodTableMood, mood, [PDDatabaseHandle stringFromDate:date]];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set %@ = \"%@\" where date = \"%@\"", DatabaseMoodTable, DatabaseMoodTableMood, mood, [PDDatabaseHandle stringFromDate:date]];
     
     BOOL result = [self.database executeUpdate:updateSql];
     [self examExcuteWithResult:result];

@@ -7,12 +7,22 @@
 //
 
 #import "PDWeekdayView.h"
-#import "PDWeekButtonsView.h"
 #import "NSDate+PDDate.h"
+#import "PDWeekdayCell.h"
+#import "PDDefine.h"
 
-@interface PDWeekdayView ()
+#define PDWeekdayCellIdentifier     @"PDWeekdayCellIdentifier"
+#define PDWeekdayCellInteritemSpacing   1
+#define PDWeekdayCellLineSpacing   1
 
-@property (nonatomic, weak) IBOutlet PDWeekButtonsView *weekButtonsView;
+#define PDWeekDayKey    @"PDWeekDayKey"
+#define PDDayKey        @"PDDayKey"
+#define PDCellStateKey  @"PDCellStateKey"
+
+@interface PDWeekdayView () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, retain) NSMutableArray *dataArray;
 
 @end
 
@@ -33,35 +43,95 @@
     return self;
 }
 
-- (void)setupWeekdayButtonsWithDate:(NSDate *)date
+- (void)awakeFromNib
 {
-    NSDate *Sun = [date getSundayInThisWeek];
-    NSArray *weekdayButtons = [self.weekButtonsView getWeekdayButtons];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"PDWeekdayCell" bundle:nil] forCellWithReuseIdentifier:PDWeekdayCellIdentifier];
     
-    for (NSInteger i = 0; i < [weekdayButtons count]; i++)
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.minimumInteritemSpacing = PDWeekdayCellInteritemSpacing;
+    flowLayout.minimumLineSpacing = PDWeekdayCellLineSpacing;
+    self.collectionView.collectionViewLayout = flowLayout;
+    
+    self.collectionView.backgroundColor = BackgroudGrayColor;
+    self.collectionView.layer.borderWidth = 1;
+    self.collectionView.layer.borderColor = BackgroudGrayColor.CGColor;
+}
+
+- (void)setupWeekdayDataArrayWithDate:(NSDate *)date
+{
+    self.dataArray = [NSMutableArray array];
+    
+    NSArray *weekdays = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
+    NSInteger count = [weekdays count];
+    
+    NSDate *Sun = [date getSundayInThisWeek];
+    for (NSInteger i = 0; i < count; i++)
     {
+        NSString *weekdayStr = weekdays[i];
+        
         NSDate *d = [Sun afterDays:i];
-        UIButton *button = weekdayButtons[i];
+        NSInteger day = [d dayValue];
+        NSString *dayStr = [NSString stringWithFormat:@"%ld", day];
         
-        NSString *text = [NSString stringWithFormat:@"%ld", [d dayValue]];
-        [button setTitle:text forState:UIControlStateNormal];
-        [button setTitle:text forState:UIControlStateHighlighted];
-        
+        PDWeekdayCellState state = PDWeekdayCellStateNoDiary;
         if ([d dayValue] == [date dayValue])
         {
-            // 当前日期显示不一样的颜色
-            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+            state = PDWeekdayCellStateCurrentDay;
         }
+        
+        NSDictionary *dict = @{PDWeekDayKey : weekdayStr,
+                               PDDayKey : dayStr,
+                               PDCellStateKey : [NSNumber numberWithInteger:state]};
+        [self.dataArray addObject:dict];
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (void)setupWeekdayButtonsWithDate:(NSDate *)date
+{
+    [self setupWeekdayDataArrayWithDate:date];
+    [self.collectionView reloadData];
 }
-*/
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.dataArray count];
+}
+
+- (PDWeekdayCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PDWeekdayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDWeekdayCellIdentifier forIndexPath:indexPath];
+    
+    NSDictionary *dict = self.dataArray[indexPath.row];
+    
+    NSString *weekday = [dict valueForKey:PDWeekDayKey];
+    NSString *day = [dict valueForKey:PDDayKey];
+    PDWeekdayCellState state = (PDWeekdayCellState)[[dict valueForKey:PDCellStateKey] integerValue];
+    
+    [cell setupWithWeekday:weekday day:day state:state];
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger count = [self.dataArray count];
+    CGFloat width = (CGRectGetWidth(collectionView.bounds) - PDWeekdayCellInteritemSpacing * (count - 1)) / count;
+    CGFloat height = CGRectGetHeight(collectionView.bounds);
+    
+    CGSize size = CGSizeMake(width, height);
+    return size;
+}
 
 @end

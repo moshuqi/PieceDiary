@@ -13,7 +13,7 @@
 
 - (void)setupWithDataModel:(PDDateCellDataModel *)dataModel;
 
-- (void)setDateLabelsWithDate:(NSDate *)date;
+- (void)setupDateCellWithDate:(NSDate *)date;
 - (void)setWeatherIconWithImage:(UIImage *)image;
 - (void)setMoodIconWithImage:(UIImage *)image;
 

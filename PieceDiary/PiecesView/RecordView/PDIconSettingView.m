@@ -13,6 +13,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.titleLabel.textColor = TitleTextGrayColor;
 }
 
 - (NSArray *)getRecordButtons

@@ -69,9 +69,9 @@
     // 获取本周的周日，第一天。
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:self];
-    components.weekday = 1;
+    NSInteger weekday = components.weekday;
     
-    NSDate *newDate = [calendar dateFromComponents:components];
+    NSDate *newDate = [self beforeDays:(weekday - 1)];
     return newDate;
 }
 

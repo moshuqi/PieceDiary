@@ -9,6 +9,7 @@
 #import<AssetsLibrary/AssetsLibrary.h>
 #import "PDImagePickerController.h"
 #import "PDImagePickerCell.h"
+#import "PDDefine.h"
 
 #define PhotoThumbnailKey   @"PhotoThumbnailKey"
 #define PhotoUrlKey         @"PhotoUrlKey"
@@ -18,6 +19,8 @@
 
 @property (nonatomic, retain) NSMutableArray *dataArray;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet UIView *titleBarView;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -32,6 +35,9 @@
     
     self.dataArray = [NSMutableArray array];
     [self setupData];
+    
+    self.titleBarView.backgroundColor = BackgroudGrayColor;
+    self.titleLabel.textColor = TitleTextBlackColor;
 }
 
 - (void)didReceiveMemoryWarning {

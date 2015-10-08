@@ -8,6 +8,7 @@
 
 #import "PDRecordDateView.h"
 #import "NSDate+PDDate.h"
+#import "PDDefine.h"
 
 @interface PDRecordDateView ()
 
@@ -17,6 +18,11 @@
 @end
 
 @implementation PDRecordDateView
+
+- (void)awakeFromNib
+{
+    [self.dateButton setTitleColor:TitleTextBlackColor forState:UIControlStateNormal];
+}
 
 - (IBAction)touchedDateButton:(id)sender
 {

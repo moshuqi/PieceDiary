@@ -17,10 +17,11 @@
 #import "PDInfoViewController.h"
 #import "PDDataManager.h"
 #import "PDPieceCell.h"
+#import "PDDefine.h"
 
 #define kOriginY    20
 
-@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate, PDScaleAnimationDelegate>
+@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate, PDScaleAnimationDelegate, PDRecordViewControllerDelegate>
 
 @property (nonatomic, retain) PDPieceDiaryView *pieceDiaryView;
 @property (nonatomic, assign) CGRect currentItemFrame;
@@ -38,7 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor greenColor];
+    self.view.backgroundColor = BackgroudGrayColor;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
     NSDate *date = [NSDate date];
@@ -62,6 +63,11 @@
 {
     [super viewWillAppear:animated];
     
+    [self reloadData];
+}
+
+- (void)reloadData
+{
     [self.pieceDiaryView reloadAllCell];
 }
 
@@ -87,6 +93,7 @@
 {
     // 显示心情天气记录视图
     PDRecordViewController *recordViewController = [[PDRecordViewController alloc] initWithDate:[self.pieceDiaryView getCurrentDate]];
+    recordViewController.delegate = self;
     
     recordViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:recordViewController animated:YES completion:nil];
@@ -106,6 +113,14 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+#pragma mark - PDRecordViewControllerDelegate
+
+- (void)recordViewControllerDismiss:(PDRecordViewController *)recordViewController
+{
+    [self reloadData];
+    [recordViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
@@ -159,6 +174,16 @@
 {
     return self.currentItemFrame;
 }
+
+//- (UIImage *)getChangeViewImage
+//{
+//    UIGraphicsBeginImageContext(self.selecteItemCell.bounds.size);
+//    [self.selecteItemCell.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    
+//    return viewImage;
+//}
 
 /*
 #pragma mark - Navigation

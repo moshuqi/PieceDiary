@@ -37,6 +37,9 @@
     self.photoDataArray = [dataManager getPhotoInfoData];
     
     [self.collection registerNib:[UINib nibWithNibName:@"PDPhotoInfoCell" bundle:nil] forCellWithReuseIdentifier:PhotoInfoCollectionIdentifier];
+    
+    self.collection.layer.borderWidth = 1;
+    self.collection.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {

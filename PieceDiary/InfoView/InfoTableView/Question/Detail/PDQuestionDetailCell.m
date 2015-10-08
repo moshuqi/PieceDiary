@@ -22,6 +22,13 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    // 临时处理。
+    CGFloat photoW = 88 - 20 * 2;
+    self.photo.clipsToBounds = YES;
+    self.photo.layer.cornerRadius = photoW / 2;
+    self.photo.layer.borderWidth = 1;
+    self.photo.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

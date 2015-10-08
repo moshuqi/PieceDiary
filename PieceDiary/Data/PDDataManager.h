@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class UIImage;
+
 @interface PDDataManager : NSObject
 
 + (instancetype)defaultManager;
@@ -38,5 +40,7 @@
 
 - (void)setupWeatherWithDate:(NSDate *)date weather:(NSString *)weather;
 - (void)setupMoodWithDate:(NSDate *)date mood:(NSString *)mood;
+- (UIImage *)getWeatherImageWithDate:(NSDate *)date;
+- (UIImage *)getMoodImageWithDate:(NSDate *)date;
 
 @end

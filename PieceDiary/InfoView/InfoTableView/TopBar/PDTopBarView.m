@@ -7,6 +7,7 @@
 //
 
 #import "PDTopBarView.h"
+#import "PDDefine.h"
 
 @interface PDTopBarView ()
 
@@ -29,6 +30,13 @@
     }
     
     return self;
+}
+
+- (void)awakeFromNib
+{
+    self.titleLabel.textColor = TitleTextBlackColor;
+    
+    [self.returnBtn setTitleColor:MainBlueColor forState:UIControlStateNormal];
 }
 
 - (void)setTitleWithText:(NSString *)text

@@ -15,6 +15,8 @@
 #import "PDDiaryInfoSectionDataModel.h"
 #import "PDGridInfoSectionDataModel.h"
 #import "NSDate+PDDate.h"
+#import "PDRecordWeather.h"
+#import "PDRecordMood.h"
 
 @interface PDDataManager ()
 
@@ -449,6 +451,33 @@ static PDDataManager *_instance;
             [self.dbHandle insertMood:mood inDate:date];
         }
     }
+}
+
+
+- (UIImage *)getWeatherImageWithDate:(NSDate *)date
+{
+    // 天气的图标，若数据库存在记录，则返回对应选中的图标，否则返回默认图标
+    
+    NSString *weatherStr = [self getWeahterStringWithDate:date];
+    if (!weatherStr || ([weatherStr length] < 1))
+    {
+        return [PDRecordWeather getMoodDefaultImage];
+    }
+    
+    return [PDRecordWeather getWeatherImageWithWeatherString:weatherStr];
+}
+
+- (UIImage *)getMoodImageWithDate:(NSDate *)date
+{
+    // 心情的图标，若数据库存在记录，则返回对应选中的图标，否则返回默认图标
+    
+    NSString *moodStr = [self getMoodStringWithDate:date];
+    if (!moodStr || ([moodStr length] < 1))
+    {
+        return [PDRecordMood getMoodDefaultImage];
+    }
+    
+    return [PDRecordMood getMoodImageWithMoodString:moodStr];
 }
 
 @end

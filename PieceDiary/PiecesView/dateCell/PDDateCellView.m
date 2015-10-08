@@ -8,6 +8,7 @@
 
 #import "PDDateCellView.h"
 #import "PDDefine.h"
+#import "PDDataManager.h"
 
 @interface PDDateCellView ()
 
@@ -22,7 +23,7 @@
 
 @implementation PDDateCellView
 
-- (void)setDateLabelsWithDate:(NSDate *)date
+- (void)setupDateCellWithDate:(NSDate *)date
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday) fromDate:date];
@@ -34,6 +35,19 @@
     
     [self setDayLabelWithDay:day];
     [self setDateLabelWithYear:year month:month weekDay:weekDay];
+    
+    PDDataManager *dataManager = [PDDataManager defaultManager];
+    UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
+    UIImage *moodImage = [dataManager getMoodImageWithDate:date];
+    
+    self.weatherIcon.image = weatherImage;
+    self.moodIcon.image = moodImage;
+}
+
+- (void)awakeFromNib
+{
+    self.dayLabel.textColor = TitleTextBlackColor;
+    self.dateLabel.textColor = TitleTextBlackColor;
 }
 
 - (void)setDayLabelWithDay:(NSInteger)day
@@ -79,7 +93,7 @@
 {
     self.dataModel = dataModel;
     
-    [self setDateLabelsWithDate:dataModel.date];
+    [self setupDateCellWithDate:dataModel.date];
     self.weatherIcon.image = dataModel.weatherIcon;
     self.moodIcon.image = dataModel.moodIcon;
 }

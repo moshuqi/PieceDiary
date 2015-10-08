@@ -12,6 +12,7 @@
 #import "PDDataManager.h"
 #import "PDQuestionInfoCell.h"
 #import "PDQuestionDetailViewController.h"
+#import "PDDefine.h"
 
 #define QuestionInfoReuseIdentifier @"QuestionInfoReuseIdentifier"
 
@@ -36,6 +37,7 @@
     self.questionInfoDataArray = [dataManager getQuestionInfoData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PDQuestionInfoCell" bundle:nil] forCellReuseIdentifier:QuestionInfoReuseIdentifier];
+    self.tableView.backgroundColor = BackgroudGrayColor;
     
     self.navigationController.navigationBarHidden = YES;
 }
@@ -73,12 +75,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 56;
+    return 68;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = BackgroudGrayColor;
+    
+    return headerView;
 }
 
 #pragma mark - UITableViewDataSource

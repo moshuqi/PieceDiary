@@ -9,6 +9,7 @@
 #import "PDPieceCell.h"
 #import "PDIconsView.h"
 #import "PDPhotoDataModel.h"
+#import "PDDefine.h"
 
 @interface PDPieceCell ()
 
@@ -18,13 +19,13 @@
 
 @property (nonatomic, retain) PDIconsView *iconsView;
 
-
 @end
 
 @implementation PDPieceCell
 
 - (void)awakeFromNib {
     // Initialization code
+    self.content.textColor = ContentTextColor;
 }
 
 - (void)layoutSubviews
@@ -112,11 +113,11 @@
     // 根据cell是否编辑过来设置label的颜色
     if ([self hasEdit])
     {
-        self.titleLabel.textColor = [UIColor blackColor];
+        self.titleLabel.textColor = TitleTextBlackColor;
     }
     else
     {
-        self.titleLabel.textColor = [UIColor lightGrayColor];
+        self.titleLabel.textColor = TitleTextGrayColor;
     }
 }
 
@@ -140,6 +141,9 @@
         [self.contentView bringSubviewToFront:self.dateCellView];
     }
     self.dateCellView.hidden = hidden;
+    
+    // 复用的时候可能会导致图片显示在日期cell上，加上这个处理。
+    self.iconsView.hidden = !hidden;
 }
 
 @end

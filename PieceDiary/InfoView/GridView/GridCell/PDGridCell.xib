@@ -14,33 +14,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="282" height="100"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日记" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNV-cn-Zny" userLabel="gridTitle">
-                        <rect key="frame" x="0.0" y="0.0" width="56" height="100"/>
+                        <rect key="frame" x="10" y="0.0" width="56" height="100"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="7gx-LY-v5R"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-Jl-E6p" userLabel="quantity">
-                        <rect key="frame" x="226" y="0.0" width="56" height="100"/>
+                        <rect key="frame" x="206" y="0.0" width="66" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="56" id="uZ2-bT-dAQ"/>
+                            <constraint firstAttribute="width" constant="66" id="uZ2-bT-dAQ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="NNV-cn-Zny" secondAttribute="bottom" id="Dgb-bN-3bf"/>
                 <constraint firstItem="NNV-cn-Zny" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TR9-HN-vbt"/>
-                <constraint firstAttribute="trailing" secondItem="PSJ-Jl-E6p" secondAttribute="trailing" id="Y5Z-h4-fWu"/>
+                <constraint firstAttribute="trailing" secondItem="PSJ-Jl-E6p" secondAttribute="trailing" constant="10" id="Y5Z-h4-fWu"/>
                 <constraint firstAttribute="bottom" secondItem="PSJ-Jl-E6p" secondAttribute="bottom" id="jp5-j7-vpW"/>
                 <constraint firstItem="PSJ-Jl-E6p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kFD-eR-jDb"/>
-                <constraint firstItem="NNV-cn-Zny" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lNP-YB-c2i"/>
+                <constraint firstItem="NNV-cn-Zny" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="lNP-YB-c2i"/>
             </constraints>
             <size key="customSize" width="282" height="100"/>
             <connections>

@@ -7,6 +7,7 @@
 //
 
 #import "PDQuestionInfoCell.h"
+#import "PDDefine.h"
 
 @interface PDQuestionInfoCell ()
 
@@ -19,6 +20,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.questionLabel.textColor = TitleTextBlackColor;
+    self.quantityLabel.textColor = ContentTextColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

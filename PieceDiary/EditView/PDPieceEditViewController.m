@@ -191,8 +191,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     view.frame = editView.bounds;
     [editView addSubview:view];
     
-    [self setupEditView:editView withDataModel:dataModel];
-    return editView;
+    [self setupEditView:editView withDataModel:dataModel];    return editView;
 }
 
 - (CGRect)getSlideOutEditViewToFrameWithChangeType:(EditPieceCellChangeType)type
@@ -367,7 +366,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] initWithDataModel:dataModel delegate:self];
     
     questionEditViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    questionEditViewController.preferredContentSize = CGSizeMake(420, 220);
+    questionEditViewController.preferredContentSize = CGSizeMake(420, 260);
     [self presentViewController:questionEditViewController animated:YES completion:nil];
 }
 

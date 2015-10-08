@@ -9,11 +9,16 @@
 #import "PDQuestionEditViewController.h"
 #import "PDPieceCellDataModel.h"
 #import "PDDataManager.h"
+#import "PDDefine.h"
 
 @interface PDQuestionEditViewController () <UITextViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextView *textView;
 @property (nonatomic, weak) IBOutlet UIButton *doneBtn;
+@property (nonatomic, weak) IBOutlet UIButton *cancelBtn;
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIView *titleBarView;
+
 @property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 @property (nonatomic, copy) NSString *oldQuestion;  // 保存初始值，完成时判断是否有更改
 
@@ -28,6 +33,18 @@
     self.textView.text = self.dataModel.question;
     self.oldQuestion = self.dataModel.question;
     self.textView.delegate = self;
+    
+    [self setupColor];
+}
+
+- (void)setupColor
+{
+    // 设置按钮和字体的颜色
+//    [self.doneBtn setTitleColor:MainBlueColor forState:UIControlStateNormal];
+//    [self.cancelBtn setTitleColor:MainBlueColor forState:UIControlStateNormal];
+    
+    self.titleLabel.textColor = TitleTextBlackColor;
+    self.titleBarView.backgroundColor = BackgroudGrayColor;
 }
 
 - (id)initWithDataModel:(PDPieceCellDataModel *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate
@@ -127,7 +144,7 @@
 - (void)showAlertTip
 {
     // 提示在同一天里设置了相同的问题
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"回答abcd" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"提示在同一天里设置了相同的问题" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
 

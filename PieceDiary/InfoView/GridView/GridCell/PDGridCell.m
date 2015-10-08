@@ -7,6 +7,7 @@
 //
 
 #import "PDGridCell.h"
+#import "PDDefine.h"
 
 @interface PDGridCell ()
 
@@ -19,6 +20,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.titleLabel.textColor = TitleTextBlackColor;
+    self.quantityLabel.textColor = ContentTextColor;
 }
 
 - (void)setCellTitleWithText:(NSString *)text;

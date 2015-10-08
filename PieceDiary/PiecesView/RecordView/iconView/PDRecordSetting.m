@@ -161,7 +161,8 @@
 - (UIImage *)getSelectedImageWithTag:(NSInteger)tag
 {
     NSString *imageName = [self getImageNameWithTag:tag];
-    imageName = [imageName stringByAppendingString:@"Selected.png"];
+    NSString *extStr = [NSString stringWithFormat:@"%@.png", RecordIconSelected];
+    imageName = [imageName stringByAppendingString:extStr];
     
     UIImage *image = [UIImage imageNamed:imageName];
     return image;

@@ -23,26 +23,28 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uk2-eu-1Kr">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="56"/>
-                            <state key="normal" title="&lt;">
-                                <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="25" minY="20" maxX="25" maxY="20"/>
+                            <state key="normal" image="leftArrow.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="disabled">
+                            <state key="disabled" image="leftArrowHighlight.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="highlighted" image="leftArrowHighlight.png"/>
                             <connections>
                                 <action selector="touchedLeftBtn:" destination="-1" eventType="touchUpInside" id="7AP-7c-XJg"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="No1-uG-xQp">
                             <rect key="frame" x="80" y="0.0" width="80" height="56"/>
-                            <state key="normal" title="&gt;">
-                                <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="imageEdgeInsets" minX="25" minY="20" maxX="25" maxY="20"/>
+                            <state key="normal" image="rightArrow.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="disabled">
+                            <state key="disabled" image="rightArrowHighlight.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="highlighted" image="rightArrowHighlight.png"/>
                             <connections>
                                 <action selector="touchedRightBtn:" destination="-1" eventType="touchUpInside" id="h6O-7D-hRg"/>
                             </connections>
@@ -62,27 +64,29 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxu-R9-5Sy">
-                    <rect key="frame" x="349" y="0.0" width="56" height="56"/>
+                    <rect key="frame" x="339" y="0.0" width="66" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="56" id="Ah5-OC-sG2"/>
+                        <constraint firstAttribute="width" constant="66" id="Ah5-OC-sG2"/>
                     </constraints>
-                    <state key="normal" title="image">
-                        <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="25" maxY="15"/>
+                    <state key="normal" image="photo.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="photoHighlight.png"/>
                     <connections>
                         <action selector="touchedAddImageBtn:" destination="-1" eventType="touchUpInside" id="VPW-wO-8gZ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yc3-uH-DKf">
-                    <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="66" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="56" id="KYA-ud-OVm"/>
+                        <constraint firstAttribute="width" constant="66" id="KYA-ud-OVm"/>
                     </constraints>
-                    <state key="normal" title="…">
-                        <color key="titleColor" red="0.17938417740000001" green="1" blue="0.98790583840000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="imageEdgeInsets" minX="25" minY="15" maxX="15" maxY="15"/>
+                    <state key="normal" image="piece.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="pieceHighlight.png"/>
                     <connections>
                         <action selector="touchedReturnBtn:" destination="-1" eventType="touchUpInside" id="DhR-ED-8vQ"/>
                     </connections>
@@ -104,4 +108,14 @@
             <point key="canvasLocation" x="375.5" y="2.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="leftArrow.png" width="96" height="96"/>
+        <image name="leftArrowHighlight.png" width="96" height="96"/>
+        <image name="photo.png" width="96" height="96"/>
+        <image name="photoHighlight.png" width="96" height="96"/>
+        <image name="piece.png" width="96" height="96"/>
+        <image name="pieceHighlight.png" width="96" height="96"/>
+        <image name="rightArrow.png" width="96" height="96"/>
+        <image name="rightArrowHighlight.png" width="96" height="96"/>
+    </resources>
 </document>

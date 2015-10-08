@@ -19,16 +19,16 @@
                             <constraint firstAttribute="height" constant="20" id="XwY-yx-ROV"/>
                             <constraint firstAttribute="width" constant="88" id="vFe-Va-D9s"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HL1-OY-GpU" userLabel="dayLabel">
-                        <rect key="frame" x="10" y="180" width="88" height="44"/>
+                        <rect key="frame" x="10" y="188" width="88" height="36"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="BRR-Mg-7c9"/>
+                            <constraint firstAttribute="height" constant="36" id="BRR-Mg-7c9"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>

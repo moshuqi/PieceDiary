@@ -12,6 +12,7 @@
 #import "PDGridInfoSectionDataModel.h"
 #import "PDDataManager.h"
 #import "NSDate+PDDate.h"
+#import "PDDefine.h"
 
 #define GridInfoReuseIdentifier @"GridInfoReuseIdentifier"
 
@@ -24,7 +25,7 @@
 @end
 
 const CGFloat GridTableHeaderHeight = 30;
-const CGFloat GridTableHeightForRow = 88;
+const CGFloat GridTableHeightForRow = 100;
 
 @implementation PDGridInfoViewController
 
@@ -39,6 +40,8 @@ const CGFloat GridTableHeightForRow = 88;
     self.sectionDataArray = [dataManager getGridInfoData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PDGridInfoCell" bundle:nil] forCellReuseIdentifier:GridInfoReuseIdentifier];
+    
+    self.tableView.backgroundColor = BackgroudGrayColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +84,8 @@ const CGFloat GridTableHeightForRow = 88;
     // 显示年月的标签
     CGFloat labelWidth = 120;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, GridTableHeaderHeight)];
-    label.backgroundColor = [UIColor yellowColor];
+    label.backgroundColor = MainBlueColor;
+    label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     
     PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[section];
@@ -90,6 +94,7 @@ const CGFloat GridTableHeightForRow = 88;
     label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
     
     UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = BackgroudGrayColor;
     [headerView addSubview:label];
     
     return headerView;

@@ -13,11 +13,13 @@
 #import "PDPhotoInfoViewController.h"
 #import "PDQuestionInfoViewController.h"
 #import "PDThisWeekView.h"
+#import "PDDefine.h"
 
 @interface PDInfoViewController () <PDGridViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet PDGridView *gridView;
 @property (nonatomic, weak) IBOutlet PDThisWeekView *thisWeekView;
+@property (nonatomic, weak) IBOutlet UIView *colorView;
 @property (nonatomic, retain) NSDate *date;
 
 @end
@@ -28,12 +30,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = BackgroudGrayColor;
     
     self.gridView.delegate = self;
     
     [self addGesture];
     [self.thisWeekView setupThisWeekWithDate:self.date];
+    
+    self.colorView.backgroundColor = MainBlueColor;
 }
 
 - (id)initWithDate:(NSDate *)date

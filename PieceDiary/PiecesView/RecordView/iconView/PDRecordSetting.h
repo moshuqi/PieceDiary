@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "PDIconSettingView.h"
 
+#define RecordIconSelected      @"Selected"
+
 @interface PDRecordSetting : NSObject
 
 @property (nonatomic, retain) PDIconSettingView *iconView;

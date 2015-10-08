@@ -24,7 +24,6 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mve-tb-b2u" userLabel="mood">
                     <rect key="frame" x="0.0" y="243" width="322" height="155"/>
-                    <color key="backgroundColor" red="1" green="0.77421898590000005" blue="0.97156474709999996" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdn-mA-PyM">
                     <rect key="frame" x="0.0" y="398" width="322" height="44"/>

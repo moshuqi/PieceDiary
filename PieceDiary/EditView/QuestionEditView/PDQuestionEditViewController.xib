@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDQuestionEditViewController">
             <connections>
+                <outlet property="cancelBtn" destination="kjS-vg-F9T" id="wiJ-TD-Dex"/>
                 <outlet property="doneBtn" destination="wUg-CT-TrA" id="P5e-qv-NfA"/>
                 <outlet property="textView" destination="3kz-yn-wHb" id="i8H-9P-fvX"/>
+                <outlet property="titleBarView" destination="Gsa-Vu-8EB" id="hzi-cZ-XAV"/>
+                <outlet property="titleLabel" destination="Okk-uW-aUC" id="mfl-Fe-0Fo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,10 +28,8 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="56" id="FLv-VY-bLQ"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="完成"/>
-                            <state key="selected">
-                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
                             <connections>
                                 <action selector="questionEditDone:" destination="-1" eventType="touchUpInside" id="DHH-d7-QIN"/>
                             </connections>
@@ -38,22 +39,22 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="56" id="a30-vh-Nl0"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <state key="normal" title="取消"/>
                             <connections>
                                 <action selector="questionEditCancel:" destination="-1" eventType="touchUpInside" id="eqA-Yb-3iV"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑问题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okk-uW-aUC">
-                            <rect key="frame" x="143" y="0.0" width="88" height="56"/>
+                            <rect key="frame" x="127" y="0.0" width="120" height="56"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="88" id="6eE-UH-iTA"/>
+                                <constraint firstAttribute="width" constant="120" id="6eE-UH-iTA"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.91858033459595956" green="0.90627344646714747" blue="0.87098506624046412" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="Okk-uW-aUC" firstAttribute="top" secondItem="Gsa-Vu-8EB" secondAttribute="top" id="4cp-Xf-FwR"/>
                         <constraint firstItem="kjS-vg-F9T" firstAttribute="leading" secondItem="Gsa-Vu-8EB" secondAttribute="leading" id="7lS-RU-B0W"/>
@@ -69,7 +70,7 @@
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3kz-yn-wHb">
                     <rect key="frame" x="0.0" y="56" width="375" height="147"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
