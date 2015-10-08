@@ -120,11 +120,6 @@
 		65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D381FE1BA9A77000BE9E09 /* FMDatabasePool.m */; };
 		65D382071BA9A77000BE9E09 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382001BA9A77000BE9E09 /* FMDatabaseQueue.m */; };
 		65D382081BA9A77000BE9E09 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382031BA9A77000BE9E09 /* FMResultSet.m */; };
-		65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */; };
-		65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */; };
-		65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */; };
-		65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */; };
-		65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */; };
 		65D3821B1BA9A80700BE9E09 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */; };
 		65F1848E1BB2FD8600C62294 /* PDPhotoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F1848D1BB2FD8600C62294 /* PDPhotoDataModel.m */; settings = {ASSET_TAGS = (); }; };
 		65F740751BC2C79E0053208D /* angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 65F740541BC2C79E0053208D /* angry.png */; settings = {ASSET_TAGS = (); }; };
@@ -349,16 +344,6 @@
 		65D382011BA9A77000BE9E09 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		65D382021BA9A77000BE9E09 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		65D382031BA9A77000BE9E09 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		65D3820A1BA9A79900BE9E09 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
-		65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
-		65D3820C1BA9A79900BE9E09 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
-		65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
-		65D3820E1BA9A79900BE9E09 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
-		65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
-		65D382101BA9A79900BE9E09 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
-		65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		65D382171BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExampleDrawerVisualStateManager.h; sourceTree = "<group>"; };
-		65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		65D3821A1BA9A80700BE9E09 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		65F1848C1BB2FD8600C62294 /* PDPhotoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPhotoDataModel.h; sourceTree = "<group>"; };
 		65F1848D1BB2FD8600C62294 /* PDPhotoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoDataModel.m; sourceTree = "<group>"; };
@@ -506,7 +491,6 @@
 		6539FA5B1BA7FC2B0068DB9D /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				65D381F71BA9A76600BE9E09 /* DrawerController */,
 				65D381F81BA9A76600BE9E09 /* FMDB */,
 			);
 			path = Framework;
@@ -894,15 +878,6 @@
 			path = GridCell;
 			sourceTree = "<group>";
 		};
-		65D381F71BA9A76600BE9E09 /* DrawerController */ = {
-			isa = PBXGroup;
-			children = (
-				65D382161BA9A7B800BE9E09 /* VisualStateManager */,
-				65D382091BA9A79900BE9E09 /* MMDrawerController */,
-			);
-			path = DrawerController;
-			sourceTree = "<group>";
-		};
 		65D381F81BA9A76600BE9E09 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,30 +894,6 @@
 				65D382031BA9A77000BE9E09 /* FMResultSet.m */,
 			);
 			path = FMDB;
-			sourceTree = "<group>";
-		};
-		65D382091BA9A79900BE9E09 /* MMDrawerController */ = {
-			isa = PBXGroup;
-			children = (
-				65D3820A1BA9A79900BE9E09 /* MMDrawerBarButtonItem.h */,
-				65D3820B1BA9A79900BE9E09 /* MMDrawerBarButtonItem.m */,
-				65D3820C1BA9A79900BE9E09 /* MMDrawerController.h */,
-				65D3820D1BA9A79900BE9E09 /* MMDrawerController.m */,
-				65D3820E1BA9A79900BE9E09 /* MMDrawerVisualState.h */,
-				65D3820F1BA9A79900BE9E09 /* MMDrawerVisualState.m */,
-				65D382101BA9A79900BE9E09 /* UIViewController+MMDrawerController.h */,
-				65D382111BA9A79900BE9E09 /* UIViewController+MMDrawerController.m */,
-			);
-			path = MMDrawerController;
-			sourceTree = "<group>";
-		};
-		65D382161BA9A7B800BE9E09 /* VisualStateManager */ = {
-			isa = PBXGroup;
-			children = (
-				65D382171BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.h */,
-				65D382181BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m */,
-			);
-			path = VisualStateManager;
 			sourceTree = "<group>";
 		};
 		65F740531BC2C79E0053208D /* mood */ = {
@@ -1184,7 +1135,6 @@
 				65D382051BA9A77000BE9E09 /* FMDatabaseAdditions.m in Sources */,
 				65F1848E1BB2FD8600C62294 /* PDPhotoDataModel.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
-				65D382151BA9A79900BE9E09 /* UIViewController+MMDrawerController.m in Sources */,
 				6567CCAB1BB1031C00BCE967 /* PDDisplayPhotoViewController.m in Sources */,
 				659BDD021BA6BACA0000D561 /* PDSettingDateView.m in Sources */,
 				658980C51BBBABF9001A20EC /* PDDiaryInfoCellDataModel.m in Sources */,
@@ -1196,7 +1146,6 @@
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
 				659BDCF31BA6A4C60000D561 /* PDRecordMood.m in Sources */,
-				65D382141BA9A79900BE9E09 /* MMDrawerVisualState.m in Sources */,
 				659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */,
 				65D382061BA9A77000BE9E09 /* FMDatabasePool.m in Sources */,
 				6567CCA01BB0A31000BCE967 /* PDImagePickerController.m in Sources */,
@@ -1213,13 +1162,11 @@
 				6547A96B1BA1D7440090CAD0 /* PDIconsView.m in Sources */,
 				6576C1371BBCDBA600E1D376 /* PDQuestionInfoCellDataModel.m in Sources */,
 				659BDCF81BA6A6AD0000D561 /* PDRecordDateView.m in Sources */,
-				65D382191BA9A7B800BE9E09 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				658166971BA28D3B003E7FA5 /* PDIconSettingView.m in Sources */,
 				6539FA841BA84CB40068DB9D /* PDGridView.m in Sources */,
 				659BDD0B1BA6DC9D0000D561 /* PDPieceEditViewController.m in Sources */,
 				65A4F40C1BBFE35200A7A8BF /* PDQuestionDetailCell.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
-				65D382121BA9A79900BE9E09 /* MMDrawerBarButtonItem.m in Sources */,
 				65C5DAF01BAAD33D0039C54B /* PDDatabaseHandle.m in Sources */,
 				6567CCA51BB0BB9D00BCE967 /* PDImagePickerCell.m in Sources */,
 				65A4F4071BBFDF2D00A7A8BF /* PDQuestionDetailViewController.m in Sources */,
@@ -1235,7 +1182,6 @@
 				65D381F51BA9A23E00BE9E09 /* PDGridCell.m in Sources */,
 				656ECE991BAFC68E007EB25D /* PDDateCellDataModel.m in Sources */,
 				6576C1331BBCC39600E1D376 /* PDPhotoInfoCell.m in Sources */,
-				65D382131BA9A79900BE9E09 /* MMDrawerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,
 				65A036A01BC6218D00BCA838 /* PDWeekdayCell.m in Sources */,
 			);
