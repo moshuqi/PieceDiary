@@ -14,8 +14,9 @@
 #import "PDQuestionInfoViewController.h"
 #import "PDThisWeekView.h"
 #import "PDDefine.h"
+#import "PDBaseInfoViewController.h"
 
-@interface PDInfoViewController () <PDGridViewDelegate, UIGestureRecognizerDelegate>
+@interface PDInfoViewController () <PDGridViewDelegate, UIGestureRecognizerDelegate, PDBaseInfoViewControllerDelegate, PDThisWeekViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PDGridView *gridView;
 @property (nonatomic, weak) IBOutlet PDThisWeekView *thisWeekView;
@@ -30,13 +31,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = BackgroudGrayColor;
-    
     self.gridView.delegate = self;
-    
     [self addGesture];
-    [self.thisWeekView setupThisWeekWithDate:self.date];
     
+    [self.thisWeekView setupThisWeekWithDate:self.date];
+    self.thisWeekView.delegate = self;
+    
+    self.view.backgroundColor = BackgroudGrayColor;
     self.colorView.backgroundColor = MainBlueColor;
 }
 
@@ -91,28 +92,47 @@
 - (void)showDiaryTableView
 {
     PDDiaryInfoTableViewController *viewController = [PDDiaryInfoTableViewController new];
+    viewController.baseVCDelegate = self;
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)showGridTableView
 {
     PDGridInfoViewController *viewController = [PDGridInfoViewController new];
+    viewController.baseVCDelegate = self;
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)showPhotoTableView
 {
     PDPhotoInfoViewController *viewController = [PDPhotoInfoViewController new];
+    viewController.baseVCDelegate = self;
     [self presentViewController:viewController animated:YES completion:nil];
 }
 
 - (void)showQuestionTableView
 {
     PDQuestionInfoViewController *viewController = [PDQuestionInfoViewController new];
-    
+    viewController.baseVCDelegate = self;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
     
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+#pragma mark - PDBaseInfoViewControllerDelegate
+
+- (void)baseInfoViewController:(PDBaseInfoViewController *)baseInfoViewController dismissAndEnterPieceViewWithDate:(NSDate *)date
+{
+    [baseInfoViewController dismissViewControllerAnimated:NO completion:^(){
+        [self.delegate infoViewController:self dismissAndEnterPieceViewWithDate:date];
+    }];
+}
+
+#pragma mark - PDThisWeekViewDelegate
+
+- (void)thisWeekSelectedDate:(NSDate *)date
+{
+    [self.delegate infoViewController:self dismissAndEnterPieceViewWithDate:date];
 }
 
 @end

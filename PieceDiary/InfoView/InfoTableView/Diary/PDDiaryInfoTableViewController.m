@@ -61,7 +61,11 @@ const CGFloat DiaryTableHeightForRow = 88;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PDDiaryInfoSectionDataModel *sectionDataModel = self.sectionDataArray[indexPath.section];
+    PDDiaryInfoCellDataModel *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
+    NSDate *date = cellDataModel.date;
     
+    [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:date];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

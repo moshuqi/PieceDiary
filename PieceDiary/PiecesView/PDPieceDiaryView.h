@@ -16,6 +16,7 @@
 - (void)enterEditFromCell:(UICollectionViewCell *)cell dataArrayIndex:(NSInteger)index;
 - (void)enterRecordViewWithDate:(NSDate *)date;
 - (void)enterInfoViewWithDate:(NSDate *)date;
+- (void)enterReadViewWithDate:(NSDate *)date;
 
 @end
 
@@ -25,6 +26,7 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
 @property (nonatomic, retain) NSArray *cellDataArray;
 
+- (void)resetPieceDiaryViewWithDate:(NSDate *)date;
 - (void)setCurrentDateWithDate:(NSDate *)date;
 - (void)reloadAllCell;
 - (NSDate *)getCurrentDate;

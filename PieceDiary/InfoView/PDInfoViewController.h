@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class PDInfoViewController;
+
+@protocol PDInfoViewControllerDelegate <NSObject>
+
+@required
+- (void)infoViewController:(PDInfoViewController *)infoViewController dismissAndEnterPieceViewWithDate:(NSDate *)date;
+
+@end
+
 @interface PDInfoViewController : UIViewController
+
+@property (nonatomic, weak) id<PDInfoViewControllerDelegate> delegate;
 
 - (id)initWithDate:(NSDate *)date;
 

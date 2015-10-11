@@ -18,10 +18,11 @@
 #import "PDDataManager.h"
 #import "PDPieceCell.h"
 #import "PDDefine.h"
+#import "PDReadViewController.h"
 
 #define kOriginY    20
 
-@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate, PDScaleAnimationDelegate, PDRecordViewControllerDelegate>
+@interface PDPieceViewController ()<PDPieceDiaryViewDelegate, UIViewControllerTransitioningDelegate, PDScaleAnimationDelegate, PDRecordViewControllerDelegate, PDInfoViewControllerDelegate>
 
 @property (nonatomic, retain) PDPieceDiaryView *pieceDiaryView;
 @property (nonatomic, assign) CGRect currentItemFrame;
@@ -102,7 +103,14 @@
 - (void)showInfoView
 {
     PDInfoViewController *infoViewController = [[PDInfoViewController alloc] initWithDate:[self.pieceDiaryView getCurrentDate]];
+    infoViewController.delegate = self;
     [self presentViewController:infoViewController animated:YES completion:nil];
+}
+
+- (void)showReadView
+{
+    PDReadViewController *readViewController = [[PDReadViewController alloc] initWithDataArray:self.pieceDiaryView.cellDataArray];
+    [self presentViewController:readViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,6 +121,12 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)skipToDate:(NSDate *)date
+{
+    // 跳转到指定日期
+    [self.pieceDiaryView resetPieceDiaryViewWithDate:date];
 }
 
 #pragma mark - PDRecordViewControllerDelegate
@@ -168,6 +182,11 @@
     [self showInfoView];
 }
 
+- (void)enterReadViewWithDate:(NSDate *)date
+{
+    [self showReadView];
+}
+
 #pragma mark - ScaleAnimationDelegate
 
 - (CGRect)getCurrentItemRect
@@ -194,5 +213,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - PDInfoViewControllerDelegate
+
+- (void)infoViewController:(PDInfoViewController *)infoViewController dismissAndEnterPieceViewWithDate:(NSDate *)date
+{
+    [self skipToDate:date];
+    [infoViewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

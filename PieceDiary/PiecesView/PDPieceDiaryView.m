@@ -143,6 +143,12 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     return index;
 }
 
+- (void)resetPieceDiaryViewWithDate:(NSDate *)date
+{
+    [self setCurrentDate:date];
+    [self reloadAllCell];
+}
+
 - (void)setCurrentDateWithDate:(NSDate *)date
 {
     self.currentDate = date;
@@ -177,6 +183,11 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"这个按钮的功能暂时没加上：）~" delegate:nil cancelButtonTitle:@"(⊙o⊙)哦!" otherButtonTitles:nil, nil];
     [alert show];
+}
+
+- (IBAction)readButtonTouched:(id)sender
+{
+     [self.delegate enterReadViewWithDate:self.currentDate];
 }
 
 - (void)collectionViewSlideToDirection:(CollectionSlideDirection)direction

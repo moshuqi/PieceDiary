@@ -6,8 +6,8 @@
 //  Copyright © 2015年 msq. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PDBaseInfoViewController.h"
 
-@interface PDDiaryInfoTableViewController : UIViewController
+@interface PDDiaryInfoTableViewController : PDBaseInfoViewController
 
 @end

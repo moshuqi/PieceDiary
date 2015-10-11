@@ -28,9 +28,9 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMG-o6-gkv">
-                    <rect key="frame" x="105.5" y="20" width="220" height="24"/>
+                    <rect key="frame" x="55.5" y="20" width="320" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="220" id="3pm-xa-9IA"/>
+                        <constraint firstAttribute="width" constant="320" id="3pm-xa-9IA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

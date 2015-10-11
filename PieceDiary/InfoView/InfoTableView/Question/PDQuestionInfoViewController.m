@@ -62,6 +62,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)didSelectedWithDate:(NSDate *)date
+{
+    [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:date];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,6 +76,7 @@
     detailViewController.delegate = self;
     
     [self.navigationController pushViewController:detailViewController animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

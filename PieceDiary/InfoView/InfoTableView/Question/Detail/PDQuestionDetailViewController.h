@@ -10,7 +10,9 @@
 
 @protocol PDQuestionDetailViewController <NSObject>
 
+@required
 - (void)detailViewControllerReturn;
+- (void)didSelectedWithDate:(NSDate *)date;
 
 @end
 

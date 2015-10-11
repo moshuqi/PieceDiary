@@ -10,7 +10,7 @@
 #import "PDWeekDayView.h"
 #import "PDDefine.h"
 
-@interface PDThisWeekView ()
+@interface PDThisWeekView () <PDWeekdayViewDelegate>
 
 @property (nonatomic, weak) IBOutlet PDWeekdayView *weekdayView;
 @property (nonatomic, weak) IBOutlet UILabel *thisWeekLabel;
@@ -39,11 +39,20 @@
 {
     self.thisWeekLabel.textColor = TitleTextBlackColor;
     self.lineView.backgroundColor = BackgroudGrayColor;
+    
+    self.weekdayView.delegate = self;
 }
 
 - (void)setupThisWeekWithDate:(NSDate *)date
 {
     [self.weekdayView setupWeekdayButtonsWithDate:date];
+}
+
+#pragma mark - PDWeekdayViewDelegate
+
+- (void)weekdaySelectedDate:(NSDate *)date
+{
+    [self.delegate thisWeekSelectedDate:date];
 }
 
 /*

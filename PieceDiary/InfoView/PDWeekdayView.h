@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PDWeekdayViewDelegate <NSObject>
+
+@required
+- (void)weekdaySelectedDate:(NSDate *)date;
+
+@end
+
 @interface PDWeekdayView : UIView
+
+@property (nonatomic, weak) id<PDWeekdayViewDelegate> delegate;
 
 - (void)setupWeekdayButtonsWithDate:(NSDate *)date;
 

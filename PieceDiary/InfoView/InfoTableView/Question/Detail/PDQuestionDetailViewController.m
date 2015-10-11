@@ -70,7 +70,10 @@ const CGFloat QuestionDetailTableHeaderHeight = 30;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PDGridInfoSectionDataModel *sectionDataModel = self.sectionDataArray[indexPath.section];
+    PDGridInfoCellDataModel *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
     
+    [self.delegate didSelectedWithDate:cellDataModel.date];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -100,7 +103,7 @@ const CGFloat QuestionDetailTableHeaderHeight = 30;
     PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[section];
     NSInteger year = sectionData.year;
     NSInteger month = sectionData.month;
-    label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
+    label.text = [NSString stringWithFormat:@"%@年%@月", @(year), @(month)];
     
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = BackgroudGrayColor;

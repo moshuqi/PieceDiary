@@ -61,7 +61,10 @@ const CGFloat GridTableHeightForRow = 100;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PDGridInfoSectionDataModel *sectionDataModel = self.sectionDataArray[indexPath.section];
+    PDGridInfoCellDataModel *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
     
+    [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:cellDataModel.date];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

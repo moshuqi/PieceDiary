@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PDThisWeekViewDelegate <NSObject>
+
+@required
+- (void)thisWeekSelectedDate:(NSDate *)date;
+
+@end
+
 @interface PDThisWeekView : UIView
+
+@property (nonatomic, weak) id<PDThisWeekViewDelegate> delegate;
 
 - (void)setupThisWeekWithDate:(NSDate *)date;
 

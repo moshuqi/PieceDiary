@@ -23,6 +23,7 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, retain) NSMutableArray *dataArray;
+@property (nonatomic, retain) NSDate *date;
 
 @end
 
@@ -59,6 +60,7 @@
 
 - (void)setupWeekdayDataArrayWithDate:(NSDate *)date
 {
+    self.date = date;
     self.dataArray = [NSMutableArray array];
     
     NSArray *weekdays = @[@"周日", @"周一", @"周二", @"周三", @"周四", @"周五", @"周六"];
@@ -97,7 +99,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
+    NSDate *sun = [self.date getSundayInThisWeek];
+    NSDate *selectedDate = [sun afterDays:row];
     
+    [self.delegate weekdaySelectedDate:selectedDate];
 }
 
 #pragma mark - UICollectionViewDataSource

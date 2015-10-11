@@ -6,8 +6,8 @@
 //  Copyright © 2015年 msq. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PDBaseInfoViewController.h"
 
-@interface PDPhotoInfoViewController : UIViewController
+@interface PDPhotoInfoViewController : PDBaseInfoViewController
 
 @end
