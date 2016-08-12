@@ -130,7 +130,6 @@
 		673BCD2A1D5DAD440004B4F5 /* PDReadViewToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCB71D5DAD440004B4F5 /* PDReadViewToolbar.m */; };
 		673BCD2B1D5DAD440004B4F5 /* PDReadViewToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCCB81D5DAD440004B4F5 /* PDReadViewToolbar.xib */; };
 		673BCD2C1D5DAD440004B4F5 /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCBC1D5DAD440004B4F5 /* PDDatabaseHandle.m */; };
-		673BCD2D1D5DAD440004B4F5 /* PDDateCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCBF1D5DAD440004B4F5 /* PDDateCellDataModel.m */; };
 		673BCD2E1D5DAD440004B4F5 /* PDPhotoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC11D5DAD440004B4F5 /* PDPhotoDataModel.m */; };
 		673BCD2F1D5DAD440004B4F5 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC31D5DAD440004B4F5 /* PDPieceCellDataModel.m */; };
 		673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m */; };
@@ -341,8 +340,6 @@
 		673BCCB81D5DAD440004B4F5 /* PDReadViewToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDReadViewToolbar.xib; sourceTree = "<group>"; };
 		673BCCBB1D5DAD440004B4F5 /* PDDatabaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabaseHandle.h; sourceTree = "<group>"; };
 		673BCCBC1D5DAD440004B4F5 /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
-		673BCCBE1D5DAD440004B4F5 /* PDDateCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellDataModel.h; sourceTree = "<group>"; };
-		673BCCBF1D5DAD440004B4F5 /* PDDateCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellDataModel.m; sourceTree = "<group>"; };
 		673BCCC01D5DAD440004B4F5 /* PDPhotoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPhotoDataModel.h; sourceTree = "<group>"; };
 		673BCCC11D5DAD440004B4F5 /* PDPhotoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoDataModel.m; sourceTree = "<group>"; };
 		673BCCC21D5DAD440004B4F5 /* PDPieceCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCellDataModel.h; sourceTree = "<group>"; };
@@ -872,8 +869,6 @@
 		673BCCBD1D5DAD440004B4F5 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				673BCCBE1D5DAD440004B4F5 /* PDDateCellDataModel.h */,
-				673BCCBF1D5DAD440004B4F5 /* PDDateCellDataModel.m */,
 				673BCCC01D5DAD440004B4F5 /* PDPhotoDataModel.h */,
 				673BCCC11D5DAD440004B4F5 /* PDPhotoDataModel.m */,
 				673BCCC21D5DAD440004B4F5 /* PDPieceCellDataModel.h */,
@@ -1252,7 +1247,6 @@
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
 				673BCD2F1D5DAD440004B4F5 /* PDPieceCellDataModel.m in Sources */,
 				673BCCE61D5DAD440004B4F5 /* PDPieceEditToolbar.m in Sources */,
-				673BCD2D1D5DAD440004B4F5 /* PDDateCellDataModel.m in Sources */,
 				673BCD061D5DAD440004B4F5 /* PDTopBarView.m in Sources */,
 				673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */,
 				673BCD5B1D5DB51E0004B4F5 /* PDRecordMood.m in Sources */,

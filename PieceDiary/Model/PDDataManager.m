@@ -82,32 +82,6 @@ static PDDataManager *_instance;
         cellDataModel.question = [self.dbHandle getQuestionWithID:questionID];
         cellDataModel.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
         
-//        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
-//        NSMutableArray *photoDataModels = [NSMutableArray array];
-//        for (NSInteger i = 0; i < [photoDatas count]; i++)
-//        {
-//            PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
-//            photoDataModel.questionID = questionID;
-//            photoDataModel.date = date;
-//            
-//            NSDictionary *dict = photoDatas[i];
-//            id key = [[dict allKeys] firstObject];
-//            NSInteger photoID = [key integerValue];
-//            photoDataModel.photoID = photoID;
-//            
-//            NSData *photoData = [dict valueForKey:key];
-//            UIImage *image = [UIImage imageWithData:photoData];
-//            
-//            if (!image)
-//            {
-//                PDLog(@"image为nil");
-//            }
-//            
-//            photoDataModel.image = image;
-//            
-//            [photoDataModels addObject:photoDataModel];
-//        }
-        
         NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
         cellDataModel.photoDataModels = photoDataModels;
         
@@ -246,29 +220,6 @@ static PDDataManager *_instance;
 {
     NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
     return photoDataModels;
-    
-//    NSArray *dicts = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
-//    
-//    NSMutableArray *photoDataModels = [NSMutableArray array];
-//    for (NSInteger i = 0; i < [dicts count]; i++)
-//    {
-//        NSDictionary *dict = dicts[i];
-//        id key = [[dict allKeys] firstObject];
-//        NSInteger photoID = [key integerValue];
-//        
-//        NSData *photoData = [dict valueForKey:key];
-//        UIImage *image = [UIImage imageWithData:photoData];
-//        
-//        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
-//        dataModel.image = image;
-//        dataModel.date = date;
-//        dataModel.questionID = questionID;
-//        dataModel.photoID = photoID;
-//        
-//        [photoDataModels addObject:dataModel];
-//    }
-//    
-//    return photoDataModels;
 }
 
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID
