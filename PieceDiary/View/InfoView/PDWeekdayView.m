@@ -7,7 +7,6 @@
 //
 
 #import "PDWeekdayView.h"
-#import "NSDate+PDDate.h"
 #import "PDWeekdayCell.h"
 #import "PDDefine.h"
 

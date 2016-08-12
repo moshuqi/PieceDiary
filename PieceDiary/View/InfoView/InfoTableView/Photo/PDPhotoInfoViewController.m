@@ -12,7 +12,6 @@
 #import "PDPhotoInfoCell.h"
 #import "PDDefine.h"
 #import "PDPhotoDataModel.h"
-#import "NSDate+PDDate.h"
 
 #define PhotoInfoCollectionIdentifier  @"PhotoInfoCollectionIdentifier"
 

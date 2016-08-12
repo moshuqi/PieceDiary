@@ -133,17 +133,5 @@
     return YES;
 }
 
-- (void)setDateHidden:(BOOL)hidden
-{
-    if (![self.dateCellView superview])
-    {
-        [self.contentView addSubview:self.dateCellView];
-        [self.contentView bringSubviewToFront:self.dateCellView];
-    }
-    self.dateCellView.hidden = hidden;
-    
-    // 复用的时候可能会导致图片显示在日期cell上，加上这个处理。
-    self.iconsView.hidden = !hidden;
-}
 
 @end

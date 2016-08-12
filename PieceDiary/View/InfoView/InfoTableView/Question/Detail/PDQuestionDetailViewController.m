@@ -10,7 +10,6 @@
 #import "PDTopBarView.h"
 #import "PDQuestionDetailCell.h"
 #import "PDGridInfoSectionDataModel.h"
-#import "NSDate+PDDate.h"
 #import "PDDefine.h"
 
 #define QuestionDetailReuseIdentifier @"QuestionDetailReuseIdentifier"

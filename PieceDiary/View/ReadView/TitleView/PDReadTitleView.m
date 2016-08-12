@@ -7,7 +7,6 @@
 //
 
 #import "PDReadTitleView.h"
-#import "NSDate+PDDate.h"
 
 @interface PDReadTitleView ()
 

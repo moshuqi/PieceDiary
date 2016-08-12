@@ -120,27 +120,9 @@
 		673BCD0E1D5DAD440004B4F5 /* PDThisWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC801D5DAD440004B4F5 /* PDThisWeekView.xib */; };
 		673BCD0F1D5DAD440004B4F5 /* PDWeekdayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC831D5DAD440004B4F5 /* PDWeekdayCell.m */; };
 		673BCD101D5DAD440004B4F5 /* PDWeekdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC841D5DAD440004B4F5 /* PDWeekdayCell.xib */; };
-		673BCD111D5DAD440004B4F5 /* PDDateCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC881D5DAD440004B4F5 /* PDDateCellView.m */; };
-		673BCD121D5DAD440004B4F5 /* PDDateCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC891D5DAD440004B4F5 /* PDDateCellView.xib */; };
 		673BCD131D5DAD440004B4F5 /* PDPieceDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC8B1D5DAD440004B4F5 /* PDPieceDiaryView.m */; };
 		673BCD141D5DAD440004B4F5 /* PDPieceDiaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC8C1D5DAD440004B4F5 /* PDPieceDiaryView.xib */; };
 		673BCD151D5DAD440004B4F5 /* PDPieceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC8E1D5DAD440004B4F5 /* PDPieceViewController.m */; };
-		673BCD161D5DAD440004B4F5 /* PDIconsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC911D5DAD440004B4F5 /* PDIconsView.m */; };
-		673BCD171D5DAD440004B4F5 /* PDIconsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC921D5DAD440004B4F5 /* PDIconsView.xib */; };
-		673BCD181D5DAD440004B4F5 /* PDPieceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC941D5DAD440004B4F5 /* PDPieceCell.m */; };
-		673BCD191D5DAD440004B4F5 /* PDPieceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC951D5DAD440004B4F5 /* PDPieceCell.xib */; };
-		673BCD1A1D5DAD440004B4F5 /* PDRecordDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC991D5DAD440004B4F5 /* PDRecordDateView.m */; };
-		673BCD1B1D5DAD440004B4F5 /* PDRecordDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC9A1D5DAD440004B4F5 /* PDRecordDateView.xib */; };
-		673BCD1C1D5DAD440004B4F5 /* PDSettingDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCC9C1D5DAD440004B4F5 /* PDSettingDateView.m */; };
-		673BCD1D1D5DAD440004B4F5 /* PDSettingDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCC9D1D5DAD440004B4F5 /* PDSettingDateView.xib */; };
-		673BCD1E1D5DAD440004B4F5 /* PDRecordSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCA01D5DAD440004B4F5 /* PDRecordSetting.m */; };
-		673BCD1F1D5DAD440004B4F5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCA21D5DAD440004B4F5 /* PDIconSettingView.m */; };
-		673BCD201D5DAD440004B4F5 /* PDIconSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCCA31D5DAD440004B4F5 /* PDIconSettingView.xib */; };
-		673BCD211D5DAD440004B4F5 /* PDRecordMood.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCA51D5DAD440004B4F5 /* PDRecordMood.m */; };
-		673BCD221D5DAD440004B4F5 /* PDRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCA71D5DAD440004B4F5 /* PDRecordViewController.m */; };
-		673BCD231D5DAD440004B4F5 /* PDRecordWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCA91D5DAD440004B4F5 /* PDRecordWeather.m */; };
-		673BCD241D5DAD440004B4F5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCAB1D5DAD440004B4F5 /* PDSettingView.m */; };
-		673BCD251D5DAD440004B4F5 /* PDSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCCAC1D5DAD440004B4F5 /* PDSettingView.xib */; };
 		673BCD261D5DAD440004B4F5 /* PDReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCAF1D5DAD440004B4F5 /* PDReadViewController.m */; };
 		673BCD271D5DAD440004B4F5 /* PDReadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCCB01D5DAD440004B4F5 /* PDReadViewController.xib */; };
 		673BCD281D5DAD440004B4F5 /* PDReadTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCB31D5DAD440004B4F5 /* PDReadTitleView.m */; };
@@ -156,13 +138,31 @@
 		673BCD321D5DAD440004B4F5 /* PDGridInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellDataModel.m */; };
 		673BCD331D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m */; };
 		673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m */; };
-		673BCD351D5DAD440004B4F5 /* NSDate+PDDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD01D5DAD440004B4F5 /* NSDate+PDDate.m */; };
 		673BCD361D5DAD440004B4F5 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD21D5DAD440004B4F5 /* PDDataManager.m */; };
 		673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD61D5DAD440004B4F5 /* FMDatabase.m */; };
 		673BCD381D5DAD440004B4F5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD81D5DAD440004B4F5 /* FMDatabaseAdditions.m */; };
 		673BCD391D5DAD440004B4F5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCDA1D5DAD440004B4F5 /* FMDatabasePool.m */; };
 		673BCD3A1D5DAD440004B4F5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCDC1D5DAD440004B4F5 /* FMDatabaseQueue.m */; };
 		673BCD3B1D5DAD440004B4F5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCDF1D5DAD440004B4F5 /* FMResultSet.m */; };
+		673BCD541D5DB51E0004B4F5 /* PDRecordDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD401D5DB51E0004B4F5 /* PDRecordDateView.m */; };
+		673BCD551D5DB51E0004B4F5 /* PDRecordDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD411D5DB51E0004B4F5 /* PDRecordDateView.xib */; };
+		673BCD561D5DB51E0004B4F5 /* PDSettingDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD431D5DB51E0004B4F5 /* PDSettingDateView.m */; };
+		673BCD571D5DB51E0004B4F5 /* PDSettingDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD441D5DB51E0004B4F5 /* PDSettingDateView.xib */; };
+		673BCD581D5DB51E0004B4F5 /* PDRecordSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD471D5DB51E0004B4F5 /* PDRecordSetting.m */; };
+		673BCD591D5DB51E0004B4F5 /* PDIconSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD491D5DB51E0004B4F5 /* PDIconSettingView.m */; };
+		673BCD5A1D5DB51E0004B4F5 /* PDIconSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD4A1D5DB51E0004B4F5 /* PDIconSettingView.xib */; };
+		673BCD5B1D5DB51E0004B4F5 /* PDRecordMood.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD4C1D5DB51E0004B4F5 /* PDRecordMood.m */; };
+		673BCD5C1D5DB51E0004B4F5 /* PDRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD4E1D5DB51E0004B4F5 /* PDRecordViewController.m */; };
+		673BCD5D1D5DB51E0004B4F5 /* PDRecordWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD501D5DB51E0004B4F5 /* PDRecordWeather.m */; };
+		673BCD5E1D5DB51E0004B4F5 /* PDSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD521D5DB51E0004B4F5 /* PDSettingView.m */; };
+		673BCD5F1D5DB51E0004B4F5 /* PDSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD531D5DB51E0004B4F5 /* PDSettingView.xib */; };
+		673BCD6E1D5DB5700004B4F5 /* PDIconsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD671D5DB5700004B4F5 /* PDIconsView.m */; };
+		673BCD6F1D5DB5700004B4F5 /* PDIconsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD681D5DB5700004B4F5 /* PDIconsView.xib */; };
+		673BCD701D5DB5700004B4F5 /* PDPieceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD6A1D5DB5700004B4F5 /* PDPieceCell.m */; };
+		673BCD711D5DB5700004B4F5 /* PDPieceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD6B1D5DB5700004B4F5 /* PDPieceCell.xib */; };
+		673BCD751D5DBEBD0004B4F5 /* PDDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD731D5DBEBD0004B4F5 /* PDDateCell.m */; };
+		673BCD761D5DBEBD0004B4F5 /* PDDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCD741D5DBEBD0004B4F5 /* PDDateCell.xib */; };
+		673BCD7B1D5DBFCB0004B4F5 /* NSDate+PDDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCD7A1D5DBFCB0004B4F5 /* NSDate+PDDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,40 +325,11 @@
 		673BCC821D5DAD440004B4F5 /* PDWeekdayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDWeekdayCell.h; sourceTree = "<group>"; };
 		673BCC831D5DAD440004B4F5 /* PDWeekdayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDWeekdayCell.m; sourceTree = "<group>"; };
 		673BCC841D5DAD440004B4F5 /* PDWeekdayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDWeekdayCell.xib; sourceTree = "<group>"; };
-		673BCC871D5DAD440004B4F5 /* PDDateCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCellView.h; sourceTree = "<group>"; };
-		673BCC881D5DAD440004B4F5 /* PDDateCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCellView.m; sourceTree = "<group>"; };
-		673BCC891D5DAD440004B4F5 /* PDDateCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDDateCellView.xib; sourceTree = "<group>"; };
 		673BCC8A1D5DAD440004B4F5 /* PDPieceDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceDiaryView.h; sourceTree = "<group>"; };
 		673BCC8B1D5DAD440004B4F5 /* PDPieceDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceDiaryView.m; sourceTree = "<group>"; };
 		673BCC8C1D5DAD440004B4F5 /* PDPieceDiaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceDiaryView.xib; sourceTree = "<group>"; };
 		673BCC8D1D5DAD440004B4F5 /* PDPieceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceViewController.h; sourceTree = "<group>"; };
 		673BCC8E1D5DAD440004B4F5 /* PDPieceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceViewController.m; sourceTree = "<group>"; };
-		673BCC901D5DAD440004B4F5 /* PDIconsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDIconsView.h; sourceTree = "<group>"; };
-		673BCC911D5DAD440004B4F5 /* PDIconsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDIconsView.m; sourceTree = "<group>"; };
-		673BCC921D5DAD440004B4F5 /* PDIconsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDIconsView.xib; sourceTree = "<group>"; };
-		673BCC931D5DAD440004B4F5 /* PDPieceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCell.h; sourceTree = "<group>"; };
-		673BCC941D5DAD440004B4F5 /* PDPieceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCell.m; sourceTree = "<group>"; };
-		673BCC951D5DAD440004B4F5 /* PDPieceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceCell.xib; sourceTree = "<group>"; };
-		673BCC981D5DAD440004B4F5 /* PDRecordDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordDateView.h; sourceTree = "<group>"; };
-		673BCC991D5DAD440004B4F5 /* PDRecordDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordDateView.m; sourceTree = "<group>"; };
-		673BCC9A1D5DAD440004B4F5 /* PDRecordDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDRecordDateView.xib; sourceTree = "<group>"; };
-		673BCC9B1D5DAD440004B4F5 /* PDSettingDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingDateView.h; sourceTree = "<group>"; };
-		673BCC9C1D5DAD440004B4F5 /* PDSettingDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingDateView.m; sourceTree = "<group>"; };
-		673BCC9D1D5DAD440004B4F5 /* PDSettingDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingDateView.xib; sourceTree = "<group>"; };
-		673BCC9F1D5DAD440004B4F5 /* PDRecordSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordSetting.h; sourceTree = "<group>"; };
-		673BCCA01D5DAD440004B4F5 /* PDRecordSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordSetting.m; sourceTree = "<group>"; };
-		673BCCA11D5DAD440004B4F5 /* PDIconSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDIconSettingView.h; sourceTree = "<group>"; };
-		673BCCA21D5DAD440004B4F5 /* PDIconSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDIconSettingView.m; sourceTree = "<group>"; };
-		673BCCA31D5DAD440004B4F5 /* PDIconSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDIconSettingView.xib; sourceTree = "<group>"; };
-		673BCCA41D5DAD440004B4F5 /* PDRecordMood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordMood.h; sourceTree = "<group>"; };
-		673BCCA51D5DAD440004B4F5 /* PDRecordMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordMood.m; sourceTree = "<group>"; };
-		673BCCA61D5DAD440004B4F5 /* PDRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordViewController.h; sourceTree = "<group>"; };
-		673BCCA71D5DAD440004B4F5 /* PDRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordViewController.m; sourceTree = "<group>"; };
-		673BCCA81D5DAD440004B4F5 /* PDRecordWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordWeather.h; sourceTree = "<group>"; };
-		673BCCA91D5DAD440004B4F5 /* PDRecordWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordWeather.m; sourceTree = "<group>"; };
-		673BCCAA1D5DAD440004B4F5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
-		673BCCAB1D5DAD440004B4F5 /* PDSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingView.m; sourceTree = "<group>"; };
-		673BCCAC1D5DAD440004B4F5 /* PDSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingView.xib; sourceTree = "<group>"; };
 		673BCCAE1D5DAD440004B4F5 /* PDReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDReadViewController.h; sourceTree = "<group>"; };
 		673BCCAF1D5DAD440004B4F5 /* PDReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDReadViewController.m; sourceTree = "<group>"; };
 		673BCCB01D5DAD440004B4F5 /* PDReadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDReadViewController.xib; sourceTree = "<group>"; };
@@ -386,8 +357,6 @@
 		673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridInfoSectionDataModel.m; sourceTree = "<group>"; };
 		673BCCCD1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoCellDataModel.h; sourceTree = "<group>"; };
 		673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoCellDataModel.m; sourceTree = "<group>"; };
-		673BCCCF1D5DAD440004B4F5 /* NSDate+PDDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PDDate.h"; sourceTree = "<group>"; };
-		673BCCD01D5DAD440004B4F5 /* NSDate+PDDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PDDate.m"; sourceTree = "<group>"; };
 		673BCCD11D5DAD440004B4F5 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		673BCCD21D5DAD440004B4F5 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
 		673BCCD51D5DAD440004B4F5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -401,6 +370,38 @@
 		673BCCDD1D5DAD440004B4F5 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		673BCCDE1D5DAD440004B4F5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		673BCCDF1D5DAD440004B4F5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		673BCD3F1D5DB51E0004B4F5 /* PDRecordDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordDateView.h; sourceTree = "<group>"; };
+		673BCD401D5DB51E0004B4F5 /* PDRecordDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordDateView.m; sourceTree = "<group>"; };
+		673BCD411D5DB51E0004B4F5 /* PDRecordDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDRecordDateView.xib; sourceTree = "<group>"; };
+		673BCD421D5DB51E0004B4F5 /* PDSettingDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingDateView.h; sourceTree = "<group>"; };
+		673BCD431D5DB51E0004B4F5 /* PDSettingDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingDateView.m; sourceTree = "<group>"; };
+		673BCD441D5DB51E0004B4F5 /* PDSettingDateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingDateView.xib; sourceTree = "<group>"; };
+		673BCD461D5DB51E0004B4F5 /* PDRecordSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordSetting.h; sourceTree = "<group>"; };
+		673BCD471D5DB51E0004B4F5 /* PDRecordSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordSetting.m; sourceTree = "<group>"; };
+		673BCD481D5DB51E0004B4F5 /* PDIconSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDIconSettingView.h; sourceTree = "<group>"; };
+		673BCD491D5DB51E0004B4F5 /* PDIconSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDIconSettingView.m; sourceTree = "<group>"; };
+		673BCD4A1D5DB51E0004B4F5 /* PDIconSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDIconSettingView.xib; sourceTree = "<group>"; };
+		673BCD4B1D5DB51E0004B4F5 /* PDRecordMood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordMood.h; sourceTree = "<group>"; };
+		673BCD4C1D5DB51E0004B4F5 /* PDRecordMood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordMood.m; sourceTree = "<group>"; };
+		673BCD4D1D5DB51E0004B4F5 /* PDRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordViewController.h; sourceTree = "<group>"; };
+		673BCD4E1D5DB51E0004B4F5 /* PDRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordViewController.m; sourceTree = "<group>"; };
+		673BCD4F1D5DB51E0004B4F5 /* PDRecordWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDRecordWeather.h; sourceTree = "<group>"; };
+		673BCD501D5DB51E0004B4F5 /* PDRecordWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDRecordWeather.m; sourceTree = "<group>"; };
+		673BCD511D5DB51E0004B4F5 /* PDSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSettingView.h; sourceTree = "<group>"; };
+		673BCD521D5DB51E0004B4F5 /* PDSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSettingView.m; sourceTree = "<group>"; };
+		673BCD531D5DB51E0004B4F5 /* PDSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDSettingView.xib; sourceTree = "<group>"; };
+		673BCD661D5DB5700004B4F5 /* PDIconsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDIconsView.h; sourceTree = "<group>"; };
+		673BCD671D5DB5700004B4F5 /* PDIconsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDIconsView.m; sourceTree = "<group>"; };
+		673BCD681D5DB5700004B4F5 /* PDIconsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDIconsView.xib; sourceTree = "<group>"; };
+		673BCD691D5DB5700004B4F5 /* PDPieceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCell.h; sourceTree = "<group>"; };
+		673BCD6A1D5DB5700004B4F5 /* PDPieceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCell.m; sourceTree = "<group>"; };
+		673BCD6B1D5DB5700004B4F5 /* PDPieceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDPieceCell.xib; sourceTree = "<group>"; };
+		673BCD721D5DBEBD0004B4F5 /* PDDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDateCell.h; sourceTree = "<group>"; };
+		673BCD731D5DBEBD0004B4F5 /* PDDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDateCell.m; sourceTree = "<group>"; };
+		673BCD741D5DBEBD0004B4F5 /* PDDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDDateCell.xib; sourceTree = "<group>"; };
+		673BCD791D5DBFCB0004B4F5 /* NSDate+PDDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PDDate.h"; sourceTree = "<group>"; };
+		673BCD7A1D5DBFCB0004B4F5 /* NSDate+PDDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PDDate.m"; sourceTree = "<group>"; };
+		673BCD7E1D5DC2130004B4F5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +457,7 @@
 		654CC7641BA07840002DF0C9 /* PieceDiary */ = {
 			isa = PBXGroup;
 			children = (
+				673BCD771D5DBF300004B4F5 /* Func */,
 				673BCD3C1D5DAD640004B4F5 /* Database */,
 				673BCC2A1D5DAD440004B4F5 /* View */,
 				673BCCB91D5DAD440004B4F5 /* Model */,
@@ -480,6 +482,7 @@
 			children = (
 				654CC7661BA07840002DF0C9 /* Info.plist */,
 				654CC7671BA07840002DF0C9 /* main.m */,
+				673BCD7E1D5DC2130004B4F5 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -590,9 +593,10 @@
 		673BCC2A1D5DAD440004B4F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				673BCD3D1D5DB51E0004B4F5 /* RecordView */,
 				673BCC2B1D5DAD440004B4F5 /* EditView */,
 				673BCC441D5DAD440004B4F5 /* InfoView */,
-				673BCC851D5DAD440004B4F5 /* PiecesView */,
+				673BCC851D5DAD440004B4F5 /* PieceView */,
 				673BCCAD1D5DAD440004B4F5 /* ReadView */,
 			);
 			path = View;
@@ -798,85 +802,18 @@
 			path = WeekdayView;
 			sourceTree = "<group>";
 		};
-		673BCC851D5DAD440004B4F5 /* PiecesView */ = {
+		673BCC851D5DAD440004B4F5 /* PieceView */ = {
 			isa = PBXGroup;
 			children = (
-				673BCC861D5DAD440004B4F5 /* dateCell */,
+				673BCD601D5DB5700004B4F5 /* Cell */,
 				673BCC8A1D5DAD440004B4F5 /* PDPieceDiaryView.h */,
 				673BCC8B1D5DAD440004B4F5 /* PDPieceDiaryView.m */,
 				673BCC8C1D5DAD440004B4F5 /* PDPieceDiaryView.xib */,
 				673BCC8D1D5DAD440004B4F5 /* PDPieceViewController.h */,
 				673BCC8E1D5DAD440004B4F5 /* PDPieceViewController.m */,
-				673BCC8F1D5DAD440004B4F5 /* PieceCell */,
-				673BCC961D5DAD440004B4F5 /* RecordView */,
 			);
+			name = PieceView;
 			path = PiecesView;
-			sourceTree = "<group>";
-		};
-		673BCC861D5DAD440004B4F5 /* dateCell */ = {
-			isa = PBXGroup;
-			children = (
-				673BCC871D5DAD440004B4F5 /* PDDateCellView.h */,
-				673BCC881D5DAD440004B4F5 /* PDDateCellView.m */,
-				673BCC891D5DAD440004B4F5 /* PDDateCellView.xib */,
-			);
-			path = dateCell;
-			sourceTree = "<group>";
-		};
-		673BCC8F1D5DAD440004B4F5 /* PieceCell */ = {
-			isa = PBXGroup;
-			children = (
-				673BCC901D5DAD440004B4F5 /* PDIconsView.h */,
-				673BCC911D5DAD440004B4F5 /* PDIconsView.m */,
-				673BCC921D5DAD440004B4F5 /* PDIconsView.xib */,
-				673BCC931D5DAD440004B4F5 /* PDPieceCell.h */,
-				673BCC941D5DAD440004B4F5 /* PDPieceCell.m */,
-				673BCC951D5DAD440004B4F5 /* PDPieceCell.xib */,
-			);
-			path = PieceCell;
-			sourceTree = "<group>";
-		};
-		673BCC961D5DAD440004B4F5 /* RecordView */ = {
-			isa = PBXGroup;
-			children = (
-				673BCC971D5DAD440004B4F5 /* dateView */,
-				673BCC9E1D5DAD440004B4F5 /* iconView */,
-				673BCCA11D5DAD440004B4F5 /* PDIconSettingView.h */,
-				673BCCA21D5DAD440004B4F5 /* PDIconSettingView.m */,
-				673BCCA31D5DAD440004B4F5 /* PDIconSettingView.xib */,
-				673BCCA41D5DAD440004B4F5 /* PDRecordMood.h */,
-				673BCCA51D5DAD440004B4F5 /* PDRecordMood.m */,
-				673BCCA61D5DAD440004B4F5 /* PDRecordViewController.h */,
-				673BCCA71D5DAD440004B4F5 /* PDRecordViewController.m */,
-				673BCCA81D5DAD440004B4F5 /* PDRecordWeather.h */,
-				673BCCA91D5DAD440004B4F5 /* PDRecordWeather.m */,
-				673BCCAA1D5DAD440004B4F5 /* PDSettingView.h */,
-				673BCCAB1D5DAD440004B4F5 /* PDSettingView.m */,
-				673BCCAC1D5DAD440004B4F5 /* PDSettingView.xib */,
-			);
-			path = RecordView;
-			sourceTree = "<group>";
-		};
-		673BCC971D5DAD440004B4F5 /* dateView */ = {
-			isa = PBXGroup;
-			children = (
-				673BCC981D5DAD440004B4F5 /* PDRecordDateView.h */,
-				673BCC991D5DAD440004B4F5 /* PDRecordDateView.m */,
-				673BCC9A1D5DAD440004B4F5 /* PDRecordDateView.xib */,
-				673BCC9B1D5DAD440004B4F5 /* PDSettingDateView.h */,
-				673BCC9C1D5DAD440004B4F5 /* PDSettingDateView.m */,
-				673BCC9D1D5DAD440004B4F5 /* PDSettingDateView.xib */,
-			);
-			path = dateView;
-			sourceTree = "<group>";
-		};
-		673BCC9E1D5DAD440004B4F5 /* iconView */ = {
-			isa = PBXGroup;
-			children = (
-				673BCC9F1D5DAD440004B4F5 /* PDRecordSetting.h */,
-				673BCCA01D5DAD440004B4F5 /* PDRecordSetting.m */,
-			);
-			path = iconView;
 			sourceTree = "<group>";
 		};
 		673BCCAD1D5DAD440004B4F5 /* ReadView */ = {
@@ -917,8 +854,6 @@
 				673BCCBA1D5DAD440004B4F5 /* Database */,
 				673BCCBD1D5DAD440004B4F5 /* DataModel */,
 				673BCCC41D5DAD440004B4F5 /* InfoModel */,
-				673BCCCF1D5DAD440004B4F5 /* NSDate+PDDate.h */,
-				673BCCD01D5DAD440004B4F5 /* NSDate+PDDate.m */,
 				673BCCD11D5DAD440004B4F5 /* PDDataManager.h */,
 				673BCCD21D5DAD440004B4F5 /* PDDataManager.m */,
 			);
@@ -995,6 +930,98 @@
 			children = (
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		673BCD3D1D5DB51E0004B4F5 /* RecordView */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD3E1D5DB51E0004B4F5 /* dateView */,
+				673BCD451D5DB51E0004B4F5 /* iconView */,
+				673BCD481D5DB51E0004B4F5 /* PDIconSettingView.h */,
+				673BCD491D5DB51E0004B4F5 /* PDIconSettingView.m */,
+				673BCD4A1D5DB51E0004B4F5 /* PDIconSettingView.xib */,
+				673BCD4B1D5DB51E0004B4F5 /* PDRecordMood.h */,
+				673BCD4C1D5DB51E0004B4F5 /* PDRecordMood.m */,
+				673BCD4D1D5DB51E0004B4F5 /* PDRecordViewController.h */,
+				673BCD4E1D5DB51E0004B4F5 /* PDRecordViewController.m */,
+				673BCD4F1D5DB51E0004B4F5 /* PDRecordWeather.h */,
+				673BCD501D5DB51E0004B4F5 /* PDRecordWeather.m */,
+				673BCD511D5DB51E0004B4F5 /* PDSettingView.h */,
+				673BCD521D5DB51E0004B4F5 /* PDSettingView.m */,
+				673BCD531D5DB51E0004B4F5 /* PDSettingView.xib */,
+			);
+			path = RecordView;
+			sourceTree = "<group>";
+		};
+		673BCD3E1D5DB51E0004B4F5 /* dateView */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD3F1D5DB51E0004B4F5 /* PDRecordDateView.h */,
+				673BCD401D5DB51E0004B4F5 /* PDRecordDateView.m */,
+				673BCD411D5DB51E0004B4F5 /* PDRecordDateView.xib */,
+				673BCD421D5DB51E0004B4F5 /* PDSettingDateView.h */,
+				673BCD431D5DB51E0004B4F5 /* PDSettingDateView.m */,
+				673BCD441D5DB51E0004B4F5 /* PDSettingDateView.xib */,
+			);
+			path = dateView;
+			sourceTree = "<group>";
+		};
+		673BCD451D5DB51E0004B4F5 /* iconView */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD461D5DB51E0004B4F5 /* PDRecordSetting.h */,
+				673BCD471D5DB51E0004B4F5 /* PDRecordSetting.m */,
+			);
+			path = iconView;
+			sourceTree = "<group>";
+		};
+		673BCD601D5DB5700004B4F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD611D5DB5700004B4F5 /* dateCell */,
+				673BCD651D5DB5700004B4F5 /* PieceCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		673BCD611D5DB5700004B4F5 /* dateCell */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD721D5DBEBD0004B4F5 /* PDDateCell.h */,
+				673BCD731D5DBEBD0004B4F5 /* PDDateCell.m */,
+				673BCD741D5DBEBD0004B4F5 /* PDDateCell.xib */,
+			);
+			path = dateCell;
+			sourceTree = "<group>";
+		};
+		673BCD651D5DB5700004B4F5 /* PieceCell */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD661D5DB5700004B4F5 /* PDIconsView.h */,
+				673BCD671D5DB5700004B4F5 /* PDIconsView.m */,
+				673BCD681D5DB5700004B4F5 /* PDIconsView.xib */,
+				673BCD691D5DB5700004B4F5 /* PDPieceCell.h */,
+				673BCD6A1D5DB5700004B4F5 /* PDPieceCell.m */,
+				673BCD6B1D5DB5700004B4F5 /* PDPieceCell.xib */,
+			);
+			path = PieceCell;
+			sourceTree = "<group>";
+		};
+		673BCD771D5DBF300004B4F5 /* Func */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD781D5DBF300004B4F5 /* Time */,
+			);
+			path = Func;
+			sourceTree = "<group>";
+		};
+		673BCD781D5DBF300004B4F5 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				673BCD791D5DBFCB0004B4F5 /* NSDate+PDDate.h */,
+				673BCD7A1D5DBFCB0004B4F5 /* NSDate+PDDate.m */,
+			);
+			path = Time;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1078,7 +1105,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				673BCCF91D5DAD440004B4F5 /* PDGridInfoViewController.xib in Resources */,
-				673BCD1D1D5DAD440004B4F5 /* PDSettingDateView.xib in Resources */,
 				65F7407B1BC2C79E0053208D /* neutral.png in Resources */,
 				673BCCF51D5DAD440004B4F5 /* PDDiaryInfoTableViewController.xib in Resources */,
 				65F740771BC2C79E0053208D /* cool.png in Resources */,
@@ -1092,7 +1118,6 @@
 				673BCCF11D5DAD440004B4F5 /* PDGridView.xib in Resources */,
 				65F740801BC2C79E0053208D /* unhappySelected.png in Resources */,
 				65F740791BC2C79E0053208D /* happy.png in Resources */,
-				673BCD121D5DAD440004B4F5 /* PDDateCellView.xib in Resources */,
 				65A036A51BC688E800BCA838 /* photoChecked.png in Resources */,
 				659AD83F1BC57BE5000DA8EB /* PDRightArrow.png in Resources */,
 				673BCCFF1D5DAD440004B4F5 /* PDQuestionDetailCell.xib in Resources */,
@@ -1103,7 +1128,9 @@
 				673BCD091D5DAD440004B4F5 /* PDInfoView.xib in Resources */,
 				673BCD031D5DAD440004B4F5 /* PDQuestionInfoCell.xib in Resources */,
 				673BCCE51D5DAD440004B4F5 /* PDPieceDiaryEditView.xib in Resources */,
+				673BCD571D5DB51E0004B4F5 /* PDSettingDateView.xib in Resources */,
 				673BCD271D5DAD440004B4F5 /* PDReadViewController.xib in Resources */,
+				673BCD6F1D5DB5700004B4F5 /* PDIconsView.xib in Resources */,
 				659AD82F1BC57326000DA8EB /* photo.png in Resources */,
 				65F7408A1BC2C79E0053208D /* fogSelected.png in Resources */,
 				65F740861BC2C79E0053208D /* cloudSelected.png in Resources */,
@@ -1111,6 +1138,7 @@
 				659AD8401BC57BE5000DA8EB /* PDRightArrowHighlight.png in Resources */,
 				673BCCED1D5DAD440004B4F5 /* PDQuestionEditViewController.xib in Resources */,
 				65F740811BC2C79E0053208D /* veryHappy.png in Resources */,
+				673BCD761D5DBEBD0004B4F5 /* PDDateCell.xib in Resources */,
 				673BCD011D5DAD440004B4F5 /* PDQuestionDetailViewController.xib in Resources */,
 				659AD83E1BC57BE5000DA8EB /* PDLeftArrowHighlight.png in Resources */,
 				65F7408B1BC2C79E0053208D /* lightning.png in Resources */,
@@ -1122,28 +1150,27 @@
 				65F7407D1BC2C79E0053208D /* sad.png in Resources */,
 				659AD82A1BC56B11000DA8EB /* rightArrowHighlight.png in Resources */,
 				654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */,
+				673BCD5F1D5DB51E0004B4F5 /* PDSettingView.xib in Resources */,
+				673BCD711D5DB5700004B4F5 /* PDPieceCell.xib in Resources */,
 				673BCCE71D5DAD440004B4F5 /* PDPieceEditToolbar.xib in Resources */,
 				673BCD051D5DAD440004B4F5 /* PDQuestionInfoViewController.xib in Resources */,
+				673BCD5A1D5DB51E0004B4F5 /* PDIconSettingView.xib in Resources */,
 				65F740901BC2C79E0053208D /* snowSelected.png in Resources */,
 				659AD8301BC57326000DA8EB /* photoHighlight.png in Resources */,
 				673BCCE11D5DAD440004B4F5 /* PDImagePickerCell.xib in Resources */,
 				673BCCF71D5DAD440004B4F5 /* PDGridInfoCell.xib in Resources */,
 				654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */,
-				673BCD191D5DAD440004B4F5 /* PDPieceCell.xib in Resources */,
-				673BCD251D5DAD440004B4F5 /* PDSettingView.xib in Resources */,
 				673BCD2B1D5DAD440004B4F5 /* PDReadViewToolbar.xib in Resources */,
 				65F7408F1BC2C79E0053208D /* snow.png in Resources */,
 				65F740881BC2C79E0053208D /* drizzleSelected.png in Resources */,
 				659AD83D1BC57BE5000DA8EB /* PDLeftArrow.png in Resources */,
 				65F740941BC2C79E0053208D /* windSelected.png in Resources */,
 				673BCD141D5DAD440004B4F5 /* PDPieceDiaryView.xib in Resources */,
-				673BCD171D5DAD440004B4F5 /* PDIconsView.xib in Resources */,
 				673BCCEF1D5DAD440004B4F5 /* PDGridCell.xib in Resources */,
 				673BCD101D5DAD440004B4F5 /* PDWeekdayCell.xib in Resources */,
 				673BCCF31D5DAD440004B4F5 /* PDDiaryInfoCell.xib in Resources */,
 				65F7407E1BC2C79E0053208D /* sadSelected.png in Resources */,
 				65F740921BC2C79E0053208D /* sunSelected.png in Resources */,
-				673BCD201D5DAD440004B4F5 /* PDIconSettingView.xib in Resources */,
 				65F7408D1BC2C79E0053208D /* rain.png in Resources */,
 				673BCCEB1D5DAD440004B4F5 /* PDDisplayPhotoViewController.xib in Resources */,
 				659AD8411BC57BE5000DA8EB /* tool.png in Resources */,
@@ -1154,6 +1181,7 @@
 				65EC8A7C1BCAA9B400FBF06A /* readHighlight.png in Resources */,
 				65F740841BC2C79E0053208D /* wonderingSelected.png in Resources */,
 				659AD8311BC57326000DA8EB /* piece.png in Resources */,
+				673BCD551D5DB51E0004B4F5 /* PDRecordDateView.xib in Resources */,
 				65F7408C1BC2C79E0053208D /* lightningSelected.png in Resources */,
 				65F740931BC2C79E0053208D /* wind.png in Resources */,
 				65F740851BC2C79E0053208D /* cloud.png in Resources */,
@@ -1161,7 +1189,6 @@
 				65EC8A7B1BCAA9B400FBF06A /* read.png in Resources */,
 				65F7407C1BC2C79E0053208D /* neutralSelected.png in Resources */,
 				659AD8291BC56B11000DA8EB /* rightArrow.png in Resources */,
-				673BCD1B1D5DAD440004B4F5 /* PDRecordDateView.xib in Resources */,
 				65F740761BC2C79E0053208D /* angrySelected.png in Resources */,
 				673BCD0C1D5DAD440004B4F5 /* PDWeekdayView.xib in Resources */,
 				65F740821BC2C79E0053208D /* veryHappySelected.png in Resources */,
@@ -1184,63 +1211,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				673BCD5D1D5DB51E0004B4F5 /* PDRecordWeather.m in Sources */,
 				673BCCFE1D5DAD440004B4F5 /* PDQuestionDetailCell.m in Sources */,
 				673BCCEC1D5DAD440004B4F5 /* PDQuestionEditViewController.m in Sources */,
 				673BCD041D5DAD440004B4F5 /* PDQuestionInfoViewController.m in Sources */,
-				673BCD1F1D5DAD440004B4F5 /* PDIconSettingView.m in Sources */,
-				673BCD181D5DAD440004B4F5 /* PDPieceCell.m in Sources */,
 				673BCD331D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m in Sources */,
 				673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m in Sources */,
 				673BCCF61D5DAD440004B4F5 /* PDGridInfoCell.m in Sources */,
 				673BCD281D5DAD440004B4F5 /* PDReadTitleView.m in Sources */,
 				673BCCFA1D5DAD440004B4F5 /* PDPhotoInfoCell.m in Sources */,
-				673BCD1A1D5DAD440004B4F5 /* PDRecordDateView.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				673BCD001D5DAD440004B4F5 /* PDQuestionDetailViewController.m in Sources */,
 				673BCD0A1D5DAD440004B4F5 /* PDInfoViewController.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				673BCD2C1D5DAD440004B4F5 /* PDDatabaseHandle.m in Sources */,
+				673BCD6E1D5DB5700004B4F5 /* PDIconsView.m in Sources */,
 				654CC7681BA07840002DF0C9 /* main.m in Sources */,
+				673BCD701D5DB5700004B4F5 /* PDPieceCell.m in Sources */,
 				659BDD181BA70AC80000D561 /* PDBaseAnimation.m in Sources */,
 				673BCCE41D5DAD440004B4F5 /* PDPieceDiaryEditView.m in Sources */,
-				673BCD1E1D5DAD440004B4F5 /* PDRecordSetting.m in Sources */,
 				673BCD0B1D5DAD440004B4F5 /* PDWeekdayView.m in Sources */,
 				673BCCFC1D5DAD440004B4F5 /* PDPhotoInfoViewController.m in Sources */,
-				673BCD241D5DAD440004B4F5 /* PDSettingView.m in Sources */,
 				673BCD381D5DAD440004B4F5 /* FMDatabaseAdditions.m in Sources */,
 				673BCD321D5DAD440004B4F5 /* PDGridInfoCellDataModel.m in Sources */,
 				673BCD021D5DAD440004B4F5 /* PDQuestionInfoCell.m in Sources */,
 				673BCD2E1D5DAD440004B4F5 /* PDPhotoDataModel.m in Sources */,
 				673BCD2A1D5DAD440004B4F5 /* PDReadViewToolbar.m in Sources */,
-				673BCD231D5DAD440004B4F5 /* PDRecordWeather.m in Sources */,
 				673BCCEE1D5DAD440004B4F5 /* PDGridCell.m in Sources */,
 				673BCD3A1D5DAD440004B4F5 /* FMDatabaseQueue.m in Sources */,
 				673BCCF01D5DAD440004B4F5 /* PDGridView.m in Sources */,
 				673BCD0F1D5DAD440004B4F5 /* PDWeekdayCell.m in Sources */,
 				673BCD391D5DAD440004B4F5 /* FMDatabasePool.m in Sources */,
-				673BCD161D5DAD440004B4F5 /* PDIconsView.m in Sources */,
-				673BCD111D5DAD440004B4F5 /* PDDateCellView.m in Sources */,
+				673BCD751D5DBEBD0004B4F5 /* PDDateCell.m in Sources */,
 				673BCD3B1D5DAD440004B4F5 /* FMResultSet.m in Sources */,
-				673BCD221D5DAD440004B4F5 /* PDRecordViewController.m in Sources */,
 				673BCD361D5DAD440004B4F5 /* PDDataManager.m in Sources */,
 				673BCCE01D5DAD440004B4F5 /* PDImagePickerCell.m in Sources */,
 				673BCCF41D5DAD440004B4F5 /* PDDiaryInfoTableViewController.m in Sources */,
+				673BCD581D5DB51E0004B4F5 /* PDRecordSetting.m in Sources */,
+				673BCD591D5DB51E0004B4F5 /* PDIconSettingView.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
 				673BCD2F1D5DAD440004B4F5 /* PDPieceCellDataModel.m in Sources */,
-				673BCD211D5DAD440004B4F5 /* PDRecordMood.m in Sources */,
 				673BCCE61D5DAD440004B4F5 /* PDPieceEditToolbar.m in Sources */,
 				673BCD2D1D5DAD440004B4F5 /* PDDateCellDataModel.m in Sources */,
 				673BCD061D5DAD440004B4F5 /* PDTopBarView.m in Sources */,
-				673BCD351D5DAD440004B4F5 /* NSDate+PDDate.m in Sources */,
 				673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */,
+				673BCD5B1D5DB51E0004B4F5 /* PDRecordMood.m in Sources */,
 				673BCD081D5DAD440004B4F5 /* PDBaseInfoViewController.m in Sources */,
+				673BCD561D5DB51E0004B4F5 /* PDSettingDateView.m in Sources */,
+				673BCD5C1D5DB51E0004B4F5 /* PDRecordViewController.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
 				673BCD0D1D5DAD440004B4F5 /* PDThisWeekView.m in Sources */,
+				673BCD7B1D5DBFCB0004B4F5 /* NSDate+PDDate.m in Sources */,
 				673BCCE21D5DAD440004B4F5 /* PDImagePickerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,
 				673BCCF21D5DAD440004B4F5 /* PDDiaryInfoCell.m in Sources */,
 				673BCCF81D5DAD440004B4F5 /* PDGridInfoViewController.m in Sources */,
-				673BCD1C1D5DAD440004B4F5 /* PDSettingDateView.m in Sources */,
+				673BCD5E1D5DB51E0004B4F5 /* PDSettingView.m in Sources */,
 				673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m in Sources */,
 				673BCCEA1D5DAD440004B4F5 /* PDDisplayPhotoViewController.m in Sources */,
 				673BCD151D5DAD440004B4F5 /* PDPieceViewController.m in Sources */,
@@ -1248,6 +1274,7 @@
 				673BCCE91D5DAD440004B4F5 /* PDPieceEditViewController.m in Sources */,
 				673BCD131D5DAD440004B4F5 /* PDPieceDiaryView.m in Sources */,
 				673BCD311D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m in Sources */,
+				673BCD541D5DB51E0004B4F5 /* PDRecordDateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,6 +1402,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PieceDiary/PrefixHeader.pch";
 				INFOPLIST_FILE = PieceDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1386,6 +1415,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PieceDiary/PrefixHeader.pch";
 				INFOPLIST_FILE = PieceDiary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

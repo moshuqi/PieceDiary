@@ -8,7 +8,6 @@
 
 #import "PDSettingDateView.h"
 #import "PDDefine.h"
-#import "NSDate+PDDate.h"
 
 @interface PDSettingDateView ()
 

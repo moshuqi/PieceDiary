@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="35b-91-eoX" customClass="PDDateCell">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="93"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pch-Zc-pDZ">
+                    <rect key="frame" x="215" y="29" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="N7c-y8-NB7"/>
+                        <constraint firstAttribute="width" constant="44" id="qeP-5U-1rX"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-JW-XQu">
+                    <rect key="frame" x="279" y="29" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="YVE-yq-O1U"/>
+                        <constraint firstAttribute="width" constant="44" id="wQj-jV-urP"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期天\n2015年9月" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohg-49-HFh">
+                    <rect key="frame" x="66" y="0.0" width="100" height="88"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="88" id="4h8-lD-vbS"/>
+                        <constraint firstAttribute="width" constant="100" id="KDg-IS-7Zl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eN-Pz-aa1">
+                    <rect key="frame" x="0.0" y="0.0" width="66" height="96"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="96" id="Jdn-o4-4RX"/>
+                        <constraint firstAttribute="width" constant="66" id="gAP-Oo-v86"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="46"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Xvw-JW-XQu" secondAttribute="bottom" constant="20" id="dLl-rS-smf"/>
+                <constraint firstAttribute="bottom" secondItem="Pch-Zc-pDZ" secondAttribute="bottom" constant="20" id="ifR-q6-YqR"/>
+                <constraint firstItem="1eN-Pz-aa1" firstAttribute="top" secondItem="35b-91-eoX" secondAttribute="top" id="kc2-r4-Y22"/>
+                <constraint firstItem="Ohg-49-HFh" firstAttribute="top" secondItem="35b-91-eoX" secondAttribute="top" id="o00-EI-f1W"/>
+                <constraint firstItem="Xvw-JW-XQu" firstAttribute="leading" secondItem="Pch-Zc-pDZ" secondAttribute="trailing" constant="20" id="oSu-3B-0cW"/>
+                <constraint firstItem="Ohg-49-HFh" firstAttribute="leading" secondItem="1eN-Pz-aa1" secondAttribute="trailing" id="oq2-zh-gZa"/>
+                <constraint firstItem="1eN-Pz-aa1" firstAttribute="leading" secondItem="35b-91-eoX" secondAttribute="leading" id="r3I-7j-HzR"/>
+                <constraint firstAttribute="trailing" secondItem="Xvw-JW-XQu" secondAttribute="trailing" constant="20" id="sar-JK-PYU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateLabel" destination="Ohg-49-HFh" id="G8l-RV-8RG"/>
+                <outlet property="dayLabel" destination="1eN-Pz-aa1" id="l1y-Hj-bg9"/>
+                <outlet property="moodIcon" destination="Xvw-JW-XQu" id="7l4-zv-oPz"/>
+                <outlet property="weatherIcon" destination="Pch-Zc-pDZ" id="iek-pV-UoO"/>
+            </connections>
+            <point key="canvasLocation" x="155.5" y="86.5"/>
+        </view>
+    </objects>
+</document>

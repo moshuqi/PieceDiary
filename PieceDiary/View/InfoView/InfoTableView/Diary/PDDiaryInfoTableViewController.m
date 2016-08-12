@@ -11,7 +11,6 @@
 #import "PDDiaryInfoSectionDataModel.h"
 #import "PDDiaryInfoCell.h"
 #import "PDDataManager.h"
-#import "NSDate+PDDate.h"
 #import "PDDefine.h"
 
 #define DiaryInfoTableIdentifier    @"DiaryInfoTableIdentifier"

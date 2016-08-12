@@ -7,12 +7,14 @@
 //
 
 #import "PDPieceDiaryView.h"
-#import "PDDateCellView.h"
 #import "PDPieceCell.h"
+#import "PDDateCell.h"
 #import "PDDataManager.h"
 #import "PDDefine.h"
 
 #define PiecesCollectionIdentifier  @"PiecesCollectionIdentifier"
+#define PDPieceCellIdentifier       @"PDPieceCellIdentifier"
+#define PDDateCellIdentifier   @"PDDateCellIdentifier"
 
 #define kDateCellHeight     156
 #define kToolBarHeight      44
@@ -26,8 +28,6 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 };
 
 @interface PDPieceDiaryView ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
-@property (nonatomic, retain) PDDateCellView *dateCell;
 
 @property (nonatomic, weak) IBOutlet UIButton *toInfoBtn;
 @property (nonatomic, weak) IBOutlet UIButton *leftSlideBtn;
@@ -52,7 +52,9 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 
 - (void)initPiecesCollectionView
 {
-    [self.pieceCollectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PiecesCollectionIdentifier];  // xib自定义cell需要用这种方式注册
+    [self.pieceCollectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PDPieceCellIdentifier];
+    [self.pieceCollectionView registerNib:[UINib nibWithNibName:@"PDDateCell" bundle:nil] forCellWithReuseIdentifier:PDDateCellIdentifier];
+    
     self.pieceCollectionView.backgroundColor = BackgroudGrayColor;
     self.pieceCollectionView.layer.borderWidth = 1;
     self.pieceCollectionView.layer.borderColor = BackgroudGrayColor.CGColor;
@@ -252,7 +254,8 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     collectionView.dataSource = self;
     collectionView.backgroundColor = BackgroudGrayColor;
     
-    [collectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PiecesCollectionIdentifier];
+    [collectionView registerNib:[UINib nibWithNibName:@"PDPieceCell" bundle:nil] forCellWithReuseIdentifier:PDPieceCellIdentifier];
+    [collectionView registerNib:[UINib nibWithNibName:@"PDDateCell" bundle:nil] forCellWithReuseIdentifier:PDDateCellIdentifier];
     
     return collectionView;
 }
@@ -324,46 +327,36 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     return 9;
 }
 
-- (PDPieceCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDPieceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PiecesCollectionIdentifier forIndexPath:indexPath];
-    
+    UICollectionViewCell *cell;
     BOOL isSlideCollectionView = (collectionView == self.slideOutCollectionView) ? YES : NO;
     
-    // 横竖屏时显示日期的cell
     if ([self isDateCellWithIndexPath:indexPath])
     {
+        // 横竖屏时显示日期的cell
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDDateCellIdentifier forIndexPath:indexPath];
         
         NSDate *date = isSlideCollectionView ? self.oldDate : [self getCurrentDate];
-        PDDateCellView *dateCellView = [self getDateCellViewWithDate:date];
-        dateCellView.frame = cell.contentView.bounds;
+        PDDataManager *dataManager = [PDDataManager defaultManager];
         
-        cell.dateCellView = dateCellView;
-        [cell setDateHidden:NO];
-        return cell;
+        UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
+        UIImage *moodImage = [dataManager getMoodImageWithDate:date];
+        
+        [((PDDateCell *)cell) setupWithDate:date weatherIcon:weatherImage moodIcon:moodImage];
     }
     else
     {
         // 显示问题cell
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDPieceCellIdentifier forIndexPath:indexPath];
+        
         NSArray *dataArray = isSlideCollectionView ? self.oldCellDataArray : self.cellDataArray;
         PDPieceCellDataModel *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
-        [cell setupWithDataModel:dataModel];
-        
-        [cell setDateHidden:YES];
+        [(PDPieceCell *)cell setupWithDataModel:dataModel];
     }
     
     cell.backgroundColor = [UIColor whiteColor];
-    
     return cell;
-}
-
-- (PDDateCellView *)getDateCellViewWithDate:(NSDate *)date
-{
-    NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDDateCellView" owner:self options:nil];
-    PDDateCellView *dateCellView = [nibViews objectAtIndex:0];
-    [dateCellView setupDateCellWithDate:date];
-    
-    return dateCellView;
 }
 
 - (NSDate *)getCurrentDate
