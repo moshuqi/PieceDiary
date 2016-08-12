@@ -7,7 +7,6 @@
 //
 
 #import "PDWeekdayCell.h"
-#import "PDDefine.h"
 
 @interface PDWeekdayCell ()
 

@@ -10,7 +10,6 @@
 #import "PDTopBarView.h"
 #import "PDDataManager.h"
 #import "PDPhotoInfoCell.h"
-#import "PDDefine.h"
 #import "PDPhotoDataModel.h"
 
 #define PhotoInfoCollectionIdentifier  @"PhotoInfoCollectionIdentifier"

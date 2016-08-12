@@ -8,7 +8,6 @@
 
 #import "PDThisWeekView.h"
 #import "PDWeekDayView.h"
-#import "PDDefine.h"
 
 @interface PDThisWeekView () <PDWeekdayViewDelegate>
 

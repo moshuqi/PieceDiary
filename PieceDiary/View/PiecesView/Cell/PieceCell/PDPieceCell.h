@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PDPieceCellDataModel.h"
 
 @interface PDPieceCell : UICollectionViewCell
 
-@property (nonatomic, retain) NSArray *icons;
-
-- (void)setupWithDataModel:(PDPieceCellDataModel *)dataModel;
+- (void)setupWithQuestion:(NSString *)question answer:(NSString *)answer photos:(NSArray<UIImage *> *)photos;
 
 @end

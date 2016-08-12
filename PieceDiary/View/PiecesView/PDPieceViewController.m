@@ -16,7 +16,6 @@
 #import "PDInfoViewController.h"
 #import "PDDataManager.h"
 #import "PDPieceCell.h"
-#import "PDDefine.h"
 #import "PDReadViewController.h"
 
 #define kOriginY    20

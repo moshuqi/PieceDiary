@@ -9,7 +9,6 @@
 #import<AssetsLibrary/AssetsLibrary.h>
 #import "PDImagePickerController.h"
 #import "PDImagePickerCell.h"
-#import "PDDefine.h"
 
 #define PhotoThumbnailKey   @"PhotoThumbnailKey"
 #define PhotoUrlKey         @"PhotoUrlKey"

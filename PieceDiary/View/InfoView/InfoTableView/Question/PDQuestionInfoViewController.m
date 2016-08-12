@@ -12,7 +12,6 @@
 #import "PDDataManager.h"
 #import "PDQuestionInfoCell.h"
 #import "PDQuestionDetailViewController.h"
-#import "PDDefine.h"
 
 #define QuestionInfoReuseIdentifier @"QuestionInfoReuseIdentifier"
 

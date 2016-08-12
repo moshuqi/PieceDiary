@@ -7,7 +7,6 @@
 //
 
 #import "PDRecordDateView.h"
-#import "PDDefine.h"
 
 @interface PDRecordDateView ()
 

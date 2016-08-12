@@ -8,7 +8,6 @@
 
 #import "PDDisplayPhotoViewController.h"
 #import "PDPhotoDataModel.h"
-#import "PDDefine.h"
 #import "PDDataManager.h"
 
 @interface PDDisplayPhotoViewController ()

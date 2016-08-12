@@ -9,7 +9,6 @@
 #import "PDPieceDiaryEditView.h"
 #import "PDPieceCellDataModel.h"
 #import "PDPhotoDataModel.h"
-#import "PDDefine.h"
 
 @interface PDPieceDiaryEditView ()
 

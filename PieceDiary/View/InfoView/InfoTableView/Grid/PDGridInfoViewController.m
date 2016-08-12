@@ -11,7 +11,6 @@
 #import "PDGridInfoCell.h"
 #import "PDGridInfoSectionDataModel.h"
 #import "PDDataManager.h"
-#import "PDDefine.h"
 
 #define GridInfoReuseIdentifier @"GridInfoReuseIdentifier"
 

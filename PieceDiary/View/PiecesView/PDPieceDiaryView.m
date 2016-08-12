@@ -10,7 +10,8 @@
 #import "PDPieceCell.h"
 #import "PDDateCell.h"
 #import "PDDataManager.h"
-#import "PDDefine.h"
+#import "PDPhotoDataModel.h"
+#import "PDPieceCellDataModel.h"
 
 #define PiecesCollectionIdentifier  @"PiecesCollectionIdentifier"
 #define PDPieceCellIdentifier       @"PDPieceCellIdentifier"
@@ -343,7 +344,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
         UIImage *moodImage = [dataManager getMoodImageWithDate:date];
         
-        [((PDDateCell *)cell) setupWithDate:date weatherIcon:weatherImage moodIcon:moodImage];
+        [(PDDateCell *)cell setupWithDate:date weatherIcon:weatherImage moodIcon:moodImage];
     }
     else
     {
@@ -352,7 +353,16 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         
         NSArray *dataArray = isSlideCollectionView ? self.oldCellDataArray : self.cellDataArray;
         PDPieceCellDataModel *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
-        [(PDPieceCell *)cell setupWithDataModel:dataModel];
+        
+        NSArray *photoDataModels = dataModel.photoDataModels;
+        NSMutableArray *photos = [NSMutableArray array];
+        for (NSInteger i = 0; i < [photoDataModels count]; i++)
+        {
+            PDPhotoDataModel *model = photoDataModels[i];
+            [photos addObject:model.image];
+        }
+        
+        [(PDPieceCell *)cell setupWithQuestion:dataModel.question answer:dataModel.answer photos:photos];
     }
     
     cell.backgroundColor = [UIColor whiteColor];

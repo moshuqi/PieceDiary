@@ -8,7 +8,6 @@
 
 #import "PDWeekdayView.h"
 #import "PDWeekdayCell.h"
-#import "PDDefine.h"
 
 #define PDWeekdayCellIdentifier     @"PDWeekdayCellIdentifier"
 #define PDWeekdayCellInteritemSpacing   1

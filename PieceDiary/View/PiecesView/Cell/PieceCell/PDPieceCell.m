@@ -9,15 +9,14 @@
 #import "PDPieceCell.h"
 #import "PDIconsView.h"
 #import "PDPhotoDataModel.h"
-#import "PDDefine.h"
 
 @interface PDPieceCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UITextView *content;
-@property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 
 @property (nonatomic, retain) PDIconsView *iconsView;
+@property (nonatomic, retain) NSArray<UIImage *> *photos;
 
 @end
 
@@ -26,6 +25,15 @@
 - (void)awakeFromNib {
     // Initialization code
     self.content.textColor = ContentTextColor;
+}
+
+- (void)setupWithQuestion:(NSString *)question answer:(NSString *)answer photos:(NSArray<UIImage *> *)photos
+{
+    self.titleLabel.text = question;
+    self.content.text = answer;
+    self.photos = photos;
+    
+    [self resetCellColor];
 }
 
 - (void)layoutSubviews
@@ -38,7 +46,7 @@
 - (void)resetIconsView
 {
     // 有图片时显示图片，重新调整布局
-    if ([self.icons count] > 0)
+    if ([self.photos count] > 0)
     {
         [self showIconsView];
     }
@@ -61,7 +69,7 @@
     
     CGRect iconsViewFrame = CGRectMake(0, CGRectGetHeight(self.titleLabel.bounds), width, kIconsViewHeight);
     self.iconsView.frame = iconsViewFrame;
-    [self.iconsView setIconsWithImages:self.icons];
+    [self.iconsView setIconsWithImages:self.photos];
     
     [self.contentView addSubview:self.iconsView];
     
@@ -88,26 +96,6 @@
     self.content.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
-- (void)setupWithDataModel:(PDPieceCellDataModel *)dataModel
-{
-    self.dataModel = dataModel;
-    
-    self.titleLabel.text = dataModel.question;
-    self.content.text = dataModel.answer;
-    
-    NSArray *photoDataModels = dataModel.photoDataModels;
-    NSMutableArray *photos = [NSMutableArray array];
-    for (NSInteger i = 0; i < [photoDataModels count]; i++)
-    {
-        PDPhotoDataModel *model = photoDataModels[i];
-        [photos addObject:model.image];
-    }
-    self.icons = photos;
-    
-//    [self resetIconsView];
-    [self resetCellColor];
-}
-
 - (void)resetCellColor
 {
     // 根据cell是否编辑过来设置label的颜色
@@ -124,8 +112,8 @@
 - (BOOL)hasEdit
 {
     // 判断cell是否有编辑过数据
-    if ((!self.dataModel.answer || [self.dataModel.answer length] == 0) &&
-        (!self.dataModel.photoDataModels || [self.dataModel.photoDataModels count] == 0))
+    if ((!self.content.text || [self.content.text length] == 0) &&
+        (!self.photos || [self.photos count] == 0))
     {
         return NO;
     }

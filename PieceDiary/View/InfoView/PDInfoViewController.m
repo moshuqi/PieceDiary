@@ -13,7 +13,6 @@
 #import "PDPhotoInfoViewController.h"
 #import "PDQuestionInfoViewController.h"
 #import "PDThisWeekView.h"
-#import "PDDefine.h"
 #import "PDBaseInfoViewController.h"
 
 @interface PDInfoViewController () <PDGridViewDelegate, UIGestureRecognizerDelegate, PDBaseInfoViewControllerDelegate, PDThisWeekViewDelegate>

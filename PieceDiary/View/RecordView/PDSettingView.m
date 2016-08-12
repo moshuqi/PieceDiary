@@ -12,7 +12,6 @@
 #import "PDRecordMood.h"
 #import "PDSettingDateView.h"
 #import "PDDataManager.h"
-#import "PDDefine.h"
 
 @interface PDSettingView () <PDRecordDateViewDelegate, PDSettingDateViewDelegate>
 

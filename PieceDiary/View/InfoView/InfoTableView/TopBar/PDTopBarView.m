@@ -7,7 +7,6 @@
 //
 
 #import "PDTopBarView.h"
-#import "PDDefine.h"
 
 @interface PDTopBarView ()
 

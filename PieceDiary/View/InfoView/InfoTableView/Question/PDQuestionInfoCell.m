@@ -7,7 +7,6 @@
 //
 
 #import "PDQuestionInfoCell.h"
-#import "PDDefine.h"
 
 @interface PDQuestionInfoCell ()
 

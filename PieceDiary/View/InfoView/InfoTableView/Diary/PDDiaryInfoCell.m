@@ -7,7 +7,6 @@
 //
 
 #import "PDDiaryInfoCell.h"
-#import "PDDefine.h"
 
 @interface PDDiaryInfoCell ()
 

@@ -9,7 +9,6 @@
 #import "PDGridView.h"
 #import "PDGridCell.h"
 #import "PDDataManager.h"
-#import "PDDefine.h"
 
 #define PDGridCellIdentifier @"PDGridCellIdentifier"
 #define PDGridCellInteritemSpacing   1

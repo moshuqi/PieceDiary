@@ -7,7 +7,6 @@
 //
 
 #import "PDGridInfoCell.h"
-#import "PDDefine.h"
 
 @interface PDGridInfoCell ()
 

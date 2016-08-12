@@ -8,7 +8,6 @@
 
 #import "PDDatabaseHandle.h"
 #import "FMDB.h"
-#import "PDDefine.h"
 #import "PDPhotoDataModel.h"
 #import "PDGridInfoCellDataModel.h"
 #import "PDQuestionInfoCellDataModel.h"

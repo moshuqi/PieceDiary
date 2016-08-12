@@ -11,7 +11,6 @@
 #import "PDReadTitleView.h"
 #import "PDPieceCellDataModel.h"
 #import "PDPhotoDataModel.h"
-#import "PDDefine.h"
 
 @interface PDReadViewController () <PDReadViewToolbarDelegate>
 
