@@ -6,8 +6,8 @@
 //  Copyright © 2015年 msq. All rights reserved.
 //
 
-#import "PDQuestionInfoCellDataModel.h"
+#import "PDQuestionInfoCellData.h"
 
-@implementation PDQuestionInfoCellDataModel
+@implementation PDQuestionInfoCellData
 
 @end

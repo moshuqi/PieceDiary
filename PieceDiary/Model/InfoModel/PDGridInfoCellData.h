@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PDGridInfoCellDataModel : NSObject
+@interface PDGridInfoCellData : NSObject
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSString *question;

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDGridInfoCellDataModel.h"
+#import "PDGridInfoCellData.h"
 
-@interface PDGridInfoSectionDataModel : NSObject
+@interface PDGridInfoSectionData : NSObject
 
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, assign) NSInteger month;

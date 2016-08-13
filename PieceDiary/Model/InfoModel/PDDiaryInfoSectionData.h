@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PDDiaryInfoCellDataModel.h"
+#import "PDDiaryInfoCellData.h"
 
-@interface PDDiaryInfoSectionDataModel : NSObject
+@interface PDDiaryInfoSectionData : NSObject
 
 //@property (nonatomic, retain) NSString *sectionName;    // 显示年月的标签
 @property (nonatomic, assign) NSInteger year;

@@ -7,7 +7,7 @@
 //
 
 #import "PDPieceDiaryEditView.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 #import "PDPhotoData.h"
 
 @interface PDPieceDiaryEditView ()
@@ -17,7 +17,7 @@
 
 @property (nonatomic, retain) UILabel *photoCountLabel;
 @property (nonatomic, retain) NSArray *photoDatas;
-@property (nonatomic, retain) PDPieceCellDataModel *dataModel;
+@property (nonatomic, retain) PDPieceCellData *data;
 
 @end
 
@@ -82,7 +82,7 @@
 
 - (void)titleLabelTapped:(UIGestureRecognizer *)gesture
 {
-    [self.delegate showQuestionEditViewWithDataModel:self.dataModel];
+    [self.delegate showQuestionEditViewWithData:self.data];
 }
 
 - (void)resetEditViewWithShowKeyboardFrame:(CGRect)keyboardFrame
@@ -137,13 +137,13 @@
     self.titleLabel.text = text;
 }
 
-- (void)setEditViewWithDataModel:(PDPieceCellDataModel *)dataModel
+- (void)setEditViewWithData:(PDPieceCellData *)data
 {
-    self.dataModel = dataModel;
-    self.titleLabel.text = dataModel.question;
-    self.textView.text = dataModel.answer;
+    self.data = data;
+    self.titleLabel.text = data.question;
+    self.textView.text = data.answer;
     
-    [self setupImageViewWithPhotoDatas:dataModel.photoDatas];
+    [self setupImageViewWithPhotoDatas:data.photoDatas];
 }
 
 

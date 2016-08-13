@@ -12,7 +12,7 @@
 #import "PDImagePickerController.h"
 #import "PDDisplayPhotoViewController.h"
 #import "PDQuestionEditViewController.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 #import "PDDataManager.h"
 #import "PDPhotoData.h"
 
@@ -83,13 +83,13 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)setupEditView:(PDPieceDiaryEditView *)editView withIndex:(NSInteger)index
 {
-    PDPieceCellDataModel *dataModel = self.dataArray[index];
-    [self setupEditView:editView withDataModel:dataModel];
+    PDPieceCellData *data = self.dataArray[index];
+    [self setupEditView:editView withData:data];
 }
 
-- (void)setupEditView:(PDPieceDiaryEditView *)editView withDataModel:(PDPieceCellDataModel *)dataModel
+- (void)setupEditView:(PDPieceDiaryEditView *)editView withData:(PDPieceCellData *)data
 {    
-    [editView setEditViewWithDataModel:dataModel];
+    [editView setEditViewWithData:data];
 }
 
 - (void)addKeyboardEevent
@@ -182,7 +182,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     return [self createEditViewWithFrame:frame dataModel:self.dataArray[oldIndex]];
 }
 
-- (PDPieceDiaryEditView *)createEditViewWithFrame:(CGRect)frame dataModel:(PDPieceCellDataModel *)dataModel
+- (PDPieceDiaryEditView *)createEditViewWithFrame:(CGRect)frame dataModel:(PDPieceCellData *)dataModel
 {
     PDPieceDiaryEditView *editView = [[PDPieceDiaryEditView alloc] initWithFrame:frame];
     NSArray *nibArray = [[UINib nibWithNibName:@"PDPieceDiaryEditView" bundle:nil] instantiateWithOwner:editView options:nil];
@@ -191,7 +191,8 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     view.frame = editView.bounds;
     [editView addSubview:view];
     
-    [self setupEditView:editView withDataModel:dataModel];    return editView;
+    [self setupEditView:editView withData:dataModel];
+    return editView;
 }
 
 - (CGRect)getSlideOutEditViewToFrameWithChangeType:(EditPieceCellChangeType)type
@@ -240,7 +241,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     PDImagePickerController *imagePickerController = [[PDImagePickerController alloc] init];
     imagePickerController.delegate = self;
     
-    PDPieceCellDataModel *dataModel = self.dataArray[self.currentIndex];
+    PDPieceCellData *dataModel = self.dataArray[self.currentIndex];
     imagePickerController.date = dataModel.date;
     imagePickerController.questionID = dataModel.questionID;
     
@@ -280,7 +281,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 - (void)setAnswerWithContent:(NSString *)content withIndex:(NSInteger)index
 {
     // 根据索引设置问题内容
-    PDPieceCellDataModel *dataModel = self.dataArray[index];
+    PDPieceCellData *dataModel = self.dataArray[index];
     dataModel.answer = content;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
@@ -324,7 +325,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     
     // 重新请求一次图片
     NSArray *datas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
-    PDPieceCellDataModel *cellDataModel = self.dataArray[self.currentIndex];
+    PDPieceCellData *cellDataModel = self.dataArray[self.currentIndex];
     cellDataModel.photoDatas = datas;
     
     [self.editView setupImageViewWithPhotoDatas:datas];
@@ -348,7 +349,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)displayPhotos
 {
-    PDPieceCellDataModel *cellDataModel = self.dataArray[self.currentIndex];
+    PDPieceCellData *cellDataModel = self.dataArray[self.currentIndex];
     NSInteger questionID = cellDataModel.questionID;
     NSDate *date = cellDataModel.date;
     
@@ -361,7 +362,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];
 }
 
-- (void)showQuestionEditViewWithDataModel:(PDPieceCellDataModel *)dataModel
+- (void)showQuestionEditViewWithData:(PDPieceCellData *)dataModel
 {
     PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] initWithDataModel:dataModel delegate:self];
     
@@ -385,7 +386,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     
     [editViewController dismissViewControllerAnimated:YES completion:nil];
     
-    self.dataArray = [dataManager getPieceViewDatasWithDate:date];
+    self.dataArray = [dataManager getPieceViewCellDatasWithDate:date];
     [self.editView setQuestionContentWithText:text];
 }
 

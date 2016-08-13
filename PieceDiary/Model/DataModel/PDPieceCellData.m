@@ -1,13 +1,13 @@
 //
-//  PDPieceCellDataModel.m
+//  PDPieceCellData.m
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/17.
 //  Copyright (c) 2015年 msq. All rights reserved.
 //
 
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 
-@implementation PDPieceCellDataModel
+@implementation PDPieceCellData
 
 @end

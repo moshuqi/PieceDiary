@@ -9,7 +9,7 @@
 #import "PDReadViewController.h"
 #import "PDReadViewToolbar.h"
 #import "PDReadTitleView.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 #import "PDPhotoData.h"
 
 @interface PDReadViewController () <PDReadViewToolbarDelegate>
@@ -69,7 +69,7 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
     
     for (NSInteger i = 0; i < [self.dataArray count]; i++)
     {
-        PDPieceCellDataModel *cellDataModel = self.dataArray[i];
+        PDPieceCellData *cellDataModel = self.dataArray[i];
         if (![self judgePieceCellHasEditedWithCellData:cellDataModel])
         {
             continue;
@@ -105,7 +105,7 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
     self.scrollView.contentSize = CGSizeMake(width, height);
 }
 
-- (BOOL)judgePieceCellHasEditedWithCellData:(PDPieceCellDataModel *)dataModel
+- (BOOL)judgePieceCellHasEditedWithCellData:(PDPieceCellData *)dataModel
 {
     // 判断格子是否被编辑过，若无则不加到scrollview上
     
@@ -193,7 +193,7 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
 
 - (NSDate *)getDate
 {
-    PDPieceCellDataModel *cellDataModel = [self.dataArray firstObject];
+    PDPieceCellData *cellDataModel = [self.dataArray firstObject];
     return cellDataModel.date;
 }
 

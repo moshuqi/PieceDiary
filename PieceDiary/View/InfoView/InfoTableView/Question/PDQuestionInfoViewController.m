@@ -8,7 +8,7 @@
 
 #import "PDQuestionInfoViewController.h"
 #import "PDTopBarView.h"
-#import "PDQuestionInfoCellDataModel.h"
+#import "PDQuestionInfoCellData.h"
 #import "PDDataManager.h"
 #import "PDQuestionInfoCell.h"
 #import "PDQuestionDetailViewController.h"
@@ -70,7 +70,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDQuestionInfoCellDataModel *dataModel = self.questionInfoDataArray[indexPath.row];
+    PDQuestionInfoCellData *dataModel = self.questionInfoDataArray[indexPath.row];
     PDQuestionDetailViewController *detailViewController = [[PDQuestionDetailViewController alloc] initWithDataArray:dataModel.sectionDataArray titleText:dataModel.questionContent];
     detailViewController.delegate = self;
     
@@ -116,7 +116,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PDQuestionInfoCell" owner:self options:nil] firstObject];
     }
     
-    PDQuestionInfoCellDataModel *dataModel = self.questionInfoDataArray[indexPath.row];
+    PDQuestionInfoCellData *dataModel = self.questionInfoDataArray[indexPath.row];
     [cell setupWithQuestionContent:dataModel.questionContent quantity:dataModel.quatity];
     
     return cell;

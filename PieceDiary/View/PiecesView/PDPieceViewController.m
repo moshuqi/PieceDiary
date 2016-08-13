@@ -42,7 +42,7 @@
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
     NSDate *date = [NSDate date];
-    NSArray *dataArray = [dataManager getPieceViewDatasWithDate:date];
+    NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:date];
     
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceDiaryView" owner:self options:nil];
     self.pieceDiaryView = [nibViews objectAtIndex:0];

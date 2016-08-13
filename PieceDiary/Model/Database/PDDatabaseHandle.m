@@ -9,9 +9,9 @@
 #import "PDDatabaseHandle.h"
 #import "FMDB.h"
 #import "PDPhotoData.h"
-#import "PDGridInfoCellDataModel.h"
-#import "PDQuestionInfoCellDataModel.h"
-#import "PDGridInfoSectionDataModel.h"
+#import "PDGridInfoCellData.h"
+#import "PDQuestionInfoCellData.h"
+#import "PDGridInfoSectionData.h"
 
 #define DatabaseName @"PDDatabase.sqlite"
 
@@ -683,7 +683,7 @@
             NSString *questionContent = [self getQuestionWithID:questionID];
             NSString *answerContent = [self getAnswerWithQuestionID:questionID date:date];
             
-            PDGridInfoCellDataModel *cellDataModel = [PDGridInfoCellDataModel new];
+            PDGridInfoCellData *cellDataModel = [PDGridInfoCellData new];
             cellDataModel.date = date;
             cellDataModel.question = questionContent;
             cellDataModel.answer = answerContent;
@@ -739,12 +739,12 @@
         NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
         NSString *questionContent = [self getQuestionWithID:questionID];
         
-        PDQuestionInfoCellDataModel *questionCellDataModel = [PDQuestionInfoCellDataModel new];
+        PDQuestionInfoCellData *questionCellDataModel = [PDQuestionInfoCellData new];
         questionCellDataModel.questionContent = questionContent;
         questionCellDataModel.sectionDataArray = [NSMutableArray array];
         questionCellDataModel.quatity = [self getQuantityOfQuestionWithID:questionID];
         
-        PDGridInfoSectionDataModel *currentSectionModel = nil;
+        PDGridInfoSectionData *currentSectionModel = nil;
         
         NSString *query = [NSString stringWithFormat:@"select questionID, date from %@ where questionID = %ld union select questionID, date from %@ where questionID = %ld order by date DESC", DatabaseAnswerTable, questionID, DatabasePhotoTable, questionID];
         
@@ -758,7 +758,7 @@
             
             if (!currentSectionModel)
             {
-                currentSectionModel = [PDGridInfoSectionDataModel new];
+                currentSectionModel = [PDGridInfoSectionData new];
                 currentSectionModel.year = year;
                 currentSectionModel.month = month;
                 currentSectionModel.cellDatas = [NSMutableArray array];
@@ -769,13 +769,13 @@
                 // 不是同年同月，重新建立一个section，原先的section添加到数组中
                 [questionCellDataModel.sectionDataArray addObject:currentSectionModel];
                 
-                currentSectionModel = [PDGridInfoSectionDataModel new];
+                currentSectionModel = [PDGridInfoSectionData new];
                 currentSectionModel.year = year;
                 currentSectionModel.month = month;
                 currentSectionModel.cellDatas = [NSMutableArray array];
             }
             
-            PDGridInfoCellDataModel *gridCellData = [PDGridInfoCellDataModel new];
+            PDGridInfoCellData *gridCellData = [PDGridInfoCellData new];
             gridCellData.date = date;
             gridCellData.answer = [self getAnswerWithQuestionID:questionID date:date];
             gridCellData.question = [self getQuestionWithID:questionID];

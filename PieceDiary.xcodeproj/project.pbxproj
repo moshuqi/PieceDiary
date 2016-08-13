@@ -131,12 +131,12 @@
 		673BCD2B1D5DAD440004B4F5 /* PDReadViewToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 673BCCB81D5DAD440004B4F5 /* PDReadViewToolbar.xib */; };
 		673BCD2C1D5DAD440004B4F5 /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCBC1D5DAD440004B4F5 /* PDDatabaseHandle.m */; };
 		673BCD2E1D5DAD440004B4F5 /* PDPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC11D5DAD440004B4F5 /* PDPhotoData.m */; };
-		673BCD2F1D5DAD440004B4F5 /* PDPieceCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC31D5DAD440004B4F5 /* PDPieceCellDataModel.m */; };
-		673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m */; };
-		673BCD311D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m */; };
-		673BCD321D5DAD440004B4F5 /* PDGridInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellDataModel.m */; };
-		673BCD331D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m */; };
-		673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m */; };
+		673BCD2F1D5DAD440004B4F5 /* PDPieceCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC31D5DAD440004B4F5 /* PDPieceCellData.m */; };
+		673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellData.m */; };
+		673BCD311D5DAD440004B4F5 /* PDDiaryInfoSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionData.m */; };
+		673BCD321D5DAD440004B4F5 /* PDGridInfoCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellData.m */; };
+		673BCD331D5DAD440004B4F5 /* PDGridInfoSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionData.m */; };
+		673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellData.m */; };
 		673BCD361D5DAD440004B4F5 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD21D5DAD440004B4F5 /* PDDataManager.m */; };
 		673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD61D5DAD440004B4F5 /* FMDatabase.m */; };
 		673BCD381D5DAD440004B4F5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 673BCCD81D5DAD440004B4F5 /* FMDatabaseAdditions.m */; };
@@ -342,18 +342,18 @@
 		673BCCBC1D5DAD440004B4F5 /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
 		673BCCC01D5DAD440004B4F5 /* PDPhotoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPhotoData.h; sourceTree = "<group>"; };
 		673BCCC11D5DAD440004B4F5 /* PDPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoData.m; sourceTree = "<group>"; };
-		673BCCC21D5DAD440004B4F5 /* PDPieceCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCellDataModel.h; sourceTree = "<group>"; };
-		673BCCC31D5DAD440004B4F5 /* PDPieceCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellDataModel.m; sourceTree = "<group>"; };
-		673BCCC51D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoCellDataModel.h; sourceTree = "<group>"; };
-		673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDiaryInfoCellDataModel.m; sourceTree = "<group>"; };
-		673BCCC71D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoSectionDataModel.h; sourceTree = "<group>"; };
-		673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDiaryInfoSectionDataModel.m; sourceTree = "<group>"; };
-		673BCCC91D5DAD440004B4F5 /* PDGridInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridInfoCellDataModel.h; sourceTree = "<group>"; };
-		673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridInfoCellDataModel.m; sourceTree = "<group>"; };
-		673BCCCB1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridInfoSectionDataModel.h; sourceTree = "<group>"; };
-		673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridInfoSectionDataModel.m; sourceTree = "<group>"; };
-		673BCCCD1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoCellDataModel.h; sourceTree = "<group>"; };
-		673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoCellDataModel.m; sourceTree = "<group>"; };
+		673BCCC21D5DAD440004B4F5 /* PDPieceCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCellData.h; sourceTree = "<group>"; };
+		673BCCC31D5DAD440004B4F5 /* PDPieceCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellData.m; sourceTree = "<group>"; };
+		673BCCC51D5DAD440004B4F5 /* PDDiaryInfoCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoCellData.h; sourceTree = "<group>"; };
+		673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDiaryInfoCellData.m; sourceTree = "<group>"; };
+		673BCCC71D5DAD440004B4F5 /* PDDiaryInfoSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDiaryInfoSectionData.h; sourceTree = "<group>"; };
+		673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDiaryInfoSectionData.m; sourceTree = "<group>"; };
+		673BCCC91D5DAD440004B4F5 /* PDGridInfoCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridInfoCellData.h; sourceTree = "<group>"; };
+		673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridInfoCellData.m; sourceTree = "<group>"; };
+		673BCCCB1D5DAD440004B4F5 /* PDGridInfoSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDGridInfoSectionData.h; sourceTree = "<group>"; };
+		673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDGridInfoSectionData.m; sourceTree = "<group>"; };
+		673BCCCD1D5DAD440004B4F5 /* PDQuestionInfoCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDQuestionInfoCellData.h; sourceTree = "<group>"; };
+		673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDQuestionInfoCellData.m; sourceTree = "<group>"; };
 		673BCCD11D5DAD440004B4F5 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		673BCCD21D5DAD440004B4F5 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
 		673BCCD51D5DAD440004B4F5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -871,8 +871,8 @@
 			children = (
 				673BCCC01D5DAD440004B4F5 /* PDPhotoData.h */,
 				673BCCC11D5DAD440004B4F5 /* PDPhotoData.m */,
-				673BCCC21D5DAD440004B4F5 /* PDPieceCellDataModel.h */,
-				673BCCC31D5DAD440004B4F5 /* PDPieceCellDataModel.m */,
+				673BCCC21D5DAD440004B4F5 /* PDPieceCellData.h */,
+				673BCCC31D5DAD440004B4F5 /* PDPieceCellData.m */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -880,16 +880,16 @@
 		673BCCC41D5DAD440004B4F5 /* InfoModel */ = {
 			isa = PBXGroup;
 			children = (
-				673BCCC51D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.h */,
-				673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m */,
-				673BCCC71D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.h */,
-				673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m */,
-				673BCCC91D5DAD440004B4F5 /* PDGridInfoCellDataModel.h */,
-				673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellDataModel.m */,
-				673BCCCB1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.h */,
-				673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m */,
-				673BCCCD1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.h */,
-				673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m */,
+				673BCCC51D5DAD440004B4F5 /* PDDiaryInfoCellData.h */,
+				673BCCC61D5DAD440004B4F5 /* PDDiaryInfoCellData.m */,
+				673BCCC71D5DAD440004B4F5 /* PDDiaryInfoSectionData.h */,
+				673BCCC81D5DAD440004B4F5 /* PDDiaryInfoSectionData.m */,
+				673BCCC91D5DAD440004B4F5 /* PDGridInfoCellData.h */,
+				673BCCCA1D5DAD440004B4F5 /* PDGridInfoCellData.m */,
+				673BCCCB1D5DAD440004B4F5 /* PDGridInfoSectionData.h */,
+				673BCCCC1D5DAD440004B4F5 /* PDGridInfoSectionData.m */,
+				673BCCCD1D5DAD440004B4F5 /* PDQuestionInfoCellData.h */,
+				673BCCCE1D5DAD440004B4F5 /* PDQuestionInfoCellData.m */,
 			);
 			path = InfoModel;
 			sourceTree = "<group>";
@@ -1210,8 +1210,8 @@
 				673BCCFE1D5DAD440004B4F5 /* PDQuestionDetailCell.m in Sources */,
 				673BCCEC1D5DAD440004B4F5 /* PDQuestionEditViewController.m in Sources */,
 				673BCD041D5DAD440004B4F5 /* PDQuestionInfoViewController.m in Sources */,
-				673BCD331D5DAD440004B4F5 /* PDGridInfoSectionDataModel.m in Sources */,
-				673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellDataModel.m in Sources */,
+				673BCD331D5DAD440004B4F5 /* PDGridInfoSectionData.m in Sources */,
+				673BCD301D5DAD440004B4F5 /* PDDiaryInfoCellData.m in Sources */,
 				673BCCF61D5DAD440004B4F5 /* PDGridInfoCell.m in Sources */,
 				673BCD281D5DAD440004B4F5 /* PDReadTitleView.m in Sources */,
 				673BCCFA1D5DAD440004B4F5 /* PDPhotoInfoCell.m in Sources */,
@@ -1228,7 +1228,7 @@
 				673BCD0B1D5DAD440004B4F5 /* PDWeekdayView.m in Sources */,
 				673BCCFC1D5DAD440004B4F5 /* PDPhotoInfoViewController.m in Sources */,
 				673BCD381D5DAD440004B4F5 /* FMDatabaseAdditions.m in Sources */,
-				673BCD321D5DAD440004B4F5 /* PDGridInfoCellDataModel.m in Sources */,
+				673BCD321D5DAD440004B4F5 /* PDGridInfoCellData.m in Sources */,
 				673BCD021D5DAD440004B4F5 /* PDQuestionInfoCell.m in Sources */,
 				673BCD2E1D5DAD440004B4F5 /* PDPhotoData.m in Sources */,
 				673BCD2A1D5DAD440004B4F5 /* PDReadViewToolbar.m in Sources */,
@@ -1245,7 +1245,7 @@
 				673BCD581D5DB51E0004B4F5 /* PDRecordSetting.m in Sources */,
 				673BCD591D5DB51E0004B4F5 /* PDIconSettingView.m in Sources */,
 				6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */,
-				673BCD2F1D5DAD440004B4F5 /* PDPieceCellDataModel.m in Sources */,
+				673BCD2F1D5DAD440004B4F5 /* PDPieceCellData.m in Sources */,
 				673BCCE61D5DAD440004B4F5 /* PDPieceEditToolbar.m in Sources */,
 				673BCD061D5DAD440004B4F5 /* PDTopBarView.m in Sources */,
 				673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */,
@@ -1261,13 +1261,13 @@
 				673BCCF21D5DAD440004B4F5 /* PDDiaryInfoCell.m in Sources */,
 				673BCCF81D5DAD440004B4F5 /* PDGridInfoViewController.m in Sources */,
 				673BCD5E1D5DB51E0004B4F5 /* PDSettingView.m in Sources */,
-				673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellDataModel.m in Sources */,
+				673BCD341D5DAD440004B4F5 /* PDQuestionInfoCellData.m in Sources */,
 				673BCCEA1D5DAD440004B4F5 /* PDDisplayPhotoViewController.m in Sources */,
 				673BCD151D5DAD440004B4F5 /* PDPieceViewController.m in Sources */,
 				673BCD261D5DAD440004B4F5 /* PDReadViewController.m in Sources */,
 				673BCCE91D5DAD440004B4F5 /* PDPieceEditViewController.m in Sources */,
 				673BCD131D5DAD440004B4F5 /* PDPieceDiaryView.m in Sources */,
-				673BCD311D5DAD440004B4F5 /* PDDiaryInfoSectionDataModel.m in Sources */,
+				673BCD311D5DAD440004B4F5 /* PDDiaryInfoSectionData.m in Sources */,
 				673BCD541D5DB51E0004B4F5 /* PDRecordDateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

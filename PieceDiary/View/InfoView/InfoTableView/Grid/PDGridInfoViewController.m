@@ -9,7 +9,7 @@
 #import "PDGridInfoViewController.h"
 #import "PDTopBarView.h"
 #import "PDGridInfoCell.h"
-#import "PDGridInfoSectionDataModel.h"
+#import "PDGridInfoSectionData.h"
 #import "PDDataManager.h"
 
 #define GridInfoReuseIdentifier @"GridInfoReuseIdentifier"
@@ -59,8 +59,8 @@ const CGFloat GridTableHeightForRow = 100;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDGridInfoSectionDataModel *sectionDataModel = self.sectionDataArray[indexPath.section];
-    PDGridInfoCellDataModel *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
+    PDGridInfoSectionData *sectionDataModel = self.sectionDataArray[indexPath.section];
+    PDGridInfoCellData *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
     
     [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:cellDataModel.date];
 }
@@ -89,7 +89,7 @@ const CGFloat GridTableHeightForRow = 100;
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     
-    PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[section];
+    PDGridInfoSectionData *sectionData = self.sectionDataArray[section];
     NSInteger year = sectionData.year;
     NSInteger month = sectionData.month;
     label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
@@ -105,7 +105,7 @@ const CGFloat GridTableHeightForRow = 100;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[section];
+    PDGridInfoSectionData *sectionData = self.sectionDataArray[section];
     return [sectionData.cellDatas count];
 }
 
@@ -122,8 +122,8 @@ const CGFloat GridTableHeightForRow = 100;
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PDGridInfoCell" owner:self options:nil] firstObject];
     }
     
-    PDGridInfoSectionDataModel *sectionData = self.sectionDataArray[indexPath.section];
-    PDGridInfoCellDataModel *cellData = sectionData.cellDatas[indexPath.row];
+    PDGridInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
+    PDGridInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
     
     NSDate *date = cellData.date;
     NSInteger day = [date dayValue];

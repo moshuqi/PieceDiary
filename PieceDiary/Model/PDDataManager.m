@@ -8,11 +8,11 @@
 
 #import "PDDataManager.h"
 #import "PDDatabaseHandle.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 #import "PDPhotoData.h"
 #import <UIKit/UIKit.h>
-#import "PDDiaryInfoSectionDataModel.h"
-#import "PDGridInfoSectionDataModel.h"
+#import "PDDiaryInfoSectionData.h"
+#import "PDGridInfoSectionData.h"
 #import "PDRecordWeather.h"
 #import "PDRecordMood.h"
 
@@ -62,33 +62,33 @@ static PDDataManager *_instance;
     return self;
 }
 
-- (NSArray *)getPieceViewDatasWithDate:(NSDate *)date
+- (NSArray *)getPieceViewCellDatasWithDate:(NSDate *)date
 {
     // 根据日期获取每个cell相关的数据
     
     NSInteger questionTemplateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
     NSArray *questionIDs = [self.dbHandle getQuestionIDsWithTemplateID:questionTemplateID];
     
-    NSMutableArray *dataModels = [NSMutableArray array];
+    NSMutableArray *datas = [NSMutableArray array];
     for (NSInteger i = 0; i < [questionIDs count]; i++)
     {
-        PDPieceCellDataModel *cellDataModel = [PDPieceCellDataModel new];
-        cellDataModel.date = date;
+        PDPieceCellData *cellData = [PDPieceCellData new];
+        cellData.date = date;
         
         NSNumber *number = questionIDs[i];
         NSInteger questionID = [number integerValue];
         
-        cellDataModel.questionID = questionID;
-        cellDataModel.question = [self.dbHandle getQuestionWithID:questionID];
-        cellDataModel.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
+        cellData.questionID = questionID;
+        cellData.question = [self.dbHandle getQuestionWithID:questionID];
+        cellData.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
         
         NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
-        cellDataModel.photoDatas = photoDatas;
+        cellData.photoDatas = photoDatas;
         
-        [dataModels addObject:cellDataModel];
+        [datas addObject:cellData];
     }
     
-    return dataModels;
+    return datas;
 }
 
 - (void)setAnswerContentWithText:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
@@ -252,7 +252,7 @@ static PDDataManager *_instance;
     NSMutableArray *diaryInfoData = [NSMutableArray array];
     NSArray *dateArray = [self.dbHandle getAllDiaryDate];
     
-    PDDiaryInfoSectionDataModel *currentSectionModel = nil;
+    PDDiaryInfoSectionData *currentSectionModel = nil;
     for (NSInteger i = 0; i < [dateArray count]; i++)
     {
         NSDate *date = dateArray[i];
@@ -261,13 +261,13 @@ static PDDataManager *_instance;
         
         if (!currentSectionModel)
         {
-            currentSectionModel = [PDDiaryInfoSectionDataModel new];
+            currentSectionModel = [PDDiaryInfoSectionData new];
             currentSectionModel.year = year;
             currentSectionModel.month = month;
             currentSectionModel.cellDatas = [NSMutableArray array];
         }
         
-        PDDiaryInfoCellDataModel *cellData = [PDDiaryInfoCellDataModel new];
+        PDDiaryInfoCellData *cellData = [PDDiaryInfoCellData new];
         cellData.date = date;
         cellData.mood = [self.dbHandle getMoodWithDate:date];
         cellData.weather = [self.dbHandle getWeatherWithDate:date];
@@ -277,7 +277,7 @@ static PDDataManager *_instance;
             // 不是同年同月，重新建立一个section，原先的section添加到数组中
             [diaryInfoData addObject:currentSectionModel];
             
-            currentSectionModel = [PDDiaryInfoSectionDataModel new];
+            currentSectionModel = [PDDiaryInfoSectionData new];
             currentSectionModel.year = year;
             currentSectionModel.month = month;
             currentSectionModel.cellDatas = [NSMutableArray array];
@@ -300,10 +300,10 @@ static PDDataManager *_instance;
     NSArray *editedCellDataArray = [self.dbHandle getAllEditedCellData];
     NSMutableArray *dataArray = [NSMutableArray array];
     
-    PDGridInfoSectionDataModel *currentSectionModel = nil;
+    PDGridInfoSectionData *currentSectionModel = nil;
     for (NSInteger i = 0; i < [editedCellDataArray count]; i++)
     {
-        PDGridInfoCellDataModel *cellDataModel = editedCellDataArray[i];
+        PDGridInfoCellData *cellDataModel = editedCellDataArray[i];
         NSDate *date = cellDataModel.date;
         
         NSInteger year = [date yearValue];
@@ -311,7 +311,7 @@ static PDDataManager *_instance;
         
         if (!currentSectionModel)
         {
-            currentSectionModel = [PDGridInfoSectionDataModel new];
+            currentSectionModel = [PDGridInfoSectionData new];
             currentSectionModel.year = year;
             currentSectionModel.month = month;
             currentSectionModel.cellDatas = [NSMutableArray array];
@@ -322,7 +322,7 @@ static PDDataManager *_instance;
             // 不是同年同月，重新建立一个section，原先的section添加到数组中
             [dataArray addObject:currentSectionModel];
             
-            currentSectionModel = [PDGridInfoSectionDataModel new];
+            currentSectionModel = [PDGridInfoSectionData new];
             currentSectionModel.year = year;
             currentSectionModel.month = month;
             currentSectionModel.cellDatas = [NSMutableArray array];

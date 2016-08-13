@@ -8,7 +8,7 @@
 
 #import "PDDiaryInfoTableViewController.h"
 #import "PDTopBarView.h"
-#import "PDDiaryInfoSectionDataModel.h"
+#import "PDDiaryInfoSectionData.h"
 #import "PDDiaryInfoCell.h"
 #import "PDDataManager.h"
 
@@ -59,8 +59,8 @@ const CGFloat DiaryTableHeightForRow = 88;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDDiaryInfoSectionDataModel *sectionDataModel = self.sectionDataArray[indexPath.section];
-    PDDiaryInfoCellDataModel *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
+    PDDiaryInfoSectionData *sectionDataModel = self.sectionDataArray[indexPath.section];
+    PDDiaryInfoCellData *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
     NSDate *date = cellDataModel.date;
     
     [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:date];
@@ -90,7 +90,7 @@ const CGFloat DiaryTableHeightForRow = 88;
     label.textColor = [UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;
     
-    PDDiaryInfoSectionDataModel *sectionData = self.sectionDataArray[section];
+    PDDiaryInfoSectionData *sectionData = self.sectionDataArray[section];
     NSInteger year = sectionData.year;
     NSInteger month = sectionData.month;
     label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
@@ -106,7 +106,7 @@ const CGFloat DiaryTableHeightForRow = 88;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    PDDiaryInfoSectionDataModel *sectionData = self.sectionDataArray[section];
+    PDDiaryInfoSectionData *sectionData = self.sectionDataArray[section];
     return [sectionData.cellDatas count];
 }
 
@@ -123,8 +123,8 @@ const CGFloat DiaryTableHeightForRow = 88;
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PDDiaryInfoCell" owner:self options:nil] lastObject];
     }
     
-    PDDiaryInfoSectionDataModel *sectionData = self.sectionDataArray[indexPath.section];
-    PDDiaryInfoCellDataModel *cellData = sectionData.cellDatas[indexPath.row];
+    PDDiaryInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
+    PDDiaryInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
     
     NSDate *date = cellData.date;
     NSInteger day = [date dayValue];

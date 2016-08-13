@@ -1,5 +1,5 @@
 //
-//  PDPieceCellDataModel.h
+//  PDPieceCellData.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/17.
@@ -10,8 +10,9 @@
 
 @class PDPhotoData;
 
-@interface PDPieceCellDataModel : NSObject
+@interface PDPieceCellData : NSObject
 
+// 日记界面每个cell包含的数据
 @property (nonatomic, retain) NSString *question;
 @property (nonatomic, retain) NSString *answer;
 @property (nonatomic, retain) NSArray<PDPhotoData *> *photoDatas;

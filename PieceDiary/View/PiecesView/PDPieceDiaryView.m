@@ -11,7 +11,7 @@
 #import "PDDateCell.h"
 #import "PDDataManager.h"
 #import "PDPhotoData.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 
 #define PiecesCollectionIdentifier  @"PiecesCollectionIdentifier"
 #define PDPieceCellIdentifier       @"PDPieceCellIdentifier"
@@ -106,7 +106,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     return flowLayout;
 }
 
-- (PDPieceCellDataModel *)getDataModelWithIndexPath:(NSIndexPath *)indexPath inDataArray:(NSArray *)dataArry
+- (PDPieceCellData *)getDataModelWithIndexPath:(NSIndexPath *)indexPath inDataArray:(NSArray *)dataArry
 {
     // 通过indexPath获取dataModel，考虑到日期cell的存在，要根据横竖屏情况来通过正确的索引获取到data
     
@@ -116,7 +116,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         return nil;
     }
     
-    PDPieceCellDataModel *dataModel = dataArry[[self getDataModelActualIndexWithIndexPatn:indexPath]];
+    PDPieceCellData *dataModel = dataArry[[self getDataModelActualIndexWithIndexPatn:indexPath]];
     return dataModel;
 }
 
@@ -161,7 +161,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 {
     // 刷新数据
     PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSArray *dataArray = [dataManager getPieceViewDatasWithDate:self.currentDate];
+    NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:self.currentDate];
     
     self.cellDataArray = dataArray;
     [self.pieceCollectionView reloadData];
@@ -210,7 +210,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     self.currentDate = newDate;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.cellDataArray = [dataManager getPieceViewDatasWithDate:newDate];
+    self.cellDataArray = [dataManager getPieceViewCellDatasWithDate:newDate];
     [self.pieceCollectionView reloadData];
     
     UICollectionView *slideInCollectionView = [self getSlideInCollectionViewWithDirection:direction];
@@ -352,7 +352,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDPieceCellIdentifier forIndexPath:indexPath];
         
         NSArray *dataArray = isSlideCollectionView ? self.oldCellDataArray : self.cellDataArray;
-        PDPieceCellDataModel *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
+        PDPieceCellData *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
         
         NSArray *photoDatas = dataModel.photoDatas;
         NSMutableArray *photos = [NSMutableArray array];

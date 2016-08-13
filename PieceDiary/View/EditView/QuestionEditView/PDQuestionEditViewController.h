@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class PDPieceCellDataModel;
+@class PDPieceCellData;
 @class PDQuestionEditViewController;
 
 @protocol PDQuestionEditViewControllerDelegate <NSObject>
@@ -22,7 +22,7 @@
 
 @property (nonatomic, retain) id<PDQuestionEditViewControllerDelegate> delegate;
 
-- (id)initWithDataModel:(PDPieceCellDataModel *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
+- (id)initWithDataModel:(PDPieceCellData *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
 - (NSString *)getOldQuestionContent;
 
 @end

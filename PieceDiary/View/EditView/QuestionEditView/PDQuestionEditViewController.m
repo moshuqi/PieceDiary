@@ -7,7 +7,7 @@
 //
 
 #import "PDQuestionEditViewController.h"
-#import "PDPieceCellDataModel.h"
+#import "PDPieceCellData.h"
 #import "PDDataManager.h"
 
 @interface PDQuestionEditViewController () <UITextViewDelegate>
@@ -18,7 +18,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIView *titleBarView;
 
-@property (nonatomic, retain) PDPieceCellDataModel *dataModel;
+@property (nonatomic, retain) PDPieceCellData *dataModel;
 @property (nonatomic, copy) NSString *oldQuestion;  // 保存初始值，完成时判断是否有更改
 
 @end
@@ -46,7 +46,7 @@
     self.titleBarView.backgroundColor = BackgroudGrayColor;
 }
 
-- (id)initWithDataModel:(PDPieceCellDataModel *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate
+- (id)initWithDataModel:(PDPieceCellData *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate
 {
     self = [super init];
     if (self)

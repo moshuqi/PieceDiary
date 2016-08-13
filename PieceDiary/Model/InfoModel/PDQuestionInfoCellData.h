@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PDQuestionInfoCellDataModel : NSObject
+@interface PDQuestionInfoCellData : NSObject
 
 @property (nonatomic, retain) NSString *questionContent;
 @property (nonatomic, assign) NSInteger quatity;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PDDiaryInfoCellDataModel : NSObject
+@interface PDDiaryInfoCellData : NSObject
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSString *mood;
