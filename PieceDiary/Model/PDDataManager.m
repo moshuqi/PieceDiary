@@ -9,7 +9,7 @@
 #import "PDDataManager.h"
 #import "PDDatabaseHandle.h"
 #import "PDPieceCellDataModel.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 #import <UIKit/UIKit.h>
 #import "PDDiaryInfoSectionDataModel.h"
 #import "PDGridInfoSectionDataModel.h"
@@ -82,8 +82,8 @@ static PDDataManager *_instance;
         cellDataModel.question = [self.dbHandle getQuestionWithID:questionID];
         cellDataModel.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
         
-        NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
-        cellDataModel.photoDataModels = photoDataModels;
+        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+        cellDataModel.photoDatas = photoDatas;
         
         [dataModels addObject:cellDataModel];
     }
@@ -191,11 +191,11 @@ static PDDataManager *_instance;
     return NO;
 }
 
-- (void)insertPhotosWithPhotoDataModels:(NSArray *)photoDatas
+- (void)insertPhotosWithPhotoDatas:(NSArray *)photoDatas
 {
     for (NSInteger i = 0; i < [photoDatas count]; i++)
     {
-        PDPhotoDataModel *dataModel = photoDatas[i];
+        PDPhotoData *dataModel = photoDatas[i];
         
         UIImage *image = dataModel.image;
         NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
@@ -207,7 +207,7 @@ static PDDataManager *_instance;
     }
     
     // 编辑过之后对应日期的日记要添加到数据库中
-    PDPhotoDataModel *model = [photoDatas firstObject];
+    PDPhotoData *model = [photoDatas firstObject];
     NSDate *date = model.date;
     if (![self.dbHandle diaryTableHasDate:date])
     {
@@ -216,10 +216,10 @@ static PDDataManager *_instance;
     }
 }
 
-- (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID
+- (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID
 {
-    NSArray *photoDataModels = [self.dbHandle getPhotoDataModelsWithDate:date questionID:questionID];
-    return photoDataModels;
+    NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+    return photoDatas;
 }
 
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID

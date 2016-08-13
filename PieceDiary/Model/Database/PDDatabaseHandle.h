@@ -28,7 +28,6 @@
 - (NSInteger)getTemplateIDWithQuestionIDs:(NSArray *)questionIDs;
 - (BOOL)diaryTableHasDate:(NSDate *)date;
 - (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID;
-- (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID;
 
 - (NSInteger)diaryQuantity;
 - (NSInteger)editedGridQuantity;

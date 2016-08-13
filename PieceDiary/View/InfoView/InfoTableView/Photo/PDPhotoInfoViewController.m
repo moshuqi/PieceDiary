@@ -10,7 +10,7 @@
 #import "PDTopBarView.h"
 #import "PDDataManager.h"
 #import "PDPhotoInfoCell.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 
 #define PhotoInfoCollectionIdentifier  @"PhotoInfoCollectionIdentifier"
 
@@ -65,7 +65,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDPhotoDataModel *dataModel = self.photoDataArray[indexPath.row];
+    PDPhotoData *dataModel = self.photoDataArray[indexPath.row];
     [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:dataModel.date];
 }
 
@@ -80,7 +80,7 @@
 {
     PDPhotoInfoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PhotoInfoCollectionIdentifier forIndexPath:indexPath];
     
-    PDPhotoDataModel *data = self.photoDataArray[indexPath.row];
+    PDPhotoData *data = self.photoDataArray[indexPath.row];
     UIImage *image = data.image;
     NSDate *date = data.date;
     

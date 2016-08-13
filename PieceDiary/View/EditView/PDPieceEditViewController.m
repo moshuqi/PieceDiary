@@ -14,7 +14,7 @@
 #import "PDQuestionEditViewController.h"
 #import "PDPieceCellDataModel.h"
 #import "PDDataManager.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 
 #define ToolbarHeight 56
 
@@ -307,27 +307,27 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     NSDate *date = imagePickerController.date;
     NSInteger questionID = imagePickerController.questionID;
     
-    NSMutableArray *photoDataModels = [NSMutableArray array];
+    NSMutableArray *photoDatas = [NSMutableArray array];
     for (NSInteger i = 0; i < [photos count]; i++)
     {
-        PDPhotoDataModel *photoDataModel = [PDPhotoDataModel new];
-        photoDataModel.date = date;
-        photoDataModel.questionID = questionID;
-        photoDataModel.image = photos[i];
+        PDPhotoData *photoData = [PDPhotoData new];
+        photoData.date = date;
+        photoData.questionID = questionID;
+        photoData.image = photos[i];
         
-        [photoDataModels addObject:photoDataModel];
+        [photoDatas addObject:photoData];
     }
     
     // 选中的图片插入到数据库
     PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager insertPhotosWithPhotoDataModels:photoDataModels];
+    [dataManager insertPhotosWithPhotoDatas:photoDatas];
     
     // 重新请求一次图片
-    NSArray *dataModelsArray = [dataManager getPhotoDataModelsWithDate:date questionID:questionID];
+    NSArray *datas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
     PDPieceCellDataModel *cellDataModel = self.dataArray[self.currentIndex];
-    cellDataModel.photoDataModels = dataModelsArray;
+    cellDataModel.photoDatas = datas;
     
-    [self.editView setupImageViewWithPhotoDataModels:dataModelsArray];
+    [self.editView setupImageViewWithPhotoDatas:datas];
     
     [imagePickerController dismissViewControllerAnimated:YES completion:^(){
         [self resetToolbarButtonsState];
@@ -353,9 +353,9 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     NSDate *date = cellDataModel.date;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSArray *photoDataModels = [dataManager getPhotoDataModelsWithDate:date questionID:questionID];
+    NSArray *photoDatas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
     
-    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotoDataModels:photoDataModels];
+    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotoDatas:photoDatas];
     displayPhotoViewController.delegate = self;
     
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];

@@ -7,14 +7,14 @@
 //
 
 #import "PDDisplayPhotoViewController.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 #import "PDDataManager.h"
 
 @interface PDDisplayPhotoViewController ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UIView *toolbarView;
-@property (nonatomic, retain) NSMutableArray *photoDataModels;
+@property (nonatomic, retain) NSMutableArray<PDPhotoData *> *photoDatas;
 
 @property (nonatomic, weak) IBOutlet UIButton *previousBtn;
 @property (nonatomic, weak) IBOutlet UIButton *nextBtn;
@@ -40,7 +40,7 @@
 {
 //    [self.view addSubview:self.imageView];
     
-    PDPhotoDataModel *dataModel = [self.photoDataModels firstObject];
+    PDPhotoData *dataModel = [self.photoDatas firstObject];
     UIImage *image = dataModel.image;
     [self resetImageViewFrameWithImage:image];
 }
@@ -54,7 +54,7 @@
     {
         self.previousBtn.enabled = NO;
     }
-    if (self.index == [self.photoDataModels count] - 1)
+    if (self.index == [self.photoDatas count] - 1)
     {
         self.nextBtn.enabled = NO;
     }
@@ -65,12 +65,12 @@
     self.imageView.image = image;
 }
 
-- (id)initWithPhotoDataModels:(NSArray *)photoDataModels
+- (id)initWithPhotoDatas:(NSArray *)photoDatas
 {
     self = [super init];
     if (self)
     {
-        self.photoDataModels = [NSMutableArray arrayWithArray:photoDataModels];
+        self.photoDatas = [NSMutableArray arrayWithArray:photoDatas];
     }
     
     return self;
@@ -107,20 +107,20 @@
 
 - (void)photoChanged
 {
-    PDPhotoDataModel *photoDataModel = self.photoDataModels[self.index];
-    UIImage *image = photoDataModel.image;
+    PDPhotoData *photoData = self.photoDatas[self.index];
+    UIImage *image = photoData.image;
     self.imageView.image = image;
 }
 
 - (void)deletePhoto:(id)sender
 {
-    PDPhotoDataModel *dataModel = self.photoDataModels[self.index];
+    PDPhotoData *dataModel = self.photoDatas[self.index];
     NSInteger photoID = dataModel.photoID;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
     [dataManager deletePhotoWithPhotoID:photoID];
     
-    if ([self.photoDataModels count] == 1)
+    if ([self.photoDatas count] == 1)
     {
         // 此时已经没有图片,直接退出photo视图
         [self.deleteConfirmViewController dismissViewControllerAnimated:NO completion:^(){
@@ -130,12 +130,12 @@
     }
     
     NSInteger newIndex = self.index;
-    if (newIndex == [self.photoDataModels count] - 1)
+    if (newIndex == [self.photoDatas count] - 1)
     {
         newIndex--;
     }
     
-    [self.photoDataModels removeObjectAtIndex:self.index];
+    [self.photoDatas removeObjectAtIndex:self.index];
     self.index = newIndex;
     [self photoChanged];
     [self resetButtonsState];

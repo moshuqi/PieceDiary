@@ -8,7 +8,7 @@
 
 #import "PDDatabaseHandle.h"
 #import "FMDB.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 #import "PDGridInfoCellDataModel.h"
 #import "PDQuestionInfoCellDataModel.h"
 #import "PDGridInfoSectionDataModel.h"
@@ -508,50 +508,30 @@
 
 - (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID
 {
-    // 通过日期和问题ID获取图片数据，包含图片data和图片ID
-    
-    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
-    FMResultSet * queryRes = [self.database executeQuery:querySql];
-    
-    NSMutableArray *photoDatas = [NSMutableArray array];
-    while ([queryRes next])
-    {
-        NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
-        NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
-        NSDictionary *dict = @{[NSString stringWithFormat:@"%ld", photoID] : data};
-        
-        [photoDatas addObject:dict];
-    }
-    
-    return photoDatas;
-}
-
-- (NSArray *)getPhotoDataModelsWithDate:(NSDate *)date questionID:(NSInteger)questionID
-{
     // 通过日期和问题ID获取图片数据
     
     NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %ld", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDDatabaseHandle stringFromDate:date], DatabaseQuestionTableQuestionID, questionID];
     FMResultSet * queryRes = [self.database executeQuery:querySql];
     
-    NSMutableArray *models = [NSMutableArray array];
+    NSMutableArray *datas = [NSMutableArray array];
     while ([queryRes next])
     {
-        PDPhotoDataModel *dataModel = [PDPhotoDataModel new];
+        PDPhotoData *photoData = [PDPhotoData new];
         
         NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
         UIImage *image = [UIImage imageWithData:data];
-        dataModel.image = image;
+        photoData.image = image;
         
         NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
-        dataModel.photoID = photoID;
+        photoData.photoID = photoID;
         
-        dataModel.questionID = questionID;
-        dataModel.date = date;
+        photoData.questionID = questionID;
+        photoData.date = date;
         
-        [models addObject:dataModel];
+        [datas addObject:photoData];
     }
     
-    return models;
+    return datas;
 }
 
 - (NSInteger)diaryQuantity
@@ -709,11 +689,11 @@
             cellDataModel.answer = answerContent;
             cellDataModel.images = [NSMutableArray array];
             
-            NSArray *photoDatas = [self getPhotoDataModelsWithDate:date questionID:questionID];
+            NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID];
             for (NSInteger i = 0; i < [photoDatas count]; i++)
             {
-                PDPhotoDataModel *photoDataModel = photoDatas[i];
-                [cellDataModel.images addObject:photoDataModel.image];
+                PDPhotoData *photoData = photoDatas[i];
+                [cellDataModel.images addObject:photoData.image];
             }
             
             [cellDataArray addObject:cellDataModel];
@@ -737,7 +717,7 @@
         NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
         UIImage *image = [UIImage imageWithData:data];
         
-        PDPhotoDataModel *photoData = [PDPhotoDataModel new];
+        PDPhotoData *photoData = [PDPhotoData new];
         photoData.date = date;
         photoData.image = image;
         
@@ -800,11 +780,11 @@
             gridCellData.answer = [self getAnswerWithQuestionID:questionID date:date];
             gridCellData.question = [self getQuestionWithID:questionID];
             
-            NSArray *photoDataArray = [self getPhotoDataModelsWithDate:date questionID:questionID];
+            NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID];
             gridCellData.images = [NSMutableArray array];
-            for (NSInteger i = 0; i < [photoDataArray count]; i++)
+            for (NSInteger i = 0; i < [photoDatas count]; i++)
             {
-                PDPhotoDataModel *photoData = photoDataArray[i];
+                PDPhotoData *photoData = photoDatas[i];
                 [gridCellData.images addObject:photoData.image];
             }
             

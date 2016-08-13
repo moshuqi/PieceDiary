@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class PDPhotoData;
+
 @interface PDPieceCellDataModel : NSObject
 
 @property (nonatomic, retain) NSString *question;
 @property (nonatomic, retain) NSString *answer;
-@property (nonatomic, retain) NSArray *photoDataModels;
+@property (nonatomic, retain) NSArray<PDPhotoData *> *photoDatas;
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, assign) NSInteger questionID;

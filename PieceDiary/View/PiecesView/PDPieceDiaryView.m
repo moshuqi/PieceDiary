@@ -10,7 +10,7 @@
 #import "PDPieceCell.h"
 #import "PDDateCell.h"
 #import "PDDataManager.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 #import "PDPieceCellDataModel.h"
 
 #define PiecesCollectionIdentifier  @"PiecesCollectionIdentifier"
@@ -354,11 +354,11 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         NSArray *dataArray = isSlideCollectionView ? self.oldCellDataArray : self.cellDataArray;
         PDPieceCellDataModel *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
         
-        NSArray *photoDataModels = dataModel.photoDataModels;
+        NSArray *photoDatas = dataModel.photoDatas;
         NSMutableArray *photos = [NSMutableArray array];
-        for (NSInteger i = 0; i < [photoDataModels count]; i++)
+        for (NSInteger i = 0; i < [photoDatas count]; i++)
         {
-            PDPhotoDataModel *model = photoDataModels[i];
+            PDPhotoData *model = photoDatas[i];
             [photos addObject:model.image];
         }
         

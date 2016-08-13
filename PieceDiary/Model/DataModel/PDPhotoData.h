@@ -1,5 +1,5 @@
 //
-//  PDPhotoDataModel.h
+//  PDPhotoData.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/23.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface PDPhotoDataModel : NSObject
+@interface PDPhotoData : NSObject
 
 @property (nonatomic, assign) NSInteger questionID;
 @property (nonatomic, retain) NSDate *date;

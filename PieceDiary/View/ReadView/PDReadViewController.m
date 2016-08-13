@@ -10,7 +10,7 @@
 #import "PDReadViewToolbar.h"
 #import "PDReadTitleView.h"
 #import "PDPieceCellDataModel.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 
 @interface PDReadViewController () <PDReadViewToolbarDelegate>
 
@@ -85,14 +85,14 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
             [self addAnswerWithText:answer];
         }
         
-        NSArray *photoDataModels = cellDataModel.photoDataModels;
-        if ([photoDataModels count] > 0)
+        NSArray *photoDatas = cellDataModel.photoDatas;
+        if ([photoDatas count] > 0)
         {
             self.originY += 40;     // 答案和图片的间隔
-            for (NSInteger j = 0; j < [photoDataModels count]; j++)
+            for (NSInteger j = 0; j < [photoDatas count]; j++)
             {
-                PDPhotoDataModel *photoDataModel = photoDataModels[j];
-                [self addPhotoWithImage:photoDataModel.image];
+                PDPhotoData *photoData = photoDatas[j];
+                [self addPhotoWithImage:photoData.image];
                 self.originY += 20;     // 图片和图片的间隔
             }
         }
@@ -109,7 +109,7 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
 {
     // 判断格子是否被编辑过，若无则不加到scrollview上
     
-    if (([dataModel.answer length] < 1) && ([dataModel.photoDataModels count] < 1))
+    if (([dataModel.answer length] < 1) && ([dataModel.photoDatas count] < 1))
     {
         return NO;
     }

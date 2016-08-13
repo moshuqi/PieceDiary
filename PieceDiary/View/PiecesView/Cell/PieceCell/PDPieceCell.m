@@ -8,7 +8,7 @@
 
 #import "PDPieceCell.h"
 #import "PDIconsView.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 
 @interface PDPieceCell ()
 

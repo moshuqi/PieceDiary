@@ -8,7 +8,7 @@
 
 #import "PDPieceDiaryEditView.h"
 #import "PDPieceCellDataModel.h"
-#import "PDPhotoDataModel.h"
+#import "PDPhotoData.h"
 
 @interface PDPieceDiaryEditView ()
 
@@ -16,7 +16,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 
 @property (nonatomic, retain) UILabel *photoCountLabel;
-@property (nonatomic, retain) NSArray *photoDataModels;
+@property (nonatomic, retain) NSArray *photoDatas;
 @property (nonatomic, retain) PDPieceCellDataModel *dataModel;
 
 @end
@@ -114,10 +114,10 @@
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, originY, self.imageView.frame.size.width, self.imageView.frame.size.height);
 }
 
-- (void)setupImageViewWithPhotoDataModels:(NSArray *)array
+- (void)setupImageViewWithPhotoDatas:(NSArray *)datas
 {
-    self.photoDataModels = array;
-    NSInteger count = [self.photoDataModels count];
+    self.photoDatas = datas;
+    NSInteger count = [self.photoDatas count];
     
     if (count < 1)
     {
@@ -126,7 +126,7 @@
     else
     {
         self.imageView.hidden = NO;
-        PDPhotoDataModel *dataModel = [self.photoDataModels firstObject];
+        PDPhotoData *dataModel = [self.photoDatas firstObject];
         self.imageView.image = dataModel.image;
         self.photoCountLabel.text = [NSString stringWithFormat:@"%ld", count];
     }
@@ -142,9 +142,8 @@
     self.dataModel = dataModel;
     self.titleLabel.text = dataModel.question;
     self.textView.text = dataModel.answer;
-//    self.photoDataModels = dataModel.photoDataModels;
     
-    [self setupImageViewWithPhotoDataModels:dataModel.photoDataModels];
+    [self setupImageViewWithPhotoDatas:dataModel.photoDatas];
 }
 
 
