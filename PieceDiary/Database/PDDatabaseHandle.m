@@ -669,7 +669,7 @@
 - (NSArray *)getAllEditedCellData
 {
     NSArray *allDiaryDate = [self getAllDiaryDate];
-    NSMutableArray *cellDataArray = [NSMutableArray array];
+    NSMutableArray *datas = [NSMutableArray array];
     
     for (NSDate *date in allDiaryDate)
     {
@@ -683,24 +683,24 @@
             NSString *questionContent = [self getQuestionWithID:questionID];
             NSString *answerContent = [self getAnswerWithQuestionID:questionID date:date];
             
-            PDGridInfoCellData *cellDataModel = [PDGridInfoCellData new];
-            cellDataModel.date = date;
-            cellDataModel.question = questionContent;
-            cellDataModel.answer = answerContent;
-            cellDataModel.images = [NSMutableArray array];
+            PDGridInfoCellData *data = [PDGridInfoCellData new];
+            data.date = date;
+            data.question = questionContent;
+            data.answer = answerContent;
+            data.images = [NSMutableArray array];
             
             NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID];
             for (NSInteger i = 0; i < [photoDatas count]; i++)
             {
                 PDPhotoData *photoData = photoDatas[i];
-                [cellDataModel.images addObject:photoData.image];
+                [data.images addObject:photoData.image];
             }
             
-            [cellDataArray addObject:cellDataModel];
+            [datas addObject:data];
         }
     }
     
-    return cellDataArray;
+    return datas;
 }
 
 - (NSArray *)getAllPhotoData
@@ -739,12 +739,12 @@
         NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
         NSString *questionContent = [self getQuestionWithID:questionID];
         
-        PDQuestionInfoCellData *questionCellDataModel = [PDQuestionInfoCellData new];
-        questionCellDataModel.questionContent = questionContent;
-        questionCellDataModel.sectionDataArray = [NSMutableArray array];
-        questionCellDataModel.quatity = [self getQuantityOfQuestionWithID:questionID];
+        PDQuestionInfoCellData *questionCellData = [PDQuestionInfoCellData new];
+        questionCellData.questionContent = questionContent;
+        questionCellData.sectionDataArray = [NSMutableArray array];
+        questionCellData.quatity = [self getQuantityOfQuestionWithID:questionID];
         
-        PDGridInfoSectionData *currentSectionModel = nil;
+        PDGridInfoSectionData *currentSection = nil;
         
         NSString *query = [NSString stringWithFormat:@"select questionID, date from %@ where questionID = %ld union select questionID, date from %@ where questionID = %ld order by date DESC", DatabaseAnswerTable, questionID, DatabasePhotoTable, questionID];
         
@@ -756,23 +756,23 @@
             NSInteger year = [date yearValue];
             NSInteger month = [date monthValue];
             
-            if (!currentSectionModel)
+            if (!currentSection)
             {
-                currentSectionModel = [PDGridInfoSectionData new];
-                currentSectionModel.year = year;
-                currentSectionModel.month = month;
-                currentSectionModel.cellDatas = [NSMutableArray array];
+                currentSection = [PDGridInfoSectionData new];
+                currentSection.year = year;
+                currentSection.month = month;
+                currentSection.cellDatas = [NSMutableArray array];
             }
             
-            if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+            if ((year != currentSection.year) || (month != currentSection.month))
             {
                 // 不是同年同月，重新建立一个section，原先的section添加到数组中
-                [questionCellDataModel.sectionDataArray addObject:currentSectionModel];
+                [questionCellData.sectionDataArray addObject:currentSection];
                 
-                currentSectionModel = [PDGridInfoSectionData new];
-                currentSectionModel.year = year;
-                currentSectionModel.month = month;
-                currentSectionModel.cellDatas = [NSMutableArray array];
+                currentSection = [PDGridInfoSectionData new];
+                currentSection.year = year;
+                currentSection.month = month;
+                currentSection.cellDatas = [NSMutableArray array];
             }
             
             PDGridInfoCellData *gridCellData = [PDGridInfoCellData new];
@@ -788,14 +788,13 @@
                 [gridCellData.images addObject:photoData.image];
             }
             
-            [currentSectionModel.cellDatas addObject:gridCellData];
+            [currentSection.cellDatas addObject:gridCellData];
         }
         
         // 遍历之后的最后一次
-        [questionCellDataModel.sectionDataArray addObject:currentSectionModel];
+        [questionCellData.sectionDataArray addObject:currentSection];
         
-        
-        [questionDataArray addObject:questionCellDataModel];
+        [questionDataArray addObject:questionCellData];
     }
     
     return questionDataArray;

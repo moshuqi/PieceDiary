@@ -195,20 +195,19 @@ static PDDataManager *_instance;
 {
     for (NSInteger i = 0; i < [photoDatas count]; i++)
     {
-        PDPhotoData *dataModel = photoDatas[i];
+        PDPhotoData *data = photoDatas[i];
         
-        UIImage *image = dataModel.image;
+        UIImage *image = data.image;
         NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
         
-        NSDate *date = dataModel.date;
-        NSInteger questionID = dataModel.questionID;
+        NSDate *date = data.date;
+        NSInteger questionID = data.questionID;
         
         [self.dbHandle insertPhotoData:imageData inDate:date questionID:questionID];
     }
     
     // 编辑过之后对应日期的日记要添加到数据库中
-    PDPhotoData *model = [photoDatas firstObject];
-    NSDate *date = model.date;
+    NSDate *date = ((PDPhotoData *)[photoDatas firstObject]).date;
     if (![self.dbHandle diaryTableHasDate:date])
     {
         NSInteger defaultTemplateID = [self.dbHandle getDefaultQuestionTemplateID];
@@ -252,19 +251,19 @@ static PDDataManager *_instance;
     NSMutableArray *diaryInfoData = [NSMutableArray array];
     NSArray *dateArray = [self.dbHandle getAllDiaryDate];
     
-    PDDiaryInfoSectionData *currentSectionModel = nil;
+    PDDiaryInfoSectionData *currentSection = nil;
     for (NSInteger i = 0; i < [dateArray count]; i++)
     {
         NSDate *date = dateArray[i];
         NSInteger year = [date yearValue];
         NSInteger month  = [date monthValue];
         
-        if (!currentSectionModel)
+        if (!currentSection)
         {
-            currentSectionModel = [PDDiaryInfoSectionData new];
-            currentSectionModel.year = year;
-            currentSectionModel.month = month;
-            currentSectionModel.cellDatas = [NSMutableArray array];
+            currentSection = [PDDiaryInfoSectionData new];
+            currentSection.year = year;
+            currentSection.month = month;
+            currentSection.cellDatas = [NSMutableArray array];
         }
         
         PDDiaryInfoCellData *cellData = [PDDiaryInfoCellData new];
@@ -272,23 +271,23 @@ static PDDataManager *_instance;
         cellData.mood = [self.dbHandle getMoodWithDate:date];
         cellData.weather = [self.dbHandle getWeatherWithDate:date];
         
-        if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+        if ((year != currentSection.year) || (month != currentSection.month))
         {
             // 不是同年同月，重新建立一个section，原先的section添加到数组中
-            [diaryInfoData addObject:currentSectionModel];
+            [diaryInfoData addObject:currentSection];
             
-            currentSectionModel = [PDDiaryInfoSectionData new];
-            currentSectionModel.year = year;
-            currentSectionModel.month = month;
-            currentSectionModel.cellDatas = [NSMutableArray array];
+            currentSection = [PDDiaryInfoSectionData new];
+            currentSection.year = year;
+            currentSection.month = month;
+            currentSection.cellDatas = [NSMutableArray array];
         }
         
-        [currentSectionModel.cellDatas addObject:cellData];
+        [currentSection.cellDatas addObject:cellData];
         
         // 遍历完后将最后一个section添加到数组中
         if (i == [dateArray count] - 1)
         {
-            [diaryInfoData addObject:currentSectionModel];
+            [diaryInfoData addObject:currentSection];
         }
     }
     
@@ -300,40 +299,40 @@ static PDDataManager *_instance;
     NSArray *editedCellDataArray = [self.dbHandle getAllEditedCellData];
     NSMutableArray *dataArray = [NSMutableArray array];
     
-    PDGridInfoSectionData *currentSectionModel = nil;
+    PDGridInfoSectionData *currentSection = nil;
     for (NSInteger i = 0; i < [editedCellDataArray count]; i++)
     {
-        PDGridInfoCellData *cellDataModel = editedCellDataArray[i];
-        NSDate *date = cellDataModel.date;
+        PDGridInfoCellData *cellData = editedCellDataArray[i];
+        NSDate *date = cellData.date;
         
         NSInteger year = [date yearValue];
         NSInteger month  = [date monthValue];
         
-        if (!currentSectionModel)
+        if (!currentSection)
         {
-            currentSectionModel = [PDGridInfoSectionData new];
-            currentSectionModel.year = year;
-            currentSectionModel.month = month;
-            currentSectionModel.cellDatas = [NSMutableArray array];
+            currentSection = [PDGridInfoSectionData new];
+            currentSection.year = year;
+            currentSection.month = month;
+            currentSection.cellDatas = [NSMutableArray array];
         }
         
-        if ((year != currentSectionModel.year) || (month != currentSectionModel.month))
+        if ((year != currentSection.year) || (month != currentSection.month))
         {
             // 不是同年同月，重新建立一个section，原先的section添加到数组中
-            [dataArray addObject:currentSectionModel];
+            [dataArray addObject:currentSection];
             
-            currentSectionModel = [PDGridInfoSectionData new];
-            currentSectionModel.year = year;
-            currentSectionModel.month = month;
-            currentSectionModel.cellDatas = [NSMutableArray array];
+            currentSection = [PDGridInfoSectionData new];
+            currentSection.year = year;
+            currentSection.month = month;
+            currentSection.cellDatas = [NSMutableArray array];
         }
         
-        [currentSectionModel.cellDatas addObject:cellDataModel];
+        [currentSection.cellDatas addObject:cellData];
         
         // 遍历完后将最后一个section添加到数组中
         if (i == [editedCellDataArray count] - 1)
         {
-            [dataArray addObject:currentSectionModel];
+            [dataArray addObject:currentSection];
         }
     }
     

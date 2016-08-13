@@ -22,7 +22,7 @@
 
 @property (nonatomic, retain) id<PDQuestionEditViewControllerDelegate> delegate;
 
-- (id)initWithDataModel:(PDPieceCellData *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
+- (id)initWithData:(PDPieceCellData *)data delegate:(id<PDQuestionEditViewControllerDelegate>)delegate;
 - (NSString *)getOldQuestionContent;
 
 @end

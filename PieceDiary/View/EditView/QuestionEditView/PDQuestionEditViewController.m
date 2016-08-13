@@ -18,7 +18,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UIView *titleBarView;
 
-@property (nonatomic, retain) PDPieceCellData *dataModel;
+@property (nonatomic, retain) PDPieceCellData *data;
 @property (nonatomic, copy) NSString *oldQuestion;  // 保存初始值，完成时判断是否有更改
 
 @end
@@ -29,8 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.textView.text = self.dataModel.question;
-    self.oldQuestion = self.dataModel.question;
+    self.textView.text = self.data.question;
+    self.oldQuestion = self.data.question;
     self.textView.delegate = self;
     
     [self setupColor];
@@ -46,12 +46,12 @@
     self.titleBarView.backgroundColor = BackgroudGrayColor;
 }
 
-- (id)initWithDataModel:(PDPieceCellData *)dataModel delegate:(id<PDQuestionEditViewControllerDelegate>)delegate
+- (id)initWithData:(PDPieceCellData *)data delegate:(id<PDQuestionEditViewControllerDelegate>)delegate
 {
     self = [super init];
     if (self)
     {
-        self.dataModel = dataModel;
+        self.data = data;
         self.delegate = delegate;
     }
     
@@ -105,7 +105,7 @@
     }
     else
     {
-        [self.delegate questionEditViewController:self editQuestionContentText:question inDate:self.dataModel.date];
+        [self.delegate questionEditViewController:self editQuestionContentText:question inDate:self.data.date];
     }
 }
 
@@ -118,7 +118,7 @@
     if (bQuestionContentExsist)
     {
         NSInteger questionID = [dataManager getQuestionIDWithQuestionContent:question];
-        BOOL bDuplicate = [dataManager exsistQuestionID:questionID inDate:self.dataModel.date];
+        BOOL bDuplicate = [dataManager exsistQuestionID:questionID inDate:self.data.date];
         
         if (bDuplicate)
         {

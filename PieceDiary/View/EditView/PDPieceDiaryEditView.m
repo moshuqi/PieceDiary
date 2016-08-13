@@ -126,8 +126,8 @@
     else
     {
         self.imageView.hidden = NO;
-        PDPhotoData *dataModel = [self.photoDatas firstObject];
-        self.imageView.image = dataModel.image;
+        PDPhotoData *data = [self.photoDatas firstObject];
+        self.imageView.image = data.image;
         self.photoCountLabel.text = [NSString stringWithFormat:@"%ld", count];
     }
 }

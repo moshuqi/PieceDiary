@@ -70,8 +70,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDQuestionInfoCellData *dataModel = self.questionInfoDataArray[indexPath.row];
-    PDQuestionDetailViewController *detailViewController = [[PDQuestionDetailViewController alloc] initWithDataArray:dataModel.sectionDataArray titleText:dataModel.questionContent];
+    PDQuestionInfoCellData *data = self.questionInfoDataArray[indexPath.row];
+    PDQuestionDetailViewController *detailViewController = [[PDQuestionDetailViewController alloc] initWithDataArray:data.sectionDataArray titleText:data.questionContent];
     detailViewController.delegate = self;
     
     [self.navigationController pushViewController:detailViewController animated:YES];
@@ -116,8 +116,8 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PDQuestionInfoCell" owner:self options:nil] firstObject];
     }
     
-    PDQuestionInfoCellData *dataModel = self.questionInfoDataArray[indexPath.row];
-    [cell setupWithQuestionContent:dataModel.questionContent quantity:dataModel.quatity];
+    PDQuestionInfoCellData *data = self.questionInfoDataArray[indexPath.row];
+    [cell setupWithQuestionContent:data.questionContent quantity:data.quatity];
     
     return cell;
 }

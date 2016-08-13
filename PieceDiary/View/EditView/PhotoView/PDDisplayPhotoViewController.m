@@ -40,8 +40,8 @@
 {
 //    [self.view addSubview:self.imageView];
     
-    PDPhotoData *dataModel = [self.photoDatas firstObject];
-    UIImage *image = dataModel.image;
+    PDPhotoData *data = [self.photoDatas firstObject];
+    UIImage *image = data.image;
     [self resetImageViewFrameWithImage:image];
 }
 
@@ -114,8 +114,8 @@
 
 - (void)deletePhoto:(id)sender
 {
-    PDPhotoData *dataModel = self.photoDatas[self.index];
-    NSInteger photoID = dataModel.photoID;
+    PDPhotoData *data = self.photoDatas[self.index];
+    NSInteger photoID = data.photoID;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
     [dataManager deletePhotoWithPhotoID:photoID];

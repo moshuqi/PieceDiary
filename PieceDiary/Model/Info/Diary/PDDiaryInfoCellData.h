@@ -1,5 +1,5 @@
 //
-//  PDDiaryInfoCellDataModel.h
+//  PDDiaryInfoCellData.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/30.

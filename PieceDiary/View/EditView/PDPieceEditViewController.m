@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 {
     // 滑入的view
     CGRect frame = (type == EditPieceCellChangeTypePrevious) ? [self getLeftEditViewFrame] : [self getRightEditViewFrame];
-    return [self createEditViewWithFrame:frame dataModel:self.dataArray[self.currentIndex]];
+    return [self createEditViewWithFrame:frame cellData:self.dataArray[self.currentIndex]];
 }
 
 - (PDPieceDiaryEditView *)getSlideOutEditViewWithType:(EditPieceCellChangeType)type
@@ -179,10 +179,10 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     // 滑出的view
     CGRect frame = self.editView.frame;
     NSInteger oldIndex = (type == EditPieceCellChangeTypePrevious) ? self.currentIndex + 1 : self.currentIndex - 1;
-    return [self createEditViewWithFrame:frame dataModel:self.dataArray[oldIndex]];
+    return [self createEditViewWithFrame:frame cellData:self.dataArray[oldIndex]];
 }
 
-- (PDPieceDiaryEditView *)createEditViewWithFrame:(CGRect)frame dataModel:(PDPieceCellData *)dataModel
+- (PDPieceDiaryEditView *)createEditViewWithFrame:(CGRect)frame cellData:(PDPieceCellData *)data
 {
     PDPieceDiaryEditView *editView = [[PDPieceDiaryEditView alloc] initWithFrame:frame];
     NSArray *nibArray = [[UINib nibWithNibName:@"PDPieceDiaryEditView" bundle:nil] instantiateWithOwner:editView options:nil];
@@ -191,7 +191,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     view.frame = editView.bounds;
     [editView addSubview:view];
     
-    [self setupEditView:editView withData:dataModel];
+    [self setupEditView:editView withData:data];
     return editView;
 }
 
@@ -241,9 +241,9 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     PDImagePickerController *imagePickerController = [[PDImagePickerController alloc] init];
     imagePickerController.delegate = self;
     
-    PDPieceCellData *dataModel = self.dataArray[self.currentIndex];
-    imagePickerController.date = dataModel.date;
-    imagePickerController.questionID = dataModel.questionID;
+    PDPieceCellData *data = self.dataArray[self.currentIndex];
+    imagePickerController.date = data.date;
+    imagePickerController.questionID = data.questionID;
     
     imagePickerController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:imagePickerController animated:YES completion:nil];
@@ -281,11 +281,11 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 - (void)setAnswerWithContent:(NSString *)content withIndex:(NSInteger)index
 {
     // 根据索引设置问题内容
-    PDPieceCellData *dataModel = self.dataArray[index];
-    dataModel.answer = content;
+    PDPieceCellData *data = self.dataArray[index];
+    data.answer = content;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager setAnswerContentWithText:content questionID:dataModel.questionID date:dataModel.date];
+    [dataManager setAnswerContentWithText:content questionID:data.questionID date:data.date];
 }
 
 - (UIView *)inputAccessoryView
@@ -325,8 +325,8 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     
     // 重新请求一次图片
     NSArray *datas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
-    PDPieceCellData *cellDataModel = self.dataArray[self.currentIndex];
-    cellDataModel.photoDatas = datas;
+    PDPieceCellData *cellData = self.dataArray[self.currentIndex];
+    cellData.photoDatas = datas;
     
     [self.editView setupImageViewWithPhotoDatas:datas];
     
@@ -349,9 +349,9 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)displayPhotos
 {
-    PDPieceCellData *cellDataModel = self.dataArray[self.currentIndex];
-    NSInteger questionID = cellDataModel.questionID;
-    NSDate *date = cellDataModel.date;
+    PDPieceCellData *cellData = self.dataArray[self.currentIndex];
+    NSInteger questionID = cellData.questionID;
+    NSDate *date = cellData.date;
     
     PDDataManager *dataManager = [PDDataManager defaultManager];
     NSArray *photoDatas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
@@ -362,9 +362,9 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];
 }
 
-- (void)showQuestionEditViewWithData:(PDPieceCellData *)dataModel
+- (void)showQuestionEditViewWithData:(PDPieceCellData *)data
 {
-    PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] initWithDataModel:dataModel delegate:self];
+    PDQuestionEditViewController *questionEditViewController = [[PDQuestionEditViewController alloc] initWithData:data delegate:self];
     
     questionEditViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     questionEditViewController.preferredContentSize = CGSizeMake(420, 260);

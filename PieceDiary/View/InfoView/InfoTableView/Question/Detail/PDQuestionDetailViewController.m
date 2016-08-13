@@ -68,10 +68,10 @@ const CGFloat QuestionDetailTableHeaderHeight = 30;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDGridInfoSectionData *sectionDataModel = self.sectionDataArray[indexPath.section];
-    PDGridInfoCellData *cellDataModel = sectionDataModel.cellDatas[indexPath.row];
+    PDGridInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
+    PDGridInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
     
-    [self.delegate didSelectedWithDate:cellDataModel.date];
+    [self.delegate didSelectedWithDate:cellData.date];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -132,11 +132,11 @@ const CGFloat QuestionDetailTableHeaderHeight = 30;
     }
     
     PDGridInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
-    PDGridInfoCellData *cellDataModel = sectionData.cellDatas[indexPath.row];
+    PDGridInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
     
-    NSDate *date = cellDataModel.date;
-    UIImage *image = [cellDataModel.images firstObject];
-    [cell setupWithDay:[date dayValue] weekday:[date weekdayValue] answer:cellDataModel.answer photo:image];
+    NSDate *date = cellData.date;
+    UIImage *image = [cellData.images firstObject];
+    [cell setupWithDay:[date dayValue] weekday:[date weekdayValue] answer:cellData.answer photo:image];
     
     return cell;
 }

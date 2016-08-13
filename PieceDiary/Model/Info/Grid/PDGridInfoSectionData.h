@@ -1,5 +1,5 @@
 //
-//  PDGridInfoSectionDataModel.h
+//  PDGridInfoSectionData.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/30.
@@ -13,6 +13,6 @@
 
 @property (nonatomic, assign) NSInteger year;
 @property (nonatomic, assign) NSInteger month;
-@property (nonatomic, retain) NSMutableArray *cellDatas;     // 保存PDGridInfoCellDataModel
+@property (nonatomic, retain) NSMutableArray *cellDatas;     // 保存PDGridInfoCellData
 
 @end

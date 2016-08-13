@@ -69,23 +69,23 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
     
     for (NSInteger i = 0; i < [self.dataArray count]; i++)
     {
-        PDPieceCellData *cellDataModel = self.dataArray[i];
-        if (![self judgePieceCellHasEditedWithCellData:cellDataModel])
+        PDPieceCellData *cellData = self.dataArray[i];
+        if (![self judgePieceCellHasEditedWithCellData:cellData])
         {
             continue;
         }
         
-        NSString *question = cellDataModel.question;
+        NSString *question = cellData.question;
         [self addQuestionWithText:question];
         
-        NSString *answer = cellDataModel.answer;
+        NSString *answer = cellData.answer;
         if ([answer length] > 0)
         {
             self.originY += 40;     // 问题和答案的间隔
             [self addAnswerWithText:answer];
         }
         
-        NSArray *photoDatas = cellDataModel.photoDatas;
+        NSArray *photoDatas = cellData.photoDatas;
         if ([photoDatas count] > 0)
         {
             self.originY += 40;     // 答案和图片的间隔
@@ -105,11 +105,11 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
     self.scrollView.contentSize = CGSizeMake(width, height);
 }
 
-- (BOOL)judgePieceCellHasEditedWithCellData:(PDPieceCellData *)dataModel
+- (BOOL)judgePieceCellHasEditedWithCellData:(PDPieceCellData *)data
 {
     // 判断格子是否被编辑过，若无则不加到scrollview上
     
-    if (([dataModel.answer length] < 1) && ([dataModel.photoDatas count] < 1))
+    if (([data.answer length] < 1) && ([data.photoDatas count] < 1))
     {
         return NO;
     }
@@ -193,8 +193,8 @@ const CGFloat originX = 25;     // 问题和标签的偏移量
 
 - (NSDate *)getDate
 {
-    PDPieceCellData *cellDataModel = [self.dataArray firstObject];
-    return cellDataModel.date;
+    PDPieceCellData *cellData = [self.dataArray firstObject];
+    return cellData.date;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -1,5 +1,5 @@
 //
-//  PDGridInfoCellDataModel.h
+//  PDGridInfoCellData.h
 //  PieceDiary
 //
 //  Created by moshuqi on 15/9/30.

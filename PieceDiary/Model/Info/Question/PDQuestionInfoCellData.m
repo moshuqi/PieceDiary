@@ -1,5 +1,5 @@
 //
-//  PDQuestionInfoCellDataModel.m
+//  PDQuestionInfoCellData.m
 //  PieceDiary
 //
 //  Created by moshuqi on 15/10/1.

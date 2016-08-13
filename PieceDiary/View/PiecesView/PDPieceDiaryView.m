@@ -106,9 +106,9 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     return flowLayout;
 }
 
-- (PDPieceCellData *)getDataModelWithIndexPath:(NSIndexPath *)indexPath inDataArray:(NSArray *)dataArry
+- (PDPieceCellData *)getCellDataWithIndexPath:(NSIndexPath *)indexPath inDataArray:(NSArray *)dataArry
 {
-    // 通过indexPath获取dataModel，考虑到日期cell的存在，要根据横竖屏情况来通过正确的索引获取到data
+    // 通过indexPath获取data，考虑到日期cell的存在，要根据横竖屏情况来通过正确的索引获取到data
     
     if (!dataArry || [dataArry count] < 8)
     {
@@ -116,11 +116,11 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         return nil;
     }
     
-    PDPieceCellData *dataModel = dataArry[[self getDataModelActualIndexWithIndexPatn:indexPath]];
-    return dataModel;
+    PDPieceCellData *data = dataArry[[self getDataActualIndexWithIndexPatn:indexPath]];
+    return data;
 }
 
-- (NSInteger)getDataModelActualIndexWithIndexPatn:(NSIndexPath *)indexPath
+- (NSInteger)getDataActualIndexWithIndexPatn:(NSIndexPath *)indexPath
 {
     // 获得cell数据对应在数组中的索引，因为需要除去日期cell
     NSInteger row = indexPath.row;
@@ -317,7 +317,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     }
     else
     {
-        [self.delegate enterEditFromCell:[collectionView cellForItemAtIndexPath:indexPath] dataArrayIndex:[self getDataModelActualIndexWithIndexPatn:indexPath]];
+        [self.delegate enterEditFromCell:[collectionView cellForItemAtIndexPath:indexPath] dataArrayIndex:[self getDataActualIndexWithIndexPatn:indexPath]];
     }
 }
 
@@ -352,17 +352,17 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:PDPieceCellIdentifier forIndexPath:indexPath];
         
         NSArray *dataArray = isSlideCollectionView ? self.oldCellDataArray : self.cellDataArray;
-        PDPieceCellData *dataModel = [self getDataModelWithIndexPath:indexPath inDataArray:dataArray];
+        PDPieceCellData *data = [self getCellDataWithIndexPath:indexPath inDataArray:dataArray];
         
-        NSArray *photoDatas = dataModel.photoDatas;
+        NSArray *photoDatas = data.photoDatas;
         NSMutableArray *photos = [NSMutableArray array];
         for (NSInteger i = 0; i < [photoDatas count]; i++)
         {
-            PDPhotoData *model = photoDatas[i];
-            [photos addObject:model.image];
+            PDPhotoData *d = photoDatas[i];
+            [photos addObject:d.image];
         }
         
-        [(PDPieceCell *)cell setupWithQuestion:dataModel.question answer:dataModel.answer photos:photos];
+        [(PDPieceCell *)cell setupWithQuestion:data.question answer:data.answer photos:photos];
     }
     
     cell.backgroundColor = [UIColor whiteColor];

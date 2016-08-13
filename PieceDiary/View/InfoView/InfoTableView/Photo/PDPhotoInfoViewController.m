@@ -65,8 +65,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PDPhotoData *dataModel = self.photoDataArray[indexPath.row];
-    [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:dataModel.date];
+    PDPhotoData *data = self.photoDataArray[indexPath.row];
+    [self.baseVCDelegate baseInfoViewController:self dismissAndEnterPieceViewWithDate:data.date];
 }
 
 #pragma mark - UICollectionViewDataSource
