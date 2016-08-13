@@ -16,6 +16,11 @@
 		650020EE1D5EEF87009D8696 /* PDPieceCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020E71D5EEF87009D8696 /* PDPieceCellData.m */; };
 		650020F41D5EF007009D8696 /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020F11D5EF007009D8696 /* PDDatabaseHandle.m */; };
 		650020F51D5EF007009D8696 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020F31D5EF007009D8696 /* PDDataManager.m */; };
+		650021011D5F04EE009D8696 /* PDDBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020FE1D5F04EE009D8696 /* PDDBHandler.m */; };
+		650021021D5F04EE009D8696 /* PDDBHandler+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 650021001D5F04EE009D8696 /* PDDBHandler+Query.m */; };
+		650021051D5F0521009D8696 /* PDDBHandler+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 650021041D5F0521009D8696 /* PDDBHandler+Insert.m */; };
+		650021081D5F057D009D8696 /* PDDBHandler+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 650021071D5F057D009D8696 /* PDDBHandler+Update.m */; };
+		6500210C1D5F0636009D8696 /* PDDBHandler+Delete.m in Sources */ = {isa = PBXBuildFile; fileRef = 6500210B1D5F0636009D8696 /* PDDBHandler+Delete.m */; };
 		6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA501BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m */; };
 		6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6539FA581BA7F3C80068DB9D /* PDNormalDismissAnimation.m */; };
 		6547A95A1BA1A98C0090CAD0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6547A9591BA1A98C0090CAD0 /* ViewController.m */; };
@@ -25,6 +30,7 @@
 		654CC7731BA07840002DF0C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7721BA07840002DF0C9 /* Images.xcassets */; };
 		654CC7761BA07840002DF0C9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654CC7741BA07840002DF0C9 /* LaunchScreen.xib */; };
 		654CC7821BA07840002DF0C9 /* PieceDiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 654CC7811BA07840002DF0C9 /* PieceDiaryTests.m */; };
+		6583BC8B1D5F2B2000DDCE2E /* PDTimeFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6583BC8A1D5F2B2000DDCE2E /* PDTimeFunc.m */; };
 		659AD8271BC56B11000DA8EB /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 659AD8231BC56B11000DA8EB /* leftArrow.png */; };
 		659AD8281BC56B11000DA8EB /* leftArrowHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 659AD8241BC56B11000DA8EB /* leftArrowHighlight.png */; };
 		659AD8291BC56B11000DA8EB /* rightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 659AD8251BC56B11000DA8EB /* rightArrow.png */; };
@@ -193,6 +199,18 @@
 		650020F11D5EF007009D8696 /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
 		650020F21D5EF007009D8696 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		650020F31D5EF007009D8696 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
+		650020FD1D5F04EE009D8696 /* PDDBHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDBHandler.h; sourceTree = "<group>"; };
+		650020FE1D5F04EE009D8696 /* PDDBHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDBHandler.m; sourceTree = "<group>"; };
+		650020FF1D5F04EE009D8696 /* PDDBHandler+Query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDDBHandler+Query.h"; sourceTree = "<group>"; };
+		650021001D5F04EE009D8696 /* PDDBHandler+Query.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDDBHandler+Query.m"; sourceTree = "<group>"; };
+		650021031D5F0521009D8696 /* PDDBHandler+Insert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDDBHandler+Insert.h"; sourceTree = "<group>"; };
+		650021041D5F0521009D8696 /* PDDBHandler+Insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDDBHandler+Insert.m"; sourceTree = "<group>"; };
+		650021061D5F057D009D8696 /* PDDBHandler+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDDBHandler+Update.h"; sourceTree = "<group>"; };
+		650021071D5F057D009D8696 /* PDDBHandler+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDDBHandler+Update.m"; sourceTree = "<group>"; };
+		650021091D5F05F9009D8696 /* PDDBHandlerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDBHandlerHeader.h; sourceTree = "<group>"; };
+		6500210A1D5F0636009D8696 /* PDDBHandler+Delete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PDDBHandler+Delete.h"; sourceTree = "<group>"; };
+		6500210B1D5F0636009D8696 /* PDDBHandler+Delete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PDDBHandler+Delete.m"; sourceTree = "<group>"; };
+		6500210D1D5F06D5009D8696 /* PDDatabaseKeyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabaseKeyDefine.h; sourceTree = "<group>"; };
 		6539FA4F1BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDSwipeDrivenInteractiveTransition.h; sourceTree = "<group>"; };
 		6539FA501BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDSwipeDrivenInteractiveTransition.m; sourceTree = "<group>"; };
 		6539FA571BA7F3C80068DB9D /* PDNormalDismissAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDNormalDismissAnimation.h; sourceTree = "<group>"; };
@@ -210,6 +228,8 @@
 		654CC77B1BA07840002DF0C9 /* PieceDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PieceDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654CC7801BA07840002DF0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		654CC7811BA07840002DF0C9 /* PieceDiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieceDiaryTests.m; sourceTree = "<group>"; };
+		6583BC891D5F2B2000DDCE2E /* PDTimeFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDTimeFunc.h; sourceTree = "<group>"; };
+		6583BC8A1D5F2B2000DDCE2E /* PDTimeFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDTimeFunc.m; sourceTree = "<group>"; };
 		659AD8231BC56B11000DA8EB /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrow.png; sourceTree = "<group>"; };
 		659AD8241BC56B11000DA8EB /* leftArrowHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrowHighlight.png; sourceTree = "<group>"; };
 		659AD8251BC56B11000DA8EB /* rightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrow.png; sourceTree = "<group>"; };
@@ -475,12 +495,32 @@
 		650020EF1D5EF007009D8696 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				650020F61D5F0379009D8696 /* DBHandler */,
 				650020F01D5EF007009D8696 /* PDDatabaseHandle.h */,
 				650020F11D5EF007009D8696 /* PDDatabaseHandle.m */,
 				650020F21D5EF007009D8696 /* PDDataManager.h */,
 				650020F31D5EF007009D8696 /* PDDataManager.m */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		650020F61D5F0379009D8696 /* DBHandler */ = {
+			isa = PBXGroup;
+			children = (
+				650021091D5F05F9009D8696 /* PDDBHandlerHeader.h */,
+				6500210D1D5F06D5009D8696 /* PDDatabaseKeyDefine.h */,
+				650020FD1D5F04EE009D8696 /* PDDBHandler.h */,
+				650020FE1D5F04EE009D8696 /* PDDBHandler.m */,
+				650020FF1D5F04EE009D8696 /* PDDBHandler+Query.h */,
+				650021001D5F04EE009D8696 /* PDDBHandler+Query.m */,
+				650021031D5F0521009D8696 /* PDDBHandler+Insert.h */,
+				650021041D5F0521009D8696 /* PDDBHandler+Insert.m */,
+				650021061D5F057D009D8696 /* PDDBHandler+Update.h */,
+				650021071D5F057D009D8696 /* PDDBHandler+Update.m */,
+				6500210A1D5F0636009D8696 /* PDDBHandler+Delete.h */,
+				6500210B1D5F0636009D8696 /* PDDBHandler+Delete.m */,
+			);
+			path = DBHandler;
 			sourceTree = "<group>";
 		};
 		6547A96E1BA1E05C0090CAD0 /* UI */ = {
@@ -1031,6 +1071,8 @@
 			children = (
 				673BCD791D5DBFCB0004B4F5 /* NSDate+PDDate.h */,
 				673BCD7A1D5DBFCB0004B4F5 /* NSDate+PDDate.m */,
+				6583BC891D5F2B2000DDCE2E /* PDTimeFunc.h */,
+				6583BC8A1D5F2B2000DDCE2E /* PDTimeFunc.m */,
 			);
 			path = Time;
 			sourceTree = "<group>";
@@ -1222,6 +1264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650021011D5F04EE009D8696 /* PDDBHandler.m in Sources */,
 				673BCD5D1D5DB51E0004B4F5 /* PDRecordWeather.m in Sources */,
 				673BCCFE1D5DAD440004B4F5 /* PDQuestionDetailCell.m in Sources */,
 				673BCCEC1D5DAD440004B4F5 /* PDQuestionEditViewController.m in Sources */,
@@ -1230,11 +1273,13 @@
 				650020ED1D5EEF87009D8696 /* PDPhotoData.m in Sources */,
 				673BCD041D5DAD440004B4F5 /* PDQuestionInfoViewController.m in Sources */,
 				673BCCF61D5DAD440004B4F5 /* PDGridInfoCell.m in Sources */,
+				650021051D5F0521009D8696 /* PDDBHandler+Insert.m in Sources */,
 				673BCD281D5DAD440004B4F5 /* PDReadTitleView.m in Sources */,
 				673BCCFA1D5DAD440004B4F5 /* PDPhotoInfoCell.m in Sources */,
 				659BDD1B1BA70BA40000D561 /* PDScaleAnimation.m in Sources */,
 				673BCD001D5DAD440004B4F5 /* PDQuestionDetailViewController.m in Sources */,
 				673BCD0A1D5DAD440004B4F5 /* PDInfoViewController.m in Sources */,
+				6583BC8B1D5F2B2000DDCE2E /* PDTimeFunc.m in Sources */,
 				654CC76B1BA07840002DF0C9 /* AppDelegate.m in Sources */,
 				650020E91D5EEF87009D8696 /* PDDiaryInfoSectionData.m in Sources */,
 				673BCD6E1D5DB5700004B4F5 /* PDIconsView.m in Sources */,
@@ -1265,12 +1310,15 @@
 				673BCCE61D5DAD440004B4F5 /* PDPieceEditToolbar.m in Sources */,
 				673BCD061D5DAD440004B4F5 /* PDTopBarView.m in Sources */,
 				673BCD371D5DAD440004B4F5 /* FMDatabase.m in Sources */,
+				6500210C1D5F0636009D8696 /* PDDBHandler+Delete.m in Sources */,
 				673BCD5B1D5DB51E0004B4F5 /* PDRecordMood.m in Sources */,
 				673BCD081D5DAD440004B4F5 /* PDBaseInfoViewController.m in Sources */,
+				650021081D5F057D009D8696 /* PDDBHandler+Update.m in Sources */,
 				673BCD561D5DB51E0004B4F5 /* PDSettingDateView.m in Sources */,
 				673BCD5C1D5DB51E0004B4F5 /* PDRecordViewController.m in Sources */,
 				6539FA591BA7F3C80068DB9D /* PDNormalDismissAnimation.m in Sources */,
 				673BCD0D1D5DAD440004B4F5 /* PDThisWeekView.m in Sources */,
+				650021021D5F04EE009D8696 /* PDDBHandler+Query.m in Sources */,
 				673BCD7B1D5DBFCB0004B4F5 /* NSDate+PDDate.m in Sources */,
 				673BCCE21D5DAD440004B4F5 /* PDImagePickerController.m in Sources */,
 				6539FA511BA7DEC10068DB9D /* PDSwipeDrivenInteractiveTransition.m in Sources */,

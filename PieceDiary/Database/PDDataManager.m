@@ -15,10 +15,12 @@
 #import "PDGridInfoSectionData.h"
 #import "PDRecordWeather.h"
 #import "PDRecordMood.h"
+#import "PDDBHandlerHeader.h"
 
 @interface PDDataManager ()
 
 @property (nonatomic, retain) PDDatabaseHandle *dbHandle;
+@property (nonatomic, strong) PDDBHandler *dbHandler;
 
 @end
 
@@ -55,6 +57,8 @@ static PDDataManager *_instance;
     self = [super init];
     if (self)
     {
+//        self.dbHandler = [PDDBHandler shareDBHandler];
+        
         self.dbHandle = [PDDatabaseHandle new];
         [self.dbHandle connect];
     }
