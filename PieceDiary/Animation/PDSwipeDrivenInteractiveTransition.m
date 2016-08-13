@@ -58,7 +58,7 @@
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled: {
             // 3. Gesture over. Check if the transition should happen or not
-            NSLog(@"==========%ld",gestureRecognizer.state);
+//            NSLog(@"==========%ld",gestureRecognizer.state);
             self.interacting = NO;
             if (!self.shouldComplete || gestureRecognizer.state == UIGestureRecognizerStateCancelled) {
                 [self cancelInteractiveTransition];

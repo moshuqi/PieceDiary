@@ -93,7 +93,7 @@ const CGFloat DiaryTableHeightForRow = 88;
     PDDiaryInfoSectionData *sectionData = self.sectionDataArray[section];
     NSInteger year = sectionData.year;
     NSInteger month = sectionData.month;
-    label.text = [NSString stringWithFormat:@"%ld年%ld月", (long)year, month];
+    label.text = [NSString stringWithFormat:@"%@年%@月", @(year), @(month)];
     
     UIView *headerView = [[UIView alloc] init];
     headerView.backgroundColor = BackgroudGrayColor;

@@ -71,7 +71,7 @@
         
         NSDate *d = [Sun afterDays:i];
         NSInteger day = [d dayValue];
-        NSString *dayStr = [NSString stringWithFormat:@"%ld", day];
+        NSString *dayStr = [NSString stringWithFormat:@"%@", @(day)];
         
         PDWeekdayCellState state = PDWeekdayCellStateNoDiary;
         if ([d dayValue] == [date dayValue])

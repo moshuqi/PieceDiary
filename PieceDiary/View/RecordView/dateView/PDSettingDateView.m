@@ -53,7 +53,7 @@
     NSInteger month = [date monthValue];
     NSInteger day = [date dayValue];
     
-    NSString *text = [NSString stringWithFormat:@"%ld年%ld月%ld日", year, month, day];
+    NSString *text = [NSString stringWithFormat:@"%@年%@月%@日", @(year), @(month), @(day)];
     self.dateLabel.text = text;
 }
 

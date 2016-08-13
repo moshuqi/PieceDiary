@@ -33,7 +33,7 @@
 - (void)setupWithQuestionContent:(NSString *)text quantity:(NSInteger)quantity
 {
     self.questionLabel.text = text;
-    self.quantityLabel.text = [NSString stringWithFormat:@"%ld", quantity];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@", @(quantity)];
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }

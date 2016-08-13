@@ -43,7 +43,7 @@
 
 - (void)setupWithDay:(NSInteger)day weekday:(NSInteger)weekday question:(NSString *)question answer:(NSString *)answer photo:(UIImage *)photo
 {
-    self.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
+    self.dayLabel.text = [NSString stringWithFormat:@"%@", @(day)];
     
     NSArray *weekdayArray = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
     self.weekdayLabel.text = [NSString stringWithFormat:@"周%@", weekdayArray[weekday - 1]];

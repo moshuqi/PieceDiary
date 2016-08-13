@@ -31,7 +31,7 @@
 
 - (void)setQuantityWithNumber:(NSInteger)number
 {
-    self.quantityLabel.text = [NSString stringWithFormat:@"%ld", number];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@", @(number)];
 }
 
 @end

@@ -27,8 +27,8 @@
 
 - (void)setupWithYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day photo:(UIImage *)photo
 {
-    self.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
-    self.yearMonthLabel.text = [NSString stringWithFormat:@"%ld年%ld月", year, month];
+    self.dayLabel.text = [NSString stringWithFormat:@"%@", @(day)];
+    self.yearMonthLabel.text = [NSString stringWithFormat:@"%@年%@月", @(year), @(month)];
     
     self.photo.image = photo;
 }
