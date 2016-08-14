@@ -24,7 +24,7 @@
 
 @property (nonatomic, assign) id<PDPieceDiaryViewDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UICollectionView *pieceCollectionView;
-@property (nonatomic, retain) NSArray *cellDataArray;
+@property (nonatomic, copy) NSArray *cellDataArray;
 
 - (void)resetPieceDiaryViewWithDate:(NSDate *)date;
 - (void)setCurrentDateWithDate:(NSDate *)date;

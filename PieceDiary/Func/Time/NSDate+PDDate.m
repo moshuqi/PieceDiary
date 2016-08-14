@@ -75,4 +75,14 @@
     return newDate;
 }
 
+- (NSDate *)yesterday
+{
+    return [self beforeDays:1];
+}
+
+- (NSDate *)tomorrow
+{
+    return [self afterDays:1];
+}
+
 @end

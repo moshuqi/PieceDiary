@@ -19,4 +19,7 @@
 - (NSDate *)afterDays:(NSInteger)days;
 - (NSDate *)getSundayInThisWeek;
 
+- (NSDate *)yesterday;
+- (NSDate *)tomorrow;
+
 @end

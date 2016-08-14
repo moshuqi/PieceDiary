@@ -40,6 +40,9 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 @property (nonatomic, retain) NSArray *oldCellDataArray;
 @property (nonatomic, retain) NSDate *oldDate;
 
+//@property (nonatomic, copy) NSArray *yesterdayCellDataArray;
+//@property (nonatomic, copy) NSArray *tomorrowCellDataArray;
+
 @end
 
 @implementation PDPieceDiaryView
@@ -93,7 +96,7 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 - (void)resetLayout
 {
     [self.pieceCollectionView setCollectionViewLayout:[self getCollectionViewFlowLayout] animated:NO];  // 这个地方设为NO会导致reloadData刷新无效。
-    [self.pieceCollectionView reloadData];
+//    [self.pieceCollectionView reloadData];
 }
 
 - (UICollectionViewFlowLayout *)getCollectionViewFlowLayout
@@ -160,11 +163,15 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
 - (void)reloadAllCell
 {
     // 刷新数据
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:self.currentDate];
-    
-    self.cellDataArray = dataArray;
-    [self.pieceCollectionView reloadData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:self.currentDate];
+        
+        self.cellDataArray = dataArray;
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.pieceCollectionView reloadData];
+        });
+    });
 }
 
 - (IBAction)leftSlideTouched:(id)sender
@@ -206,12 +213,17 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     [self insertSubview:self.slideOutCollectionView aboveSubview:self.pieceCollectionView];
     
     // 设置新的数据
-    NSDate *newDate = (direction == CollectionSlideDirectionLeft) ? [self getYesterDay:self.currentDate] : [self getTomorrow:self.currentDate];
+    NSDate *newDate = (direction == CollectionSlideDirectionLeft) ? [self.currentDate yesterday] : [self.currentDate tomorrow];
     self.currentDate = newDate;
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.cellDataArray = [dataManager getPieceViewCellDatasWithDate:newDate];
-    [self.pieceCollectionView reloadData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        self.cellDataArray = [dataManager getPieceViewCellDatasWithDate:newDate];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.pieceCollectionView reloadData];
+        });
+    });
     
     UICollectionView *slideInCollectionView = [self getSlideInCollectionViewWithDirection:direction];
     [self addSubview:slideInCollectionView];
@@ -279,22 +291,6 @@ typedef NS_ENUM(NSInteger, CollectionSlideDirection) {
     
     CGRect rightFrame = CGRectMake(width, frame.origin.y, width, height);
     return rightFrame;
-}
-
-- (NSDate *)getYesterDay:(NSDate *)currentDate
-{
-    NSTimeInterval interval = 24 * 60 * 60;
-    NSDate *yesterDay = [NSDate dateWithTimeInterval:-interval sinceDate:currentDate];
-    
-    return yesterDay;
-}
-
-- (NSDate *)getTomorrow:(NSDate *)currentDate
-{
-    NSTimeInterval interval = 24 * 60 * 60;
-    NSDate *yesterDay = [NSDate dateWithTimeInterval:interval sinceDate:currentDate];
-    
-    return yesterDay;
 }
 
 - (BOOL)isDateCellWithIndexPath:(NSIndexPath *)indexPath
