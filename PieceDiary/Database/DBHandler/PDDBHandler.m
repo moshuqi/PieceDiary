@@ -119,7 +119,7 @@ static PDDBHandler *_instance;
 
 - (void)createDiaryTable
 {
-    NSString *sql = @"CREATE TABLE \"DiaryTable\" (\"date\" DATE PRIMARY KEY NOT NULL UNIQUE, \"templateID\" INTEGER NOT NULL REFERENCES \"QuestionTemplateTable\" (\"templateID\"))";
+    NSString *sql = @"CREATE TABLE IF NOT EXISTS \"DiaryTable\" (\"date\" DATE PRIMARY KEY NOT NULL UNIQUE, \"templateID\" INTEGER NOT NULL REFERENCES \"QuestionTemplateTable\" (\"templateID\"))";
     [self createTableWithSql:sql tableName:DatabaseDiaryTable];
 }
 

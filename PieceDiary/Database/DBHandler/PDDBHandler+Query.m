@@ -93,7 +93,7 @@
         }
         else
         {
-            templateID = [self getDefaultQuestionTemplateID];
+            templateID = [self getDefaultQuestionTemplateIDInDatabase:db];
         }
         
         [queryRes close];
@@ -122,6 +122,27 @@
         
         [queryRes close];
     }];
+    
+    return templateID;
+}
+
+- (NSInteger)getDefaultQuestionTemplateIDInDatabase:(FMDatabase *)db
+{
+    // 获取默认模板
+    NSInteger templateID = 0;
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@", DatabaseQuestionTemplateTableTemplateID, DatabaseDefaultQuestionTemplateTable];
+    FMResultSet * queryRes = [db executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        templateID = (NSInteger)[queryRes intForColumnIndex:0];
+    }
+    else
+    {
+        PDLog(@"默认模板ID获取有误！");
+    }
+    [queryRes close];
     
     return templateID;
 }
@@ -160,17 +181,26 @@
     // 根据问题ID获取问题内容
     __block NSString *question = nil;
     [self.queue inDatabase:^(FMDatabase *db) {
-        NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %@", DatabaseQuestionTableQuestionContent, DatabaseQuestionTable, DatabaseQuestionTableQuestionID, @(questionID)];
-        FMResultSet * queryRes = [db executeQuery:querySql];
-        
-        if ([queryRes next])
-        {
-            question = [queryRes stringForColumn:DatabaseQuestionTableQuestionContent];
-        }
-        
-        [queryRes close];
+        question = [self getQuestionWithID:questionID inDatabase:db];
     }];
     
+    return question;
+}
+
+- (NSString *)getQuestionWithID:(NSInteger)questionID inDatabase:(FMDatabase *)db
+{
+    // 根据问题ID获取问题内容，在queue的block中调用
+    NSString *question = nil;
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %@", DatabaseQuestionTableQuestionContent, DatabaseQuestionTable, DatabaseQuestionTableQuestionID, @(questionID)];
+    FMResultSet * queryRes = [db executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        question = [queryRes stringForColumn:DatabaseQuestionTableQuestionContent];
+    }
+    
+    [queryRes close];
     return question;
 }
 
@@ -180,17 +210,26 @@
     __block NSString *answer = nil;
     
     [self.queue inDatabase:^(FMDatabase *db) {
-        NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %@ and date = \"%@\"", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, @(questionID), [PDTimeFunc stringFromDate:date]];
-        FMResultSet * queryRes = [db executeQuery:querySql];
-        
-        if ([queryRes next])
-        {
-            answer = [queryRes stringForColumn:DatabaseAnswerTableAnswerContent];
-        }
-        
-        [queryRes close];
+        answer = [self getAnswerWithQuestionID:questionID date:date inDatabase:db];
     }];
     
+    return answer;
+}
+
+- (NSString *)getAnswerWithQuestionID:(NSInteger)questionID date:(NSDate *)date inDatabase:(FMDatabase *)db
+{
+    // 通过问题ID和日期获取对应的回答，在queue的block中调用
+    NSString *answer = nil;
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@ from %@ where %@ = %@ and date = \"%@\"", DatabaseAnswerTableAnswerContent, DatabaseAnswerTable, DatabaseQuestionTableQuestionID, @(questionID), [PDTimeFunc stringFromDate:date]];
+    FMResultSet * queryRes = [db executeQuery:querySql];
+    
+    if ([queryRes next])
+    {
+        answer = [queryRes stringForColumn:DatabaseAnswerTableAnswerContent];
+    }
+    
+    [queryRes close];
     return answer;
 }
 
@@ -366,34 +405,44 @@
 - (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID
 {
     // 通过日期和问题ID获取图片数据
-    __block NSMutableArray *datas = [NSMutableArray array];
+    __block NSArray *datas = nil;
     
     [self.queue inDatabase:^(FMDatabase *db) {
-        NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %@", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDTimeFunc stringFromDate:date], DatabaseQuestionTableQuestionID, @(questionID)];
-        FMResultSet * queryRes = [db executeQuery:querySql];
-        
-        while ([queryRes next])
-        {
-            PDPhotoData *photoData = [PDPhotoData new];
-            
-            NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
-            UIImage *image = [UIImage imageWithData:data];
-            photoData.image = image;
-            
-            NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
-            photoData.photoID = photoID;
-            
-            photoData.questionID = questionID;
-            photoData.date = date;
-            
-            [datas addObject:photoData];
-        }
-        
-        [queryRes close];
+        datas = [self getPhotoDatasWithDate:date questionID:questionID inDatabase:db];
     }];
     
     return datas;
 }
+
+- (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID inDatabase:(FMDatabase *)db
+{
+    // 通过日期和问题ID获取图片数据，queue的block中调用
+    NSMutableArray *datas = [NSMutableArray array];
+    
+    NSString *querySql = [NSString stringWithFormat:@"select %@, %@ from %@ where date = \"%@\" and %@ = %@", DatabasePhotoTablePhotoID, DatabasePhotoTablePhoto, DatabasePhotoTable, [PDTimeFunc stringFromDate:date], DatabaseQuestionTableQuestionID, @(questionID)];
+    FMResultSet * queryRes = [db executeQuery:querySql];
+    
+    while ([queryRes next])
+    {
+        PDPhotoData *photoData = [PDPhotoData new];
+        
+        NSData *data = [queryRes dataNoCopyForColumn:DatabasePhotoTablePhoto];
+        UIImage *image = [UIImage imageWithData:data];
+        photoData.image = image;
+        
+        NSInteger photoID = [queryRes intForColumn:DatabasePhotoTablePhotoID];
+        photoData.photoID = photoID;
+        
+        photoData.questionID = questionID;
+        photoData.date = date;
+        
+        [datas addObject:photoData];
+    }
+    
+    [queryRes close];
+    return datas;
+}
+
 
 - (NSInteger)diaryQuantity
 {
@@ -579,8 +628,8 @@
             while ([queryRes next])
             {
                 NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
-                NSString *questionContent = [self getQuestionWithID:questionID];
-                NSString *answerContent = [self getAnswerWithQuestionID:questionID date:date];
+                NSString *questionContent = [self getQuestionWithID:questionID inDatabase:db];
+                NSString *answerContent = [self getAnswerWithQuestionID:questionID date:date inDatabase:db];
                 
                 PDGridInfoCellData *data = [PDGridInfoCellData new];
                 data.date = date;
@@ -588,7 +637,7 @@
                 data.answer = answerContent;
                 data.images = [NSMutableArray array];
                 
-                NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID];
+                NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID inDatabase:db];
                 for (NSInteger i = 0; i < [photoDatas count]; i++)
                 {
                     PDPhotoData *photoData = photoDatas[i];
@@ -647,7 +696,7 @@
         while ([queryRes next])
         {
             NSInteger questionID = [queryRes intForColumn:DatabaseQuestionTableQuestionID];
-            NSString *questionContent = [self getQuestionWithID:questionID];
+            NSString *questionContent = [self getQuestionWithID:questionID inDatabase:db];
             
             PDQuestionInfoCellData *questionCellData = [PDQuestionInfoCellData new];
             questionCellData.questionContent = questionContent;
@@ -688,10 +737,10 @@
                 
                 PDGridInfoCellData *gridCellData = [PDGridInfoCellData new];
                 gridCellData.date = date;
-                gridCellData.answer = [self getAnswerWithQuestionID:questionID date:date];
-                gridCellData.question = [self getQuestionWithID:questionID];
+                gridCellData.answer = [self getAnswerWithQuestionID:questionID date:date inDatabase:db];
+                gridCellData.question = [self getQuestionWithID:questionID inDatabase:db];
                 
-                NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID];
+                NSArray *photoDatas = [self getPhotoDatasWithDate:date questionID:questionID inDatabase:db];
                 gridCellData.images = [NSMutableArray array];
                 for (NSInteger i = 0; i < [photoDatas count]; i++)
                 {

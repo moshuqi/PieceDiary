@@ -7,7 +7,6 @@
 //
 
 #import "PDDataManager.h"
-#import "PDDatabaseHandle.h"
 #import "PDPieceCellData.h"
 #import "PDPhotoData.h"
 #import <UIKit/UIKit.h>
@@ -19,8 +18,7 @@
 
 @interface PDDataManager ()
 
-@property (nonatomic, retain) PDDatabaseHandle *dbHandle;
-@property (nonatomic, strong) PDDBHandler *dbHandler;
+@property (nonatomic, retain) PDDBHandler *dbHandler;
 
 @end
 
@@ -57,10 +55,10 @@ static PDDataManager *_instance;
     self = [super init];
     if (self)
     {
-//        self.dbHandler = [PDDBHandler shareDBHandler];
+        self.dbHandler = [PDDBHandler shareDBHandler];
         
-        self.dbHandle = [PDDatabaseHandle new];
-        [self.dbHandle connect];
+//        self.dbHandle = [PDDatabaseHandle new];
+//        [self.dbHandle connect];
     }
     
     return self;
@@ -70,8 +68,8 @@ static PDDataManager *_instance;
 {
     // 根据日期获取每个cell相关的数据
     
-    NSInteger questionTemplateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
-    NSArray *questionIDs = [self.dbHandle getQuestionIDsWithTemplateID:questionTemplateID];
+    NSInteger questionTemplateID = [self.dbHandler getQuestionTemplateIDWithDate:date];
+    NSArray *questionIDs = [self.dbHandler getQuestionIDsWithTemplateID:questionTemplateID];
     
     NSMutableArray *datas = [NSMutableArray array];
     for (NSInteger i = 0; i < [questionIDs count]; i++)
@@ -83,10 +81,10 @@ static PDDataManager *_instance;
         NSInteger questionID = [number integerValue];
         
         cellData.questionID = questionID;
-        cellData.question = [self.dbHandle getQuestionWithID:questionID];
-        cellData.answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
+        cellData.question = [self.dbHandler getQuestionWithID:questionID];
+        cellData.answer = [self.dbHandler getAnswerWithQuestionID:questionID date:date];
         
-        NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+        NSArray *photoDatas = [self.dbHandler getPhotoDatasWithDate:date questionID:questionID];
         cellData.photoDatas = photoDatas;
         
         [datas addObject:cellData];
@@ -97,14 +95,14 @@ static PDDataManager *_instance;
 
 - (void)setAnswerContentWithText:(NSString *)text questionID:(NSInteger)questionID date:(NSDate *)date;
 {
-    NSString *answer = [self.dbHandle getAnswerWithQuestionID:questionID date:date];
+    NSString *answer = [self.dbHandler getAnswerWithQuestionID:questionID date:date];
     BOOL bExsist = (answer != nil); // 原来是否存在内容
     if ([text length] < 1)
     {
         if (bExsist)
         {
             // text长度为0且原来存在内容，则此时做删除操作。
-            [self.dbHandle deleteAnswerContentWithQuestionID:questionID date:date];
+            [self.dbHandler deleteAnswerContentWithQuestionID:questionID date:date];
         }
         return;
     }
@@ -112,19 +110,19 @@ static PDDataManager *_instance;
     if (bExsist)
     {
         // 已存在内容，则对数据库进行修改
-        [self.dbHandle updateAnswerContentWith:text questionID:questionID date:date];
+        [self.dbHandler updateAnswerContentWith:text questionID:questionID date:date];
     }
     else
     {
         // 第一次编辑，则对数据库进行插入操作
-        [self.dbHandle insertAnswerContentWith:text questionID:questionID date:date];
+        [self.dbHandler insertAnswerContentWith:text questionID:questionID date:date];
     }
     
     // 编辑过之后对应日期的日记要添加到数据库中
-    if (![self.dbHandle diaryTableHasDate:date])
+    if (![self.dbHandler diaryTableHasDate:date])
     {
-        NSInteger defaultTemplateID = [self.dbHandle getDefaultQuestionTemplateID];
-        [self.dbHandle insertDiaryDate:date questionTemplateID:defaultTemplateID];
+        NSInteger defaultTemplateID = [self.dbHandler getDefaultQuestionTemplateID];
+        [self.dbHandler insertDiaryDate:date questionTemplateID:defaultTemplateID];
     }
 }
 
@@ -133,55 +131,55 @@ static PDDataManager *_instance;
     // 设置新的问题。数据库问题ID和问题内容都为唯一值
     
     // 新问题的问题ID
-    NSInteger newQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:newContent];
-    if (newQuestionID == DataBaseQueryResultNotFound)
+    NSInteger newQuestionID = [self.dbHandler getQuestionIDWithQuestionContent:newContent];
+    if (newQuestionID < 0)
     {
-        [self.dbHandle insertQuestionContentWithText:newContent];
-        newQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:newContent];
+        [self.dbHandler insertQuestionContentWithText:newContent];
+        newQuestionID = [self.dbHandler getQuestionIDWithQuestionContent:newContent];
     }
     
     // 旧值对应的索引
-    NSInteger templateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
-    NSInteger oldQuestionID = [self.dbHandle getQuestionIDWithQuestionContent:oldContent];
-    NSInteger index = [self.dbHandle getTemplateQuestionIDIndexWithQuestionID:oldQuestionID templateID:templateID];
+    NSInteger templateID = [self.dbHandler getQuestionTemplateIDWithDate:date];
+    NSInteger oldQuestionID = [self.dbHandler getQuestionIDWithQuestionContent:oldContent];
+    NSInteger index = [self.dbHandler getTemplateQuestionIDIndexWithQuestionID:oldQuestionID templateID:templateID];
     
     // 插入新的模板
-    NSMutableArray *questionIDs = [NSMutableArray arrayWithArray:[self.dbHandle getQuestionIDsWithTemplateID:templateID]];
+    NSMutableArray *questionIDs = [NSMutableArray arrayWithArray:[self.dbHandler getQuestionIDsWithTemplateID:templateID]];
     [questionIDs setObject:[NSNumber numberWithInteger:newQuestionID] atIndexedSubscript:index];
-    [self.dbHandle insertQuestionTemplateWithQuestionIDs:questionIDs];
+    [self.dbHandler insertQuestionTemplateWithQuestionIDs:questionIDs];
     
     // 获取新模板的模板ID
-    NSInteger newTemplateID = [self.dbHandle getTemplateIDWithQuestionIDs:questionIDs];
-    if ([self.dbHandle diaryTableHasDate:date])
+    NSInteger newTemplateID = [self.dbHandler getTemplateIDWithQuestionIDs:questionIDs];
+    if ([self.dbHandler diaryTableHasDate:date])
     {
-        [self.dbHandle updateDiaryQuestionTemplateID:newTemplateID date:date];
+        [self.dbHandler updateDiaryQuestionTemplateID:newTemplateID date:date];
     }
     else
     {
-        [self.dbHandle insertDiaryDate:date questionTemplateID:newTemplateID];
+        [self.dbHandler insertDiaryDate:date questionTemplateID:newTemplateID];
     }
     
     // 对应答案的问题ID更新
-    [self.dbHandle updateAnswerQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
+    [self.dbHandler updateAnswerQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
     
     // 对应图片的问题ID更新
-    [self.dbHandle updatePhotoQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
+    [self.dbHandler updatePhotoQuestionIDWithOldID:oldQuestionID newID:newQuestionID date:date];
 }
 
 - (BOOL)exsistQuestionContent:(NSString *)content
 {
-    return [self.dbHandle hasQuestionContent:content];
+    return [self.dbHandler hasQuestionContent:content];
 }
 
 - (NSInteger)getQuestionIDWithQuestionContent:(NSString *)content
 {
-    return [self.dbHandle getQuestionIDWithQuestionContent:content];
+    return [self.dbHandler getQuestionIDWithQuestionContent:content];
 }
 
 - (BOOL)exsistQuestionID:(NSInteger)questionID inDate:(NSDate *)date
 {
-    NSInteger templateID = [self.dbHandle getQuestionTemplateIDWithDate:date];
-    NSArray *questionIDs = [self.dbHandle getQuestionIDsWithTemplateID:templateID];
+    NSInteger templateID = [self.dbHandler getQuestionTemplateIDWithDate:date];
+    NSArray *questionIDs = [self.dbHandler getQuestionIDsWithTemplateID:templateID];
     
     for (NSInteger i = 0; i < [questionIDs count]; i++)
     {
@@ -207,53 +205,53 @@ static PDDataManager *_instance;
         NSDate *date = data.date;
         NSInteger questionID = data.questionID;
         
-        [self.dbHandle insertPhotoData:imageData inDate:date questionID:questionID];
+        [self.dbHandler insertPhotoData:imageData inDate:date questionID:questionID];
     }
     
     // 编辑过之后对应日期的日记要添加到数据库中
     NSDate *date = ((PDPhotoData *)[photoDatas firstObject]).date;
-    if (![self.dbHandle diaryTableHasDate:date])
+    if (![self.dbHandler diaryTableHasDate:date])
     {
-        NSInteger defaultTemplateID = [self.dbHandle getDefaultQuestionTemplateID];
-        [self.dbHandle insertDiaryDate:date questionTemplateID:defaultTemplateID];
+        NSInteger defaultTemplateID = [self.dbHandler getDefaultQuestionTemplateID];
+        [self.dbHandler insertDiaryDate:date questionTemplateID:defaultTemplateID];
     }
 }
 
 - (NSArray *)getPhotoDatasWithDate:(NSDate *)date questionID:(NSInteger)questionID
 {
-    NSArray *photoDatas = [self.dbHandle getPhotoDatasWithDate:date questionID:questionID];
+    NSArray *photoDatas = [self.dbHandler getPhotoDatasWithDate:date questionID:questionID];
     return photoDatas;
 }
 
 - (void)deletePhotoWithPhotoID:(NSInteger)photoID
 {
-    [self.dbHandle deletePhotoWithPhotoID:photoID];
+    [self.dbHandler deletePhotoWithPhotoID:photoID];
 }
 
 - (NSInteger)getDiaryQuantity
 {
-    return [self.dbHandle diaryQuantity];
+    return [self.dbHandler diaryQuantity];
 }
 
 - (NSInteger)getEditedGridQuantity
 {
-    return [self.dbHandle editedGridQuantity];
+    return [self.dbHandler editedGridQuantity];
 }
 
 - (NSInteger)getQuestionQuantity
 {
-    return [self.dbHandle questionQuantity];
+    return [self.dbHandler questionQuantity];
 }
 
 - (NSInteger)getPhotoQuantity
 {
-    return [self.dbHandle photoQuantity];
+    return [self.dbHandler photoQuantity];
 }
 
 - (NSArray *)getDiaryInfoData
 {
     NSMutableArray *diaryInfoData = [NSMutableArray array];
-    NSArray *dateArray = [self.dbHandle getAllDiaryDate];
+    NSArray *dateArray = [self.dbHandler getAllDiaryDate];
     
     PDDiaryInfoSectionData *currentSection = nil;
     for (NSInteger i = 0; i < [dateArray count]; i++)
@@ -272,8 +270,8 @@ static PDDataManager *_instance;
         
         PDDiaryInfoCellData *cellData = [PDDiaryInfoCellData new];
         cellData.date = date;
-        cellData.mood = [self.dbHandle getMoodWithDate:date];
-        cellData.weather = [self.dbHandle getWeatherWithDate:date];
+        cellData.mood = [self.dbHandler getMoodWithDate:date];
+        cellData.weather = [self.dbHandler getWeatherWithDate:date];
         
         if ((year != currentSection.year) || (month != currentSection.month))
         {
@@ -300,7 +298,7 @@ static PDDataManager *_instance;
 
 - (NSArray *)getGridInfoData
 {
-    NSArray *editedCellDataArray = [self.dbHandle getAllEditedCellData];
+    NSArray *editedCellDataArray = [self.dbHandler getAllEditedCellData];
     NSMutableArray *dataArray = [NSMutableArray array];
     
     PDGridInfoSectionData *currentSection = nil;
@@ -345,22 +343,22 @@ static PDDataManager *_instance;
 
 - (NSArray *)getPhotoInfoData
 {
-    return [self.dbHandle getAllPhotoData];
+    return [self.dbHandler getAllPhotoData];
 }
 
 - (NSArray *)getQuestionInfoData
 {
-    return [self.dbHandle getAllQuestionData];
+    return [self.dbHandler getAllQuestionData];
 }
 
 - (NSString *)getWeahterStringWithDate:(NSDate *)date
 {
-    return [self.dbHandle getWeatherWithDate:date];
+    return [self.dbHandler getWeatherWithDate:date];
 }
 
 - (NSString *)getMoodStringWithDate:(NSDate *)date
 {
-    return [self.dbHandle getMoodWithDate:date];
+    return [self.dbHandler getMoodWithDate:date];
 }
 
 - (void)setupWeatherWithDate:(NSDate *)date weather:(NSString *)weather
@@ -368,18 +366,18 @@ static PDDataManager *_instance;
     if (!weather || ([weather length] < 1))
     {
         // weather为nil或长度为0，做数据库的删除操作。
-        [self.dbHandle deleteWeatherWithDate:date];
+        [self.dbHandler deleteWeatherWithDate:date];
     }
     else
     {
         // weather不为空，判断对应日期是否已存在数据库中，若存在则做更新操作，否则进行插入操作
-        if ([self.dbHandle weatherExsistInDate:date])
+        if ([self.dbHandler weatherExsistInDate:date])
         {
-            [self.dbHandle updateWeatherWithDate:date weather:weather];
+            [self.dbHandler updateWeatherWithDate:date weather:weather];
         }
         else
         {
-            [self.dbHandle insertWeather:weather inDate:date];
+            [self.dbHandler insertWeather:weather inDate:date];
         }
     }
 }
@@ -389,18 +387,18 @@ static PDDataManager *_instance;
     if (!mood || ([mood length] < 1))
     {
         // mood为nil或长度为0，做数据库的删除操作。
-        [self.dbHandle deleteMoodWithDate:date];
+        [self.dbHandler deleteMoodWithDate:date];
     }
     else
     {
         // mood不为空，判断对应日期是否已存在数据库中，若存在则做更新操作，否则进行插入操作
-        if ([self.dbHandle moodExsistInDate:date])
+        if ([self.dbHandler moodExsistInDate:date])
         {
-            [self.dbHandle updateMoodWithDate:date mood:mood];
+            [self.dbHandler updateMoodWithDate:date mood:mood];
         }
         else
         {
-            [self.dbHandle insertMood:mood inDate:date];
+            [self.dbHandler insertMood:mood inDate:date];
         }
     }
 }

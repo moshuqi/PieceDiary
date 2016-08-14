@@ -14,7 +14,6 @@
 		650020EC1D5EEF87009D8696 /* PDQuestionInfoCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020E21D5EEF87009D8696 /* PDQuestionInfoCellData.m */; };
 		650020ED1D5EEF87009D8696 /* PDPhotoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020E51D5EEF87009D8696 /* PDPhotoData.m */; };
 		650020EE1D5EEF87009D8696 /* PDPieceCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020E71D5EEF87009D8696 /* PDPieceCellData.m */; };
-		650020F41D5EF007009D8696 /* PDDatabaseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020F11D5EF007009D8696 /* PDDatabaseHandle.m */; };
 		650020F51D5EF007009D8696 /* PDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020F31D5EF007009D8696 /* PDDataManager.m */; };
 		650021011D5F04EE009D8696 /* PDDBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 650020FE1D5F04EE009D8696 /* PDDBHandler.m */; };
 		650021021D5F04EE009D8696 /* PDDBHandler+Query.m in Sources */ = {isa = PBXBuildFile; fileRef = 650021001D5F04EE009D8696 /* PDDBHandler+Query.m */; };
@@ -195,8 +194,6 @@
 		650020E51D5EEF87009D8696 /* PDPhotoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPhotoData.m; sourceTree = "<group>"; };
 		650020E61D5EEF87009D8696 /* PDPieceCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDPieceCellData.h; sourceTree = "<group>"; };
 		650020E71D5EEF87009D8696 /* PDPieceCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDPieceCellData.m; sourceTree = "<group>"; };
-		650020F01D5EF007009D8696 /* PDDatabaseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDatabaseHandle.h; sourceTree = "<group>"; };
-		650020F11D5EF007009D8696 /* PDDatabaseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDatabaseHandle.m; sourceTree = "<group>"; };
 		650020F21D5EF007009D8696 /* PDDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDataManager.h; sourceTree = "<group>"; };
 		650020F31D5EF007009D8696 /* PDDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDDataManager.m; sourceTree = "<group>"; };
 		650020FD1D5F04EE009D8696 /* PDDBHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDDBHandler.h; sourceTree = "<group>"; };
@@ -496,8 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				650020F61D5F0379009D8696 /* DBHandler */,
-				650020F01D5EF007009D8696 /* PDDatabaseHandle.h */,
-				650020F11D5EF007009D8696 /* PDDatabaseHandle.m */,
 				650020F21D5EF007009D8696 /* PDDataManager.h */,
 				650020F31D5EF007009D8696 /* PDDataManager.m */,
 			);
@@ -1300,7 +1295,6 @@
 				650020EA1D5EEF87009D8696 /* PDGridInfoCellData.m in Sources */,
 				673BCD751D5DBEBD0004B4F5 /* PDDateCell.m in Sources */,
 				673BCD3B1D5DAD440004B4F5 /* FMResultSet.m in Sources */,
-				650020F41D5EF007009D8696 /* PDDatabaseHandle.m in Sources */,
 				650020EC1D5EEF87009D8696 /* PDQuestionInfoCellData.m in Sources */,
 				673BCCE01D5DAD440004B4F5 /* PDImagePickerCell.m in Sources */,
 				673BCCF41D5DAD440004B4F5 /* PDDiaryInfoTableViewController.m in Sources */,

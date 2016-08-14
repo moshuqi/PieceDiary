@@ -58,7 +58,7 @@
 {
     [self.queue inDatabase:^(FMDatabase *db) {
         NSMutableArray *arguments = [NSMutableArray array];
-        [arguments addObject:[db stringFromDate:date]];
+        [arguments addObject:[PDTimeFunc stringFromDate:date]];
         [arguments addObject:[NSNumber numberWithInteger:templateID]];
         
         NSString *insertSql = [NSString stringWithFormat:@"insert into %@ (%@, %@) values (?, ?)", DatabaseDiaryTable, DatabaseDate, DatabaseQuestionTemplateTableTemplateID];
