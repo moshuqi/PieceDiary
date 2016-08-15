@@ -114,11 +114,13 @@
 
 - (void)deletePhoto:(id)sender
 {
-    PDPhotoData *data = self.photoDatas[self.index];
-    NSInteger photoID = data.photoID;
-    
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager deletePhotoWithPhotoID:photoID];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDPhotoData *data = self.photoDatas[self.index];
+        NSInteger photoID = data.photoID;
+        
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        [dataManager deletePhotoWithPhotoID:photoID];
+    });
     
     if ([self.photoDatas count] == 1)
     {

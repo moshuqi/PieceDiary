@@ -32,8 +32,15 @@
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"问题"];
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.questionInfoDataArray = [dataManager getQuestionInfoData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        self.questionInfoDataArray = [dataManager getQuestionInfoData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.tableView reloadData];
+        });
+    });
+    
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PDQuestionInfoCell" bundle:nil] forCellReuseIdentifier:QuestionInfoReuseIdentifier];
     self.tableView.backgroundColor = BackgroudGrayColor;

@@ -233,6 +233,7 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 - (void)returnPieceView
 {
     [self setCurrentEditViewAnswerContent];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -281,11 +282,13 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 - (void)setAnswerWithContent:(NSString *)content withIndex:(NSInteger)index
 {
     // 根据索引设置问题内容
-    PDPieceCellData *data = self.dataArray[index];
-    data.answer = content;
-    
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager setAnswerContentWithText:content questionID:data.questionID date:data.date];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+        PDPieceCellData *data = self.dataArray[index];
+        data.answer = content;
+        
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        [dataManager setAnswerContentWithText:content questionID:data.questionID date:data.date];
+    });
 }
 
 - (UIView *)inputAccessoryView
@@ -305,30 +308,34 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)imagePickerController:(PDImagePickerController *)imagePickerController pickFinishedWithPhotos:(NSArray *)photos
 {
-    NSDate *date = imagePickerController.date;
-    NSInteger questionID = imagePickerController.questionID;
-    
-    NSMutableArray *photoDatas = [NSMutableArray array];
-    for (NSInteger i = 0; i < [photos count]; i++)
-    {
-        PDPhotoData *photoData = [PDPhotoData new];
-        photoData.date = date;
-        photoData.questionID = questionID;
-        photoData.image = photos[i];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+        NSDate *date = imagePickerController.date;
+        NSInteger questionID = imagePickerController.questionID;
         
-        [photoDatas addObject:photoData];
-    }
-    
-    // 选中的图片插入到数据库
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager insertPhotosWithPhotoDatas:photoDatas];
-    
-    // 重新请求一次图片
-    NSArray *datas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
-    PDPieceCellData *cellData = self.dataArray[self.currentIndex];
-    cellData.photoDatas = datas;
-    
-    [self.editView setupImageViewWithPhotoDatas:datas];
+        NSMutableArray *photoDatas = [NSMutableArray array];
+        for (NSInteger i = 0; i < [photos count]; i++)
+        {
+            PDPhotoData *photoData = [PDPhotoData new];
+            photoData.date = date;
+            photoData.questionID = questionID;
+            photoData.image = photos[i];
+            
+            [photoDatas addObject:photoData];
+        }
+        
+        // 选中的图片插入到数据库
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        [dataManager insertPhotosWithPhotoDatas:photoDatas];
+        
+        // 重新请求一次图片
+        NSArray *datas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
+        PDPieceCellData *cellData = self.dataArray[self.currentIndex];
+        cellData.photoDatas = datas;
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.editView setupImageViewWithPhotoDatas:datas];
+        });
+    });
     
     [imagePickerController dismissViewControllerAnimated:YES completion:^(){
         [self resetToolbarButtonsState];
@@ -350,13 +357,14 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 - (void)displayPhotos
 {
     PDPieceCellData *cellData = self.dataArray[self.currentIndex];
-    NSInteger questionID = cellData.questionID;
-    NSDate *date = cellData.date;
+//    NSInteger questionID = cellData.questionID;
+//    NSDate *date = cellData.date;
+//    
+//    PDDataManager *dataManager = [PDDataManager defaultManager];
+//    NSArray *photoDatas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSArray *photoDatas = [dataManager getPhotoDatasWithDate:date questionID:questionID];
-    
-    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotoDatas:photoDatas];
+    // mark 直接用看是否有问题。
+    PDDisplayPhotoViewController *displayPhotoViewController = [[PDDisplayPhotoViewController alloc] initWithPhotoDatas:cellData.photoDatas];
     displayPhotoViewController.delegate = self;
     
     [self presentViewController:displayPhotoViewController animated:YES completion:nil];
@@ -381,13 +389,17 @@ typedef NS_ENUM(NSInteger, EditPieceCellChangeType) {
 
 - (void)questionEditViewController:(PDQuestionEditViewController *)editViewController editQuestionContentText:(NSString *)text inDate:(NSDate *)date
 {
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    [dataManager setQuetionContentWithNewContent:text oldContent:[editViewController getOldQuestionContent] inDate:date];
-    
     [editViewController dismissViewControllerAnimated:YES completion:nil];
     
-    self.dataArray = [dataManager getPieceViewCellDatasWithDate:date];
-    [self.editView setQuestionContentWithText:text];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        [dataManager setQuetionContentWithNewContent:text oldContent:[editViewController getOldQuestionContent] inDate:date];
+        
+        self.dataArray = [dataManager getPieceViewCellDatasWithDate:date];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.editView setQuestionContentWithText:text];
+        });
+    });
 }
 
 @end

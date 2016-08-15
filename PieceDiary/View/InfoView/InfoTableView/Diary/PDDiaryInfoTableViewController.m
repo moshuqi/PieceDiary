@@ -34,8 +34,14 @@ const CGFloat DiaryTableHeightForRow = 88;
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"日记"];
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.sectionDataArray = [dataManager getDiaryInfoData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        self.sectionDataArray = [dataManager getDiaryInfoData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.tableView reloadData];
+        });
+    });
 
     [self.tableView registerNib:[UINib nibWithNibName:@"PDDiaryInfoCell" bundle:nil] forCellReuseIdentifier:DiaryInfoTableIdentifier];
     
@@ -123,18 +129,22 @@ const CGFloat DiaryTableHeightForRow = 88;
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PDDiaryInfoCell" owner:self options:nil] lastObject];
     }
     
-    PDDiaryInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
-    PDDiaryInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
-    
-    NSDate *date = cellData.date;
-    NSInteger day = [date dayValue];
-    NSInteger weekday = [date weekdayValue];
-    
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
-    UIImage *moodImage = [dataManager getMoodImageWithDate:date];
-    
-    [cell setupWithDay:day weekday:weekday weatherImage:weatherImage moodImage:moodImage];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDiaryInfoSectionData *sectionData = self.sectionDataArray[indexPath.section];
+        PDDiaryInfoCellData *cellData = sectionData.cellDatas[indexPath.row];
+        
+        NSDate *date = cellData.date;
+        NSInteger day = [date dayValue];
+        NSInteger weekday = [date weekdayValue];
+        
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        UIImage *weatherImage = [dataManager getWeatherImageWithDate:date];
+        UIImage *moodImage = [dataManager getMoodImageWithDate:date];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [cell setupWithDay:day weekday:weekday weatherImage:weatherImage moodImage:moodImage];
+        });
+    });
     
     return cell;
 }

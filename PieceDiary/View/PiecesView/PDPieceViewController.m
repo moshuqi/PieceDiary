@@ -40,16 +40,19 @@
     
     self.view.backgroundColor = BackgroudGrayColor;
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    NSDate *date = [NSDate date];
-    NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:date];
+//    PDDataManager *dataManager = [PDDataManager defaultManager];
+//    NSDate *date = [NSDate date];
+//    NSArray *dataArray = [dataManager getPieceViewCellDatasWithDate:date];
     
     NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"PDPieceDiaryView" owner:self options:nil];
     self.pieceDiaryView = [nibViews objectAtIndex:0];
     self.pieceDiaryView.frame = [self getPieceDiaryFrame];
     self.pieceDiaryView.delegate = self;
-    self.pieceDiaryView.cellDataArray = dataArray;
-    [self.pieceDiaryView setCurrentDateWithDate:date];
+    
+    [self.pieceDiaryView resetPieceDiaryViewWithDate:[NSDate date]];
+    
+//    self.pieceDiaryView.cellDataArray = dataArray;
+//    [self.pieceDiaryView setCurrentDateWithDate:date];
     
     [self.view addSubview:self.pieceDiaryView];
     self.pieceDiaryView.backgroundColor = [UIColor grayColor];

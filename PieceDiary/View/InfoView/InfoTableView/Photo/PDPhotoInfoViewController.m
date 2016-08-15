@@ -31,8 +31,14 @@
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"照片"];
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.photoDataArray = [dataManager getPhotoInfoData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(){
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        self.photoDataArray = [dataManager getPhotoInfoData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.collection reloadData];
+        });
+    });
     
     [self.collection registerNib:[UINib nibWithNibName:@"PDPhotoInfoCell" bundle:nil] forCellWithReuseIdentifier:PhotoInfoCollectionIdentifier];
     

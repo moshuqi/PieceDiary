@@ -34,8 +34,14 @@ const CGFloat GridTableHeightForRow = 100;
     self.topBar.delegate = self;
     [self.topBar setTitleWithText:@"格子"];
     
-    PDDataManager *dataManager = [PDDataManager defaultManager];
-    self.sectionDataArray = [dataManager getGridInfoData];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^() {
+        PDDataManager *dataManager = [PDDataManager defaultManager];
+        self.sectionDataArray = [dataManager getGridInfoData];
+
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.tableView reloadData];
+        });
+    });
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PDGridInfoCell" bundle:nil] forCellReuseIdentifier:GridInfoReuseIdentifier];
     
